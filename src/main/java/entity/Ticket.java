@@ -12,14 +12,9 @@ public class Ticket {
 		public Ticket() {
 			super();
 		}
-		public Ticket(int tid, int fid, int uid, int sid, String tdate, String tclass, String passenger_type,
-				double tprice) {
+		public Ticket(String tclass, String passenger_type,double tprice) {
 			super();
-			this.tid = tid;
-			this.fid = fid;
-			this.uid = uid;
-			this.sid = sid;
-			this.tdate = tdate;
+
 			this.tclass = tclass;
 			this.passenger_type = passenger_type;
 			this.tprice = tprice;
@@ -129,6 +124,5 @@ public class Ticket {
 				return false;
 			return true;
 		}
-		
-		
+
 }

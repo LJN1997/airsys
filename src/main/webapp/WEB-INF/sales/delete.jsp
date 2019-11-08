@@ -1,0 +1,1 @@
+success delete ticket 
