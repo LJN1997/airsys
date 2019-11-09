@@ -12,6 +12,22 @@ public class Ticket {
 		public Ticket() {
 			super();
 		}
+		
+		public Ticket(String tclass, String passenger_type, double tprice, int fid, int uid) {
+			super();
+			this.tclass = tclass;
+			this.passenger_type = passenger_type;
+			this.tprice = tprice;
+			this.fid = fid;
+			this.uid = uid;
+		}
+		
+		
+		
+		
+		
+		
+		
 		public Ticket(String tclass, String passenger_type,double tprice) {
 			super();
 
