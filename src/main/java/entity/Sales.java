@@ -20,6 +20,15 @@ public class Sales {
 		super();
 		this.snumber = snumber;
 	}
+	
+	public Sales(String snumber, String sname, String spwd, int pid) {
+		super();
+		this.snumber = snumber;
+		this.sname = sname;
+		this.spwd = spwd;
+
+		this.pid = pid;
+	}
 
 	public Sales(int sid, String snumber, String sname, String spwd, String shead, int pid) {
 		super();

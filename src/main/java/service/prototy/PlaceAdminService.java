@@ -15,11 +15,11 @@ public interface PlaceAdminService {
 	//-- 增加或修改营业员信息6
 	void saveOrUpdate(Sales sales);
 	//-- 查询营业员信息
-	Sales querry(String snumber);
+	Sales querry(int sid);
 	List<Sales> SlistPaged(int pid,int pageNo,int pageSize);
 	Pager<Sales> SlistPager(int pid,int pageNo,int pageSize);
 	//-- 删除营业员信息
-	void delete(String snumber);
+	void delete(int sid);
 	//-- 修改个人信息
 	void updateSelf(PlaceAdmin placeAdmin);
 	//-- 查询营业员售票记录信息

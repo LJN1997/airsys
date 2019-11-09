@@ -27,13 +27,13 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 	}
 
 	@Override
-	public Sales querry(String snumber) {	
-		return pad.find(snumber);
+	public Sales querry(int sid) {	
+		return pad.find(sid);
 	}
 
 	@Override
-	public void delete(String snumber) {
-		pad.delete(snumber);
+	public void delete(int sid) {
+		pad.delete(sid);
 		
 	}
 

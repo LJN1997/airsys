@@ -16,9 +16,9 @@ public interface PlaceAdminDao {
 	//增加或修改营业员
 	void saveOrUpdate(Sales sales);
 	//删除营业员
-	void delete(String snumber);
+	void delete(int sid);
 	//根据ID查询营业员
-	Sales find(String snumber);
+	Sales find(int sid);
 	//分页查询
 	List<Sales> findAll(int pid);
 	List<Sales> listfind(int pid,int offset,int pageSize);

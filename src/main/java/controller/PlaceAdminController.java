@@ -1,10 +1,17 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,26 +32,78 @@ public class PlaceAdminController {
 	private PlaceAdminService pas;
 	
 	//-- 分页查询营业员
-	@RequestMapping("/sales/{pid}")
-	public ModelAndView  getSales(@PathVariable("pid") int pid) {
-		ModelAndView mv = new ModelAndView("/placeadmin/list");
-		Pager<Sales> slistPager = pas.SlistPager(pid, 2, 5);
-		List<Sales> data = slistPager.getData();
+	@RequestMapping("/sales")
+	public ModelAndView  getSales(HttpServletRequest req,HttpServletResponse resp) {
+		ModelAndView mv = new ModelAndView("/placeadmin/sales");
+		/*Integer pid = Integer.parseInt(req.getParameter("id"));
+		Integer pageNo = Integer.parseInt(req.getParameter("pageNo"));*/
+		Pager<Sales> slistPager = pas.SlistPager(2, 1, 10);
 		int pageNum = slistPager.getPageNum();
-		
-		List<Sales> sales = pas.SlistPaged(pid, 1, 5);
-		mv.addObject("sales", sales);
-		mv.addObject("data",data);	
+		List<Sales> data = slistPager.getData();
+		mv.addObject("data", data);
 		mv.addObject("pageNum", pageNum);	
+
 		return mv;
 	}
+	
+	//-- 添加营业员
+	@RequestMapping("/add/{pid}")
+	public ModelAndView  add(@PathVariable("pid") int pid,HttpServletRequest req) {	
+		ModelAndView mv = new ModelAndView("/placeadmin/add");
+
+		return mv;
+	
+	}
+	
+	@RequestMapping(value="/add2",method=RequestMethod.POST)
+	public ModelAndView register( String snumber,String sname,String spwd,HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		try {
+			snumber = new String(snumber .getBytes("iso8859-1"),"utf-8");
+			sname = new String(sname .getBytes("iso8859-1"),"utf-8");
+			spwd = new String(spwd .getBytes("iso8859-1"),"utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		System.out.println(111);
+		Sales sales = new Sales();
+		//int pid =Integer.parseInt(req.getParameter("pid"));
+		sales.setPid(2);
+		sales.setSnumber(snumber);
+		sales.setSname(sname);
+		sales.setSpwd(spwd);
+		 pas.saveOrUpdate(sales);
+		 
+		 mv.setViewName("redirect:/placeadmin/sales");	
+		 return mv;
+
+	}
+	
+	//-- 删除营业员
+	@RequestMapping("/delete/{sid}")
+	public ModelAndView  delete(@PathVariable("sid") int sid) {
+		ModelAndView mv = new ModelAndView();
+		pas.delete(sid);
+		mv.setViewName("redirect:/placeadmin/sales");	
+		return mv;
+	
+	}
+	
+	
 	
 	@RequestMapping("/sale/{snumber}")
 	@ResponseBody
 	public String getSale(@PathVariable("snumber") String snumber) {
-		Sales sales = pas.querry(snumber);
+		Sales sales = pas.querry(1);
 		return JSON.toJSONString(sales);
 	}
 	
+	@RequestMapping("/user")
+	public ModelAndView getUser() {
+		ModelAndView mv = new ModelAndView("/placeadmin/user");
+		return mv;
+	}
+	
 
+ 
 }

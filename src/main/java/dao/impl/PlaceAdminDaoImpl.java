@@ -30,8 +30,8 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 		if(sales.getSid()==0) {
 			if(number<=0) {
 			jdbcTemplate.update(
-					"INSERT INTO airsys_sales (snumber,sname,spwd,shead,pid) values (?,?,?,?,?)",
-					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd(),sales.getShead(),sales.getPid()});
+					"INSERT INTO airsys_sales (snumber,sname,spwd,pid) values (?,?,?,?)",
+					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd(),sales.getPid()});
 			}else {
 				System.out.println("工号不能重复");
 			}
@@ -55,25 +55,25 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 	}
 
 	@Override
-	public void delete(String snumber) {
+	public void delete(int sid) {
 		int number = jdbcTemplate.queryForObject(
-				"SELECT count(*) AS num FROM airsys_sales where snumber = ?",
-				new Object[]{snumber},Integer.class);
+				"SELECT count(*) AS num FROM airsys_sales where sid = ?",
+				new Object[]{sid},Integer.class);
 		if(number>0) {
-			jdbcTemplate.update("delete from airsys_sales where snumber = "+snumber+"");	
+			jdbcTemplate.update("delete from airsys_sales where sid = "+sid+"");	
 		}else {
 			System.out.println("没有该营业员！");
 		}
 	}
 	
 	@Override
-	public Sales find(String snumber) {
+	public Sales find(int sid) {
 		int number = jdbcTemplate.queryForObject(
-				"SELECT count(*) AS num FROM airsys_sales where snumber = ?",
-				new Object[]{snumber},Integer.class);
+				"SELECT count(*) AS num FROM airsys_sales where sid = ?",
+				new Object[]{sid},Integer.class);
 		if(number>0) {
 			return  jdbcTemplate.queryForObject(
-					"select * from airsys_sales where snumber = "+snumber+"", 
+					"select * from airsys_sales where sid = "+sid+"", 
 					new BeanPropertyRowMapper<>(Sales.class));
 		}
 			return null;

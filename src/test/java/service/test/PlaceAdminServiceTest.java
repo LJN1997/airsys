@@ -24,18 +24,18 @@ public class PlaceAdminServiceTest {
 	@Test
 	public void testSaveOrUpdate() {
 		Sales s = new Sales();
-		s.setSid(0);
+	
 		s.setSname("赵四");
-		s.setSnumber("3333");
+		s.setSnumber("333333");
 		s.setSpwd("12345");
 		s.setPid(2);
-		s.setShead("2.png");
+		
 		pas.saveOrUpdate(s);;
 	}
 	
 	@Test
 	public void testquerry() {
-		Sales sales = pas.querry("3333");
+		Sales sales = pas.querry(1);
 		System.out.println(sales); 
 	}
 	
@@ -71,7 +71,7 @@ public class PlaceAdminServiceTest {
 	
 	@Test
 	public void testDelete() {
-		pas.delete("3333");
+		pas.delete(1);
 	}
 	
 	@Test

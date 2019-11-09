@@ -26,22 +26,22 @@ public class PlaceAdminDaoTest {
 	@Test
 	public void testSaveOrUpdate() {
 		Sales s = new Sales(); 
-		s.setSid(8);
+		
 		s.setSname("李四");
-		s.setSnumber("888");
+		s.setSnumber("999");
 		s.setSpwd("12345");
 		s.setPid(2);
-		s.setShead("2.png");
+	
 		pad.saveOrUpdate(s);
 	}
 	@Test
 	public void testDelete() { 
-		pad.delete("8888");
+		pad.delete(1);
 	}
 	
 	@Test
 	public void testFind() {
-		Sales s = pad.find("8888");
+		Sales s = pad.find(1);
 		System.out.println(s);	
 	}
 	@Test 
