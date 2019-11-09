@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/airsys/asset/layui/css/layui.css">
+    <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
     <style type="text/css">
         .container{
             width: 420px;
@@ -68,7 +68,7 @@
     </style>
 </head>
 <body>
-<form class="layui-form" action="" method="post">
+<form class="layui-form" action="http://localhost:8080/airsys/main/login" method="post">
     <div class="container">
         <button class="close" title="关闭">X</button>
         <!--<div class="layui-form-mid layui-word-aux">

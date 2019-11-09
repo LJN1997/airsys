@@ -68,7 +68,7 @@
     </style>
 </head>
 <body>
-<form class="layui-form" action="" method="post">
+<form class="layui-form" action="http://localhost:8080/airsys/main/index" method="post">
     <div class="container">
         <button class="close" title="关闭">X</button>
         <!--<div class="layui-form-mid layui-word-aux">
@@ -107,7 +107,7 @@
                 <button class="layui-btn" lay-submit lay-filter="formDemo">登陆</button>
             </div>
         </div>
-        <a href="Password.jsp" class="font-set">忘记密码?</a>  <a href="resign.html" class="font-set">立即注册</a>
+        <a href="http://localhost:8080/airsys/main/pwd" class="font-set">忘记密码?</a>  <a href="http://localhost:8080/airsys/main/resign" class="font-set">立即注册</a>
     </div>
 </form>
 <script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>

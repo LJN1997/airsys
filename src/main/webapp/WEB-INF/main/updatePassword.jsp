@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>修改密码</title>
 </head>
 
 <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">

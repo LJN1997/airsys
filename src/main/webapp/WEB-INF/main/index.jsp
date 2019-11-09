@@ -34,8 +34,8 @@
                     贤心
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="information.html" target="main">基本资料</a></dd>
-                    <dd><a href="updatePassword.html" target="main">安全设置</a></dd>
+                    <dd><a href="http://localhost:8080/airsys/air/userinfo" target="main">基本资料</a></dd>
+                    <dd><a href="http://localhost:8080/airsys/air/userpwd" target="main">安全设置</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item"><a href="">退了</a></li>
@@ -47,7 +47,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="main.html" target="main">机场信息</a>
+                    <a class="" href="http://localhost:8080/airsys/air/airinfo" target="main">机场信息</a>
                     <!--<dl class="layui-nav-child">
                         <dd><a href="javascript:;">列表一</a></dd>
                         <dd><a href="javascript:;">列表二</a></dd>
@@ -80,7 +80,7 @@
 
     </div>
 </div>
-<script src="airsys/assets/layui/layui.js"></script>
+<script src="/airsys/assets/layui/layui.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){

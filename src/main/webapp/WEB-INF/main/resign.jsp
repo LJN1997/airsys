@@ -68,7 +68,7 @@
     </style>
 </head>
 <body>
-<form class="layui-form" action="" method="post">
+<form class="layui-form" action="http://localhost:8080/airsys/main/login" method="post">
     <div class="container">
         <button class="close" title="关闭">X</button>
         <!--<div class="layui-form-mid layui-word-aux">
@@ -94,6 +94,12 @@
             </div>
             <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
         </div>
+         <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
        <!-- <div class="layui-form-item">
             <label class="layui-form-label">验证码</label>
             <div class="layui-input-inline">
@@ -114,7 +120,7 @@
                 <button class="layui-btn" lay-submit lay-filter="formDemo">注册</button>
             </div>
         </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="login.html" class="font-set">已有账号，点击登录</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://localhost:8080/airsys/main/login" class="font-set">已有账号，点击登录</a>
     </div>
 </form>
 <script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
