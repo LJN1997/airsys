@@ -152,6 +152,14 @@ public class SalesDaoImpl implements ISalesDao{
 		  }
 		
 	}
+	@Override
+	public Info findByNum(String fnumber) {
+
+		
+		
+		
+		return null;
+	}
 
 	
 	

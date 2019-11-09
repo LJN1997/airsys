@@ -18,6 +18,7 @@ import util.Pager;
  */
 @Repository("placeAdminDaoImpl") 
 public class PlaceAdminDaoImpl implements PlaceAdminDao{
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	

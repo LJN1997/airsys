@@ -62,9 +62,8 @@ public class Info {
 		public Date getStart_date() {
 			return start_date;
 		}
-		public Info setStart_date(String start_date) {
+		public void setStart_date(String start_date) {
 			this.start_date=DateUtil.toDate("yyyy-MM-dd", start_date);
-			return this;
 		}
 		public String getDeparture_time() {
 			return departure_time;

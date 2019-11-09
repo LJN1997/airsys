@@ -1,9 +1,18 @@
 package controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import entity.Info;
+import service.prototy.ISalesService;
 
 /**
 * 
@@ -12,17 +21,45 @@ import org.springframework.web.servlet.ModelAndView;
 */
 @Controller 
 @RequestMapping("/sales")
-public class SalasController {
-	@RequestMapping("/user")
-	@ResponseBody
-public String  getUser(){
-			return "hello";
-}
+public class SalesController {
+	@Autowired
+	private ISalesService salesService;
+	
+	@RequestMapping("/query")
+    public ModelAndView query(HttpServletRequest request,HttpServletResponse response){
+		String route = request.getParameter("route");
+		String from = request.getParameter("from");
+		String to = request.getParameter("to");
+		String startTime = request.getParameter("starttime");
+		String endTime = request.getParameter("endTime");
+		
+		
+		
+		
+		
+		
+		ModelAndView mv = new ModelAndView("/sales/querycon");
+    	List<Info> info1 =salesService.select(from, to, startTime) ;
+    	mv.addObject("info", info1);
+    		return mv;
+    	
     
-    @RequestMapping("/users")
+      /* ModelAndView mv = new ModelAndView("/sales/querycon");
+    	List<Info> info =salesService.select("xa", "sx", "2019-11-05") ;
+    	mv.addObject("info", info);
+    	return mv;*/
+    }
+	
+	@RequestMapping("/user")
+				@ResponseBody
+			public String  getUser(){
+						return "hello";
+			}
+    
+    @RequestMapping("/index")
     public ModelAndView getUsers(){
     	
-    	ModelAndView mv = new ModelAndView("/sales/sales");
+    	ModelAndView mv = new ModelAndView("/sales/index");
     	return mv;
     }
     
@@ -62,4 +99,8 @@ public String  getUser(){
     	ModelAndView mv = new ModelAndView("/sales/selfinfo");
     	return mv;
     }
+    
+    
+    
+    
 }

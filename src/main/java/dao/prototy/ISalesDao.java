@@ -32,4 +32,7 @@ public interface ISalesDao {
 			//4.改签
 			void modify(int uid,int fid,String seat);
 			
+			//5.根据id查一条数据
+			Info findByNum(String fnumber);
+			
 }
