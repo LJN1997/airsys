@@ -13,6 +13,7 @@
 	media="all">
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 
+
 </head>
 <body>
 	<fieldset class="layui-elem-field layui-field-title"
@@ -44,15 +45,17 @@
 						<td>${act.airport_name }</td>
 						<td>${act.airport_city }</td>
 						<td>
-							<button type="button" id="${act.airport_number }"class="layui-btn layui-btn-primary">查看</button>
-							<button type="button" id="${act.airport_number }"class="layui-btn layui-btn-warm">修改</button>
-							<button type="button" id="${act.airport_number }"class="layui-btn layui-btn-danger">删除</button>
+							<button type="button" id="${act.airport_number }view" class="layui-btn layui-btn-primary">查看</button>
+							<button type="button" id="${act.airport_number }update" class="layui-btn layui-btn-warm">修改</button>
+							<button type="button" id="${act.airport_number }delete" class="layui-btn layui-btn-danger" onclick="ondelete('${act.airport_number}')">删除</button>
 						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
 	</div>
+	
+	<script src="/airsys/assets/js/airport.js" charset="utf-8"></script>
 
 	<!-- <script src="/airsys/assets/layui/layui.js" charset="utf-8"></script> -->
 

@@ -18,9 +18,10 @@ public class AirportDaoImpl implements IAirportDao {
 	private JdbcTemplate jt;
 	
 	@Override
-	public void AportDelete(String airport_number) {
-		jt.update("delete from airsys_airport  where airport_number=?",
+	public int AportDelete(String airport_number) {
+		int a =jt.update("delete from airsys_airport  where airport_number=?",
 				new Object[] {airport_number});
+		return a;
 	}
 
 	@Override

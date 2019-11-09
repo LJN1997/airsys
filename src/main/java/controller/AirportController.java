@@ -2,9 +2,14 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import entity.Airport;
@@ -39,4 +44,16 @@ public class AirportController {
 		mv.addObject(airport);
 		return mv;
 	}
+	@RequestMapping("/delete/{airport_number}")
+	@ResponseBody
+	public String delete(@PathVariable("airport_number")String id) {
+		ModelAndView mv = new ModelAndView();
+		int result = airService.AirDelete(id);
+		if(result>0) {
+			return "success";
+		}else {
+			return "false";
+		}
+	}
+	
 }
