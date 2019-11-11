@@ -4,7 +4,7 @@ import java.util.List;
 
 import entity.PlaceAdmin;
 import entity.Sales;
-import entity.Ticket;
+import entity.SalesTicket;
 import util.Pager;
 
 /**
@@ -23,6 +23,6 @@ public interface PlaceAdminService {
 	//-- 修改个人信息
 	void updateSelf(PlaceAdmin placeAdmin);
 	//-- 查询营业员售票记录信息
-	List<Ticket> TlistPaged(int sid,int pageNo,int pageSize);
-	Pager<Ticket> TlistPager(int sid,int pageNo,int pageSize);
+	List<SalesTicket> TlistPaged(int pid,int pageNo,int pageSize);
+	Pager<SalesTicket> TlistPager(int pid,int pageNo,int pageSize);
 }

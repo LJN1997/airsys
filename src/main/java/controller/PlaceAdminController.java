@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSON;
 
 import entity.Sales;
+import entity.SalesTicket;
 import service.prototy.PlaceAdminService;
 import util.Pager;
 
@@ -30,6 +30,16 @@ import util.Pager;
 public class PlaceAdminController {
 	@Autowired 
 	private PlaceAdminService pas;
+	
+	//-- 主界面
+	@RequestMapping("/index")
+	public ModelAndView  index() {	
+		ModelAndView mv = new ModelAndView("/main/index");
+		return mv;
+	
+	}
+	
+
 	
 	//-- 分页查询营业员
 	@RequestMapping("/sales")
@@ -50,13 +60,12 @@ public class PlaceAdminController {
 	@RequestMapping("/add/{pid}")
 	public ModelAndView  add(@PathVariable("pid") int pid,HttpServletRequest req) {	
 		ModelAndView mv = new ModelAndView("/placeadmin/add");
-
 		return mv;
 	
 	}
 	
 	@RequestMapping(value="/add2",method=RequestMethod.POST)
-	public ModelAndView register( String snumber,String sname,String spwd,HttpServletRequest req) {
+	public ModelAndView add2( String snumber,String sname,String spwd,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		try {
 			snumber = new String(snumber .getBytes("iso8859-1"),"utf-8");
@@ -79,6 +88,8 @@ public class PlaceAdminController {
 
 	}
 	
+
+	
 	//-- 删除营业员
 	@RequestMapping("/delete/{sid}")
 	public ModelAndView  delete(@PathVariable("sid") int sid) {
@@ -89,7 +100,33 @@ public class PlaceAdminController {
 	
 	}
 	
+	//-- 营业员售票记录界面
+	@RequestMapping("/ticketinfo")
+	public ModelAndView ticket() {	
+		ModelAndView mv = new ModelAndView("/placeadmin/ticketinfo");
+		Pager<SalesTicket> tlistPager = pas.TlistPager(2, 1, 10);
+		List<SalesTicket> data = tlistPager.getData();
+		int pageNum = tlistPager.getPageNum();
+		mv.addObject("data", data);
+		mv.addObject("pageNum", pageNum);
+		return mv;
 	
+	}
+	
+	//-- 查看营业员售票记录详细信息界面
+	@RequestMapping("/view/{tid}")
+	public ModelAndView ticketinfo(@PathVariable("tid") int tid) {	
+		ModelAndView mv = new ModelAndView("/placeadmin/view");
+		return mv;
+	
+	}
+	
+	@RequestMapping("/saleticket")
+	public ModelAndView  saleticket() {	
+		ModelAndView mv = new ModelAndView("redirect:/placeadmin/ticketinfo");
+		return mv;
+	
+	}
 	
 	@RequestMapping("/sale/{snumber}")
 	@ResponseBody

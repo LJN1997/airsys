@@ -7,7 +7,7 @@ pageEncoding="utf-8"%>
 <html>
 <head>
 <meta charset="utf-8">
-<title>营业员信息</title>
+<title>营业员售票信息</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -17,12 +17,12 @@ pageEncoding="utf-8"%>
 	<script src="/airsys/assets/layui/layui.js" charset="utf-8"></script>
 	<script src="/airsys/assets/js/placeadmin_sales.js" charset="utf-8"></script>
 	<script src="/airsys/assets/js/jquery-1.7.2.js"></script>   
-<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
 </head>
 <body>
 	<fieldset class="layui-elem-field layui-field-title"
 		style="margin-top: 20px;">
-		<legend>营业员信息</legend>
+		<legend>营业员售票记录</legend>
 	</fieldset>
 	
 	<form action="placeadmin">
@@ -30,7 +30,7 @@ pageEncoding="utf-8"%>
 	<div class="layui-form">
 	<div>
 		<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input">
-	    <button type="button" id="${sales.sid }"  class="layui-btn layui-btn-primary">搜索</button>	
+	    <button type="button" id=""  class="layui-btn layui-btn-primary">搜索</button>	
 	</div>
 		<table class="layui-table">
 			<colgroup>
@@ -42,26 +42,29 @@ pageEncoding="utf-8"%>
 			</colgroup>
 			<thead>
 				<tr>
-					<th>工号</th>
-					<th>名称</th>
-					<th>密码</th>
+					<th>机票编号</th>
+					<th>航班编号</th>
+					<th>营业员编号</th>
+					<th>营业员名称</th>
 					<th>操作</th>
 				</tr>
 			</thead>
 			<c:forEach items="${data}" var="sales">
-				<tbody>
-					<tr id="${sales.sid }">
-						<td name = "snumber">${sales.snumber}</td>
-						<td name = "sname">${sales.sname }</td>
-						<td name = "spwd">${sales.spwd}</td>
+				<tbody style="border:1px solid red">
+					<tr id="">
+						<td name = "tnumber">${sales.tnumber}</td>
+						<td name = "fnumber">${sales.fnumber}</td>
+						<td name = "snumber">${sales.snumber }</td>
+						<td name = "sname">${sales.sname}</td>
 						<td name = "caozuo">
-							<button type="button" id="${sales.sid }c" class="layui-btn layui-btn-danger delete" onclick="del(${sales.sid})">删除</button>
+							<button type="button" id="" class="layui-btn layui-btn-primary delete" onclick="view(${sales.tid})">查看</button>
+							<button type="button" id="" class="layui-btn layui-btn-danger delete" onclick="del()">删除</button>
 						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
-		<button type="button" id="e" class="layui-btn add" onclick="add()" >添加</button>
+		
 
 	</div>
 	 

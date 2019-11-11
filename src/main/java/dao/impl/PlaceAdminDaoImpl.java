@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import dao.prototy.PlaceAdminDao;
 import entity.PlaceAdmin;
 import entity.Sales;
+import entity.SalesTicket;
 import entity.Ticket;
 import util.Pager;
 /**
@@ -30,8 +31,8 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 		if(sales.getSid()==0) {
 			if(number<=0) {
 			jdbcTemplate.update(
-					"INSERT INTO airsys_sales (snumber,sname,spwd,pid) values (?,?,?,?)",
-					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd(),sales.getPid()});
+					"INSERT INTO airsys_sales (snumber,sname,spwd) values (?,?,?)",
+					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd()});
 			}else {
 				System.out.println("工号不能重复");
 			}
@@ -113,11 +114,13 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 
 	
 	@Override
-	public List<Ticket> findTicketList(int sid,int offset, int pageSize) {
+	public List<SalesTicket> findTicketList(int pid,int offset, int pageSize) {
 		return jdbcTemplate.query(
-				"select * from airsys_ticket where sid=? limit ?,?", 
-				new Object[] {sid,offset,pageSize},
-				new BeanPropertyRowMapper<>(Ticket.class));
+				
+				"SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE t.sid IN ( SELECT s.sid FROM airsys_sales s WHERE s.pid = ? )limit ?,?", 
+				
+				new Object[] {pid,offset,pageSize},
+				new BeanPropertyRowMapper<>(SalesTicket.class));
 	}
 
 	@Override
@@ -146,10 +149,10 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 	}
 
 	@Override
-	public Pager<Ticket> findTicketPage(int sid, int offset, int pageSize) {
-		Pager<Ticket> ticketPager = new Pager<Ticket>();
-		ticketPager.setData(findTicketList(sid, offset, pageSize));
-		ticketPager.setPageNum((saleTotalItems(sid)+pageSize-1)/pageSize);
+	public Pager<SalesTicket> findTicketPage(int pid, int offset, int pageSize) {
+		Pager<SalesTicket> ticketPager = new Pager<SalesTicket>();
+		ticketPager.setData(findTicketList(pid, offset, pageSize));
+		ticketPager.setPageNum((saleTotalItems(pid)+pageSize-1)/pageSize);
 		return ticketPager;
 	}
 

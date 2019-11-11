@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import dao.prototy.PlaceAdminDao;
 import entity.PlaceAdmin;
 import entity.Sales;
+import entity.SalesTicket;
 import entity.Ticket;
 import service.prototy.PlaceAdminService;
 import util.Pager;
@@ -59,9 +60,9 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 	}
 
 	@Override
-	public Pager<Ticket> TlistPager(int sid, int pageNo, int pageSize) {
+	public Pager<SalesTicket> TlistPager(int pid, int pageNo, int pageSize) {
 		//-- 依赖Dao实现
-		int totalItems = pad.saleTotalItems(sid);//--总条目数
+		int totalItems = pad.saleTotalItems(pid);//--总条目数
 		int pageNum = (totalItems+pageSize-1)/pageSize;
 		if(pageNo >= pageNum) {   //--控制最大页码
 			pageNo = pageNum;
@@ -70,7 +71,7 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 			pageNo = 1;
 		}
 
-		Pager<Ticket> pager = pad.findTicketPage(sid,(pageNo-1)*pageSize, pageSize);
+		Pager<SalesTicket> pager = pad.findTicketPage(pid,(pageNo-1)*pageSize, pageSize);
 		return pager;
 	}
 
@@ -88,8 +89,8 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 	}
 
 	@Override
-	public List<Ticket> TlistPaged(int sid, int pageNo, int pageSize) {
-		int totalItems = pad.saleTotalItems(sid);//--总条目数
+	public List<SalesTicket> TlistPaged(int pid, int pageNo, int pageSize) {
+		int totalItems = pad.saleTotalItems(pid);//--总条目数
 		int pageNum = (totalItems+pageSize-1)/pageSize;
 		if(pageNo >= pageNum) {   //--控制最大页码
 			pageNo = pageNum;
@@ -97,7 +98,7 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 		if(pageNo == 0) {   //--控制最小页码
 			pageNo = 1;
 		}
-		return pad.findTicketList(sid, (pageNo-1)*pageSize, pageSize);
+		return pad.findTicketList(pid, (pageNo-1)*pageSize, pageSize);
 	}
 
 }

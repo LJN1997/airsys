@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
@@ -18,6 +21,7 @@ import com.alibaba.druid.pool.DruidDataSource;
  */
 @Configuration
 @PropertySource("classpath:jdbc.properties")
+@EnableTransactionManagement
 public class DBConfig {
 	//-- 1.配置信息
 	@Value("${jdbc.driverClass}")
@@ -46,4 +50,9 @@ public class DBConfig {
 		return new JdbcTemplate(ds);
 	}
 	
+	//-- 4.配置事务管理器
+	@Bean(name="transactionManager")
+	public PlatformTransactionManager createTransactionManager(DataSource ds) {
+		return new DataSourceTransactionManager(ds);
+	}
 }

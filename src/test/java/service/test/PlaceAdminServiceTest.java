@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import config.TestConfig;
 import entity.PlaceAdmin;
 import entity.Sales;
+import entity.SalesTicket;
 import entity.Ticket;
 import service.prototy.PlaceAdminService;
 import util.Pager;
@@ -56,15 +57,15 @@ public class PlaceAdminServiceTest {
 	
 	@Test
 	public void testTlistPaged() {
-		List<Ticket> slistPaged = pas.TlistPaged(1, 1, 5);
-		for (Ticket sales : slistPaged) {
+		List<SalesTicket> slistPaged = pas.TlistPaged(1, 1, 5);
+		for (SalesTicket sales : slistPaged) {
 			System.out.println(sales); 
 		}
 	}
 	
 	@Test
 	public void testTlistPager() {
-		Pager<Ticket> slistPager = pas.TlistPager(2, 1, 5);
+		Pager<SalesTicket> slistPager = pas.TlistPager(2, 1, 5);
 		System.out.println(slistPager.getData());
 		System.out.println(slistPager.getPageNum());
 	} 
