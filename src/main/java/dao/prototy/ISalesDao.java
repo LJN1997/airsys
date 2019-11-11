@@ -15,8 +15,8 @@ public interface ISalesDao {
 	
 			//1、查票         根据用户输入的出发地、目的地、时间 查询出符合条件的机票  
 				List<Plan> findall();		
-				List  find1(String startplace,String destination,String start_time);
-				List<Info>  find(String startplace,String destination,String start_time);
+				List  find1(String startplace,String destination,String startTime);
+				List<Info>  find(String startplace,String destination,String startTime);
 			//增加
 			void add(Ticket t);
 			//更新

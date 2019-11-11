@@ -4,3 +4,7 @@ function ondelete(id){
 		window.location.href="/airsys/air/delete/"+id;
 	}
 }
+function onupdate(id){
+		window.location.href="/airsys/air/update/"+id;
+	
+}

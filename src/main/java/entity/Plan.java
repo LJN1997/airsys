@@ -5,40 +5,40 @@ import java.util.Date;
 import util.DateUtil;
 
 public class Plan {
-	private int plan_id;
+	private int planId;
 	private String fnumber;
-	private Date start_date;
-	private Date end_date;
-	private String from_city;
-	private String to_city;
-	private Date departure_time;
-	private Date arrival_time;
-	private int sail_length;
+	private Date startDate;
+	private Date endDate;
+	private String fromCity;
+	private String toCity;
+	private Date departureTime;
+	private Date arrivalTime;
+	private int sailLength;
 	private String type;
 	private double tprice;
 	public Plan() {
 		super();
 	}
-	public Plan(int plan_id, String fnumber, Date start_date, Date end_date, String from_city, String to_city,
-			Date departure_time, Date arrival_time, int sail_length, String type, double tprice) {
+	public Plan(int planId, String fnumber, Date startDate, Date endDate, String fromCity, String toCity,
+			Date departureTime, Date arrivalTime, int sailLength, String type, double tprice) {
 		super();
-		this.plan_id = plan_id;
+		this.planId = planId;
 		this.fnumber = fnumber;
-		this.start_date = start_date;
-		this.end_date = end_date;
-		this.from_city = from_city;
-		this.to_city = to_city;
-		this.departure_time = departure_time;
-		this.arrival_time = arrival_time;
-		this.sail_length = sail_length;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.fromCity = fromCity;
+		this.toCity = toCity;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+		this.sailLength = sailLength;
 		this.type = type;
 		this.tprice = tprice;
 	}
-	public int getPlan_id() {
-		return plan_id;
+	public int getPlanId() {
+		return planId;
 	}
-	public void setPlan_id(int plan_id) {
-		this.plan_id = plan_id;
+	public void setPlanId(int planId) {
+		this.planId = planId;
 	}
 	public String getFnumber() {
 		return fnumber;
@@ -46,56 +46,47 @@ public class Plan {
 	public void setFnumber(String fnumber) {
 		this.fnumber = fnumber;
 	}
-	public Date getStart_date() {
-		return start_date;
+	public Date getStartDate() {
+		return startDate;
 	}
-	
-	/*
-	 * 日期封装
-	 */
-	
-	public void setStart_date(String start_date) {
-		this.start_date=DateUtil.toDate("yyyy-MM-dd", start_date);
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
-	public Date getEnd_date() {
-		return end_date;
+	public Date getEndDate() {
+		return endDate;
 	}
-	public void setEnd_date(String end_date) {
-		this.end_date = DateUtil.toDate("yyyy-MM-dd", end_date);
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
-	
-	
-	
-	
-	public String getFrom_city() {
-		return from_city;
+	public String getFromCity() {
+		return fromCity;
 	}
-	public void setFrom_city(String from_city) {
-		this.from_city = from_city;
+	public void setFromCity(String fromCity) {
+		this.fromCity = fromCity;
 	}
-	public String getTo_city() {
-		return to_city;
+	public String getToCity() {
+		return toCity;
 	}
-	public void setTo_city(String to_city) {
-		this.to_city = to_city;
+	public void setToCity(String toCity) {
+		this.toCity = toCity;
 	}
-	public Date getDeparture_time() {
-		return departure_time;
+	public Date getDepartureTime() {
+		return departureTime;
 	}
-	public void setDeparture_time(Date departure_time) {
-		this.departure_time = departure_time;
+	public void setDepartureTime(Date departureTime) {
+		this.departureTime = departureTime;
 	}
-	public Date getArrival_time() {
-		return arrival_time;
+	public Date getArrivalTime() {
+		return arrivalTime;
 	}
-	public void setArrival_time(Date arrival_time) {
-		this.arrival_time = arrival_time;
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
 	}
-	public int getSail_length() {
-		return sail_length;
+	public int getSailLength() {
+		return sailLength;
 	}
-	public void setSail_length(int sail_length) {
-		this.sail_length = sail_length;
+	public void setSailLength(int sailLength) {
+		this.sailLength = sailLength;
 	}
 	public String getType() {
 		return type;
@@ -111,24 +102,24 @@ public class Plan {
 	}
 	@Override
 	public String toString() {
-		return "Plan [plan_id=" + plan_id + ", fnumber=" + fnumber + ", start_date=" + start_date + ", end_date="
-				+ end_date + ", from_city=" + from_city + ", to_city=" + to_city + ", departure_time=" + departure_time
-				+ ", arrival_time=" + arrival_time + ", sail_length=" + sail_length + ", type=" + type + ", tprice="
+		return "Plan [planId=" + planId + ", fnumber=" + fnumber + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", fromCity=" + fromCity + ", toCity=" + toCity + ", departureTime=" + departureTime
+				+ ", arrivalTime=" + arrivalTime + ", sailLength=" + sailLength + ", type=" + type + ", tprice="
 				+ tprice + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((arrival_time == null) ? 0 : arrival_time.hashCode());
-		result = prime * result + ((departure_time == null) ? 0 : departure_time.hashCode());
-		result = prime * result + ((end_date == null) ? 0 : end_date.hashCode());
+		result = prime * result + ((arrivalTime == null) ? 0 : arrivalTime.hashCode());
+		result = prime * result + ((departureTime == null) ? 0 : departureTime.hashCode());
+		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
-		result = prime * result + ((from_city == null) ? 0 : from_city.hashCode());
-		result = prime * result + plan_id;
-		result = prime * result + sail_length;
-		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
-		result = prime * result + ((to_city == null) ? 0 : to_city.hashCode());
+		result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
+		result = prime * result + planId;
+		result = prime * result + sailLength;
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + ((toCity == null) ? 0 : toCity.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(tprice);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -144,44 +135,44 @@ public class Plan {
 		if (getClass() != obj.getClass())
 			return false;
 		Plan other = (Plan) obj;
-		if (arrival_time == null) {
-			if (other.arrival_time != null)
+		if (arrivalTime == null) {
+			if (other.arrivalTime != null)
 				return false;
-		} else if (!arrival_time.equals(other.arrival_time))
+		} else if (!arrivalTime.equals(other.arrivalTime))
 			return false;
-		if (departure_time == null) {
-			if (other.departure_time != null)
+		if (departureTime == null) {
+			if (other.departureTime != null)
 				return false;
-		} else if (!departure_time.equals(other.departure_time))
+		} else if (!departureTime.equals(other.departureTime))
 			return false;
-		if (end_date == null) {
-			if (other.end_date != null)
+		if (endDate == null) {
+			if (other.endDate != null)
 				return false;
-		} else if (!end_date.equals(other.end_date))
+		} else if (!endDate.equals(other.endDate))
 			return false;
 		if (fnumber == null) {
 			if (other.fnumber != null)
 				return false;
 		} else if (!fnumber.equals(other.fnumber))
 			return false;
-		if (from_city == null) {
-			if (other.from_city != null)
+		if (fromCity == null) {
+			if (other.fromCity != null)
 				return false;
-		} else if (!from_city.equals(other.from_city))
+		} else if (!fromCity.equals(other.fromCity))
 			return false;
-		if (plan_id != other.plan_id)
+		if (planId != other.planId)
 			return false;
-		if (sail_length != other.sail_length)
+		if (sailLength != other.sailLength)
 			return false;
-		if (start_date == null) {
-			if (other.start_date != null)
+		if (startDate == null) {
+			if (other.startDate != null)
 				return false;
-		} else if (!start_date.equals(other.start_date))
+		} else if (!startDate.equals(other.startDate))
 			return false;
-		if (to_city == null) {
-			if (other.to_city != null)
+		if (toCity == null) {
+			if (other.toCity != null)
 				return false;
-		} else if (!to_city.equals(other.to_city))
+		} else if (!toCity.equals(other.toCity))
 			return false;
 		if (Double.doubleToLongBits(tprice) != Double.doubleToLongBits(other.tprice))
 			return false;

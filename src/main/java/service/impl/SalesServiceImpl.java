@@ -21,8 +21,8 @@ public class SalesServiceImpl implements ISalesService{
 	@Autowired
 	private ISalesDao sd;
 	@Override
-	public List<Info> select(String startplace, String destination, String start_time) {
-		return sd.find(startplace, destination, start_time);
+	public List<Info> select(String startplace, String destination, String startTime) {
+		return sd.find(startplace, destination, startTime);
 	}
 
 	@Override

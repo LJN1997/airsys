@@ -5,18 +5,16 @@ import java.util.Date;
 public class UserSelect {
 	private String fnumber;
 	private String tprice;
-	private Date departure_time;
-	private Date arrival_time;
-	public UserSelect(String fnumber, String tprice, Date departure_time, Date arrival_time) {
+	private Date departureTime;
+	private Date arrivalTime;
+	public UserSelect() {
+	}
+	public UserSelect(String fnumber, String tprice, Date departureTime, Date arrivalTime) {
 		super();
 		this.fnumber = fnumber;
 		this.tprice = tprice;
-		this.departure_time = departure_time;
-		this.arrival_time = arrival_time;
-	}
-	public UserSelect() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
 	}
 	public String getFnumber() {
 		return fnumber;
@@ -30,24 +28,29 @@ public class UserSelect {
 	public void setTprice(String tprice) {
 		this.tprice = tprice;
 	}
-	public Date getDeparture_time() {
-		return departure_time;
+	public Date getDepartureTime() {
+		return departureTime;
 	}
-	public void setDeparture_time(Date departure_time) {
-		this.departure_time = departure_time;
+	public void setDepartureTime(Date departureTime) {
+		this.departureTime = departureTime;
 	}
-	public Date getArrival_time() {
-		return arrival_time;
+	public Date getArrivalTime() {
+		return arrivalTime;
 	}
-	public void setArrival_time(Date arrival_time) {
-		this.arrival_time = arrival_time;
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+	@Override
+	public String toString() {
+		return "UserSelect [fnumber=" + fnumber + ", tprice=" + tprice + ", departureTime=" + departureTime
+				+ ", arrivalTime=" + arrivalTime + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((arrival_time == null) ? 0 : arrival_time.hashCode());
-		result = prime * result + ((departure_time == null) ? 0 : departure_time.hashCode());
+		result = prime * result + ((arrivalTime == null) ? 0 : arrivalTime.hashCode());
+		result = prime * result + ((departureTime == null) ? 0 : departureTime.hashCode());
 		result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 		result = prime * result + ((tprice == null) ? 0 : tprice.hashCode());
 		return result;
@@ -61,15 +64,15 @@ public class UserSelect {
 		if (getClass() != obj.getClass())
 			return false;
 		UserSelect other = (UserSelect) obj;
-		if (arrival_time == null) {
-			if (other.arrival_time != null)
+		if (arrivalTime == null) {
+			if (other.arrivalTime != null)
 				return false;
-		} else if (!arrival_time.equals(other.arrival_time))
+		} else if (!arrivalTime.equals(other.arrivalTime))
 			return false;
-		if (departure_time == null) {
-			if (other.departure_time != null)
+		if (departureTime == null) {
+			if (other.departureTime != null)
 				return false;
-		} else if (!departure_time.equals(other.departure_time))
+		} else if (!departureTime.equals(other.departureTime))
 			return false;
 		if (fnumber == null) {
 			if (other.fnumber != null)
@@ -82,11 +85,6 @@ public class UserSelect {
 		} else if (!tprice.equals(other.tprice))
 			return false;
 		return true;
-	}
-	@Override
-	public String toString() {
-		return "UserSelect [fnumber=" + fnumber + ", tprice=" + tprice + ", departure_time=" + departure_time
-				+ ", arrival_time=" + arrival_time + "]";
 	}
 	
 }

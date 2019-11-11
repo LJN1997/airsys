@@ -12,7 +12,7 @@ import entity.Ticket;
 */
 public interface ISalesService {
 	//查票
-	List<Info>  select(String startplace,String destination,String start_time);
+	List<Info>  select(String startplace,String destination,String startTime);
 	//买票  增加更新
 	void buy(Ticket t,int fid,String seat);
 	//退票  删除更新

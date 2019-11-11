@@ -27,14 +27,14 @@ public class SalesDaoImpl implements ISalesDao{
 	
 	//查票
 	@Override
-	public List<Info>  find(String startplace, String destination, String start_time) {
+	public List<Info>  find(String startplace, String destination, String startTime) {
 		String sql = "SELECT f.fnumber ,p.from_city ,p.to_city ,p.start_date ,p.departure_time ,p.arrival_time ,f.first_class_remain_seats ,f.business_class_remain_seats ,f.economy_class_remain_seats ,p.tprice ,f.season_discount  FROM airsys_flight f RIGHT JOIN airsys_plan p ON f.fnumber=p.fnumber WHERE from_city = ? AND to_city= ? AND start_date= ? ";
-		return jdbcTemplate.query(sql, new Object[]{startplace,destination,start_time},new BeanPropertyRowMapper<Info>(Info.class));
+		return jdbcTemplate.query(sql, new Object[]{startplace,destination,startTime},new BeanPropertyRowMapper<Info>(Info.class));
 	}
 	@Override
-	public List  find1(String startplace, String destination, String start_time) {
+	public List  find1(String startplace, String destination, String startTime) {
 		String sql = "SELECT f.fnumber 航班号,p.from_city 出发地,p.to_city 目的地,p.start_date 出发时间,p.departure_time 离港时间,p.arrival_time 到港时间,f.first_class_remain_seats 头等舱剩余座位,f.business_class_remain_seats 公务舱剩余座位,f.economy_class_remain_seats 经济舱剩余座位,p.tprice 票价,f.season_discount 折扣 FROM airsys_flight f RIGHT JOIN airsys_plan p ON f.fnumber=p.fnumber WHERE from_city = ? AND to_city= ? AND start_date= ? ";
-		return jdbcTemplate.queryForList(sql, new Object[]{startplace,destination,start_time});
+		return jdbcTemplate.queryForList(sql, new Object[]{startplace,destination,startTime});
 	}
 
 	//查计划表所有内容
@@ -47,7 +47,7 @@ public class SalesDaoImpl implements ISalesDao{
 	@Override
 	public void add(Ticket t) {
 			String sql="INSERT INTO airsys_ticket(tclass,passenger_type,tprice) VALUES(?,?,?)";
-			jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassenger_type(),t.getTprice()});
+			jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassengerType(),t.getTprice()});
 	}
 
 
@@ -83,20 +83,20 @@ public class SalesDaoImpl implements ISalesDao{
 		
 		if(seat.equals("first_class_remain_seats")){
 			String sql="INSERT INTO airsys_ticket(tclass,passenger_type,tprice) VALUES(?,?,?)";
-			jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassenger_type(),t.getTprice()});
+			jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassengerType(),t.getTprice()});
 			
 			  String sql1 = "update airsys_flight set first_class_remain_seats=first_class_remain_seats-1 where fid = ?";
 				jdbcTemplate.update(sql1,new Object[]{fid});
 		  }
 		  if(seat.equals("business_class_remain_seats")){
 			  String sql="INSERT INTO airsys_ticket(tclass,passenger_type,tprice) VALUES(?,?,?)";
-				jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassenger_type(),t.getTprice()});
+				jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassengerType(),t.getTprice()});
 			  String sql1 = "update airsys_flight set business_class_remain_seats=business_class_remain_seats-1 where fid = ?";
 				jdbcTemplate.update(sql1,new Object[]{fid});
 		  }
 		  if(seat.equals("economy_class_remain_seats")){
 			  String sql="INSERT INTO airsys_ticket(tclass,passenger_type,tprice) VALUES(?,?,?)";
-				jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassenger_type(),t.getTprice()});
+				jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassengerType(),t.getTprice()});
 			  String sql1 = "update airsys_flight set economy_class_remain_seats=economy_class_remain_seats-1 where fid = ?";
 				jdbcTemplate.update(sql1,new Object[]{fid});
 		  }

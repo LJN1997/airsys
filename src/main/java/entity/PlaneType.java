@@ -2,21 +2,21 @@ package entity;
 
 public class PlaneType {
 	private String type;
-	private int max_sail_length;
-	private int first_class_seats;
-	private int business_class_seats;
-	private int economy_class_seats;
+	private int maxSailLength;
+	private int firstClassSeats;
+	private int businessClassSeats;
+	private int economyClassSeats;
 	public PlaneType() {
 		super();
 	}
-	public PlaneType(String type, int max_sail_length, int first_class_seats, int business_class_seats,
-			int economy_class_seats) {
+	public PlaneType(String type, int maxSailLength, int firstClassSeats, int businessClassSeats,
+			int economyClassSeats) {
 		super();
 		this.type = type;
-		this.max_sail_length = max_sail_length;
-		this.first_class_seats = first_class_seats;
-		this.business_class_seats = business_class_seats;
-		this.economy_class_seats = economy_class_seats;
+		this.maxSailLength = maxSailLength;
+		this.firstClassSeats = firstClassSeats;
+		this.businessClassSeats = businessClassSeats;
+		this.economyClassSeats = economyClassSeats;
 	}
 	public String getType() {
 		return type;
@@ -24,44 +24,43 @@ public class PlaneType {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getMax_sail_length() {
-		return max_sail_length;
+	public int getMaxSailLength() {
+		return maxSailLength;
 	}
-	public void setMax_sail_length(int max_sail_length) {
-		this.max_sail_length = max_sail_length;
+	public void setMaxSailLength(int maxSailLength) {
+		this.maxSailLength = maxSailLength;
 	}
-	public int getFirst_class_seats() {
-		return first_class_seats;
+	public int getFirstClassSeats() {
+		return firstClassSeats;
 	}
-	public void setFirst_class_seats(int first_class_seats) {
-		this.first_class_seats = first_class_seats;
+	public void setFirstClassSeats(int firstClassSeats) {
+		this.firstClassSeats = firstClassSeats;
 	}
-	public int getBusiness_class_seats() {
-		return business_class_seats;
+	public int getBusinessClassSeats() {
+		return businessClassSeats;
 	}
-	public void setBusiness_class_seats(int business_class_seats) {
-		this.business_class_seats = business_class_seats;
+	public void setBusinessClassSeats(int businessClassSeats) {
+		this.businessClassSeats = businessClassSeats;
 	}
-	public int getEconomy_class_seats() {
-		return economy_class_seats;
+	public int getEconomyClassSeats() {
+		return economyClassSeats;
 	}
-	public void setEconomy_class_seats(int economy_class_seats) {
-		this.economy_class_seats = economy_class_seats;
+	public void setEconomyClassSeats(int economyClassSeats) {
+		this.economyClassSeats = economyClassSeats;
 	}
 	@Override
 	public String toString() {
-		return "Planetype [type=" + type + ", max_sail_length=" + max_sail_length + ", first_class_seats="
-				+ first_class_seats + ", business_class_seats=" + business_class_seats + ", economy_class_seats="
-				+ economy_class_seats + "]";
+		return "PlaneType [type=" + type + ", maxSailLength=" + maxSailLength + ", firstClassSeats=" + firstClassSeats
+				+ ", businessClassSeats=" + businessClassSeats + ", economyClassSeats=" + economyClassSeats + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + business_class_seats;
-		result = prime * result + economy_class_seats;
-		result = prime * result + first_class_seats;
-		result = prime * result + max_sail_length;
+		result = prime * result + businessClassSeats;
+		result = prime * result + economyClassSeats;
+		result = prime * result + firstClassSeats;
+		result = prime * result + maxSailLength;
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -74,13 +73,13 @@ public class PlaneType {
 		if (getClass() != obj.getClass())
 			return false;
 		PlaneType other = (PlaneType) obj;
-		if (business_class_seats != other.business_class_seats)
+		if (businessClassSeats != other.businessClassSeats)
 			return false;
-		if (economy_class_seats != other.economy_class_seats)
+		if (economyClassSeats != other.economyClassSeats)
 			return false;
-		if (first_class_seats != other.first_class_seats)
+		if (firstClassSeats != other.firstClassSeats)
 			return false;
-		if (max_sail_length != other.max_sail_length)
+		if (maxSailLength != other.maxSailLength)
 			return false;
 		if (type == null) {
 			if (other.type != null)
@@ -89,6 +88,7 @@ public class PlaneType {
 			return false;
 		return true;
 	}
+	
 	
 	
 	

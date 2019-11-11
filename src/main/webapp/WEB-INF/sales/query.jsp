@@ -52,7 +52,7 @@
     		
     		<label class="layui-form-label">结束时间</label>
 		    <div class="layui-input-block">
-		      <input type="date" name="endtime" required  lay-verify="required" placeholder="请输入结束时间" autocomplete="off" class="layui-input">
+		      <input type="date" name="endtime" required  disable="true" lay-verify="required" placeholder="请输入结束时间" autocomplete="off" class="layui-input">
 		    </div>
     	    </div>
     <!-- 	

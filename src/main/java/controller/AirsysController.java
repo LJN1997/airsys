@@ -29,11 +29,11 @@ public class AirsysController {
 	
 	@RequestMapping("/airsys/users")
 	@ResponseBody
-	public ModelAndView queryUsers( String from_city,String to_city,String start,String aa) {
+	public ModelAndView queryUsers( String fromCity,String toCity,String start,String aa) {
 		System.out.println(start);
-		System.out.println(to_city);
-		System.out.println(from_city);
-		List<UserSelect> usts = airService.searchFlight(start, from_city, to_city);
+		System.out.println(toCity);
+		System.out.println(fromCity);
+		List<UserSelect> usts = airService.searchFlight(start, fromCity, toCity);
 		for (UserSelect userSelect : usts) {
 			System.out.println(userSelect);
 		}
