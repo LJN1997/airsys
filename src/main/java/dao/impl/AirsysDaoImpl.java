@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import com.alibaba.druid.pool.vendor.SybaseExceptionSorter;
-
 import dao.prototy.IAirsysDao;
 import entity.Ticket;
 import entity.UserSelect;
@@ -21,20 +18,11 @@ public class AirsysDaoImpl implements IAirsysDao{
 	private JdbcTemplate jdbctemplate;
 
 	@Override
-<<<<<<< HEAD
 	public List<UserSelect> find(String start, String from_city, String to_city) {
 	
-=======
-	public List<UserSelect> find(String start, String fromCity, String toCity) {
-		
->>>>>>> branch 'master' of https://github.com/LJN1997/airsys.git
 		return  jdbctemplate.query("select * from airsys_plan p left join airsys_flight f on p.fnumber=f.fnumber where start_date = ? and from_city = ? and to_city=?",
-<<<<<<< HEAD
 				new Object[] {start,from_city,to_city},
 			
-=======
-				new Object[] {start,fromCity,toCity},
->>>>>>> branch 'master' of https://github.com/LJN1997/airsys.git
 				new BeanPropertyRowMapper<UserSelect>(UserSelect.class));
 	}
 	
