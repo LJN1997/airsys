@@ -43,6 +43,12 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 		asDao.delete(uid, fid, passenger);
 		asDao.saveOrUpdate(fgt, fid, passenger);
 	}
+
+	@Override
+	public List<UserSelectAll> searchFlightBuff(String fnumber,String startDate) {
+		
+		return asDao.findFlightBuff(fnumber, startDate);
+	}
 	
 
 

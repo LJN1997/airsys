@@ -4,14 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
-
 import entity.UserSelect;
+import entity.UserSelectAll;
 import service.prototy.IAirsysService;
 
 @Controller
@@ -41,6 +39,22 @@ public class AirsysController {
 		mv.addObject("usts",usts);
 		return mv;
 	}
+	
+	@RequestMapping("/airsys/userbuff")
+	@ResponseBody
+	public ModelAndView queryflightBuff(String fnumber,String startDate) {
+		System.out.println(fnumber);
+		System.out.println(startDate);
+
+		List<UserSelectAll> usts = airService.searchFlightBuff(fnumber, startDate);
+		for (UserSelectAll userSelect : usts) {
+			System.out.println(userSelect);
+		}
+		ModelAndView mv = new ModelAndView("/user/flightStatus");
+		mv.addObject("usts",usts);
+		return mv;
+	}
+	
 	
 	
 }

@@ -77,9 +77,11 @@ public class AirsysDaoImpl implements IAirsysDao{
 		}
 	}
 
-
-
-	
-
+	@Override
+	public List<UserSelectAll> findFlightBuff(String fnumber, String startDate) {
+		return jdbctemplate.query("select * from airsys_plan p left join airsys_flight f on p.fnumber=f.fnumber where f.fnumber=? and start_date=?",
+				new Object[] {fnumber,startDate},
+				new BeanPropertyRowMapper<UserSelectAll>(UserSelectAll.class));
+	}
 
 }
