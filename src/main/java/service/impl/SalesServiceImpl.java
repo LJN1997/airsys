@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dao.prototy.ISalesDao;
 import entity.Info;
+import entity.Sales;
 import entity.Ticket;
 import service.prototy.ISalesService;
 
@@ -20,14 +21,20 @@ public class SalesServiceImpl implements ISalesService{
 
 	@Autowired
 	private ISalesDao sd;
+	
+	@Override
+	public void login(String num, String pwd) {
+          		sd.login(num, pwd);
+	}
+	
 	@Override
 	public List<Info> select(String startplace, String destination, String start_time) {
 		return sd.find(startplace, destination, start_time);
 	}
 
 	@Override
-	public void buy(Ticket t, int fid, String seat) {
-			sd.update2(t, fid, seat);
+	public void buy(Ticket t, String fnumber, String seat) {
+			sd.buy(t, fnumber, seat);
 	}
 
 	@Override
@@ -38,6 +45,13 @@ public class SalesServiceImpl implements ISalesService{
 	@Override
 	public void update(int uid) {
 
+	}
+
+	//查看营业员个人信息
+	@Override
+	public List<Sales> saleinfo(int sid) {
+		
+		return sd.saleinfo(sid);
 	}
 
 }

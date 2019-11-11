@@ -15,6 +15,7 @@ import dao.prototy.ISalesDao;
 import entity.Flight;
 import entity.Info;
 import entity.Plan;
+import entity.Sales;
 import entity.Ticket;
 
 /**
@@ -29,6 +30,17 @@ public class salesDaoTest {
 	@Autowired
 	private ISalesDao salesDao;
 	
+	//判断管理员登录
+	@Test
+	public void login(){
+		salesDao.login("111", "111");
+	}
+	
+	@Test
+	public void saleinfo(){
+		List<Sales> sales =  salesDao.saleinfo(1);
+		System.out.println(sales);
+	}
 	@Test
 	public void test02(){
 		List<Info> plan = salesDao.find("xa", "sx", "2019-11-05");
@@ -68,9 +80,10 @@ public class salesDaoTest {
 		salesDao.update1(4, "business_class_remain_seats");
 	}
 	
+	//买票
 	@Test
-	public void update3(){
-		salesDao.update2(new Ticket("商务舱","成人",1000),4, "business_class_remain_seats");
+	public void buy(){
+		salesDao.buy(new Ticket("商务舱","成人",1000),"747", "business_class_remain_seats");
 	}
 	
 	@Test

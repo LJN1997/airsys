@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
  <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +9,14 @@
   <title>营业员查询界面</title>
   <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
   <link rel="stylesheet" href="/airsys/assets/css/sales.css">
+  
+  <script type="text/javascript">
+  		function route(){
+  			var route=$("#route").val();
+  			console.log(route);
+  		}
+  </script>
+  
 </head>   
 
 <body>
@@ -28,8 +36,8 @@
     		<label class="layui-form-label">航程类型</label>
     		
     		<div class="layui-input-block">
-     		 	<input type="radio" name="route" value="单程" title="单程">
-      			<input type="radio" name="route" value="往返" title="往返" checked>
+     		 	<input type="radio" id="route1"  name="route" value="单程" title="单程" checked onclick="route()">
+      			<input type="radio" id="route2"  name="route" value="往返" title="往返" onclick="route()">
     		</div>
   		</div>
 	    
@@ -50,45 +58,24 @@
 		      <input type="date" name="starttime" required  lay-verify="required" placeholder="请输入出发时间" autocomplete="off" class="layui-input">
 		    </div>
     		
-    		<label class="layui-form-label">结束时间</label>
+    		<label class="layui-form-label" >结束时间</label>
 		    <div class="layui-input-block">
-		      <input type="date" name="endtime" required  lay-verify="required" placeholder="请输入结束时间" autocomplete="off" class="layui-input">
+		      <input type="date" disabled="true" id="textbox" name="endtime" required   placeholder="请输入结束时间" autocomplete="off" class="layui-input">
 		    </div>
     	    </div>
-    <!-- 	
-    	 <div class="layui-form-item ptype">
-		    <label class="layui-form-label">乘客类型</label>
-		    <div class="layui-input-block">
-		      <select name="city" lay-verify="required">
-		        <option value=""></option>
-		        <option value="0">儿童</option>
-		        <option value="1">成人</option>
-		      </select>
-	    	</div>
-	    
-	     </div>
-    	<div class="layui-form-item ftype">
-    		   <label class="layui-form-label">舱位等级</label>
-		     <div class="layui-input-block">
-		      <select name="city" lay-verify="required">
-		        <option value=""></option>
-		        <option value="0">经济舱</option>
-		        <option value="1">公务舱</option>
-		        <option value="3">头等舱</option>
-		      </select>
-	    	</div>
-    	</div> -->
+ 
     	
     	<div class="layui-form-item">
     		<div class="layui-input-block">
-     		 	<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+     		 	<button class="layui-btn" lay-submit lay-filter="formDemo">立即查询</button>
       			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
     		</div>
   		</div>
     	
     	
     </div>
-<!--     <div class="layui-tab-item">
+
+    <!--  <div class="layui-tab-item">
     	<div class="layui-form-item">
     		<label class="layui-form-label">航程类型</label>
     		
@@ -112,12 +99,12 @@
     		
     		<label class="layui-form-label">出发时间</label>
 		    <div class="layui-input-block">
-		      <input type="text" name="title" required  lay-verify="required" placeholder="请输入出发时间" autocomplete="off" class="layui-input">
+		      <input type="date" name="title" required  lay-verify="required" placeholder="请输入出发时间" autocomplete="off" class="layui-input">
 		    </div>
     		
     		<label class="layui-form-label">结束时间</label>
 		    <div class="layui-input-block">
-		      <input type="text" name="title" required  lay-verify="required" placeholder="请输入结束时间" autocomplete="off" class="layui-input">
+		      <input type="date" disable="true" name="title" required   placeholder="请输入结束时间" autocomplete="off" class="layui-input" id="textbox">
 		    </div>
     	</div>
     	
@@ -146,12 +133,15 @@
     	
     	<div class="layui-form-item">
     		<div class="layui-input-block">
-     		 	<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+     		 	<button class="layui-btn" lay-submit lay-filter="formDemo">立即查询</button>
       			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
     		</div>
   		</div>
   		
-    </div> -->
+    </div>
+     -->
+    
+    
   </div>
 </div>
 </div>
@@ -178,6 +168,9 @@ layui.use('form', function(){
     return false;
   }); */
 });
+
+
+
 </script>
 </body>
 </html>

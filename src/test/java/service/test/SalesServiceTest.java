@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import config.TestConfig;
 import entity.Info;
+import entity.Sales;
 import entity.Ticket;
 import service.prototy.ISalesService;
 
@@ -23,6 +24,18 @@ import service.prototy.ISalesService;
 public class SalesServiceTest {
 		@Autowired
 		private ISalesService ss;
+	
+		@Test
+		public void login(){
+			ss.login("111", "111");
+		}
+		
+		
+		@Test
+		public void saleinfo(){
+			List<Sales> sale = ss.saleinfo(1);
+			System.out.println(sale);
+		}
 		@Test
 		public void select(){
 			List<Info> info = ss.select("xa", "sx", "2019-11-05");
@@ -33,7 +46,7 @@ public class SalesServiceTest {
 		
 		@Test
 		public void buy(){
-			ss.buy(new Ticket("头等舱","成人",1200),2, "business_class_remain_seats");
+			ss.buy(new Ticket("头等舱","儿童",1200),"747", "business_class_remain_seats");
 		}
 		
 		@Test

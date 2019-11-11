@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
+
 import entity.Info;
+import entity.Sales;
 import service.prototy.ISalesService;
 
 /**
@@ -25,6 +29,39 @@ public class SalesController {
 	@Autowired
 	private ISalesService salesService;
 	
+	//查询个人信息
+	 @RequestMapping("/saleinfo/{sid}")
+	 @ResponseBody
+		public ModelAndView  getUser1(@PathVariable("sid") int sid){
+			  ModelAndView mv = new ModelAndView("/sales/selfinfo");
+			  String sale = JSON.toJSONString(salesService.saleinfo(1));
+			  mv.addObject("sale", sale);
+			  return mv;
+		}
+ 
+	
+	
+	//管理员登录
+	@RequestMapping("/login")
+    public ModelAndView login(){
+    	
+    	ModelAndView mv = new ModelAndView("/sales/login");
+    	return mv;
+    }
+	
+	@RequestMapping("/loginCon")
+    public ModelAndView loginCon(HttpServletRequest request,HttpServletResponse response){
+    	
+		String num = request.getParameter("num");
+		String pwd = request.getParameter("pwd");
+      if(num.equals("111" ) && pwd.equals("111")){
+    	  ModelAndView mv = new ModelAndView("/sales/index");
+      	  return mv;
+      }
+      ModelAndView mv1 = new ModelAndView("/sales/login");
+  	  return mv1;
+	      
+    }
 	@RequestMapping("/query")
     public ModelAndView query(HttpServletRequest request,HttpServletResponse response){
 		String route = request.getParameter("route");
@@ -32,34 +69,18 @@ public class SalesController {
 		String to = request.getParameter("to");
 		String startTime = request.getParameter("starttime");
 		String endTime = request.getParameter("endTime");
-		
-		
-		
-		
-		
-		
 		ModelAndView mv = new ModelAndView("/sales/querycon");
-    	List<Info> info1 =salesService.select(from, to, startTime) ;
-    	mv.addObject("info", info1);
-    		return mv;
-    	
-    
-      /* ModelAndView mv = new ModelAndView("/sales/querycon");
-    	List<Info> info =salesService.select("xa", "sx", "2019-11-05") ;
+    	List<Info> info =salesService.select(from, to, startTime) ;
     	mv.addObject("info", info);
-    	return mv;*/
+    		return mv;
     }
 	
-	@RequestMapping("/user")
-				@ResponseBody
-			public String  getUser(){
-						return "hello";
-			}
+
     
     @RequestMapping("/index")
     public ModelAndView getUsers(){
     	
-    	ModelAndView mv = new ModelAndView("/sales/index");
+    	ModelAndView mv = new ModelAndView("/sales/login");
     	return mv;
     }
     
@@ -93,14 +114,8 @@ public class SalesController {
     	ModelAndView mv = new ModelAndView("/sales/history");
     	return mv;
     }
-    @RequestMapping("/user6")
-    public ModelAndView getUsers6(){
-    	
-    	ModelAndView mv = new ModelAndView("/sales/selfinfo");
-    	return mv;
-    }
+
     
-    
-    
+   
     
 }

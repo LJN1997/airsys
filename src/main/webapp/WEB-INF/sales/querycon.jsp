@@ -19,6 +19,8 @@
              <th>出发地</th>
              <th>目的地</th>
              <th>出发时间</th>
+             <th>起飞时间</th>
+             <th>到达时间</th>
              <th>头等舱剩余座位</th>
              <th>公务员剩余座位</th>
              <th>经济舱剩余座位</th>
@@ -33,11 +35,13 @@
              <th>${query.from_city}</th>
              <th>${query.to_city}</th>
              <th>${query.start_date}</th>
+             <th>${query.departure_time}</th>
+             <th>${query.arrival_time}</th>
              <th>${query.first_class_remain_seats}</th>
              <th>${query.business_class_remain_seats}</th>
              <th>${query.economy_class_remain_seats}</th>
              <th>${query.tprice}</th>
-             <th><a href="">查看详情</a> <a href="">购买</a></th>
+             <th><a href="http://localhost:8080/airsys/sales/saleinfo/1"><button type="button" class="layui-btn layui-btn-radius layui-btn-warm">购买</button></a></th>
          </tr>
          </c:forEach>
      </table> 

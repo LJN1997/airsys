@@ -12,6 +12,7 @@ import dao.prototy.ISalesDao;
 import entity.Flight;
 import entity.Info;
 import entity.Plan;
+import entity.Sales;
 import entity.Ticket;
 
 /**
@@ -25,6 +26,11 @@ public class SalesDaoImpl implements ISalesDao{
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	@Override
+	public void login(String num, String pwd) {
+          		String sql="SELECT * from airsys_sales WHERE snumber=? and spwd=?";
+          		jdbcTemplate.queryForList(sql, new Object[]{num,pwd});
+	}
 	//查票
 	@Override
 	public List<Info>  find(String startplace, String destination, String start_time) {
@@ -79,26 +85,26 @@ public class SalesDaoImpl implements ISalesDao{
 
 
 	@Override
-	public void update2(Ticket t, int fid, String seat) {
+	public void buy(Ticket t, String fnumber, String seat) {
 		
 		if(seat.equals("first_class_remain_seats")){
 			String sql="INSERT INTO airsys_ticket(tclass,passenger_type,tprice) VALUES(?,?,?)";
 			jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassenger_type(),t.getTprice()});
 			
-			  String sql1 = "update airsys_flight set first_class_remain_seats=first_class_remain_seats-1 where fid = ?";
-				jdbcTemplate.update(sql1,new Object[]{fid});
+			  String sql1 = "update airsys_flight set first_class_remain_seats=first_class_remain_seats-1 where fnumber = ?";
+				jdbcTemplate.update(sql1,new Object[]{fnumber});
 		  }
 		  if(seat.equals("business_class_remain_seats")){
 			  String sql="INSERT INTO airsys_ticket(tclass,passenger_type,tprice) VALUES(?,?,?)";
 				jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassenger_type(),t.getTprice()});
-			  String sql1 = "update airsys_flight set business_class_remain_seats=business_class_remain_seats-1 where fid = ?";
-				jdbcTemplate.update(sql1,new Object[]{fid});
+			  String sql1 = "update airsys_flight set business_class_remain_seats=business_class_remain_seats-1 where fnumber = ?";
+				jdbcTemplate.update(sql1,new Object[]{fnumber});
 		  }
 		  if(seat.equals("economy_class_remain_seats")){
 			  String sql="INSERT INTO airsys_ticket(tclass,passenger_type,tprice) VALUES(?,?,?)";
 				jdbcTemplate.update(sql,new Object[]{t.getTclass(),t.getPassenger_type(),t.getTprice()});
-			  String sql1 = "update airsys_flight set economy_class_remain_seats=economy_class_remain_seats-1 where fid = ?";
-				jdbcTemplate.update(sql1,new Object[]{fid});
+			  String sql1 = "update airsys_flight set economy_class_remain_seats=economy_class_remain_seats-1 where fnumber = ?";
+				jdbcTemplate.update(sql1,new Object[]{fnumber});
 		  }
 	}
 
@@ -155,11 +161,17 @@ public class SalesDaoImpl implements ISalesDao{
 	@Override
 	public Info findByNum(String fnumber) {
 
-		
-		
-		
 		return null;
 	}
+	
+	//营业员的个人信息
+	@Override
+	public List<Sales> saleinfo(int sid) {
+		String sql="select s.sid,s.shead,s.sname,s.snumber,p.pname,p.psite,p.pphone ,p.province from airsys_sales s join airsys_place p on s.pid=p.pid where s.sid=?";
+		
+		return jdbcTemplate.query(sql, new  Object[]{sid},new BeanPropertyRowMapper<Sales>(Sales.class));
+	}
+	
 
 	
 	

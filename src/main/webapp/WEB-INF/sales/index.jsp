@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -30,7 +31,7 @@
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退出</a></li>
+      <li class="layui-nav-item"><a href="http://localhost:8080/airsys/sales/login">退出</a></li>
     </ul>
   </div>
   
@@ -55,7 +56,7 @@
             
           </dl>
         </li>
-        <li class="layui-nav-item" ><a href="http://localhost:8080/airsys/sales/user6" target="aa">个人信息</a></li>
+        <li class="layui-nav-item" ><a href="http://localhost:8080/airsys/sales/saleinfo/1" target="aa">个人信息</a></li>
       </ul>
     </div>
   </div>

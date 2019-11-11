@@ -1,24 +1,43 @@
-body{
-	margin:0;
-	padding:0;
-}
-.contain{
-	width:450px;
-	height:480px;
-	border:4px solid blue;
-	margin-left:100px;
-	margin-top:10px;
+body, h2 {
+	margin: 0;
+	padding: 0;
+	position: relative;
 }
 
-.layui-tab{
-    width:100%;
-    height:100%; 
+.contain {
+	width: 450px;
+	height: 480px;
+	border: 4px solid blue;
+	margin-left: 100px;
+	margin-top: 10px;
 }
-.one{
+
+.layui-tab {
+	width: 100%;
+	height: 100%;
+}
+
+.one {
 	font-size: 25px;
 	margin-left: 20px;
 	margin-top: 10px;
 }
-.layui-input-block{
-	width:250px;
+
+.layui-input {
+	width: 250px;
+	
 }
+
+.saleinfo {
+	width: 400px;
+	height: 300px;
+	border: 4px solid blue;
+	margin-left: 100px;
+	margin-top: 10px;
+}
+
+img {
+	width: 100%;
+	height: 657px;
+}
+

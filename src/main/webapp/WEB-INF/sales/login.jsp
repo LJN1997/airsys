@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="entity.*,util.*,controller.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-${sale}
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
@@ -15,8 +12,9 @@ ${sale}
         }
         .container{
             width: 320px;
-            min-height: 420px;
-            max-height: 460px;
+            height: 100px;
+            min-height: 320px;
+            max-height: 320px;
             position: absolute;
             top: 0;
             left: 0;
@@ -67,51 +65,23 @@ ${sale}
 <body>
 <form class="layui-form" action="http://localhost:8080/airsys/sales/loginCon" method="post">
     <div class="container">
-    <h2>个人信息</h2>
+    <h2>营业员</h2>
         <div class="layui-form-item">
-            <label class="layui-form-label">头像</label>
-            <div class="layui-input-block">
-                <input type="text" Placeholder= "1" uname="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-         <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
-            <div class="layui-input-block">
-                <input type="text" Placeholder="ldy" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-
- <div class="layui-form-item">
             <label class="layui-form-label">工号</label>
             <div class="layui-input-block">
-                <input type="text" Placeholder="111" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+                <input type="text" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
             </div>
         </div>
-
- <div class="layui-form-item">
-            <label class="layui-form-label">营业点名称</label>
-            <div class="layui-input-block">
-                <input type="text" Placeholder="aaaa" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        
-         <div class="layui-form-item">
-            <label class="layui-form-label">地址</label>
-            <div class="layui-input-block">
-                <input type="text" Placeholder="dsafj" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        
-         <div class="layui-form-item">
-            <label class="layui-form-label">联系电话</label>
-            <div class="layui-input-block">
-                <input type="text" Placeholder="8008-2088-20" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+        <div class="layui-form-item">
+            <label class="layui-form-label">密 &nbsp;&nbsp;码</label>
+            <div class="layui-input-inline">
+                <input type="password" name="pwd" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo">登陆</button>
             </div>
         </div>
 

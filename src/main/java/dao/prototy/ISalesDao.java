@@ -4,6 +4,7 @@ import java.util.List;
 
 import entity.Info;
 import entity.Plan;
+import entity.Sales;
 import entity.Ticket;
 
 /**
@@ -12,6 +13,10 @@ import entity.Ticket;
 * @author DanyangLi
 */
 public interface ISalesDao {
+	    
+	      //判断营业员登录
+	      void login(String num,String pwd);
+	
 	
 			//1、查票         根据用户输入的出发地、目的地、时间 查询出符合条件的机票  
 				List<Plan> findall();		
@@ -24,7 +29,7 @@ public interface ISalesDao {
 			void update1(int fid,String seat);
 			
 			//2、买票         实现飞机票中增加一条信息，航班票中减少相应座位
-			void update2(Ticket t,int fid,String seat);
+			void buy(Ticket t,String fnumber,String seat);
 		
 			//3、退票
 			void delete(int uid,int fid,String seat);
@@ -34,5 +39,8 @@ public interface ISalesDao {
 			
 			//5.根据id查一条数据
 			Info findByNum(String fnumber);
+			
+			//6.查看营业员个人信息
+			List<Sales> saleinfo(int sid);
 			
 }
