@@ -7,16 +7,16 @@ public class Ticket {
 		private int sid;
 		private String tdate;
 		private String tclass;
-		private String passenger_type;
+		private String passengerType;
 		private double tprice;
 		public Ticket() {
 			super();
 		}
 		
-		public Ticket(String tclass, String passenger_type, double tprice, int fid, int uid) {
+		public Ticket(String tclass, String passengerType, double tprice, int fid, int uid) {
 			super();
 			this.tclass = tclass;
-			this.passenger_type = passenger_type;
+			this.passengerType = passengerType;
 			this.tprice = tprice;
 			this.fid = fid;
 			this.uid = uid;
@@ -28,11 +28,11 @@ public class Ticket {
 		
 		
 		
-		public Ticket(String tclass, String passenger_type,double tprice) {
+		public Ticket(String tclass, String passengerType,double tprice) {
 			super();
 
 			this.tclass = tclass;
-			this.passenger_type = passenger_type;
+			this.passengerType = passengerType;
 			this.tprice = tprice;
 		}
 		public int getTid() {
@@ -71,11 +71,11 @@ public class Ticket {
 		public void setTclass(String tclass) {
 			this.tclass = tclass;
 		}
-		public String getPassenger_type() {
-			return passenger_type;
+		public String getPassengerType() {
+			return passengerType;
 		}
-		public void setPassenger_type(String passenger_type) {
-			this.passenger_type = passenger_type;
+		public void setPassengerType(String passenger_type) {
+			this.passengerType = passenger_type;
 		}
 		public double getTprice() {
 			return tprice;
@@ -86,14 +86,14 @@ public class Ticket {
 		@Override
 		public String toString() {
 			return "Ticket [tid=" + tid + ", fid=" + fid + ", uid=" + uid + ", sid=" + sid + ", tdate=" + tdate
-					+ ", tclass=" + tclass + ", passenger_type=" + passenger_type + ", tprice=" + tprice + "]";
+					+ ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice + "]";
 		}
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
 			result = prime * result + fid;
-			result = prime * result + ((passenger_type == null) ? 0 : passenger_type.hashCode());
+			result = prime * result + ((passengerType == null) ? 0 : passengerType.hashCode());
 			result = prime * result + sid;
 			result = prime * result + ((tclass == null) ? 0 : tclass.hashCode());
 			result = prime * result + ((tdate == null) ? 0 : tdate.hashCode());
@@ -115,10 +115,10 @@ public class Ticket {
 			Ticket other = (Ticket) obj;
 			if (fid != other.fid)
 				return false;
-			if (passenger_type == null) {
-				if (other.passenger_type != null)
+			if (passengerType == null) {
+				if (other.passengerType != null)
 					return false;
-			} else if (!passenger_type.equals(other.passenger_type))
+			} else if (!passengerType.equals(other.passengerType))
 				return false;
 			if (sid != other.sid)
 				return false;

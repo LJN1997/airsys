@@ -12,7 +12,7 @@ import util.MiniPager;
  */
 public interface IAirsysService {
 	@MiniPager(tableName="airsys")
-	List<UserSelect> searchFlight(String start,String from_city,String to_city);
+	List<UserSelect> searchFlight(String start,String fromCity,String toCity);
 	
 	@MiniPager(tableName="airsys")
 	List<UserSelectAll> searchFlightAll();

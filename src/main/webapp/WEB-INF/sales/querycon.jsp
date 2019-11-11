@@ -30,12 +30,12 @@
          
          <tr>
              <th>${query.fnumber}</th>
-             <th>${query.from_city}</th>
-             <th>${query.to_city}</th>
-             <th>${query.start_date}</th>
-             <th>${query.first_class_remain_seats}</th>
-             <th>${query.business_class_remain_seats}</th>
-             <th>${query.economy_class_remain_seats}</th>
+             <th>${query.fromCity}</th>
+             <th>${query.toCity}</th>
+             <th>${query.startDate}</th>
+             <th>${query.firstClassRemainSeats}</th>
+             <th>${query.businessClassRemainSeats}</th>
+             <th>${query.economyClassRemainSeats}</th>
              <th>${query.tprice}</th>
              <th><a href="">查看详情</a> <a href="">购买</a></th>
          </tr>

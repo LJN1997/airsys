@@ -12,32 +12,32 @@ import util.DateUtil;
 public class Info {
 	
 		private String fnumber;
-		private String from_city;
-		private String to_city;
-		private Date start_date;
-		private String departure_time;
-		private String arrival_time;
-		private int first_class_remain_seats;
-		private int business_class_remain_seats;
-		private int economy_class_remain_seats;
+		private String fromCity;
+		private String toCity;
+		private Date startDate;
+		private String departureTime;
+		private String arrivalTime;
+		private int firstClassRemainSeats;
+		private int businessClassRemainSeats;
+		private int economyClassRemainSeats;
 		private double tprice;
 		private double season_discount;
 		public Info() {
 			super();
 		}
-		public Info(String fnumber, String from_city, String to_city, Date start_date, String departure_time,
-				String arrival_time, int first_class_remain_seats, int business_class_remain_seats,
-				int economy_class_remain_seats, double tprice, double season_discount) {
+		public Info(String fnumber, String fromCity, String toCity, Date startDate, String departureTime,
+				String arrivalTime, int firstClassRemainSeats, int businessClassRemainSeats,
+				int economyClassRemainSeats, double tprice, double season_discount) {
 			super();
 			this.fnumber = fnumber;
-			this.from_city = from_city;
-			this.to_city = to_city;
-			this.start_date = start_date;
-			this.departure_time = departure_time;
-			this.arrival_time = arrival_time;
-			this.first_class_remain_seats = first_class_remain_seats;
-			this.business_class_remain_seats = business_class_remain_seats;
-			this.economy_class_remain_seats = economy_class_remain_seats;
+			this.fromCity = fromCity;
+			this.toCity = toCity;
+			this.startDate = startDate;
+			this.departureTime = departureTime;
+			this.arrivalTime = arrivalTime;
+			this.firstClassRemainSeats = firstClassRemainSeats;
+			this.businessClassRemainSeats = businessClassRemainSeats;
+			this.economyClassRemainSeats = economyClassRemainSeats;
 			this.tprice = tprice;
 			this.season_discount = season_discount;
 		}
@@ -47,53 +47,53 @@ public class Info {
 		public void setFnumber(String fnumber) {
 			this.fnumber = fnumber;
 		}
-		public String getFrom_city() {
-			return from_city;
+		public String getFromCity() {
+			return fromCity;
 		}
-		public void setFrom_city(String from_city) {
-			this.from_city = from_city;
+		public void setFromCity(String fromCity) {
+			this.fromCity = fromCity;
 		}
-		public String getTo_city() {
-			return to_city;
+		public String getToCity() {
+			return toCity;
 		}
-		public void setTo_city(String to_city) {
-			this.to_city = to_city;
+		public void setToCity(String toCity) {
+			this.toCity = toCity;
 		}
-		public Date getStart_date() {
-			return start_date;
+		public Date getStartDate() {
+			return startDate;
 		}
-		public void setStart_date(String start_date) {
-			this.start_date=DateUtil.toDate("yyyy-MM-dd", start_date);
+		public void setStartDate(Date startDate) {
+			this.startDate = startDate;
 		}
-		public String getDeparture_time() {
-			return departure_time;
+		public String getDepartureTime() {
+			return departureTime;
 		}
-		public void setDeparture_time(String departure_time) {
-			this.departure_time = departure_time;
+		public void setDepartureTime(String departureTime) {
+			this.departureTime = departureTime;
 		}
-		public String getArrival_time() {
-			return arrival_time;
+		public String getArrivalTime() {
+			return arrivalTime;
 		}
-		public void setArrival_time(String arrival_time) {
-			this.arrival_time = arrival_time;
+		public void setArrivalTime(String arrivalTime) {
+			this.arrivalTime = arrivalTime;
 		}
-		public int getFirst_class_remain_seats() {
-			return first_class_remain_seats;
+		public int getFirstClassRemainSeats() {
+			return firstClassRemainSeats;
 		}
-		public void setFirst_class_remain_seats(int first_class_remain_seats) {
-			this.first_class_remain_seats = first_class_remain_seats;
+		public void setFirstClassRemainSeats(int firstClassRemainSeats) {
+			this.firstClassRemainSeats = firstClassRemainSeats;
 		}
-		public int getBusiness_class_remain_seats() {
-			return business_class_remain_seats;
+		public int getBusinessClassRemainSeats() {
+			return businessClassRemainSeats;
 		}
-		public void setBusiness_class_remain_seats(int business_class_remain_seats) {
-			this.business_class_remain_seats = business_class_remain_seats;
+		public void setBusinessClassRemainSeats(int businessClassRemainSeats) {
+			this.businessClassRemainSeats = businessClassRemainSeats;
 		}
-		public int getEconomy_class_remain_seats() {
-			return economy_class_remain_seats;
+		public int getEconomyClassRemainSeats() {
+			return economyClassRemainSeats;
 		}
-		public void setEconomy_class_remain_seats(int economy_class_remain_seats) {
-			this.economy_class_remain_seats = economy_class_remain_seats;
+		public void setEconomyClassRemainSeats(int economyClassRemainSeats) {
+			this.economyClassRemainSeats = economyClassRemainSeats;
 		}
 		public double getTprice() {
 			return tprice;
@@ -109,28 +109,28 @@ public class Info {
 		}
 		@Override
 		public String toString() {
-			return "info [fnumber=" + fnumber + ", from_city=" + from_city + ", to_city=" + to_city + ", start_date="
-					+ start_date + ", departure_time=" + departure_time + ", arrival_time=" + arrival_time
-					+ ", first_class_remain_seats=" + first_class_remain_seats + ", business_class_remain_seats="
-					+ business_class_remain_seats + ", economy_class_remain_seats=" + economy_class_remain_seats
-					+ ", tprice=" + tprice + ", season_discount=" + season_discount + "]";
+			return "Info [fnumber=" + fnumber + ", fromCity=" + fromCity + ", toCity=" + toCity + ", startDate="
+					+ startDate + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime
+					+ ", firstClassRemainSeats=" + firstClassRemainSeats + ", businessClassRemainSeats="
+					+ businessClassRemainSeats + ", economyClassRemainSeats=" + economyClassRemainSeats + ", tprice="
+					+ tprice + ", season_discount=" + season_discount + "]";
 		}
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + ((arrival_time == null) ? 0 : arrival_time.hashCode());
-			result = prime * result + business_class_remain_seats;
-			result = prime * result + ((departure_time == null) ? 0 : departure_time.hashCode());
-			result = prime * result + economy_class_remain_seats;
-			result = prime * result + first_class_remain_seats;
+			result = prime * result + ((arrivalTime == null) ? 0 : arrivalTime.hashCode());
+			result = prime * result + businessClassRemainSeats;
+			result = prime * result + ((departureTime == null) ? 0 : departureTime.hashCode());
+			result = prime * result + economyClassRemainSeats;
+			result = prime * result + firstClassRemainSeats;
 			result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
-			result = prime * result + ((from_city == null) ? 0 : from_city.hashCode());
+			result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
 			long temp;
 			temp = Double.doubleToLongBits(season_discount);
 			result = prime * result + (int) (temp ^ (temp >>> 32));
-			result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
-			result = prime * result + ((to_city == null) ? 0 : to_city.hashCode());
+			result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+			result = prime * result + ((toCity == null) ? 0 : toCity.hashCode());
 			temp = Double.doubleToLongBits(tprice);
 			result = prime * result + (int) (temp ^ (temp >>> 32));
 			return result;
@@ -144,48 +144,49 @@ public class Info {
 			if (getClass() != obj.getClass())
 				return false;
 			Info other = (Info) obj;
-			if (arrival_time == null) {
-				if (other.arrival_time != null)
+			if (arrivalTime == null) {
+				if (other.arrivalTime != null)
 					return false;
-			} else if (!arrival_time.equals(other.arrival_time))
+			} else if (!arrivalTime.equals(other.arrivalTime))
 				return false;
-			if (business_class_remain_seats != other.business_class_remain_seats)
+			if (businessClassRemainSeats != other.businessClassRemainSeats)
 				return false;
-			if (departure_time == null) {
-				if (other.departure_time != null)
+			if (departureTime == null) {
+				if (other.departureTime != null)
 					return false;
-			} else if (!departure_time.equals(other.departure_time))
+			} else if (!departureTime.equals(other.departureTime))
 				return false;
-			if (economy_class_remain_seats != other.economy_class_remain_seats)
+			if (economyClassRemainSeats != other.economyClassRemainSeats)
 				return false;
-			if (first_class_remain_seats != other.first_class_remain_seats)
+			if (firstClassRemainSeats != other.firstClassRemainSeats)
 				return false;
 			if (fnumber == null) {
 				if (other.fnumber != null)
 					return false;
 			} else if (!fnumber.equals(other.fnumber))
 				return false;
-			if (from_city == null) {
-				if (other.from_city != null)
+			if (fromCity == null) {
+				if (other.fromCity != null)
 					return false;
-			} else if (!from_city.equals(other.from_city))
+			} else if (!fromCity.equals(other.fromCity))
 				return false;
 			if (Double.doubleToLongBits(season_discount) != Double.doubleToLongBits(other.season_discount))
 				return false;
-			if (start_date == null) {
-				if (other.start_date != null)
+			if (startDate == null) {
+				if (other.startDate != null)
 					return false;
-			} else if (!start_date.equals(other.start_date))
+			} else if (!startDate.equals(other.startDate))
 				return false;
-			if (to_city == null) {
-				if (other.to_city != null)
+			if (toCity == null) {
+				if (other.toCity != null)
 					return false;
-			} else if (!to_city.equals(other.to_city))
+			} else if (!toCity.equals(other.toCity))
 				return false;
 			if (Double.doubleToLongBits(tprice) != Double.doubleToLongBits(other.tprice))
 				return false;
 			return true;
 		}
+		
 		
 		
 		

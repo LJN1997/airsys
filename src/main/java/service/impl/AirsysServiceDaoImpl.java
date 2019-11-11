@@ -18,9 +18,9 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 	private IAirsysDao asDao;
 
 	@Override
-	public List<UserSelect> searchFlight(String start, String from_city, String to_city) {
+	public List<UserSelect> searchFlight(String start, String from_city, String toCity) {
 		
-		return asDao.find(start, from_city, to_city);
+		return asDao.find(start, from_city, toCity);
 	}
 
 	@Override
