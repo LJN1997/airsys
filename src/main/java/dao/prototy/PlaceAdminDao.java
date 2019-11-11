@@ -2,10 +2,9 @@ package dao.prototy;
 
 import java.util.List;
 
-
 import entity.PlaceAdmin;
 import entity.Sales;
-import entity.Ticket;
+import entity.SalesTicket;
 import util.Pager;
 
 /**
@@ -26,8 +25,8 @@ public interface PlaceAdminDao {
 	//修改营业管理员个人信息
 	void updateSelf(PlaceAdmin padmin) ;
 	//查询营业员售票记录
-	List<Ticket> findTicketList(int sid,int offset,int pageSize);
-	Pager<Ticket> findTicketPage(int sid,int offset,int pageSize);
+	List<SalesTicket> findTicketList(int pid,int offset,int pageSize);
+	Pager<SalesTicket> findTicketPage(int pid,int offset,int pageSize);
 	//获取营业员总条目数
 	int saleTotalItems(int pid);
 	//获取票总条目数

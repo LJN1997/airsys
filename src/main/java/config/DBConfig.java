@@ -50,10 +50,11 @@ public class DBConfig {
 		return new JdbcTemplate(ds);
 	}
 	
+
 	//  4.配置事务管理器
 	@Bean
 	public PlatformTransactionManager createTransactionManager(DataSource ds) {
 		return new DataSourceTransactionManager(ds);
 	}
-	
+
 }
