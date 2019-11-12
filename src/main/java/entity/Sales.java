@@ -11,6 +11,7 @@ public class Sales {
 	private String pphone;
 	private String psite;
 	private String province;
+	private String sphone;
 	public Sales() {
 		super();
 	}
@@ -37,7 +38,7 @@ public class Sales {
 	}
 
 	public Sales(int sid, String snumber, String sname, String spwd, String shead, int pid, String pname, String pphone,
-			String psite, String province) {
+			String psite, String province,String sphone) {
 
 		super();
 		this.sid = sid;
@@ -50,7 +51,16 @@ public class Sales {
 		this.pphone = pphone;
 		this.psite = psite;
 		this.province = province;
+		this.sphone=sphone;
 	}
+	
+	public String getSphone() {
+		return sphone;
+	}
+	public void setSphone(String sphone) {
+		this.sphone = sphone;
+	}
+
 	public int getSid() {
 		return sid;
 	}
@@ -111,12 +121,14 @@ public class Sales {
 	public void setProvince(String province) {
 		this.province = province;
 	}
+
 	@Override
 	public String toString() {
 		return "Sales [sid=" + sid + ", snumber=" + snumber + ", sname=" + sname + ", spwd=" + spwd + ", shead=" + shead
 				+ ", pid=" + pid + ", pname=" + pname + ", pphone=" + pphone + ", psite=" + psite + ", province="
-				+ province + "]";
+				+ province + ", sphone=" + sphone + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

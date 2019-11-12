@@ -52,12 +52,13 @@
 <script type="text/javascript" src="/airsys/assets/js/jquery-1.11.1.js"></script>
 <script>
 $(".buy").click(function(){
+	var fnumber=$(this).parent().parent().children()[0].innerText;
 	var from=$(this).parent().parent().children()[1].innerText;
 	var to=$(this).parent().parent().children()[2].innerText;
 	var time=$(this).parent().parent().children()[3].innerText;
 	var time2=$(this).parent().parent().children()[4].innerText;
 	var price=$(this).parent().parent().children()[8].innerText;
-	location.href="http://localhost:8080/airsys/sales/user2/"+from+"/"+to+"/"+time+"/"+time2+"/"+price
+	location.href="http://localhost:8080/airsys/sales/user2/"+from+"/"+to+"/"+time+"/"+time2+"/"+price+"/"+fnumber
 })
 </script>
 </html>

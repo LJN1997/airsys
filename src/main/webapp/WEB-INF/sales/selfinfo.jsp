@@ -108,7 +108,7 @@
          <div class="layui-form-item">
             <label class="layui-form-label">联系电话</label>
             <div class="layui-input-block">
-                <input type="text" value="${info.pphone}" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+                <input type="text" value="${info.sphone}" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
             </div>
         </div>
 

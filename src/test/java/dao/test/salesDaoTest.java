@@ -62,7 +62,8 @@ public class salesDaoTest {
 	// 5、买票 实现飞机票中增加一条信息，航班票中减少相应座位
 	@Test
 	public void buy() {
-		salesDao.buy(new Ticket("商务舱", "成人", 1000), "747", "business_class_remain_seats");
+		String s ="商务舱";
+		salesDao.buy(new Ticket(s, "成人", 1000), "747", "business_class_remain_seats");
 	}
 
 	// 6、退票 根据用户id，航班号，座位数退票

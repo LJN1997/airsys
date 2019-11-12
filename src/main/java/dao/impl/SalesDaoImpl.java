@@ -122,7 +122,7 @@ public class SalesDaoImpl implements ISalesDao {
 	// 7、查看营业员个人信息
 	@Override
 	public List<Sales> saleinfo(int sid) {
-		String sql = "select s.sid,s.shead,s.sname,s.snumber,p.pname,p.psite,p.pphone ,p.province from airsys_sales s join airsys_place p on s.pid=p.pid where s.sid=?";
+		String sql = "select s.sid,s.shead,s.sname,s.snumber,p.pname,p.psite,s.sphone ,p.province from airsys_sales s join airsys_place p on s.pid=p.pid where s.sid=?";
 
 		return jdbcTemplate.query(sql, new Object[] { sid }, new BeanPropertyRowMapper<Sales>(Sales.class));
 	}

@@ -43,7 +43,8 @@ public class SalesServiceTest {
 		//3.买票  增加更新
 		@Test
 		public void buy(){
-			ss.buy(new Ticket("头等舱","儿童",1200),"747", "business_class_remain_seats");
+			String s = "sdfdsf";
+			ss.buy(new Ticket(s,"aaaaaaadsf",1200),"747", "business_class_remain_seats");
 		}
 		
 		//4.退票  删除更新
@@ -67,8 +68,5 @@ public class SalesServiceTest {
 				System.out.println(ticket);
 			}
 		}
-		
-	
-		
-		
+
 }

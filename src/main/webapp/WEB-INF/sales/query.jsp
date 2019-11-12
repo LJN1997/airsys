@@ -40,13 +40,13 @@
 
 							<label class="layui-form-label">出发城市</label>
 							<div class="layui-input-block">
-								<input type="text" name="from" required lay-verify="required"
+								<input type="text" value="北京" name="from" required lay-verify="required"
 									placeholder="请输入出发城市" autocomplete="off" class="layui-input">
 							</div>
 
 							<label class="layui-form-label">到达城市</label>
 							<div class="layui-input-block">
-								<input type="text" name="to" required lay-verify="required"
+								<input type="text" value="上海" name="to" required lay-verify="required"
 									placeholder="请输入到达城市" autocomplete="off" class="layui-input">
 							</div>
 

@@ -23,11 +23,11 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573561160741&di=a48bf83390ad5a1818229a885f623a1a&imgtype=0&src=http%3A%2F%2Fwww.unithermal.com.cn%2Fdata%2Fimages%2Fcase%2F20161223134959_895.jpg" class="layui-nav-img">
           营业员
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
+          <dd><a href="http://localhost:8080/airsys/sales/saleinfo/1" target="aa">基本资料</a></dd>
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
