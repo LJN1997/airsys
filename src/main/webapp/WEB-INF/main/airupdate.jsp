@@ -70,32 +70,32 @@
 </head>
 <body>
 
-<form class="layui-form" action="http://localhost:8080/airsys/air/airinfo" method="post">
+<form class="layui-form" action="/data/{airportNumber}/{airportName}/{airportCity}" method="post">
     <div class="container">
-        <button class="close" title="关闭">X</button>
+        <button class="close" title="关闭"  onclick=back()>X</button>
         <!--<div class="layui-form-mid layui-word-aux">
             <img id="logoid" src="06.png" height="35">
         </div>-->
         <div class="layui-form-item">
             <label class="layui-form-label">机场编号</label>
             <div class="layui-input-block">
+            
             <c:forEach items="${info}" var="act">
 				
-			
-                <input type="text" name="number" required  lay-verify="required" placeholder="${act.airportNumber}" autocomplete="off" class="layui-input">
+                <input type="text" name="number" required  lay-verify="required" value="${act.airportNumber}" autocomplete="off" class="layui-input">
             </div>
         </div></p>
         <div class="layui-form-item">
             <label class="layui-form-label">机场名称</label>
             <div class="layui-input-inline">
-                <input type="text" name="name" required lay-verify="required" placeholder="${act.airportName}" autocomplete="off" class="layui-input">
+                <input type="text" name="name" required lay-verify="required" value="${act.airportName}" autocomplete="off" class="layui-input">
             </div>
             <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">机场位置</label>
             <div class="layui-input-inline">
-                <input type="text" name="city" required  lay-verify="required" placeholder="${act.airportCity}" autocomplete="off" class="layui-input">
+                <input type="text" name="city" required  lay-verify="required" value="${act.airportCity}" autocomplete="off" class="layui-input">
             </div></c:forEach>
             <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
 

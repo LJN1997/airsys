@@ -8,3 +8,6 @@ function onupdate(id){
 		window.location.href="/airsys/air/update/"+id;
 	
 }
+function back(){
+	window.location.href="/airsys/air/back";
+}

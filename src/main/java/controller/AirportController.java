@@ -59,7 +59,20 @@ public class AirportController {
 		mv.addObject("info",find);
 		return mv;
 	}
-
+	@RequestMapping("/data/{airportNumber}/{airportName}/{airportCity}")
+	public String data(@PathVariable("airportNumber")String id,
+			@PathVariable("airportName")String name, @PathVariable("airportCity")String city) {
+		 String id1 = id;
+		//ModelAndView mv = new ModelAndView();
+		//airService.AirSaveorUpdate(new Airport(id,name,city));
+		return id1;
+	}
+	@RequestMapping("/back")
+	public ModelAndView back() {
+		ModelAndView mv = new ModelAndView("main/information");
+		//airService.AirSaveorUpdate(new Airport(id,name,city));
+		return mv;
+	}
 
 
 }
