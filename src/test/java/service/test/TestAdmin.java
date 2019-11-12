@@ -1,4 +1,4 @@
-package dao.test;
+package service.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,25 +7,20 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import config.TestConfig;
-import dao.prototy.IUserDao;
+import service.prototy.IAdminService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith (SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes= {TestConfig.class})
-public class TestUserDaoImpl {
+public class TestAdmin {
 	@Autowired
-	private IUserDao userDao;
-	@Test
-	public void testListFind() {
-		System.out.println(userDao.Userlistfind(0,5));
-	}
+	private IAdminService adminService;
+	
 	@Test
 	public void testFind() {
-		System.out.println(userDao.find(1));
+		System.out.println(adminService.find("001","123"));
 	}
 	@Test
-	public void testDelete() {
-		userDao.delete(5);
+	public void testlistFind() {
+		System.out.println(adminService.find("001"));
 	}
-	
-
 }

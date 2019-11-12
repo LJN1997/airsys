@@ -10,4 +10,5 @@ public interface IAirportDao {
 	List<Airport> Airlistfind(int pageNo, int pageSize); 
 	int totalItems();
 	List<Airport> find(String airNumber);
+	List<Airport> findall();
 }

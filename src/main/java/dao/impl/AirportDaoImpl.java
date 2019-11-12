@@ -59,6 +59,13 @@ public class AirportDaoImpl implements IAirportDao {
 		
 	}
 
+	@Override
+	public List<Airport> findall() {
+		return jt.query("select * from airsys_airport", 
+				new BeanPropertyRowMapper<Airport>(Airport.class));
+		
+	}
+
 
 
 }

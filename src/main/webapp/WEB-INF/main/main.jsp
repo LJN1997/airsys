@@ -44,16 +44,21 @@
 						<td>${act.airportName }</td>
 						<td>${act.airportCity }</td>
 						<td>
-							<button type="button" id="${act.airportNumber }view" class="layui-btn layui-btn-primary">查看</button>
-							<button type="button" id="${act.airportNumber }update" class="layui-btn layui-btn-warm " onclick="onupdate('${act.airportNumber}')">修改</button>
-							<button type="button" id="${act.airportNumber }delete" class="layui-btn layui-btn-danger" onclick="ondelete('${act.airportNumber}')">删除</button>
+							<button type="button" id="${act.airportNumber }update"
+								class="layui-btn layui-btn-warm "
+								onclick="onupdate('${act.airportNumber}')">修改</button>
+							<button type="button" id="${act.airportNumber }delete"
+								class="layui-btn layui-btn-danger"
+								onclick="ondelete('${act.airportNumber}')">删除</button>
 						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
+		<button type="button" class="layui-btn layui-btn-normal" onclick="adds()">添加</button>
+
 	</div>
-	
+
 	<script src="/airsys/assets/js/airport.js" charset="utf-8"></script>
 
 	<!-- <script src="/airsys/assets/layui/layui.js" charset="utf-8"></script> -->

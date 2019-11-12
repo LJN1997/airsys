@@ -18,9 +18,7 @@ public class MainController {
 
 	@RequestMapping("/index")
 	public ModelAndView main() {
-		ModelAndView mv = new ModelAndView("main/index");
-		List<Airport> airport = airService.listAirport(1, 5);
-		mv.addObject(airport);
+		ModelAndView mv = new ModelAndView("main/login");
 		return mv;
 	}
 

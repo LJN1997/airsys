@@ -38,7 +38,7 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    <img src="" class="layui-nav-img">
                     贤心
                 </a>
                 <dl class="layui-nav-child">
@@ -64,16 +64,23 @@
                     </dl>-->
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">营业点信息</a>
+                    <a href="http://localhost:8080/airsys/place/placeinfo" target="main">营业点信息</a>
                  <!--   <dl class="layui-nav-child">
                         <dd><a href="javascript:;">列表一</a></dd>
                         <dd><a href="javascript:;">列表二</a></dd>
                         <dd><a href="">超链接</a></dd>
                     </dl>-->
                 </li>
-                <li class="layui-nav-item"><a href="">用户信息</a></li>
+                <li class="layui-nav-item"><a href="/airsys/user/userinfo" target="main">用户信息</a></li>
                 <li class="layui-nav-item"><a href="">航班信息</a></li>
-                <li class="layui-nav-item"><a href="">航班信息</a></li>
+                  <li class="layui-nav-item">
+                    <a href="#" >票务管理</a>
+                  <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">查询</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item"><a href="/airsys/placeadmin/sales" target="main">营业员信息</a></li>
                 <li class="layui-nav-item"><a href="/airsys/placeadmin/ticketinfo" target="main">营业员售票记录</a></li>
             </ul>

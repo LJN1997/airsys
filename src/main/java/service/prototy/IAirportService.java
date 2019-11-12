@@ -12,4 +12,5 @@ public interface IAirportService {
 	void AirSaveorUpdate(Airport air);
 	int totalItems();
 	List<Airport> find(String airNumber);
+	List<Airport> findAll();
 }

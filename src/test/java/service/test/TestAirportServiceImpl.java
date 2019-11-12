@@ -42,4 +42,8 @@ public class TestAirportServiceImpl {
 	public void testFindnumber() {
 		System.out.println(airService.find("XXX"));
 	}
+	@Test
+	public void testFindAll() {
+		System.out.println(airService.findAll());
+	}
 }

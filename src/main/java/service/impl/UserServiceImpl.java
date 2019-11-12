@@ -21,5 +21,13 @@ public class UserServiceImpl implements IUserService{
 	public List<User> find(int uid) {
 		return userDao.find(uid);
 	}
+	@Override
+	public List<User> findAll() {
+		return userDao.findAll();
+	}
+	@Override
+	public void delete(int uid) {
+		userDao.delete(uid);;
+	}
 
 }

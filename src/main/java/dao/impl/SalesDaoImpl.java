@@ -29,9 +29,10 @@ public class SalesDaoImpl implements ISalesDao {
 
 	// 1、判断营业员登录
 	@Override
-	public void login(String num, String pwd) {
+	public int login(String num, String pwd) {
 		String sql = "SELECT * from airsys_sales WHERE snumber=? and spwd=?";
-		jdbcTemplate.queryForList(sql, new Object[] { num, pwd });
+		int number =jdbcTemplate.queryForObject(sql, new Object[] { num, pwd },Integer.class);
+		return number;
 	}
 
 	// 2、查票 根据用户输入的出发地、目的地、时间 查询出符合条件的机票

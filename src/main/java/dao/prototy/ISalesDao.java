@@ -15,7 +15,7 @@ import entity.Ticket;
 public interface ISalesDao {
 	    
 	      //1、判断营业员登录
-	      void login(String num,String pwd);
+	      int login(String num,String pwd);
 	     //2、查票         根据用户输入的出发地、目的地、时间 查询出符合条件的机票  
 	      List<Info>  find(String startplace,String destination,String startTime);
 		 //3、增加一张票

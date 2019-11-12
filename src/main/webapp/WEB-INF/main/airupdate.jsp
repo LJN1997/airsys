@@ -70,7 +70,7 @@
 </head>
 <body>
 
-<form class="layui-form" action="/data/{airportNumber}/{airportName}/{airportCity}" method="post">
+<form class="layui-form" action="/airsys/air/data" method="post">
     <div class="container">
         <button class="close" title="关闭"  onclick=back()>X</button>
         <!--<div class="layui-form-mid layui-word-aux">
@@ -110,16 +110,9 @@
                 <button type="reset" class="layui-btn layui-btn-primary" lay-submit lay-filter="formDemo">重置</button>
             </div>
         </div>
-        <!-- 			  <div class="layui-form-item">
-                            <label class="layui-form-label">记住密码</label>
-                            <div class="layui-input-block">
-                              <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                            </div>
-                      </div> -->
-
-     
 </form>
 <script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
+<script type="text/javascript" src="/airsys/assets/js/airport.js"></script>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form
@@ -134,9 +127,6 @@
             })
             return false;
         });
-
- 
-
 
     });
 </script>

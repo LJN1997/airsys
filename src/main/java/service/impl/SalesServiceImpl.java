@@ -25,8 +25,9 @@ public class SalesServiceImpl implements ISalesService {
 
 	// 1.判断营业员登录
 	@Override
-	public void login(String num, String pwd) {
-		sd.login(num, pwd);
+	public int login(String num, String pwd) {
+		int number = sd.login(num, pwd);
+		return number;
 	}
 
 	// 2.查票

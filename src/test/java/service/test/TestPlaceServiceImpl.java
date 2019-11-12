@@ -30,7 +30,7 @@ public class TestPlaceServiceImpl {
 	}
 	@Test
 	public void testListfind() {
-		Pager<Place> pager = (Pager<Place>) placeService.listPlace(1, 1);
+		Pager<Place> pager = (Pager<Place>) placeService.listPlace(1, 2);
 		for (Place place : pager.getData()) {
 			System.out.println(place);
 		}
@@ -38,5 +38,9 @@ public class TestPlaceServiceImpl {
 	@Test
 	public void testFind() {
 		System.out.println(placeService.find(1));
+	}
+	@Test
+	public void testFindAll() {
+		System.out.println(placeService.findAll());
 	}
 }

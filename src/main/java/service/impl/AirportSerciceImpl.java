@@ -36,5 +36,9 @@ public class AirportSerciceImpl  implements IAirportService{
 	public List<Airport> find(String airNumber) {
 		return airDao.find(airNumber);
 	}
+	@Override
+	public List<Airport> findAll() {
+		return airDao.findall();
+	}
 
 }

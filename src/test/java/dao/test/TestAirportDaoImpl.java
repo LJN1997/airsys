@@ -38,4 +38,8 @@ public class TestAirportDaoImpl {
 	public void testFindid() {
 		System.out.println(air.find("XXX"));
 	}
+	@Test
+	public void testFindAll() {
+		System.out.println(air.findall());
+	}
 }

@@ -29,4 +29,17 @@ public class UserDaoImpl implements IUserDao{
 						new BeanPropertyRowMapper<User>(User.class));
 	}
 
+	@Override
+	public List<User> findAll() {
+		return jt.query("select * from airsys_user ", 
+						new BeanPropertyRowMapper<User>(User.class));
+	}
+
+	@Override
+	public void delete(int uid) {
+		jt.update("delete from airsys_user where uid =?",
+					new Object[] {uid});
+				
+	}
+
 }

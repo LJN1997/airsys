@@ -46,4 +46,10 @@ public class PlaceDaoImpl implements IPlaceDao{
 				new BeanPropertyRowMapper<Place>(Place.class));
 	}
 
+	@Override
+	public List<Place> findAll() {
+		return jt.query("select * from airsys_place", 
+				new BeanPropertyRowMapper<Place>(Place.class));
+	}
+
 }

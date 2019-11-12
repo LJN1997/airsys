@@ -9,4 +9,5 @@ public interface IPlaceDao {
 	void PlaceSaveorUpadate(Place place);
 	List<Place> Placelistfind(int pageNo, int pageSize); 
 	List<Place> find(int pid);
+	List<Place> findAll();
 }

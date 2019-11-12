@@ -13,7 +13,7 @@ import entity.Ticket;
 */
 public interface ISalesService {
 	//1.判断营业员登录
-    void login(String num,String pwd);
+    int login(String num,String pwd);
 	//2.查票
     List<Info>  select(String startplace,String destination,String startTime);
 	//3.买票  增加更新

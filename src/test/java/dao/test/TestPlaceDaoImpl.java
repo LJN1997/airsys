@@ -31,4 +31,8 @@ public class TestPlaceDaoImpl {
 	public void testFind() {
 		System.out.println(placeDao.find(2));
 	}
+	@Test
+	public void testFindAll() {
+		System.out.println(placeDao.findAll());
+	}
 }
