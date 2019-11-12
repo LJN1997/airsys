@@ -26,6 +26,14 @@ public class SalesServiceTest {
 		private ISalesService ss;
 	
 		@Test
+		public void history(){
+			List<Ticket> history = ss.history(1);
+			for (Ticket ticket : history) {
+				System.out.println(ticket);
+			}
+		}
+		
+		@Test
 		public void login(){
 			ss.login("111", "111");
 		}

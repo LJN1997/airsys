@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSON;
 
 import entity.Info;
 import entity.Sales;
+import entity.Ticket;
 import service.prototy.ISalesService;
 
 /**
@@ -34,12 +35,21 @@ public class SalesController {
 	 @ResponseBody
 		public ModelAndView  getUser1(@PathVariable("sid") int sid){
 			  ModelAndView mv = new ModelAndView("/sales/selfinfo");
-			  String sale = JSON.toJSONString(salesService.saleinfo(1));
+			//  String sale = JSON.toJSONString(salesService.saleinfo(1));
+			  List<Sales> sale = salesService.saleinfo(sid);
 			  mv.addObject("sale", sale);
 			  return mv;
 		}
- 
-	
+	 
+	 //查询历史记录
+	 @RequestMapping("/history/{cid}")
+	    public ModelAndView history(@PathVariable("cid") int cid){
+	    	ModelAndView mv = new ModelAndView("/sales/history");
+	    	List<Ticket> history =salesService.history(cid) ;
+	    	mv.addObject("history", history);
+	    	return mv;
+	    }
+
 	
 	//管理员登录
 	@RequestMapping("/login")
@@ -74,9 +84,7 @@ public class SalesController {
     	mv.addObject("info", info);
     		return mv;
     }
-	
 
-    
     @RequestMapping("/index")
     public ModelAndView getUsers(){
     	
@@ -90,10 +98,17 @@ public class SalesController {
     	ModelAndView mv = new ModelAndView("/sales/query");
     	return mv;
     }
-    @RequestMapping("/user2")
-    public ModelAndView getUsers2(){
+    @RequestMapping("/user2/{from}/{to}/{time}/{time2}/{price}")
+    public ModelAndView getUsers2(@PathVariable("from")String from,@PathVariable("to")String to,@PathVariable("time")String time,@PathVariable("time2")String time2,@PathVariable("price")String price){
     	
     	ModelAndView mv = new ModelAndView("/sales/add");
+    	String starttime =  time.replaceAll("\\s*|\t|\r|\n", "");
+    	String endtime = time2.replaceAll("\\s*|\t|\r|\n", "");
+    	mv.addObject("from", from);
+    	mv.addObject("to", to);
+    	mv.addObject("time", starttime);
+    	mv.addObject("time2", endtime);
+    	mv.addObject("price", price);
     	return mv;
     }
     @RequestMapping("/user3")
@@ -108,14 +123,13 @@ public class SalesController {
     	ModelAndView mv = new ModelAndView("/sales/change");
     	return mv;
     }
-    @RequestMapping("/user5")
-    public ModelAndView getUsers5(){
+   
+    @RequestMapping("/successbuy")
+    public ModelAndView successBuy(){
     	
-    	ModelAndView mv = new ModelAndView("/sales/history");
+    	ModelAndView mv = new ModelAndView("/sales/successbuy");
     	return mv;
     }
-
-    
    
     
 }

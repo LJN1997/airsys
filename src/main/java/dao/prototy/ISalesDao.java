@@ -42,5 +42,6 @@ public interface ISalesDao {
 			
 			//6.查看营业员个人信息
 			List<Sales> saleinfo(int sid);
-			
+			//7.查看历史记录
+			List<Ticket> history(int sid);
 }

@@ -172,6 +172,14 @@ public class SalesDaoImpl implements ISalesDao{
 		return jdbcTemplate.query(sql, new  Object[]{sid},new BeanPropertyRowMapper<Sales>(Sales.class));
 	}
 	
+	//查看历史记录
+	@Override
+	public List<Ticket> history(int sid) {
+
+		String sql="SELECT s.snumber,t.tdate,t.tprice,t.passenger_type FROM airsys_ticket t JOIN airsys_sales s ON t.sid=s.sid WHERE s.sid=?";
+		return jdbcTemplate.query(sql, new  Object[]{sid},new BeanPropertyRowMapper<Ticket>(Ticket.class));
+	}
+	
 
 	
 	

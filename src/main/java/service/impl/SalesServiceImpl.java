@@ -54,4 +54,9 @@ public class SalesServiceImpl implements ISalesService{
 		return sd.saleinfo(sid);
 	}
 
+	@Override
+	public List<Ticket> history(int sid) {
+		return sd.history(sid);
+	}
+
 }

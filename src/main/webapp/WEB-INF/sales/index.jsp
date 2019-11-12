@@ -52,7 +52,7 @@
         <li class="layui-nav-item">
           <a href="javascript:;">历史记录</a>
           <dl class="layui-nav-child">
-            <dd><a href="http://localhost:8080/airsys/sales/user5" target="aa">查看已售机票信息</a></dd>
+            <dd><a href="http://localhost:8080/airsys/sales/history/1" target="aa">查看已售机票信息</a></dd>
             
           </dl>
         </li>

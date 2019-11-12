@@ -30,6 +30,13 @@ public class salesDaoTest {
 	@Autowired
 	private ISalesDao salesDao;
 	
+	@Test
+	public void history(){
+		List<Ticket> history =  salesDao.history(1);
+       for (Ticket ticket : history) {
+		System.out.println(ticket);
+	}
+	}
 	//判断管理员登录
 	@Test
 	public void login(){

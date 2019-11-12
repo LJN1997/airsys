@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-${sale}
+
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
@@ -14,7 +14,7 @@ ${sale}
         margin-bottom: 30px;
         }
         .container{
-            width: 320px;
+            width: 350px;
             min-height: 420px;
             max-height: 460px;
             position: absolute;
@@ -34,7 +34,7 @@ ${sale}
 
         .layui-input{
             border-radius: 5px;
-            width: 200px;
+            width: 250px;
             height: 40px;
             font-size: 15px;
         }
@@ -64,59 +64,64 @@ ${sale}
 
     </style>
 </head>
+ 
 <body>
-<form class="layui-form" action="http://localhost:8080/airsys/sales/loginCon" method="post">
+ 
+<form class="layui-form" action="http://localhost:8080/airsys/sales/saleinfo/1" method="post">
+     <c:forEach items="${sale}" var="info">  
     <div class="container">
     <h2>个人信息</h2>
         <div class="layui-form-item">
             <label class="layui-form-label">头像</label>
             <div class="layui-input-block">
-                <input type="text" Placeholder= "1" uname="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+                <input type="text" value = "${info.shead}" uname="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
             </div>
         </div>
          <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-block">
-                <input type="text" Placeholder="ldy" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+                <input type="text" value="${info.sname}" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
             </div>
         </div>
 
  <div class="layui-form-item">
             <label class="layui-form-label">工号</label>
             <div class="layui-input-block">
-                <input type="text" Placeholder="111" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+                <input type="text" value="${info.snumber}" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
             </div>
         </div>
 
  <div class="layui-form-item">
             <label class="layui-form-label">营业点名称</label>
             <div class="layui-input-block">
-                <input type="text" Placeholder="aaaa" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+                <input type="text" value="${info.pname}" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
             </div>
         </div>
         
          <div class="layui-form-item">
             <label class="layui-form-label">地址</label>
             <div class="layui-input-block">
-                <input type="text" Placeholder="dsafj" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+                <input type="text" value="${info.psite}" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
             </div>
         </div>
         
          <div class="layui-form-item">
             <label class="layui-form-label">联系电话</label>
             <div class="layui-input-block">
-                <input type="text" Placeholder="8008-2088-20" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
+                <input type="text" value="${info.pphone}" name="num" required  lay-verify="required" placeholder="请输入工号" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo">编辑资料</button>
             </div>
         </div>
 
     </div>
+    </c:forEach>  
 </form>
+
 <script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function(){
