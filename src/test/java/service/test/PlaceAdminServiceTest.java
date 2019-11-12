@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import config.TestConfig;
 import entity.PlaceAdmin;
 import entity.Sales;
+import entity.SalesTicket;
 import entity.Ticket;
 import service.prototy.PlaceAdminService;
 import util.Pager;
@@ -24,18 +25,18 @@ public class PlaceAdminServiceTest {
 	@Test
 	public void testSaveOrUpdate() {
 		Sales s = new Sales();
-		s.setSid(0);
+	
 		s.setSname("赵四");
-		s.setSnumber("3333");
+		s.setSnumber("333333");
 		s.setSpwd("12345");
 		s.setPid(2);
-		s.setShead("2.png");
+		
 		pas.saveOrUpdate(s);;
 	}
 	
 	@Test
 	public void testquerry() {
-		Sales sales = pas.querry("3333");
+		Sales sales = pas.querry(1);
 		System.out.println(sales); 
 	}
 	
@@ -56,22 +57,22 @@ public class PlaceAdminServiceTest {
 	
 	@Test
 	public void testTlistPaged() {
-		List<Ticket> slistPaged = pas.TlistPaged(1, 1, 5);
-		for (Ticket sales : slistPaged) {
+		List<SalesTicket> slistPaged = pas.TlistPaged(1, 1, 5);
+		for (SalesTicket sales : slistPaged) {
 			System.out.println(sales); 
 		}
 	}
 	
 	@Test
 	public void testTlistPager() {
-		Pager<Ticket> slistPager = pas.TlistPager(2, 1, 5);
+		Pager<SalesTicket> slistPager = pas.TlistPager(2, 1, 5);
 		System.out.println(slistPager.getData());
 		System.out.println(slistPager.getPageNum());
 	} 
 	
 	@Test
 	public void testDelete() {
-		pas.delete("3333");
+		pas.delete(1);
 	}
 	
 	@Test

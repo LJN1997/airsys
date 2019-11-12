@@ -1,0 +1,30 @@
+.back-test-box3{
+    width: 95%;
+    height: 185px;
+    background: rgba(0,0,0,.4);
+    margin: auto;
+    position: relative;
+    display: none;
+}
+.buff3{
+    cursor: pointer;
+}
+.class-id{
+    width: 148px;
+    height: 85px;
+    background: #232b38;
+    float: left;
+    margin:0 10px;
+}
+.class-id b{
+    font-size: 20px;
+    line-height: 70px;
+    text-align: center;
+    display: block;
+    color: #99a5b4;
+
+}
+.select option{
+	
+	color:#99a5b4;
+}

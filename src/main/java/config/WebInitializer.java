@@ -31,11 +31,13 @@ public class WebInitializer implements WebApplicationInitializer{
 		ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
 		servlet.addMapping("/");
 		servlet.setLoadOnStartup(1);
-		//--5.添加字符编码的过滤器
+
+		//--5.添加一个字符编码的过滤器
 		FilterRegistration.Dynamic encodingFilter = servletContext.addFilter("encodingFilter", CharacterEncodingFilter.class);
 		encodingFilter.setInitParameter("encoding", String.valueOf(StandardCharsets.UTF_8));
 		encodingFilter.setInitParameter("forceEncoding", "true");
 		encodingFilter.addMappingForUrlPatterns(null, false, "/*");
+
 	}
 
 }

@@ -19,7 +19,8 @@ public class TestAirportDaoImpl {
 	
 	@Test
 	public void testDelete() {
-		air.AportDelete("XXX");
+		air.AportDelete("OKN");
+		
 	}
 	@Test
 	public void testSaveOrUpdate() {

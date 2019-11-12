@@ -39,7 +39,7 @@
              <th>${his.snumber}</th>
              <th>${his.tdate}</th>
              <th>${his.tprice}</th>
-             <th>${his.passenger_type}</th>
+             <th>${his.passengerType}</th>
              <th><a href="#" class="layui-btn layui-btn-radius layui-btn-warm">查看详情</a></th>
          </tr>
          </c:forEach>

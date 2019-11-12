@@ -10,9 +10,6 @@
 <title>机票购买</title>
 <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
 <link rel="stylesheet" href="/airsys/assets/css/sales.css">
-
-
-
 </head>
 
 <body>
@@ -134,11 +131,6 @@
 		layui.use('form', function() {
 			var form = layui.form;
 
-			//监听提交
-			/* form.on('submit(formDemo)', function(data){
-			  layer.msg(JSON.stringify(data.field));
-			  return false;
-			}); */
 		});
 	</script>
 </body>

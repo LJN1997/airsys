@@ -33,16 +33,15 @@
          
          <tr class="tr">
              <td>${query.fnumber}</td>
-             <td>${query.from_city}</td>
-             <td>${query.to_city}</td>
-             <td>${query.departure_time}</td>
-             <td>${query.arrival_time}</td>
-             <td>${query.first_class_remain_seats}</td>
-             <td>${query.business_class_remain_seats}</td>
-             <td>${query.economy_class_remain_seats}</td>
+             <td>${query.fromCity}</td>
+             <td>${query.toCity}</td>
+             <td>${query.departureTime}</td>
+             <td>${query.arrivalTime}</td>
+             <td>${query.firstClassRemainSeats}</td>
+             <td>${query.businessClassRemainSeats}</td>
+             <td>${query.economyClassRemainSeats}</td>
              <td>${query.tprice}</td>
              <td><button type="button" class="layui-btn layui-btn-radius layui-btn-warm buy">购买</button></td>
-         </tr>
          </c:forEach>
      </table> 
 
@@ -56,7 +55,6 @@ $(".buy").click(function(){
 	var from=$(this).parent().parent().children()[1].innerText;
 	var to=$(this).parent().parent().children()[2].innerText;
 	var time=$(this).parent().parent().children()[3].innerText;
-	
 	var time2=$(this).parent().parent().children()[4].innerText;
 	var price=$(this).parent().parent().children()[8].innerText;
 	location.href="http://localhost:8080/airsys/sales/user2/"+from+"/"+to+"/"+time+"/"+time2+"/"+price

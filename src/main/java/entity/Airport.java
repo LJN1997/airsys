@@ -1,48 +1,48 @@
 package entity;
 
 public class Airport {
-	private String airport_number;
-	private String airport_name;
-	private String airport_city;
+	private String airportNumber;
+	private String airportName;
+	private String airportCity;
 	public Airport() {
 		super();
 	}
-	public Airport(String airport_number, String airport_name, String airport_city) {
+	public Airport(String airportNumber, String airportName, String airportCity) {
 		super();
-		this.airport_number = airport_number;
-		this.airport_name = airport_name;
-		this.airport_city = airport_city;
+		this.airportNumber = airportNumber;
+		this.airportName = airportName;
+		this.airportCity = airportCity;
 	}
-	public String getAirport_number() {
-		return airport_number;
+	public String getAirportNumber() {
+		return airportNumber;
 	}
-	public void setAirport_number(String airport_number) {
-		this.airport_number = airport_number;
+	public void setAirportNumber(String airportNumber) {
+		this.airportNumber = airportNumber;
 	}
-	public String getAirport_name() {
-		return airport_name;
+	public String getAirportName() {
+		return airportName;
 	}
-	public void setAirport_name(String airport_name) {
-		this.airport_name = airport_name;
+	public void setAirportName(String airportName) {
+		this.airportName = airportName;
 	}
-	public String getAirport_city() {
-		return airport_city;
+	public String getAirportCity() {
+		return airportCity;
 	}
-	public void setAirport_city(String airport_city) {
-		this.airport_city = airport_city;
+	public void setAirportCity(String airportCity) {
+		this.airportCity = airportCity;
 	}
 	@Override
 	public String toString() {
-		return "Airport [airport_number=" + airport_number + ", airport_name=" + airport_name + ", airport_city="
-				+ airport_city + "]";
+		return "Airport [airportNumber=" + airportNumber + ", airportName=" + airportName + ", airportCity="
+				+ airportCity + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((airport_city == null) ? 0 : airport_city.hashCode());
-		result = prime * result + ((airport_name == null) ? 0 : airport_name.hashCode());
-		result = prime * result + ((airport_number == null) ? 0 : airport_number.hashCode());
+		result = prime * result + ((airportCity == null) ? 0 : airportCity.hashCode());
+		result = prime * result + ((airportName == null) ? 0 : airportName.hashCode());
+		result = prime * result + ((airportNumber == null) ? 0 : airportNumber.hashCode());
 		return result;
 	}
 	@Override
@@ -54,20 +54,20 @@ public class Airport {
 		if (getClass() != obj.getClass())
 			return false;
 		Airport other = (Airport) obj;
-		if (airport_city == null) {
-			if (other.airport_city != null)
+		if (airportCity == null) {
+			if (other.airportCity != null)
 				return false;
-		} else if (!airport_city.equals(other.airport_city))
+		} else if (!airportCity.equals(other.airportCity))
 			return false;
-		if (airport_name == null) {
-			if (other.airport_name != null)
+		if (airportName == null) {
+			if (other.airportName != null)
 				return false;
-		} else if (!airport_name.equals(other.airport_name))
+		} else if (!airportName.equals(other.airportName))
 			return false;
-		if (airport_number == null) {
-			if (other.airport_number != null)
+		if (airportNumber == null) {
+			if (other.airportNumber != null)
 				return false;
-		} else if (!airport_number.equals(other.airport_number))
+		} else if (!airportNumber.equals(other.airportNumber))
 			return false;
 		return true;
 	}

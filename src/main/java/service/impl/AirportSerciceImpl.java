@@ -18,8 +18,10 @@ public class AirportSerciceImpl  implements IAirportService{
 		return airDao.Airlistfind((pageNo-1)*pageSize, pageSize);
 	}
 	@Override
-	public void AirDelete(String airport_number) {
-		airDao.AportDelete(airport_number);
+	public int AirDelete(String airportNumber) {
+		int a =airDao.AportDelete(airportNumber);
+		return a;
+		
 	}
 	@Override
 	public void AirSaveorUpdate(Airport air) {
@@ -31,8 +33,8 @@ public class AirportSerciceImpl  implements IAirportService{
 		return totalItems;
 	}
 	@Override
-	public List<Airport> find(String air_number) {
-		return airDao.find(air_number);
+	public List<Airport> find(String airNumber) {
+		return airDao.find(airNumber);
 	}
 
 }

@@ -8,6 +8,14 @@
     <title>航天航空订票系统</title>
     <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
     <link rel="stylesheet" href="/airsys/assets/layui/css/index.css">
+	<script src="/airsys/assets/layui/layui.js"></script>
+	<script>
+	    //JavaScript代码区域
+	    layui.use('element', function(){
+	        var element = layui.element;
+	
+	    });
+	</script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -66,6 +74,8 @@
                 <li class="layui-nav-item"><a href="">用户信息</a></li>
                 <li class="layui-nav-item"><a href="">航班信息</a></li>
                 <li class="layui-nav-item"><a href="">航班信息</a></li>
+                <li class="layui-nav-item"><a href="/airsys/placeadmin/sales" target="main">营业员信息</a></li>
+                <li class="layui-nav-item"><a href="/airsys/placeadmin/ticketinfo" target="main">营业员售票记录</a></li>
             </ul>
         </div>
     </div>
@@ -80,13 +90,6 @@
 
     </div>
 </div>
-<script src="/airsys/assets/layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
 
-    });
-</script>
 </body>
 </html>

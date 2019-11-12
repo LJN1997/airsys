@@ -92,8 +92,6 @@
             <div class="layui-input-inline">
                 <input type="text" name="title" required  lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input verity">
             </div>
-            <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
-
         </div>
         <!-- 			  <div class="layui-form-item">
                             <label class="layui-form-label">记住密码</label>

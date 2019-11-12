@@ -1,0 +1,103 @@
+body{
+    margin: 0;
+    padding: 0;
+
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+/*头部*/
+.head{
+    width: 100%;
+    height: 90px;
+
+}
+.head-top{
+    width: 100%;
+    height: 30px;
+    background: #2b3947;
+}
+.head-bottom{
+    width: 100%;
+    height: 60px;
+    background: #232b38;
+    float: left;
+}
+.head-bottom img{
+    width: 217px;
+    height: 40px;
+}
+.head-img{
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.head-right-box{
+    font-size: 15px;
+    line-height: 40px;
+}
+.head-right-box a{
+    color: #cccccc;
+    text-decoration: none;
+    font-weight: bold;
+}
+.head-right-box a:hover{
+    color: white;
+}
+.head-right-1{
+    float: right;
+    color: #FFFFFF;
+    margin: 10px;
+    width: 156px;
+    height: 60px;
+}
+.head-right-2{
+    float: right;
+    color: #FFFFFF;
+    margin: 10px;
+    width: 58px;
+    height: 60px;
+}
+.head-right-3{
+    float: right;
+    color: #FFFFFF;
+    margin: 10px;
+    width: 58px;
+    height: 60px;
+}
+.head-right-4{
+    float: right;
+    color: #FFFFFF;
+    margin: 10px;
+    width: 76px;
+    height: 60px;
+}
+.head-right-5{
+    float: right;
+    color: #FFFFFF;
+    margin: 10px;
+    width: 100px;
+    height: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

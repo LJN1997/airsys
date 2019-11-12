@@ -14,8 +14,31 @@ public class Sales {
 	public Sales() {
 		super();
 	}
+
+
+	
+	public Sales(int sid) {
+		super();
+		this.sid = sid;
+	}
+
+	public Sales(String snumber) {
+		super();
+		this.snumber = snumber;
+	}
+	
+	public Sales(String snumber, String sname, String spwd, int pid) {
+		super();
+		this.snumber = snumber;
+		this.sname = sname;
+		this.spwd = spwd;
+
+		this.pid = pid;
+	}
+
 	public Sales(int sid, String snumber, String sname, String spwd, String shead, int pid, String pname, String pphone,
 			String psite, String province) {
+
 		super();
 		this.sid = sid;
 		this.snumber = snumber;

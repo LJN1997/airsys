@@ -43,7 +43,6 @@
           <a class="" href="javascript:;">票务管理</a>
           <dl class="layui-nav-child">
             <dd><a href="http://localhost:8080/airsys/sales/user1" target="aa">查询</a></dd>
-            <dd><a href="http://localhost:8080/airsys/sales/user2" target="aa">购买</a></dd>
             <dd><a href="http://localhost:8080/airsys/sales/user3" target="aa">退票</a></dd>
             <dd><a href="http://localhost:8080/airsys/sales/user4" target="aa">改签</a></dd>
            

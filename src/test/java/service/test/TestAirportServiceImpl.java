@@ -27,7 +27,8 @@ public class TestAirportServiceImpl {
 	}
 	@Test
 	public void testDetele() {
-		airService.AirDelete("XLY");
+		airService.AirDelete("AUE");
+	
 	}
 	@Test
 	public void testSaveOrUpdate() {

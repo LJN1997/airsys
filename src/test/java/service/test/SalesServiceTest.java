@@ -25,25 +25,13 @@ public class SalesServiceTest {
 		@Autowired
 		private ISalesService ss;
 	
-		@Test
-		public void history(){
-			List<Ticket> history = ss.history(1);
-			for (Ticket ticket : history) {
-				System.out.println(ticket);
-			}
-		}
-		
+		//1.判断营业员登录
 		@Test
 		public void login(){
 			ss.login("111", "111");
 		}
 		
-		
-		@Test
-		public void saleinfo(){
-			List<Sales> sale = ss.saleinfo(1);
-			System.out.println(sale);
-		}
+		//2.查票
 		@Test
 		public void select(){
 			List<Info> info = ss.select("xa", "sx", "2019-11-05");
@@ -52,16 +40,35 @@ public class SalesServiceTest {
 			}
 		}
 		
+		//3.买票  增加更新
 		@Test
 		public void buy(){
 			ss.buy(new Ticket("头等舱","儿童",1200),"747", "business_class_remain_seats");
 		}
 		
+		//4.退票  删除更新
 		@Test
 		public void quit(){
 			ss.quit(1, 1, "business_class_remain_seats");
 		}
 		
+		//5.查看营业员个人信息
+		@Test
+		public void saleinfo(){
+			List<Sales> sale = ss.saleinfo(1);
+			System.out.println(sale);
+		}
+		
+		//6.查看历史记录
+		@Test
+		public void history(){
+			List<Ticket> history = ss.history(1);
+			for (Ticket ticket : history) {
+				System.out.println(ticket);
+			}
+		}
+		
+	
 		
 		
 }

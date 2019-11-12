@@ -18,21 +18,22 @@ public class AirportDaoImpl implements IAirportDao {
 	private JdbcTemplate jt;
 	
 	@Override
-	public void AportDelete(String airport_number) {
-		jt.update("delete from airsys_airport  where airport_number=?",
-				new Object[] {airport_number});
+	public int AportDelete(String airportNumber) {
+		int a =jt.update("delete from airsys_airport  where airport_number=?",
+				new Object[] {airportNumber});
+		return a;
 	}
 
 	@Override
 	public void AportSaveorUpadate(Airport airport) {
 		int a  =jt.queryForObject("select count(*) as num from airsys_airport where airport_number=?",
-				new Object[] {airport.getAirport_number()},Integer.class);
+				new Object[] {airport.getAirportNumber()},Integer.class);
 		if(a==0) {
 			jt.update("insert into airsys_airport (airport_number,airport_name,airport_city) values(?,?,?)",
-					new Object[] {airport.getAirport_number(),airport.getAirport_name(),airport.getAirport_city()});
+					new Object[] {airport.getAirportNumber(),airport.getAirportName(),airport.getAirportCity()});
 		}else {
 			jt.update("update airsys_airport set airport_name=?,airport_city=? where airport_number=?",
-					new Object[] {airport.getAirport_name(),airport.getAirport_city(),airport.getAirport_number()});
+					new Object[] {airport.getAirportName(),airport.getAirportCity(),airport.getAirportNumber()});
 		}
 	}
 
@@ -51,9 +52,9 @@ public class AirportDaoImpl implements IAirportDao {
 	}
 
 	@Override
-	public List<Airport> find(String air_number) {
+	public List<Airport> find(String airNumber) {
 		return jt.query("select * from airsys_airport where airport_number=?",
-				new Object[] {air_number},
+				new Object[] {airNumber},
 				new BeanPropertyRowMapper<Airport>(Airport.class));
 		
 	}

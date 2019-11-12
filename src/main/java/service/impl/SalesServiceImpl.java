@@ -12,48 +12,48 @@ import entity.Ticket;
 import service.prototy.ISalesService;
 
 /**
-* 
-*   营业员实现service层接口
-* @author DanyangLi
-*/
+ * 
+ * 营业员实现service层接口
+ * 
+ * @author DanyangLi
+ */
 @Service("salesServiceImpl")
-public class SalesServiceImpl implements ISalesService{
+public class SalesServiceImpl implements ISalesService {
 
 	@Autowired
 	private ISalesDao sd;
-	
+
+	// 1.判断营业员登录
 	@Override
 	public void login(String num, String pwd) {
-          		sd.login(num, pwd);
-	}
-	
-	@Override
-	public List<Info> select(String startplace, String destination, String start_time) {
-		return sd.find(startplace, destination, start_time);
+		sd.login(num, pwd);
 	}
 
+	// 2.查票
+	@Override
+	public List<Info> select(String startplace, String destination, String startTime) {
+		return sd.find(startplace, destination, startTime);
+	}
+
+	// 3.买票 增加更新
 	@Override
 	public void buy(Ticket t, String fnumber, String seat) {
-			sd.buy(t, fnumber, seat);
+		sd.buy(t, fnumber, seat);
 	}
 
+	// 4.退票 删除更新
 	@Override
 	public void quit(int uid, int fid, String seat) {
-			sd.delete(uid, fid, seat);
+		sd.delete(uid, fid, seat);
 	}
 
-	@Override
-	public void update(int uid) {
-
-	}
-
-	//查看营业员个人信息
+	// 5.查看营业员个人信息
 	@Override
 	public List<Sales> saleinfo(int sid) {
-		
 		return sd.saleinfo(sid);
 	}
 
+	// 6.查看历史记录
 	@Override
 	public List<Ticket> history(int sid) {
 		return sd.history(sid);

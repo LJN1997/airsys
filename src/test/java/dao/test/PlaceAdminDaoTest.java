@@ -8,9 +8,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import config.TestConfig;
+import controller.SalesController;
 import dao.prototy.PlaceAdminDao;
 import entity.PlaceAdmin;
 import entity.Sales;
+import entity.SalesTicket;
 import entity.Ticket;
 import util.Pager;
 
@@ -26,22 +28,22 @@ public class PlaceAdminDaoTest {
 	@Test
 	public void testSaveOrUpdate() {
 		Sales s = new Sales(); 
-		s.setSid(8);
+		
 		s.setSname("李四");
-		s.setSnumber("888");
+		s.setSnumber("999");
 		s.setSpwd("12345");
 		s.setPid(2);
-		s.setShead("2.png");
+	
 		pad.saveOrUpdate(s);
 	}
 	@Test
 	public void testDelete() { 
-		pad.delete("8888");
+		pad.delete(1);
 	}
 	
 	@Test
 	public void testFind() {
-		Sales s = pad.find("8888");
+		Sales s = pad.find(1);
 		System.out.println(s);	
 	}
 	@Test 
@@ -71,8 +73,8 @@ public class PlaceAdminDaoTest {
 	@Test
 	public void testFndTicketList() {
 			
-		List<Ticket> findAll = pad.findTicketList(1, 0, 5);
-		for (Ticket sales : findAll) {
+		List<SalesTicket> findAll = pad.findTicketList(2, 0, 5);
+		for (SalesTicket sales : findAll) {
 			System.out.println(sales);
 		}
 	}
@@ -98,9 +100,16 @@ public class PlaceAdminDaoTest {
 	
 	@Test
 	public void testFindTicketPage() {
-		Pager<Ticket> findTicketPage = pad.findTicketPage(1, 0, 5);
+		SalesTicket salesTicket = new SalesTicket(); 
+		Pager<SalesTicket> findTicketPage = pad.findTicketPage(2, 0, 5);
 		System.out.println(findTicketPage.getData());
 		System.out.println(findTicketPage.getPageNum());
+	}
+	
+	@Test
+	public void findTicket() {
+		List<SalesTicket> findTicketPage = pad.findTicket(1);
+		System.out.println(findTicketPage);
 	}
 	
 
