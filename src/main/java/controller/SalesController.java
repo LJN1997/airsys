@@ -73,13 +73,15 @@ public class SalesController {
     public ModelAndView loginCon(HttpServletRequest request,HttpServletResponse response){
 		String num = request.getParameter("num");
 		String pwd = request.getParameter("pwd");
-      if(num.equals("111" ) && pwd.equals("111")){
-    	  ModelAndView mv = new ModelAndView("/sales/index");
-      	  return mv;
-      }
-      ModelAndView mv1 = new ModelAndView("/sales/login");
-  	  return mv1;
-	      
+     
+		int sale= salesService.login(num, pwd);
+		if(sale>0){
+			ModelAndView mv = new ModelAndView("/sales/index");
+		  	  return mv;
+		}else{
+			ModelAndView mv = new ModelAndView("/sales/login");
+		  	  return mv;
+		}
     }
 	
 	//机票查询

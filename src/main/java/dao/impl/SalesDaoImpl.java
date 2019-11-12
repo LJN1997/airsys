@@ -30,7 +30,7 @@ public class SalesDaoImpl implements ISalesDao {
 	// 1、判断营业员登录
 	@Override
 	public int login(String num, String pwd) {
-		String sql = "SELECT * from airsys_sales WHERE snumber=? and spwd=?";
+		String sql = "SELECT  count(*)  from airsys_sales WHERE snumber=? and spwd=?";
 		int number =jdbcTemplate.queryForObject(sql, new Object[] { num, pwd },Integer.class);
 		return number;
 	}
