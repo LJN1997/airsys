@@ -29,8 +29,11 @@ pageEncoding="utf-8"%>
 		
 	<div class="layui-form">
 	<div>
-		<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input">
-	    <button type="button" id="${sales.sid }"  class="layui-btn layui-btn-primary">搜索</button>	
+		<div>
+			<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input">
+		    <button type="button" id="${sales.sid }"  class="layui-btn layui-btn-primary">搜索</button>	
+		</div>
+			<button type="button" id="${sales.sid}e" class="layui-btn add" onclick="add()" >添加</button>
 	</div>
 		<table class="layui-table">
 			<colgroup>
@@ -61,8 +64,7 @@ pageEncoding="utf-8"%>
 				</tbody>
 			</c:forEach>
 		</table>
-		<button type="button" id="e" class="layui-btn add" onclick="add()" >添加</button>
-
+		
 	</div>
 	 
 	

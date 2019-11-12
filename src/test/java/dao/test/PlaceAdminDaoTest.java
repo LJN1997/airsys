@@ -102,11 +102,14 @@ public class PlaceAdminDaoTest {
 	public void testFindTicketPage() {
 		SalesTicket salesTicket = new SalesTicket(); 
 		Pager<SalesTicket> findTicketPage = pad.findTicketPage(2, 0, 5);
-
-	
-
 		System.out.println(findTicketPage.getData());
 		System.out.println(findTicketPage.getPageNum());
+	}
+	
+	@Test
+	public void findTicket() {
+		List<SalesTicket> findTicketPage = pad.findTicket(1);
+		System.out.println(findTicketPage);
 	}
 	
 

@@ -31,8 +31,8 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 		if(sales.getSid()==0) {
 			if(number<=0) {
 			jdbcTemplate.update(
-					"INSERT INTO airsys_sales (snumber,sname,spwd) values (?,?,?)",
-					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd()});
+					"INSERT INTO airsys_sales (snumber,sname,spwd,pid) values (?,?,?,?)",
+					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd(),sales.getPid()});
 			}else {
 				System.out.println("工号不能重复");
 			}
@@ -154,6 +154,16 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 		ticketPager.setData(findTicketList(pid, offset, pageSize));
 		ticketPager.setPageNum((saleTotalItems(pid)+pageSize-1)/pageSize);
 		return ticketPager;
+	}
+
+	@Override
+	public List<SalesTicket> findTicket(int tid) {
+return jdbcTemplate.query(
+				
+				"SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE t.tid = ?", 
+				
+				new Object[] {tid},
+				new BeanPropertyRowMapper<>(SalesTicket.class));
 	}
 
 

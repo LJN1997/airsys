@@ -26,6 +26,7 @@ public interface PlaceAdminDao {
 	void updateSelf(PlaceAdmin padmin) ;
 	//查询营业员售票记录
 	List<SalesTicket> findTicketList(int pid,int offset,int pageSize);
+	List<SalesTicket> findTicket(int tid);
 	Pager<SalesTicket> findTicketPage(int pid,int offset,int pageSize);
 	//获取营业员总条目数
 	int saleTotalItems(int pid);

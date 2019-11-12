@@ -101,4 +101,10 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 		return pad.findTicketList(pid, (pageNo-1)*pageSize, pageSize);
 	}
 
+	@Override
+	public List<SalesTicket> findTicket(int tid) {
+
+		return pad.findTicket(tid);
+	}
+
 }

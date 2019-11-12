@@ -7,7 +7,7 @@ pageEncoding="utf-8"%>
 <html>
 <head>
 <meta charset="utf-8">
-<title>查看详细信息</title>
+<title>查看售票记录详细信息</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -24,9 +24,8 @@ pageEncoding="utf-8"%>
 		style="margin-top: 20px;">
 		<legend>查看详细信息</legend>
 	</fieldset>
- 
 <form class="layui-form" action="/airsys/placeadmin/saleticket" method="post">
-<c:forEach items="${tlistPaged}" var="tlistPaged">  </c:forEach>
+<c:forEach items="${findTicket}" var="tlistPaged">  
   <div class="layui-form-item">
     <div class="layui-input-block">
       <button type="submit" class="layui-btn layui-btn-warm layui-btn-radius" lay-submit="" lay-filter="demo1" onclick="ret()"> << </button>
@@ -96,7 +95,7 @@ pageEncoding="utf-8"%>
   
 
   </div>
-
+</c:forEach>
 </form>
  
 

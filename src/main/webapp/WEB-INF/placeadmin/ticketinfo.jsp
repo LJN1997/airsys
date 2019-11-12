@@ -57,8 +57,7 @@ pageEncoding="utf-8"%>
 						<td name = "snumber">${sales.snumber }</td>
 						<td name = "sname">${sales.sname}</td>
 						<td name = "caozuo">
-							<button type="button" id="" class="layui-btn layui-btn-primary delete" onclick="view(${sales.tid})">查看</button>
-							<button type="button" id="" class="layui-btn layui-btn-danger delete" onclick="del()">删除</button>
+							<button type="button" id="${sales.tid}" class="layui-btn layui-btn-primary delete" onclick="view(${sales.tid})">查看</button>
 						</td>
 					</tr>
 				</tbody>

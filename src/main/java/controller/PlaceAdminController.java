@@ -117,6 +117,8 @@ public class PlaceAdminController {
 	@RequestMapping("/view/{tid}")
 	public ModelAndView ticketinfo(@PathVariable("tid") int tid) {	
 		ModelAndView mv = new ModelAndView("/placeadmin/view");
+		List<SalesTicket> findTicket = pas.findTicket(tid);
+		mv.addObject("findTicket",findTicket);
 		return mv;
 	
 	}

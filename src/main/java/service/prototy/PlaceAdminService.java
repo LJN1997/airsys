@@ -24,5 +24,7 @@ public interface PlaceAdminService {
 	void updateSelf(PlaceAdmin placeAdmin);
 	//-- 查询营业员售票记录信息
 	List<SalesTicket> TlistPaged(int pid,int pageNo,int pageSize);
+	List<SalesTicket> findTicket(int tid);
+	
 	Pager<SalesTicket> TlistPager(int pid,int pageNo,int pageSize);
 }
