@@ -1,6 +1,6 @@
 package entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class SalesTicket {
 
@@ -25,7 +25,7 @@ public class SalesTicket {
 	}
 	public SalesTicket(int tid, String snumber, String sname, String tnumber, String fnumber, String fromCity,
 			String toCity, Date startDate, Date endDate, Date expSatrtTime, Date expEndTime, String type, String tclass,
-			String passengerType, double tprice, int sailLength) {
+			String passengerType, double tprice, int sailLength, Date expStartTime) {
 		super();
 		this.tid = tid;
 		this.snumber = snumber;

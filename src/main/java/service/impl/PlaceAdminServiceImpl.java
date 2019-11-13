@@ -119,4 +119,16 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 		return pad.likeTicket(keys);
 	}
 
+	@Override
+	public PlaceAdmin findPlaceAdmin(String panumber) {
+		
+		return pad.findPlaceAdmin(panumber);
+	}
+
+	@Override
+	public int placeAdminLogin(String panumber, String papwd) {
+		
+		return pad.placeAdminLogin(panumber, papwd);
+	}
+
 }

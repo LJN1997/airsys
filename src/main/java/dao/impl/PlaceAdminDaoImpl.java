@@ -193,5 +193,21 @@ return jdbcTemplate.query(
 		
 	}
 
+	@Override
+	public PlaceAdmin findPlaceAdmin(String panumber) {
+		
+		return jdbcTemplate.queryForObject(
+				"SELECT * FROM airsys_place_admin WHERE panumber = "+panumber+"",
+				new BeanPropertyRowMapper<>(PlaceAdmin.class));
+	}
+
+	@Override
+	public int placeAdminLogin(String panumber, String papwd) {
+		int number = jdbcTemplate.queryForObject(
+				"SELECT count(*) AS num FROM airsys_place_admin WHERE panumber = ? and papwd = ?",
+				new Object[]{panumber,papwd},Integer.class);
+		return number;
+	}
+
 
 }

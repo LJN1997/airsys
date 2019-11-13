@@ -30,4 +30,8 @@ public interface PlaceAdminService {
 	//-- 模糊查询
 	List<Sales> likeQuerry(String keys);
 	List<SalesTicket> likeTicket(String keys);
+	
+	//管理员登录
+	PlaceAdmin findPlaceAdmin(String panumber);
+	int placeAdminLogin(String panumber,String papwd);
 }
