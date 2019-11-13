@@ -25,13 +25,13 @@ pageEncoding="utf-8"%>
 		<legend>营业员信息</legend>
 	</fieldset>
 	
-	<form action="placeadmin">
+	<form action="/airsys/placeadmin/searchs" method="post">
 		
 	<div class="layui-form">
 	<div>
 		<div>
 			<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input">
-		    <button type="button" id="${sales.sid }"  class="layui-btn layui-btn-primary">搜索</button>	
+		    <button type="submit" id=""  class="layui-btn layui-btn-primary">搜索</button>	
 		</div>
 			<button type="button" id="${sales.sid}e" class="layui-btn add" onclick="add()" >添加</button>
 	</div>
@@ -47,7 +47,7 @@ pageEncoding="utf-8"%>
 				<tr>
 					<th>工号</th>
 					<th>名称</th>
-					<th>密码</th>
+					<th>联系方式</th>
 					<th>操作</th>
 				</tr>
 			</thead>
@@ -56,7 +56,8 @@ pageEncoding="utf-8"%>
 					<tr id="${sales.sid }">
 						<td name = "snumber">${sales.snumber}</td>
 						<td name = "sname">${sales.sname }</td>
-						<td name = "spwd">${sales.spwd}</td>
+						<td name = "sphone">${sales.sphone }</td>
+
 						<td name = "caozuo">
 							<button type="button" id="${sales.sid }c" class="layui-btn layui-btn-danger delete" onclick="del(${sales.sid})">删除</button>
 						</td>
@@ -67,27 +68,8 @@ pageEncoding="utf-8"%>
 		
 	</div>
 	 
-	
 </form>
 
-<!-- <script>
-layui.use(['laypage', 'layer'], function(){
-  $ = layui.jquery;
-  var pageNum =${pageNum}
-  var laypage = layui.laypage
-  ,layer = layui.layer;
- 
-  laypage.render({
-    elem: 'pageNo'
-    ,count: pageNum
-    ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-    ,jump: function(obj){
-      console.log(obj)
-    }
-  });
-  
-});
-</script> -->
 
 </body>
 </html>

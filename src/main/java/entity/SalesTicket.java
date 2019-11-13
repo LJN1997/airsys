@@ -13,6 +13,8 @@ public class SalesTicket {
 	private String toCity;
 	private Date startDate;
 	private Date endDate;
+	private Date expStartTime;
+	private Date expEndTime;
 	private String type;
 	private String tclass;
 	private String passengerType;
@@ -21,13 +23,9 @@ public class SalesTicket {
 	public SalesTicket() {
 		super();
 	}
-	
-	
-	
-
 	public SalesTicket(int tid, String snumber, String sname, String tnumber, String fnumber, String fromCity,
-			String toCity, Date startDate, Date endDate, String type, String tclass, String passengerType,
-			double tprice, int sailLength) {
+			String toCity, Date startDate, Date endDate, Date expSatrtTime, Date expEndTime, String type, String tclass,
+			String passengerType, double tprice, int sailLength) {
 		super();
 		this.tid = tid;
 		this.snumber = snumber;
@@ -38,37 +36,20 @@ public class SalesTicket {
 		this.toCity = toCity;
 		this.startDate = startDate;
 		this.endDate = endDate;
+	    this.expStartTime = expStartTime;
+	    this.expEndTime = expEndTime;
 		this.type = type;
 		this.tclass = tclass;
 		this.passengerType = passengerType;
 		this.tprice = tprice;
 		this.sailLength = sailLength;
 	}
-
-
-
-
-	public String getTclass() {
-		return tclass;
-	}
-	public void setTclass(String tclass) {
-		this.tclass = tclass;
-	}
-	public String getPassengerType() {
-		return passengerType;
-	}
-	public void setPassengerType(String passengerType) {
-		this.passengerType = passengerType;
-	}
-	
 	public int getTid() {
 		return tid;
 	}
-
 	public void setTid(int tid) {
 		this.tid = tid;
 	}
-
 	public String getSnumber() {
 		return snumber;
 	}
@@ -117,11 +98,35 @@ public class SalesTicket {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	public Date getExpStartTime() {
+		return expStartTime;
+	}
+	public void setExpStartTime(Date expStartTime) {
+		this.expStartTime = expStartTime;
+	}
+	public Date getExpEndTime() {
+		return expEndTime;
+	}
+	public void setExpEndTime(Date expEndTime) {
+		this.expEndTime = expEndTime;
+	}
 	public String getType() {
 		return type;
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public String getTclass() {
+		return tclass;
+	}
+	public void setTclass(String tclass) {
+		this.tclass = tclass;
+	}
+	public String getPassengerType() {
+		return passengerType;
+	}
+	public void setPassengerType(String passengerType) {
+		this.passengerType = passengerType;
 	}
 	public double getTprice() {
 		return tprice;
@@ -135,26 +140,13 @@ public class SalesTicket {
 	public void setSailLength(int sailLength) {
 		this.sailLength = sailLength;
 	}
-
-
-
-
-	@Override
-	public String toString() {
-		return "SalesTicket [tid=" + tid + ", snumber=" + snumber + ", sname=" + sname + ", tnumber=" + tnumber
-				+ ", fnumber=" + fnumber + ", fromCity=" + fromCity + ", toCity=" + toCity + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", type=" + type + ", tclass=" + tclass + ", passengerType=" + passengerType
-				+ ", tprice=" + tprice + ", sailLength=" + sailLength + "]";
-	}
-
-
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + ((expEndTime == null) ? 0 : expEndTime.hashCode());
+		result = prime * result + ((expStartTime == null) ? 0 : expStartTime.hashCode());
 		result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 		result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
 		result = prime * result + ((passengerType == null) ? 0 : passengerType.hashCode());
@@ -172,10 +164,6 @@ public class SalesTicket {
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
-
-
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -189,6 +177,16 @@ public class SalesTicket {
 			if (other.endDate != null)
 				return false;
 		} else if (!endDate.equals(other.endDate))
+			return false;
+		if (expEndTime == null) {
+			if (other.expEndTime != null)
+				return false;
+		} else if (!expEndTime.equals(other.expEndTime))
+			return false;
+		if (expStartTime == null) {
+			if (other.expStartTime != null)
+				return false;
+		} else if (!expStartTime.equals(other.expStartTime))
 			return false;
 		if (fnumber == null) {
 			if (other.fnumber != null)
@@ -248,6 +246,16 @@ public class SalesTicket {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "SalesTicket [tid=" + tid + ", snumber=" + snumber + ", sname=" + sname + ", tnumber=" + tnumber
+				+ ", fnumber=" + fnumber + ", fromCity=" + fromCity + ", toCity=" + toCity + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", expSatrtTime=" + expStartTime + ", expEndTime=" + expEndTime + ", type="
+				+ type + ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice
+				+ ", sailLength=" + sailLength + "]";
+	}
+	
+	
 	
 	
 

@@ -27,4 +27,7 @@ public interface PlaceAdminService {
 	List<SalesTicket> findTicket(int tid);
 	
 	Pager<SalesTicket> TlistPager(int pid,int pageNo,int pageSize);
+	//-- 模糊查询
+	List<Sales> likeQuerry(String keys);
+	List<SalesTicket> likeTicket(String keys);
 }

@@ -17,7 +17,7 @@ public interface IAirsysService {
 	@MiniPager(tableName="airsys")
 	List<UserSelectAll> searchFlightAll();
 	@MiniPager(tableName="airsys")
-	List<UserSelectAll> searchFlightBuff(String fnumber,String startDate);
+	List<UserSelectAll> searchFlightBuff(String fnumber,String start_date);
 	@MiniPager(tableName="ticket")
 	void  delete(int uid,int fid,String passenger);
 	@MiniPager(tableName="tcketFlight")
