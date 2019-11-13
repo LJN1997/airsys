@@ -3,7 +3,7 @@
 pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -46,16 +46,16 @@ pageEncoding="utf-8"%>
   </div>
  
   <div class="layui-form-item">
-    <label class="layui-form-label startDate">开始时间</label>
+    <label class="layui-form-label startDate">出发时间</label>
     <div class="layui-input-inline">
-      <input type="text" readonly="readonly" name="startDate" lay-verify="startDate" value="${tlistPaged.startDate}" autocomplete="off" class="layui-input startDate">
+      <input type="text" readonly="readonly" name="startDate" lay-verify="startDate" value="${tlistPaged.expStartTime}" autocomplete="off" class="layui-input startDate">
     </div>
   </div>
   
   <div class="layui-form-item">
     <label class="layui-form-label endDate">到达时间</label>
     <div class="layui-input-inline">
-      <input type="text" readonly="readonly" name="endDate" lay-verify="endDate" value="${tlistPaged.endDate}" autocomplete="off" class="layui-input endDate">
+      <input type="text" readonly="readonly" name="endDate" lay-verify="endDate" value="${tlistPaged.expEndTime}" autocomplete="off" class="layui-input endDate">
     </div>
   </div>
   

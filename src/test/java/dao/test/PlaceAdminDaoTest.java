@@ -128,5 +128,17 @@ public class PlaceAdminDaoTest {
 			System.out.println(salesTicket);
 		}
 	}
+	
+	@Test
+	public void testPlaceAdminLogin() {
+		int placeAdminLogin = pad.placeAdminLogin("2020", "11111");
+		System.out.println(placeAdminLogin);
+	}
 
+	@Test
+	public void testFindPlaceAdmin() {
+		PlaceAdmin findPlaceAdmin = pad.findPlaceAdmin("2020");
+		System.out.println(findPlaceAdmin);
+	}
+		
 }
