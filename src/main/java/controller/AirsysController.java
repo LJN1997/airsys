@@ -69,11 +69,11 @@ public class AirsysController {
 		long tem = ArrivalTime.getTime() - DepartureTime.getTime();
 		long temp = tem / 1000 / 60;
 		System.out.println(temp);
-		usts.get(0).setTemp(temp);
+		usts.get(0).setTemp(temp); 
 		
 		ModelAndView mv = new ModelAndView("/user/flightStatus");
 		mv.addObject("usts",usts);
-		return mv;
+		return mv; 
 	}
 	
 	
