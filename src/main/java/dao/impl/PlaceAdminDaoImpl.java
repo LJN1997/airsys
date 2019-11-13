@@ -31,8 +31,8 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 		if(sales.getSid()==0) {
 			if(number<=0) {
 			jdbcTemplate.update(
-					"INSERT INTO airsys_sales (snumber,sname,spwd,pid) values (?,?,?,?)",
-					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd(),sales.getPid()});
+					"INSERT INTO airsys_sales (snumber,sname,spwd,pid,sphone) values (?,?,?,?,?)",
+					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd(),sales.getPid(),sales.getSphone()});
 			}else {
 				System.out.println("工号不能重复");
 			}
@@ -46,8 +46,8 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 			}
 			if(num>0) {
 			jdbcTemplate.update(
-					"update airsys_sales set snumber=?,sname=?,spwd=?,shead=?,pid=? where sid=?",
-					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd(),sales.getShead(),sales.getPid(),sales.getSid()});
+					"update airsys_sales set snumber=?,sname=?,spwd=?,shead=?,pid=?,sphone=? where sid=?",
+					new Object[] {sales.getSnumber(),sales.getSname(),sales.getSpwd(),sales.getShead(),sales.getPid(),sales.getSphone(),sales.getSid()});
 			}else if(num<=0){
 				System.out.println("没有该营业员！");
 			} 
@@ -117,7 +117,7 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 	public List<SalesTicket> findTicketList(int pid,int offset, int pageSize) {
 		return jdbcTemplate.query(
 				
-				"SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE t.sid IN ( SELECT s.sid FROM airsys_sales s WHERE s.pid = ? )limit ?,?", 
+				"SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE t.sid IN ( SELECT s.sid FROM airsys_sales s WHERE s.pid = ?) LIMIT ?,?", 
 				
 				new Object[] {pid,offset,pageSize},
 				new BeanPropertyRowMapper<>(SalesTicket.class));
@@ -164,6 +164,33 @@ return jdbcTemplate.query(
 				
 				new Object[] {tid},
 				new BeanPropertyRowMapper<>(SalesTicket.class));
+	}
+
+	@Override
+	public List<Sales> likeFind(String keys) {
+		/*int number = jdbcTemplate.queryForObject(
+				"SELECT count(*) AS num FROM airsys_sales WHERE CONCAT(snumber, sname, sphone) LIKE '%"+keys+"%'",
+				new Object[]{},Integer.class);
+		if(number>0) {*/
+			return jdbcTemplate.query(
+					"SELECT * FROM airsys_sales WHERE CONCAT(snumber, sname, sphone) LIKE '%"+keys+"%'", 
+					new BeanPropertyRowMapper<>(Sales.class));
+			
+
+	}
+	@Override
+	public List<SalesTicket> likeTicket(String keys) {
+		/*String sql = "SELECT count(*) AS num FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE CONCAT( t.tid, plan.fnumber, s.sid,s.sname) LIKE '%"+keys+"%'";
+		int number = jdbcTemplate.queryForObject(
+				sql,
+				 new Object[]{},Integer.class);
+		if(number>0) {*/
+			return jdbcTemplate.query(
+					"  SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE CONCAT( t.tid, plan.fnumber, s.sid,s.sname) LIKE '%"+keys+"%'" , 
+					new BeanPropertyRowMapper<>(SalesTicket.class));
+			
+		
+		
 	}
 
 

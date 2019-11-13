@@ -6,6 +6,7 @@ function del (id) {
 
 function add(){
 	window.location.href="/airsys/placeadmin/add/2"
+
 }
 
 function view(id){

@@ -19,7 +19,6 @@ public class DateUtil {
         	  try {
 				return sdf.parse(dateStr);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         	  return null;
@@ -32,9 +31,7 @@ public class DateUtil {
           public static String dateToString(String dateForm,Date date){
  
         	  return new SimpleDateFormat(dateForm).format(date);
-        	  
           }
-          
           
           
 }

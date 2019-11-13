@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
@@ -65,26 +63,19 @@ public class PlaceAdminController {
 	}
 	
 	@RequestMapping(value="/add2",method=RequestMethod.POST)
-	public ModelAndView add2( String snumber,String sname,String spwd,HttpServletRequest req) {
+	public ModelAndView add2( String snumber,String sname,String spwd,String sphone,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		try {
-			snumber = new String(snumber .getBytes("iso8859-1"),"utf-8");
-			sname = new String(sname .getBytes("iso8859-1"),"utf-8");
-			spwd = new String(spwd .getBytes("iso8859-1"),"utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		System.out.println(111);
+
 		Sales sales = new Sales();
 		//int pid =Integer.parseInt(req.getParameter("pid"));
 		sales.setPid(2);
 		sales.setSnumber(snumber);
 		sales.setSname(sname);
 		sales.setSpwd(spwd);
-		 pas.saveOrUpdate(sales);
-		 
-		 mv.setViewName("redirect:/placeadmin/sales");	
-		 return mv;
+		sales.setSphone(sphone);;
+		pas.saveOrUpdate(sales);	 
+		mv.setViewName("redirect:/placeadmin/sales");	
+		return mv;
 
 	}
 	
@@ -97,7 +88,6 @@ public class PlaceAdminController {
 		pas.delete(sid);
 		mv.setViewName("redirect:/placeadmin/sales");	
 		return mv;
-	
 	}
 	
 	//-- 营业员售票记录界面
@@ -110,7 +100,6 @@ public class PlaceAdminController {
 		mv.addObject("data", data);
 		mv.addObject("pageNum", pageNum);
 		return mv;
-	
 	}
 	
 	//-- 查看营业员售票记录详细信息界面
@@ -120,29 +109,43 @@ public class PlaceAdminController {
 		List<SalesTicket> findTicket = pas.findTicket(tid);
 		mv.addObject("findTicket",findTicket);
 		return mv;
-	
 	}
 	
 	@RequestMapping("/saleticket")
 	public ModelAndView  saleticket() {	
 		ModelAndView mv = new ModelAndView("redirect:/placeadmin/ticketinfo");
 		return mv;
-	
 	}
-	
-	@RequestMapping("/sale/{snumber}")
-	@ResponseBody
-	public String getSale(@PathVariable("snumber") String snumber) {
-		Sales sales = pas.querry(1);
-		return JSON.toJSONString(sales);
+
+	//--模糊查询营业员
+	@RequestMapping(value="/searchs" ,method=RequestMethod.POST)
+	public ModelAndView  likeSales(String keys) {	
+		ModelAndView mv = new ModelAndView("/placeadmin/likesales");
+		List<Sales> likeQuerry = pas.likeQuerry(keys);
+		mv.addObject("likeQuerry",likeQuerry);
+		return mv;
 	}
-	
-	@RequestMapping("/user")
-	public ModelAndView getUser() {
-		ModelAndView mv = new ModelAndView("/placeadmin/user");
+	@RequestMapping("/ret")
+	public ModelAndView  ret() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/placeadmin/sales");	
 		return mv;
 	}
 	
+	//-- 模糊查询售票记录
 
+		@RequestMapping(value="/searcht" ,method=RequestMethod.POST)
+		public ModelAndView  likeTicket(String keys) {	
+			ModelAndView mv = new ModelAndView("/placeadmin/liketicketinfo");
+			 List<SalesTicket> likeTicket = pas.likeTicket(keys);
+			mv.addObject("likeTicket",likeTicket);
+			return mv;
+		}
+		@RequestMapping("/ret2")
+		public ModelAndView  ret2() {
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("redirect:/placeadmin/ticketinfo");	
+			return mv;
+		}
  
 }
