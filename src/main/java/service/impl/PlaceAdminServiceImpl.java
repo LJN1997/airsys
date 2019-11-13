@@ -107,4 +107,16 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 		return pad.findTicket(tid);
 	}
 
+	@Override
+	public List<Sales> likeQuerry(String keys) {
+		
+		return  pad.likeFind(keys);
+	}
+
+	@Override
+	public List<SalesTicket> likeTicket(String keys) {
+
+		return pad.likeTicket(keys);
+	}
+
 }
