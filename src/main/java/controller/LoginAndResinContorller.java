@@ -53,7 +53,7 @@ public class LoginAndResinContorller {
 		} else {
 			int num = paService.placeAdminLogin(name, password);
 			if(num>0) {
-				ModelAndView mv = new ModelAndView("main/index");
+				ModelAndView mv = new ModelAndView("placeadmin/index");
 				PlaceAdmin placeAdmin = paService.findPlaceAdmin(name);
 				mv.addObject("placeAdmin",placeAdmin);
 				return mv;
