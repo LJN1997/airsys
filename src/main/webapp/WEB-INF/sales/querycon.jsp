@@ -17,6 +17,7 @@
      <center>
      <table class="layui-table">
          <tr>
+             <th>fid</th>
              <th>航班号</th>
              <th>出发地</th>
              <th>目的地</th>
@@ -32,15 +33,18 @@
          <c:forEach items="${info}" var="query">
          
          <tr class="tr">
+             <td>${query.fid}</td>
              <td>${query.fnumber}</td>
              <td>${query.fromCity}</td>
              <td>${query.toCity}</td>
-             <td>${query.departureTime}</td>
-             <td>${query.arrivalTime}</td>
+             <td>${query.expStartTime}</td>
+             <td>${query.expEndTime}</td>
              <td>${query.firstClassRemainSeats}</td>
              <td>${query.businessClassRemainSeats}</td>
              <td>${query.economyClassRemainSeats}</td>
              <td>${query.tprice}</td>
+            
+            
              <td><button type="button" class="layui-btn layui-btn-radius layui-btn-warm buy">购买</button></td>
          </c:forEach>
      </table> 
@@ -52,13 +56,14 @@
 <script type="text/javascript" src="/airsys/assets/js/jquery-1.11.1.js"></script>
 <script>
 $(".buy").click(function(){
-	var fnumber=$(this).parent().parent().children()[0].innerText;
-	var from=$(this).parent().parent().children()[1].innerText;
-	var to=$(this).parent().parent().children()[2].innerText;
-	var time=$(this).parent().parent().children()[3].innerText;
-	var time2=$(this).parent().parent().children()[4].innerText;
-	var price=$(this).parent().parent().children()[8].innerText;
-	location.href="http://localhost:8080/airsys/sales/user2/"+from+"/"+to+"/"+time+"/"+time2+"/"+price+"/"+fnumber
+	var fnumber=$(this).parent().parent().children()[1].innerText;
+	var from=$(this).parent().parent().children()[2].innerText;
+	var to=$(this).parent().parent().children()[3].innerText;
+	var time=$(this).parent().parent().children()[4].innerText;
+	var time2=$(this).parent().parent().children()[5].innerText;
+	var price=$(this).parent().parent().children()[9].innerText;
+	var fid=$(this).parent().parent().children()[0].innerText;
+	location.href="user2/"+from+"/"+to+"/"+time+"/"+time2+"/"+price+"/"+fnumber+"/"+fid
 })
 </script>
 </html>

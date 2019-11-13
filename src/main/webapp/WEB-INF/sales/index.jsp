@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="entity.*,util.*,controller.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <html>
@@ -15,11 +17,12 @@
   </style>
 </head>
 <body class="layui-layout-body">
+
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
     <div class="layui-logo">营业员</div>
     
- 
+ <c:forEach items="${saleInfo }" var="saleInfo">
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
@@ -27,7 +30,7 @@
           营业员
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="http://localhost:8080/airsys/sales/saleinfo/1" target="aa">基本资料</a></dd>
+          <dd><a href="http://localhost:8080/airsys/sales/saleinfo/${saleInfo.snumber}" target="aa">基本资料</a></dd>
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
@@ -38,6 +41,7 @@
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">票务管理</a>
@@ -51,15 +55,16 @@
         <li class="layui-nav-item">
           <a href="javascript:;">历史记录</a>
           <dl class="layui-nav-child">
-            <dd><a href="http://localhost:8080/airsys/sales/history/1" target="aa">查看已售机票信息</a></dd>
+            <dd><a href="http://localhost:8080/airsys/sales/history/${saleInfo.snumber}" target="aa">查看已售机票信息</a></dd>
             
           </dl>
         </li>
-        <li class="layui-nav-item" ><a href="http://localhost:8080/airsys/sales/saleinfo/1" target="aa">个人信息</a></li>
+        <li class="layui-nav-item" ><a href="http://localhost:8080/airsys/sales/saleinfo/${saleInfo.snumber}" target="aa">个人信息</a></li>
       </ul>
+      
     </div>
   </div>
-  
+  </c:forEach>
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <iframe src="" frameborder="0" name="aa"></iframe>

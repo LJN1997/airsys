@@ -38,7 +38,7 @@ public class SalesDaoImpl implements ISalesDao {
 	// 2、查票 根据用户输入的出发地、目的地、时间 查询出符合条件的机票
 	@Override
 	public List<Info> find(String startplace, String destination, String startTime) {
-		String sql = "SELECT f.fnumber ,p.from_city ,p.to_city ,p.start_date ,p.departure_time ,p.arrival_time ,f.first_class_remain_seats ,f.business_class_remain_seats ,f.economy_class_remain_seats ,p.tprice ,f.season_discount  FROM airsys_flight f RIGHT JOIN airsys_plan p ON f.fnumber=p.fnumber WHERE from_city = ? AND to_city= ? AND start_date= ? ";
+		String sql = "SELECT f.fid,f.fnumber ,p.from_city ,p.to_city ,p.start_date ,p.departure_time ,p.arrival_time ,f.first_class_remain_seats ,f.business_class_remain_seats ,f.economy_class_remain_seats ,p.tprice ,f.season_discount,p.exp_start_time, p.exp_end_time  FROM airsys_flight f RIGHT JOIN airsys_plan p ON f.fnumber=p.fnumber WHERE from_city = ? AND to_city= ? AND start_date= ? ";
 		return jdbcTemplate.query(sql, new Object[] { startplace, destination, startTime },
 				new BeanPropertyRowMapper<Info>(Info.class));
 	}
@@ -94,6 +94,31 @@ public class SalesDaoImpl implements ISalesDao {
 		}
 	}
 
+	
+	//买票 插入营业员sid 航班fid 用户uid
+	@Override
+	public void addAndupdate(Ticket t, String fnumber, String seat) {
+		if (seat.equals("first_class_remain_seats")) {
+			String sql = "INSERT INTO airsys_ticket(fid,uid,sid,tclass,passenger_type,tprice) VALUES(?,?,?,?,?,?)";
+			jdbcTemplate.update(sql, new Object[] { t.getFid(),t.getUid(),t.getSid(),t.getTclass(), t.getPassengerType(), t.getTprice() });
+
+			String sql1 = "update airsys_flight set first_class_remain_seats=first_class_remain_seats-1 where fnumber = ?";
+			jdbcTemplate.update(sql1, new Object[] { fnumber });
+		}
+		if (seat.equals("business_class_remain_seats")) {
+			String sql = "INSERT INTO airsys_ticket(fid,uid,sid,tclass,passenger_type,tprice) VALUES(?,?,?,?,?,?)";
+			jdbcTemplate.update(sql, new Object[] { t.getFid(),t.getUid(),t.getSid(),t.getTclass(), t.getPassengerType(), t.getTprice() });
+			String sql1 = "update airsys_flight set business_class_remain_seats=business_class_remain_seats-1 where fnumber = ?";
+			jdbcTemplate.update(sql1, new Object[] { fnumber });
+		}
+		if (seat.equals("economy_class_remain_seats")) {
+			String sql = "INSERT INTO airsys_ticket(fid,uid,sid,tclass,passenger_type,tprice) VALUES(?,?,?,?,?,?)";
+			jdbcTemplate.update(sql, new Object[] { t.getFid(),t.getUid(),t.getSid(),t.getTclass(), t.getPassengerType(), t.getTprice() });
+			String sql1 = "update airsys_flight set economy_class_remain_seats=economy_class_remain_seats-1 where fnumber = ?";
+			jdbcTemplate.update(sql1, new Object[] { fnumber });
+		}
+		
+	}
 	// 6、退票 根据用户id，航班号，座位数退票
 	@Override
 	public void delete(int uid, int fid, String seat) {
@@ -122,18 +147,27 @@ public class SalesDaoImpl implements ISalesDao {
 
 	// 7、查看营业员个人信息
 	@Override
-	public List<Sales> saleinfo(int sid) {
-		String sql = "select s.sid,s.shead,s.sname,s.snumber,p.pname,p.psite,s.sphone ,p.province from airsys_sales s join airsys_place p on s.pid=p.pid where s.sid=?";
+	public List<Sales> saleinfo(String num) {
+		String sql = "select * from airsys_sales s join airsys_place p on s.pid=p.pid where s.snumber=?";
 
-		return jdbcTemplate.query(sql, new Object[] { sid }, new BeanPropertyRowMapper<Sales>(Sales.class));
+		return jdbcTemplate.query(sql, new Object[] { num }, new BeanPropertyRowMapper<Sales>(Sales.class));
 	}
 
 	// 8、查看历史记录
 	@Override
-	public List<Ticket> history(int sid) {
+	public List<Ticket> history(String num) {
 
-		String sql = "SELECT s.snumber,t.tdate,t.tprice,t.passenger_type FROM airsys_ticket t JOIN airsys_sales s ON t.sid=s.sid WHERE s.sid=?";
-		return jdbcTemplate.query(sql, new Object[] { sid }, new BeanPropertyRowMapper<Ticket>(Ticket.class));
+		String sql = "SELECT s.snumber,t.tdate,t.tprice,t.passenger_type FROM airsys_ticket t JOIN airsys_sales s ON t.sid=s.sid WHERE s.snumber=?";
+		return jdbcTemplate.query(sql, new Object[] { num }, new BeanPropertyRowMapper<Ticket>(Ticket.class));
 	}
+
+	@Override
+	public int findSid(String num, String pwd) {
+		String sql = "SELECT sid FROM airsys_sales WHERE snumber=? AND spwd=?";
+		int sid =jdbcTemplate.queryForObject(sql, new Object[] { num, pwd },Integer.class);
+		return sid;
+	}
+
+	
 
 }
