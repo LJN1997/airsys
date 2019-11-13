@@ -14,6 +14,7 @@ import entity.UserSelect;
 import entity.UserSelectAll;
 @Repository("accountDaoSpringImpl")
 public class AirsysDaoImpl implements IAirsysDao{
+	
 	@Autowired
 	private JdbcTemplate jdbctemplate;
 
