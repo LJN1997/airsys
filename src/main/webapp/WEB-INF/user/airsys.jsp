@@ -158,7 +158,7 @@
 				<form action="airsys/userbuff" method="get">
 					<br> <br>
 					<div class="class-id">
-						<b style="color:#99a5b4; font-size:20px;">航班号</b>
+						<b style="color: #99a5b4; font-size: 20px;">航班号</b>
 					</div>
 					<div class="start" style="width: 500px;">
 						<div class="start-lcon-box">
@@ -166,15 +166,17 @@
 								<img src="/airsys/assets/img/start.png" alt="">
 							</div>
 						</div>
-						<input type="text" placeholder="请输入航班号" name="fnumber" style="width: 350px;">
+						<input type="text" placeholder="请输入航班号" name="fnumber"
+							style="width: 350px;">
 					</div>
 					<div class="class-id">
 						<e style="color: #99a5b4; font-size: 20px;margin-top:10px;">日期：</e>
-						<br> <br> <input type="date" name="startDate" style="background: rgba(0, 0, 0, 0); color: #99a5b4;">
+						<br> <br> <input type="date" name="startDate"
+							style="background: rgba(0, 0, 0, 0); color: #99a5b4;">
 					</div>
 					<button type="submit" class="enter">
-							<div class="jiantou"></div>
-						</button>
+						<div class="jiantou"></div>
+					</button>
 				</form>
 			</div>
 		</div>

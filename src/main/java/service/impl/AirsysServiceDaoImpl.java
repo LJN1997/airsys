@@ -45,9 +45,9 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 	}
 
 	@Override
-	public List<UserSelectAll> searchFlightBuff(String fnumber,String startDate) {
+	public List<UserSelectAll> searchFlightBuff(String fnumber,String start_date) {
 		
-		return asDao.findFlightBuff(fnumber, startDate);
+		return asDao.findFlightBuff(fnumber, start_date);
 	}
 	
 

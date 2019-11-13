@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,16 +46,35 @@ public class AirsysController {
 	public ModelAndView queryflightBuff(String fnumber,String startDate) {
 		System.out.println(fnumber);
 		System.out.println(startDate);
-
 		List<UserSelectAll> usts = airService.searchFlightBuff(fnumber, startDate);
-		for (UserSelectAll userSelect : usts) {
-			System.out.println(userSelect);
+		
+		
+		Date a1 = usts.get(0).getDepartureTime();
+		Date a2 = new Date();
+		
+		Date a3 = usts.get(0).getArrivalTime();
+		
+		if(a1.before(a2)&&a2.before(a3)) {
+			usts.get(0).setStr("飞行中");
+		}else if(a1.before(a2)&&a3.before(a2)){
+			usts.get(0).setStr("已降落");
+		}else {
+			usts.get(0).setStr("未起飞");
+
 		}
+		
+		
+		Date DepartureTime = usts.get(0).getDepartureTime();
+		Date ArrivalTime = usts.get(0).getArrivalTime();
+		long tem = ArrivalTime.getTime() - DepartureTime.getTime();
+		long temp = tem / 1000 / 60;
+		System.out.println(temp);
+		usts.get(0).setTemp(temp);
+		
 		ModelAndView mv = new ModelAndView("/user/flightStatus");
 		mv.addObject("usts",usts);
 		return mv;
 	}
-	
 	
 	
 }
