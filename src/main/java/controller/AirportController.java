@@ -23,9 +23,6 @@ public class AirportController {
 	@Autowired
 	private IAirportService airService;
 
-	
-	
-	
 	@RequestMapping("/airinfo")
 	public ModelAndView getAirport() {
 		ModelAndView mv = new ModelAndView("main/main");
