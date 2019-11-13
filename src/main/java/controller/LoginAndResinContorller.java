@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import entity.Admin;
 import service.prototy.IAdminService;
+import service.prototy.ISalesService;
 
 @Controller
 @RequestMapping("/login")
@@ -17,7 +18,8 @@ public class LoginAndResinContorller {
 
 	@Autowired
 	private IAdminService adminService;
-	
+	@Autowired
+	private ISalesService saleService;
 	
 	@RequestMapping(value="/log",method=RequestMethod.POST)
 	public ModelAndView login(String name,String password,int role) {
@@ -34,12 +36,19 @@ public class LoginAndResinContorller {
 				return mv;
 			}
 		}else if(role==2) {
-			
+			int num = saleService.login(name, password);
+			if(num>0) {
+				ModelAndView mv = new ModelAndView("sales/index");
+				
+				return mv;
+			}else {
+				ModelAndView mv = new ModelAndView("main/login");
+				return mv;
+			}
+		
 		}
+		
 		return null;
-		
-		
-		
-		
 	}
+	
 }

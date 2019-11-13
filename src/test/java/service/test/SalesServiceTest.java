@@ -28,7 +28,7 @@ public class SalesServiceTest {
 		//1.判断营业员登录
 		@Test
 		public void login(){
-			ss.login("111", "111");
+			System.out.println(ss.login("111", "111"));
 		}
 		
 		//2.查票
