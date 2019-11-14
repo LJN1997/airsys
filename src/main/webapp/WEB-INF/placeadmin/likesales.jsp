@@ -55,13 +55,13 @@ pageEncoding="utf-8"%>
 						<td name = "sphone">${sales.sphone }</td>
 
 						<td name = "caozuo">
-							<button type="button" id="${sales.sid }c" class="layui-btn layui-btn-danger delete" onclick="del(${sales.sid})">删除</button>
+							<button type="button" id="${sales.sid }c" class="layui-btn layui-btn-danger delete" onclick="del(${sales.sid},${pid})">删除</button>
 						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
-		
+		<input type="hidden" name="pid" value="${pid}">
 	</div>
 	 
 </form>

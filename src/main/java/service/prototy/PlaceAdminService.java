@@ -22,6 +22,7 @@ public interface PlaceAdminService {
 	void delete(int sid);
 	//-- 修改个人信息
 	void updateSelf(PlaceAdmin placeAdmin);
+	void updatepwd(int paid,String papwd);
 	//-- 查询营业员售票记录信息
 	List<SalesTicket> TlistPaged(int pid,int pageNo,int pageSize);
 	List<SalesTicket> findTicket(int tid);

@@ -1,18 +1,18 @@
-function del (id) {
+function del (id,pid) {
 	if(confirm("确定删除？")){
-    	window.location.href="/airsys/placeadmin/delete/"+id
+    	window.location.href="/airsys/placeadmin/delete/"+id+"/"+pid
 	}
 }
 
-function add(){
-	window.location.href="/airsys/placeadmin/add/2"
+function add(id){
+	window.location.href="/airsys/placeadmin/add/"+id
 
 }
 
-function view(id){
-	window.location.href="/airsys/placeadmin/view/" +id                
+function view(id,pid){
+	window.location.href="/airsys/placeadmin/view/" +id+ "/"+pid               
 }
 
-function ret(){
-	window.location.href="/airsys/placeadmin/saleticket"                
+function ret(id){
+	window.location.href="/airsys/placeadmin/saleticket/"+id                
 }

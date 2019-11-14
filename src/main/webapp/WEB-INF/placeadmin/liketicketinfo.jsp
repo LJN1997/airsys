@@ -63,7 +63,7 @@ pageEncoding="utf-8"%>
 			</c:forEach>
 		</table>
 		
-
+<input type="hidden" name="pid" value="${pid}">
 	</div>
 	 
 	

@@ -18,15 +18,12 @@ public class Plan {
 	private int sailLength;
 	private String type;
 	private double tprice;
-	private Date expStartTime;
-	private Date expEndTime;
 	public Plan() {
 		super();
 	}
 	public Plan(int planId, String fnumber, Date startDate, Date endDate, String fromCity, String toCity,
 			Date departureTime, Date arrivalTime, Date expStartTime, Date expEndTime, int sailLength, String type,
 			double tprice) {
-
 		super();
 		this.planId = planId;
 		this.fnumber = fnumber;
@@ -40,9 +37,19 @@ public class Plan {
 		ExpEndTime = expEndTime;
 		this.sailLength = sailLength;
 		this.type = type;
+		this.tprice = tprice;   
+	}
+	
+	public Plan(String fnumber, Date startDate, Date endDate, String fromCity, String toCity, String type,
+			double tprice) {
+		super();
+		this.fnumber = fnumber;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.fromCity = fromCity;
+		this.toCity = toCity;
+		this.type = type;
 		this.tprice = tprice;
-		this.expStartTime = expStartTime;
-		this.expEndTime = expEndTime;
 	}
 	public int getPlanId() {
 		return planId;
@@ -59,14 +66,14 @@ public class Plan {
 	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setStartDate(String startDate) {
+		this.startDate = DateUtil.toDate("yyyy-MM-dd", startDate);
 	}
 	public Date getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setEndDate(String endDate) {
+		this.endDate = DateUtil.toDate("yyyy-MM-dd", endDate);
 	}
 	public String getFromCity() {
 		return fromCity;
@@ -127,8 +134,7 @@ public class Plan {
 		return "Plan [planId=" + planId + ", fnumber=" + fnumber + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", fromCity=" + fromCity + ", toCity=" + toCity + ", departureTime=" + departureTime
 				+ ", arrivalTime=" + arrivalTime + ", ExpStartTime=" + ExpStartTime + ", ExpEndTime=" + ExpEndTime
-				+ ", sailLength=" + sailLength + ", type=" + type + ", tprice=" + tprice + ", expStartTime="
-				+ expStartTime + ", expEndTime=" + expEndTime + "]";
+				+ ", sailLength=" + sailLength + ", type=" + type + ", tprice=" + tprice + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -139,8 +145,6 @@ public class Plan {
 		result = prime * result + ((arrivalTime == null) ? 0 : arrivalTime.hashCode());
 		result = prime * result + ((departureTime == null) ? 0 : departureTime.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-		result = prime * result + ((expEndTime == null) ? 0 : expEndTime.hashCode());
-		result = prime * result + ((expStartTime == null) ? 0 : expStartTime.hashCode());
 		result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 		result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
 		result = prime * result + planId;
@@ -187,16 +191,6 @@ public class Plan {
 				return false;
 		} else if (!endDate.equals(other.endDate))
 			return false;
-		if (expEndTime == null) {
-			if (other.expEndTime != null)
-				return false;
-		} else if (!expEndTime.equals(other.expEndTime))
-			return false;
-		if (expStartTime == null) {
-			if (other.expStartTime != null)
-				return false;
-		} else if (!expStartTime.equals(other.expStartTime))
-			return false;
 		if (fnumber == null) {
 			if (other.fnumber != null)
 				return false;
@@ -230,8 +224,6 @@ public class Plan {
 			return false;
 		return true;
 	}
-
 	
-
 	
 }

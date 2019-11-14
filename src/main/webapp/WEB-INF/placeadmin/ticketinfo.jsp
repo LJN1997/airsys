@@ -42,28 +42,40 @@ pageEncoding="utf-8"%>
 			</colgroup>
 			<thead>
 				<tr>
-					<th>机票编号</th>
-					<th>航班编号</th>
 					<th>营业员编号</th>
-					<th>营业员名称</th>
+					<th>营业员姓名</th>
+					<th>机票编号</th>
+					<th>航班编号</th>	
+					<th>机票状态</th>
 					<th>操作</th>
 				</tr>
 			</thead>
 			<c:forEach items="${data}" var="sales">
 				<tbody style="border:1px solid red">
 					<tr id="">
+						<td name = "snumber">${sales.snumber}</td>
+						<td name = "sname">${sales.sname}</td>
 						<td name = "tnumber">${sales.tnumber}</td>
 						<td name = "fnumber">${sales.fnumber}</td>
-						<td name = "snumber">${sales.snumber }</td>
-						<td name = "sname">${sales.sname}</td>
+						<c:choose>
+						<c:when test="${sales.status==0}">
+						<td name = "status">出票完成</td>
+						</c:when>
+						<c:when test="${sales.status==1}">
+						<td name = "status">已退票</td>
+						</c:when>
+						<c:when test="${sales.status==2}">
+						<td name = "status">已改签</td>
+						</c:when>
+						</c:choose>
 						<td name = "caozuo">
-							<button type="button" id="${sales.tid}" class="layui-btn layui-btn-primary delete" onclick="view(${sales.tid})">查看</button>
+							<button type="button" id="${sales.tid}" class="layui-btn layui-btn-primary delete" onclick="view(${sales.tid},${pid})">查看</button>
 						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
-		
+		<input type="hidden" name="pid" value="${pid}">
 
 	</div>
 	 
