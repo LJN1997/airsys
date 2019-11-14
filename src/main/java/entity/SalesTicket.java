@@ -20,12 +20,17 @@ public class SalesTicket {
 	private String passengerType;
 	private double tprice;
 	private int sailLength;
+	private int status;
+	private String idcard;
+	private String oname;
+	private String ophone;	
 	public SalesTicket() {
 		super();
 	}
 	public SalesTicket(int tid, String snumber, String sname, String tnumber, String fnumber, String fromCity,
-			String toCity, Date startDate, Date endDate, Date expSatrtTime, Date expEndTime, String type, String tclass,
-			String passengerType, double tprice, int sailLength, Date expStartTime) {
+			String toCity, Date startDate, Date endDate, Date expStartTime, Date expEndTime, String type, String tclass,
+			String passengerType, double tprice, int sailLength, int status, String idcard, String oname,
+			String ophone) {
 		super();
 		this.tid = tid;
 		this.snumber = snumber;
@@ -36,13 +41,17 @@ public class SalesTicket {
 		this.toCity = toCity;
 		this.startDate = startDate;
 		this.endDate = endDate;
-	    this.expStartTime = expStartTime;
-	    this.expEndTime = expEndTime;
+		this.expStartTime = expStartTime;
+		this.expEndTime = expEndTime;
 		this.type = type;
 		this.tclass = tclass;
 		this.passengerType = passengerType;
 		this.tprice = tprice;
 		this.sailLength = sailLength;
+		this.status = status;
+		this.idcard = idcard;
+		this.oname = oname;
+		this.ophone = ophone;
 	}
 	public int getTid() {
 		return tid;
@@ -140,6 +149,39 @@ public class SalesTicket {
 	public void setSailLength(int sailLength) {
 		this.sailLength = sailLength;
 	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public String getIdcard() {
+		return idcard;
+	}
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
+	public String getOname() {
+		return oname;
+	}
+	public void setOname(String oname) {
+		this.oname = oname;
+	}
+	public String getOphone() {
+		return ophone;
+	}
+	public void setOphone(String ophone) {
+		this.ophone = ophone;
+	}
+	@Override
+	public String toString() {
+		return "SalesTicket [tid=" + tid + ", snumber=" + snumber + ", sname=" + sname + ", tnumber=" + tnumber
+				+ ", fnumber=" + fnumber + ", fromCity=" + fromCity + ", toCity=" + toCity + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", expStartTime=" + expStartTime + ", expEndTime=" + expEndTime + ", type="
+				+ type + ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice
+				+ ", sailLength=" + sailLength + ", status=" + status + ", idcard=" + idcard + ", oname=" + oname
+				+ ", ophone=" + ophone + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -149,11 +191,15 @@ public class SalesTicket {
 		result = prime * result + ((expStartTime == null) ? 0 : expStartTime.hashCode());
 		result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 		result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
+		result = prime * result + ((idcard == null) ? 0 : idcard.hashCode());
+		result = prime * result + ((oname == null) ? 0 : oname.hashCode());
+		result = prime * result + ((ophone == null) ? 0 : ophone.hashCode());
 		result = prime * result + ((passengerType == null) ? 0 : passengerType.hashCode());
 		result = prime * result + sailLength;
 		result = prime * result + ((sname == null) ? 0 : sname.hashCode());
 		result = prime * result + ((snumber == null) ? 0 : snumber.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + status;
 		result = prime * result + ((tclass == null) ? 0 : tclass.hashCode());
 		result = prime * result + tid;
 		result = prime * result + ((tnumber == null) ? 0 : tnumber.hashCode());
@@ -198,6 +244,21 @@ public class SalesTicket {
 				return false;
 		} else if (!fromCity.equals(other.fromCity))
 			return false;
+		if (idcard == null) {
+			if (other.idcard != null)
+				return false;
+		} else if (!idcard.equals(other.idcard))
+			return false;
+		if (oname == null) {
+			if (other.oname != null)
+				return false;
+		} else if (!oname.equals(other.oname))
+			return false;
+		if (ophone == null) {
+			if (other.ophone != null)
+				return false;
+		} else if (!ophone.equals(other.ophone))
+			return false;
 		if (passengerType == null) {
 			if (other.passengerType != null)
 				return false;
@@ -219,6 +280,8 @@ public class SalesTicket {
 			if (other.startDate != null)
 				return false;
 		} else if (!startDate.equals(other.startDate))
+			return false;
+		if (status != other.status)
 			return false;
 		if (tclass == null) {
 			if (other.tclass != null)
@@ -245,14 +308,6 @@ public class SalesTicket {
 		} else if (!type.equals(other.type))
 			return false;
 		return true;
-	}
-	@Override
-	public String toString() {
-		return "SalesTicket [tid=" + tid + ", snumber=" + snumber + ", sname=" + sname + ", tnumber=" + tnumber
-				+ ", fnumber=" + fnumber + ", fromCity=" + fromCity + ", toCity=" + toCity + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", expSatrtTime=" + expStartTime + ", expEndTime=" + expEndTime + ", type="
-				+ type + ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice
-				+ ", sailLength=" + sailLength + "]";
 	}
 	
 	

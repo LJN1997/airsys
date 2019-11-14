@@ -10,38 +10,27 @@ public class Ticket {
 		private String passengerType;
 		private double tprice;
 		private String snumber;
+		private int status;
+		private String idcard;
 
 		public Ticket() {
 			super();
 		}
 
-		
-		public Ticket(String tclass, String passengerType, double tprice, int fid, int uid) {
+		public Ticket(int tid, int fid, int uid, int sid, String tdate, String tclass, String passengerType,
+				double tprice, String snumber, int status, String idcard) {
 			super();
-			this.tclass = tclass;
-			this.passengerType = passengerType;
-			this.tprice = tprice;
+			this.tid = tid;
 			this.fid = fid;
 			this.uid = uid;
-		}
-		
-		public Ticket(int fid,int uid,int sid,String tclass, String passengerType, double tprice) {
-			super();
+			this.sid = sid;
+			this.tdate = tdate;
 			this.tclass = tclass;
 			this.passengerType = passengerType;
 			this.tprice = tprice;
-			this.fid = fid;
-			this.sid=sid;
-			this.uid=uid;
-		}
-		
-		
-		
-		public Ticket(String tclass, String passengerType,double tprice) {
-			super();
-			this.tclass = tclass;
-			this.passengerType = passengerType;
-			this.tprice = tprice;
+			this.snumber = snumber;
+			this.status = status;
+			this.idcard = idcard;
 		}
 
 		public int getTid() {
@@ -92,13 +81,12 @@ public class Ticket {
 			this.tclass = tclass;
 		}
 
-	
 		public String getPassengerType() {
 			return passengerType;
 		}
 
-		public void setPassengerType(String passenger_type) {
-			this.passengerType = passenger_type;
+		public void setPassengerType(String passengerType) {
+			this.passengerType = passengerType;
 		}
 
 		public double getTprice() {
@@ -117,24 +105,39 @@ public class Ticket {
 			this.snumber = snumber;
 		}
 
-		
+		public int getStatus() {
+			return status;
+		}
+
+		public void setStatus(int status) {
+			this.status = status;
+		}
+
+		public String getIdcard() {
+			return idcard;
+		}
+
+		public void setIdcard(String idcard) {
+			this.idcard = idcard;
+		}
 
 		@Override
 		public String toString() {
 			return "Ticket [tid=" + tid + ", fid=" + fid + ", uid=" + uid + ", sid=" + sid + ", tdate=" + tdate
 					+ ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice + ", snumber="
-					+ snumber + "]";
+					+ snumber + ", status=" + status + ", idcard=" + idcard + "]";
 		}
-
 
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
 			result = prime * result + fid;
+			result = prime * result + ((idcard == null) ? 0 : idcard.hashCode());
 			result = prime * result + ((passengerType == null) ? 0 : passengerType.hashCode());
 			result = prime * result + sid;
 			result = prime * result + ((snumber == null) ? 0 : snumber.hashCode());
+			result = prime * result + status;
 			result = prime * result + ((tclass == null) ? 0 : tclass.hashCode());
 			result = prime * result + ((tdate == null) ? 0 : tdate.hashCode());
 			result = prime * result + tid;
@@ -156,6 +159,11 @@ public class Ticket {
 			Ticket other = (Ticket) obj;
 			if (fid != other.fid)
 				return false;
+			if (idcard == null) {
+				if (other.idcard != null)
+					return false;
+			} else if (!idcard.equals(other.idcard))
+				return false;
 			if (passengerType == null) {
 				if (other.passengerType != null)
 					return false;
@@ -167,6 +175,8 @@ public class Ticket {
 				if (other.snumber != null)
 					return false;
 			} else if (!snumber.equals(other.snumber))
+				return false;
+			if (status != other.status)
 				return false;
 			if (tclass == null) {
 				if (other.tclass != null)
@@ -186,5 +196,6 @@ public class Ticket {
 				return false;
 			return true;
 		}
+
 		
 }

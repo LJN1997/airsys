@@ -24,7 +24,7 @@ pageEncoding="utf-8"%>
 		style="margin-top: 20px;">
 		<legend>个人详细信息</legend>
 	</fieldset>
-<form  action="/airsys/placeadmin/updatepwd2" method="post">
+<form class="layui-form" action="/airsys/placeadmin/updatepwd2" method="post">
 
   <div class="layui-form-item">
     <div class="layui-input-block">
@@ -35,7 +35,7 @@ pageEncoding="utf-8"%>
   <div class="layui-form-item">
     <label class="layui-form-label ">新密码</label>
     <div class="layui-input-inline">
-      <input type="text"  name="papwd" lay-verify="papwd" autocomplete="off"  class="layui-input papwd">
+      <input type="password"  name="papwd" lay-verify="papwd" autocomplete="off" placeholder="请输入新密码"  class="layui-input papwd">
     </div>
     <div class="layui-form-mid layui-word-aux">请填写5到12位密码</div>
   </div>
@@ -43,7 +43,7 @@ pageEncoding="utf-8"%>
   <div class="layui-form-item">
     <label class="layui-form-label ">确认密码</label>
     <div class="layui-input-inline">
-      <input type="text"  name="papwd1" lay-verify="papwd1" autocomplete="off"  class="layui-input papwd1">
+      <input type="password"  name="papwd1" lay-verify="papwd1" autocomplete="off" placeholder="请再次确认密码" class="layui-input papwd1">
     </div>
     <div class="layui-form-mid layui-word-aux">请填写5到12位密码</div>
   </div>
@@ -58,6 +58,42 @@ pageEncoding="utf-8"%>
   </div>
 
 </form>
+ 
+ 
+ 
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+  //自定义验证规则
+  form.verify({
+	  papwd: function(value) {
+		    if (value === "") 
+		      return "密码不能为空！";
+		    var regExpDigital = /^[\S]{5,12}$/;		   
+		    if (regExpDigital.test(value)) {
+		        return '密码必须5到12位，且不能出现空格';
+		    }
+		},
+		papwd1: function(value) {
+		    if (value === "") 
+		      return "请输入二次密码！";
+		    var papwd = $('input[name=papwd').val();
+		    if (papwd !== value) 
+		      return "二次输入的密码不一致！";
+		    var regExpDigital = /^[\S]{5,12}$/;		   
+		    if (regExpDigital.test(value)) {
+		        return '密码必须5到12位，且不能出现空格';
+		}
+    
+  });
+    
+});
+</script>
  
 
 </body>

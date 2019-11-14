@@ -31,6 +31,28 @@ pageEncoding="utf-8"%>
       <button type="button" class="layui-btn layui-btn-warm layui-btn-radius" lay-filter="demo1"onclick="ret(${pid})"> << </button>
   </div>
     <input type="hidden" name="pid" value="${pid}">
+    
+  <div class="layui-form-item">
+    <label class="layui-form-label oname">乘客姓名</label>
+    <div class="layui-input-inline">
+      <input type="text" readonly="readonly" name="oname" lay-verify="oname" autocomplete="off" value="${tlistPaged.oname}" class="layui-input "oname"">
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label idcard">身份证</label>
+    <div class="layui-input-inline">
+      <input type="text" readonly="readonly" name="idcard" lay-verify="idcard" autocomplete="off" value="${tlistPaged.idcard}" class="layui-input "idcard"">
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label ophone">联系方式</label>
+    <div class="layui-input-inline">
+      <input type="text" readonly="readonly" name="ophone" lay-verify="ophone" autocomplete="off" value="${tlistPaged.ophone}" class="layui-input "ophone"">
+    </div>
+  </div>
+    
   <div class="layui-form-item">
     <label class="layui-form-label fromCity">出发地</label>
     <div class="layui-input-inline">

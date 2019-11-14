@@ -147,13 +147,13 @@ public class PlaceAdminController {
 		ModelAndView mv = new ModelAndView("/placeadmin/selfinfo");
 		PlaceAdmin findPlaceAdmin = pas.findPlaceAdmin(panumber);
 		mv.addObject("findPlaceAdmin",findPlaceAdmin);
-		return mv;
-		
+		return mv;	
 	}
 	
 	@RequestMapping("/updatepwd/{paid}/{panumber}")
 	public ModelAndView updatePwd(@PathVariable("paid")int paid,@PathVariable("panumber")String panumber) {
 		ModelAndView mv = new ModelAndView("/placeadmin/updatepwd");
+		mv.addObject("paid",paid);
 		return mv;	
 	}
 	@RequestMapping(value="/updatepwd2",method=RequestMethod.POST)
@@ -161,13 +161,16 @@ public class PlaceAdminController {
 		System.out.println(paid);
 		System.out.println(papwd);
 		System.out.println(papwd1);
-		ModelAndView mv = new ModelAndView("/placeadmin/updatepwd");
+		ModelAndView mv = new ModelAndView();
 
 		if(papwd.equals(papwd1)) {
 			pas.updatepwd(paid, papwd);
+			mv.addObject("paid",paid);
+			mv.setViewName("redirect:/placeadmin/index");
 			return mv;
 		}else {
-			
+			mv.addObject("paid",paid);
+			mv.setViewName("/placeadmin/updatepwd");
 			return mv;
 		}
 	}
