@@ -7,4 +7,5 @@ import entity.Info;
 public interface ISelectAllDao {
 
 	List<Info> findFight();
+	List<Info> findforNumber(int fnumber);
 }

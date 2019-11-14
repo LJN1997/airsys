@@ -72,7 +72,8 @@
                     </dl>-->
                 </li>
                 <li class="layui-nav-item"><a href="/airsys/user/userinfo" target="main">用户信息</a></li>
-                <li class="layui-nav-item"><a href="">航班信息</a></li>
+                <li class="layui-nav-item"><a href="/airsys/flightplan/fplaninfo" target="main">航班计划</a></li>
+                <li class="layui-nav-item"><a href="/airsys/flight/flightinfo" target="main">航班信息</a></li>
                   <li class="layui-nav-item">
                     <a href="#" >票务管理</a>
                   <dl class="layui-nav-child">

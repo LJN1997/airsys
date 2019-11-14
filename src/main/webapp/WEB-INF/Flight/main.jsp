@@ -23,50 +23,45 @@
 	<div class="layui-form">
 		<table class="layui-table">
 			<colgroup>
-				<col width="100">
-				<col width="100">
-				<col width="100">
-				<col width="100">
-				<col width="100">
-				<col width="100">
+				<col width="80">
+				<col width="80">
+				<col width="80">
+				<col width="80">
+				<col width="80">
+				<col width="150">
 				<col>
 			</colgroup>
 			<thead>
 				<tr>
 					<th>航班编号</th>
+					<th>起飞时间</th>
 					<th>出发地</th>
 					<th>目的地</th>
-					<th>起飞时间</th>
 					<th>价格</th>
 					<th>操作</th>
 				</tr>
 			</thead>
-			<c:forEach items="${air}" var="act">
+			<c:forEach items="${flight}" var="flight">
 				<tbody>
 					<tr>
-						<td>${act.airportNumber}</td>
-						<td>${act.airportName }</td>
-						<td>${act.airportCity }</td>
-						<td>${act.airportCity }</td>
-						<td>${act.airportCity }</td>
-						<td>${act.airportCity }</td>
+						<td>${flight.fnumber}</td>
+						<td>${flight.departureTime }</td>
+						<td>${flight.fromCity }</td>
+						<td>${flight.toCity}</td>
+						<td>${flight.tprice }</td>
 						<td>
-							<button type="button" id="${act.airportNumber }update"
-								class="layui-btn layui-btn-warm "
-								onclick="onupdate('${act.airportNumber}')">修改</button>
-							<button type="button" id="${act.airportNumber }delete"
-								class="layui-btn layui-btn-danger"
-								onclick="ondelete('${act.airportNumber}')">删除</button>
+						<button type="button" id="${flight.fnumber }view"
+								class="layui-btn layui-btn-primary "
+								onclick="shows(${flight.fnumber})">查看</button>
 						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
-		<button type="button" class="layui-btn layui-btn-normal" onclick="adds()">添加</button>
 
 	</div>
 
-	<script src="/airsys/assets/js/airport.js" charset="utf-8"></script>
+	<script src="/airsys/assets/js/flight.js" charset="utf-8"></script>
 
 	<!-- <script src="/airsys/assets/layui/layui.js" charset="utf-8"></script> -->
 

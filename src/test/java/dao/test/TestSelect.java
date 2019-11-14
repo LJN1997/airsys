@@ -18,4 +18,8 @@ public class TestSelect {
 	public void testSelect() {
 		System.out.println(selectDao.findFight());
 	}
+	@Test
+	public void testfindid() {
+		System.out.println(selectDao.findforNumber(747));
+	}
 }
