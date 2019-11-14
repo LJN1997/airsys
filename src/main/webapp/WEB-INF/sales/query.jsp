@@ -14,8 +14,7 @@
 </head>
 
 <body>
-	<form class="layui-form"
-		action="http://localhost:8080/airsys/sales/query">
+	<form class="layui-form" action="http://localhost:8080/airsys/sales/query">
 		<div class="contain">
 			<div class="one">机票查询</div>
 

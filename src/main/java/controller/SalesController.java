@@ -122,7 +122,6 @@ public class SalesController {
 		}else if(grade.equals("economy_class_remain_seats")){
 			 tclass = "经济舱";
 		}
-		//salesService.buy(new Ticket(tclass,people,price), fnumber, grade);
 		salesService.addAndupdate(new Ticket(fid,0,sid,tclass,people,price), fnumber, grade);
 		
 		ModelAndView mv = new ModelAndView("/sales/successbuy");
@@ -158,7 +157,8 @@ public class SalesController {
     	ModelAndView mv = new ModelAndView("/sales/query");
     	return mv;
     }
-    @RequestMapping("/user2/{from}/{to}/{time}/{time2}/{price}/{fnumber}/{fid}")
+    //点击预订票 将查询出来的结果信息存起来
+    @RequestMapping("/reserve/{from}/{to}/{time}/{time2}/{price}/{fnumber}/{fid}")
     public ModelAndView getUsers2(@PathVariable("from")String from,@PathVariable("to")String to,@PathVariable("time")String time,@PathVariable("time2")String time2,@PathVariable("price")double price,@PathVariable("fnumber")String fnumber,@PathVariable("fid")int fid){
     	
     	ModelAndView mv = new ModelAndView("/sales/add");

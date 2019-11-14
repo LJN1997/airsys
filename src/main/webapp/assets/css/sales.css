@@ -20,13 +20,7 @@ body, h2 {
 	font-size: 30px;	
 }
 
-.buyPage{
-	width: 450px;
-	height: 530px;
-	border: 4px solid blue;
-	margin-left: 100px;
-	margin-top: 10px;
-}
+
 
 .layui-tab {
 	width: 100%;
