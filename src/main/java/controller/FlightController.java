@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import entity.Info;
-import service.prototy.ISelectService;
+import service.prototy.IPlanService;
 
 @Controller
 @RequestMapping("/flight")
 public class FlightController {
 	@Autowired
-	private ISelectService selectService;
+	private IPlanService selectService;
 	
 	@RequestMapping("/flightinfo")
 	public ModelAndView find() {
 		ModelAndView mv = new ModelAndView("Flight/main");
-		List<Info> Fight = selectService.findFight();
-		mv.addObject("flight",Fight);
+		//List<Info> Fight = selectService.findFight();
+		//mv.addObject("flight",Fight);
 		return mv;
 	}
 
@@ -29,8 +29,8 @@ public class FlightController {
 	public ModelAndView view(@PathVariable("fnumber")int fnumber) {
 		ModelAndView mv = new ModelAndView("Flight/info");
 		System.out.println(fnumber);
-		List<Info> Fight = selectService.findByNumber(fnumber);
-		mv.addObject("flight",Fight);
+		//List<Info> Fight = selectService.findByNumber(fnumber);
+		//mv.addObject("flight",Fight);
 		return mv;
 	}
 	@RequestMapping("/back")

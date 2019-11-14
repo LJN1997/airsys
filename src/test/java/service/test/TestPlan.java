@@ -7,16 +7,29 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import config.TestConfig;
-import service.prototy.ISelectService;
+import entity.Plan;
+import service.prototy.IPlanService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes= {TestConfig.class}) 
-public class TestSelect {
+public class TestPlan {
 	@Autowired
-	private ISelectService selectService;
+	private IPlanService planService;
 	
 	@Test
 	public void testfindFight() {
-		System.out.println(selectService.findFight());
+		System.out.println(planService.findFplan());
+	}
+	@Test
+	public void testfindFnumber(){
+		System.out.println(planService.findByNumber("747"));
+	}
+	@Test
+	public void testdelete() {
+		planService.delete(3);
+	}
+	@Test
+	public void testUpdateSave() {
+		planService.UpdateOrSave(new Plan());
 	}
 }
