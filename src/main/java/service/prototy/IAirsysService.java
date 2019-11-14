@@ -12,7 +12,7 @@ import util.MiniPager;
  */
 public interface IAirsysService {
 	@MiniPager(tableName="airsys")
-	List<UserSelect> searchFlight(String start,String fromCity,String toCity);
+	List<UserSelectAll> searchFlight(String start,String fromCity,String toCity);
 	
 	@MiniPager(tableName="airsys")
 	List<UserSelectAll> searchFlightAll();
@@ -24,5 +24,9 @@ public interface IAirsysService {
 	void saveOrUpdate(Ticket fgt,int fid,String passenger);
 	
 	void Update(int uid,int fid,String passenger,Ticket fgt);
+	//登陆
+	int login(String uphone,String upwd);
+	//注册
+	int reg(String uphone,String upwd);
 	
 }

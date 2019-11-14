@@ -27,10 +27,10 @@
 			</div>
 			<div class="head-right-box">
 				<div class="head-right-4">
-					<a href="">登陆</a>
+					<a href="/airsys/user/login">登陆</a>
 				</div>
 				<div class="head-right-3">
-					<a href="">注册</a>
+					<a href="/airsys/user/reg">注册</a>
 				</div>
 				<div class="head-right-2">
 					<a href="">发现</a>

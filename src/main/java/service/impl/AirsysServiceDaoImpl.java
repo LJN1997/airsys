@@ -18,7 +18,7 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 	private IAirsysDao asDao;
 
 	@Override
-	public List<UserSelect> searchFlight(String start, String from_city, String toCity) {
+	public List<UserSelectAll> searchFlight(String start, String from_city, String toCity) {
 		
 		return asDao.find(start, from_city, toCity);
 	}
@@ -48,6 +48,18 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 	public List<UserSelectAll> searchFlightBuff(String fnumber,String start_date) {
 		
 		return asDao.findFlightBuff(fnumber, start_date);
+	}
+
+	@Override
+	public int login(String uphone, String upwd) {
+		
+		return asDao.login(uphone, upwd);
+	}
+
+	@Override
+	public int reg(String uphone, String upwd) {
+		
+		return asDao.reg(uphone, upwd);
 	}
 	
 

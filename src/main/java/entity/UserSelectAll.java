@@ -6,7 +6,7 @@ import util.DateUtil;
 
 public class UserSelectAll {
 	private int fid;
-	private double discount;
+	private double season_discount;
 	private int firstClassRemainSeats;
 	private int businessClassRemainSeats;
 	private int economyClassRemainSeats;
@@ -28,13 +28,13 @@ public class UserSelectAll {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public UserSelectAll(int fid, double discount, int firstClassRemainSeats, int businessClassRemainSeats,
+	public UserSelectAll(int fid, double season_discount, int firstClassRemainSeats, int businessClassRemainSeats,
 			int economyClassRemainSeats, String fnumber, Date startDate, Date endDate, String fromCity, String toCity,
 			Date departureTime, Date arrivalTime, int sailLength, String tprice, String type, Date expStartTime,
 			Date expEndTime, String str, long temp) {
 		super();
 		this.fid = fid;
-		this.discount = discount;
+		this.season_discount = season_discount;
 		this.firstClassRemainSeats = firstClassRemainSeats;
 		this.businessClassRemainSeats = businessClassRemainSeats;
 		this.economyClassRemainSeats = economyClassRemainSeats;
@@ -59,11 +59,11 @@ public class UserSelectAll {
 	public void setFid(int fid) {
 		this.fid = fid;
 	}
-	public double getDiscount() {
-		return discount;
+	public double getSeason_discount() {
+		return season_discount;
 	}
-	public void setDiscount(double discount) {
-		this.discount = discount;
+	public void setSeason_discount(double season_discount) {
+		this.season_discount = season_discount;
 	}
 	public int getFirstClassRemainSeats() {
 		return firstClassRemainSeats;
@@ -174,9 +174,6 @@ public class UserSelectAll {
 		result = prime * result + ((arrivalTime == null) ? 0 : arrivalTime.hashCode());
 		result = prime * result + businessClassRemainSeats;
 		result = prime * result + ((departureTime == null) ? 0 : departureTime.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(discount);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + economyClassRemainSeats;
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + ((expEndTime == null) ? 0 : expEndTime.hashCode());
@@ -186,6 +183,9 @@ public class UserSelectAll {
 		result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 		result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
 		result = prime * result + sailLength;
+		long temp;
+		temp = Double.doubleToLongBits(season_discount);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((str == null) ? 0 : str.hashCode());
 		result = prime * result + (int) (this.temp ^ (this.temp >>> 32));
@@ -214,8 +214,6 @@ public class UserSelectAll {
 			if (other.departureTime != null)
 				return false;
 		} else if (!departureTime.equals(other.departureTime))
-			return false;
-		if (Double.doubleToLongBits(discount) != Double.doubleToLongBits(other.discount))
 			return false;
 		if (economyClassRemainSeats != other.economyClassRemainSeats)
 			return false;
@@ -250,6 +248,8 @@ public class UserSelectAll {
 			return false;
 		if (sailLength != other.sailLength)
 			return false;
+		if (Double.doubleToLongBits(season_discount) != Double.doubleToLongBits(other.season_discount))
+			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
 				return false;
@@ -281,7 +281,7 @@ public class UserSelectAll {
 	}
 	@Override
 	public String toString() {
-		return "UserSelectAll [fid=" + fid + ", discount=" + discount + ", firstClassRemainSeats="
+		return "UserSelectAll [fid=" + fid + ", season_discount=" + season_discount + ", firstClassRemainSeats="
 				+ firstClassRemainSeats + ", businessClassRemainSeats=" + businessClassRemainSeats
 				+ ", economyClassRemainSeats=" + economyClassRemainSeats + ", fnumber=" + fnumber + ", startDate="
 				+ startDate + ", endDate=" + endDate + ", fromCity=" + fromCity + ", toCity=" + toCity
@@ -290,7 +290,7 @@ public class UserSelectAll {
 				+ expEndTime + ", str=" + str + ", temp=" + temp + "]";
 	}
 	
-
+	
 	
 	
 	

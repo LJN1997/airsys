@@ -19,12 +19,12 @@ public class AirsysDaoImpl implements IAirsysDao{
 	private JdbcTemplate jdbctemplate;
 
 	@Override
-	public List<UserSelect> find(String start, String from_city, String to_city) {
+	public List<UserSelectAll> find(String start, String from_city, String to_city) {
 	
-		return  jdbctemplate.query("select * from airsys_plan p left join airsys_flight f on p.fnumber=f.fnumber where start_date = ? and from_city = ? and to_city=?",
+		return  jdbctemplate.query("select * from airsys_plan p left join airsys_flight f on p.fnumber=f.fnumber where p.start_date = ? and p.from_city = ? and p.to_city=?",
 				new Object[] {start,from_city,to_city},
 			
-				new BeanPropertyRowMapper<UserSelect>(UserSelect.class));
+				new BeanPropertyRowMapper<UserSelectAll>(UserSelectAll.class));
 	}
 	
 	@Override
@@ -83,6 +83,24 @@ public class AirsysDaoImpl implements IAirsysDao{
 		return jdbctemplate.query("select * from airsys_plan p left join airsys_flight f on p.fnumber=f.fnumber where f.fnumber=? and start_date=?",
 				new Object[] {fnumber,start_date},
 				new BeanPropertyRowMapper<UserSelectAll>(UserSelectAll.class));
+	}
+	//用户登陆
+	@Override
+	public int login(String uphone, String upwd) {
+		String sql = "select count(*) from airsys_user where uphone=? and upwd=?";
+		
+		return jdbctemplate.queryForObject(sql,
+				new Object[] {uphone,upwd},
+				Integer.class
+				);
+	}
+	//用户注册
+	@Override
+	public int reg(String uphone, String upwd) {
+		String sql = "insert into airsys_user(uphone,upwd) value(?,?)";
+		return jdbctemplate.update(sql,
+				new Object[] {uphone,upwd}
+				);
 	}
 
 }
