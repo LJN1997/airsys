@@ -2,6 +2,9 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +28,29 @@ public class LoginAndResinContorller {
 	@Autowired
 	private PlaceAdminService paService;
 	
+/*	@RequestMapping("log")
+	public ModelAndView log() {
+		ModelAndView mv = new ModelAndView("main/login");
+		return mv;
+	}
+	
+	@RequestMapping("log1")
+	public String login(String number,String password,HttpServletRequest req) {
+		if(StringUtils.isEmpty(number) ||StringUtils.isEmpty(password)) {
+			req.setAttribute("error", "用户名或密码为空");
+			return "redirect:/login/log";
+		}
+		
+	}
+*/
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/log", method = RequestMethod.POST)
-	public ModelAndView login(String name, String password, int role) {
+	public ModelAndView login(String name, String password, int role,HttpSession session) {
 
 		if (role == 1) {
 			int num = adminService.find(name, password);
@@ -55,7 +79,16 @@ public class LoginAndResinContorller {
 			if(num>0) {
 				ModelAndView mv = new ModelAndView("placeadmin/index");
 				PlaceAdmin placeAdmin = paService.findPlaceAdmin(name);
-				mv.addObject("placeAdmin",placeAdmin);
+				String panumber = placeAdmin.getPanumber();
+				int pid = placeAdmin.getPid();
+				int paid = placeAdmin.getPaid();
+				String paname = placeAdmin.getPaname();
+				String papwd = placeAdmin.getPapwd();
+				session.setAttribute("panumber", panumber);
+				session.setAttribute("pid", pid);
+				session.setAttribute("paid", paid);
+				session.setAttribute("paname", paname);
+				session.setAttribute("papwd", papwd);
 				return mv;
 			}
 			return null;
@@ -64,3 +97,9 @@ public class LoginAndResinContorller {
 	}
 
 }
+	
+	
+	
+	
+	
+

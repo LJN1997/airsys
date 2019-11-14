@@ -20,5 +20,11 @@ public class SelectDaoImpl implements ISelectAllDao{
 		return jt.query("SELECT *  FROM airsys_flight f RIGHT JOIN airsys_plan p ON f.fnumber=p.fnumber ", 
 					new BeanPropertyRowMapper<Info>(Info.class));
 	}
+	@Override
+	public List<Info> findforNumber(int fnumber) {
+		return jt.query("SELECT *  FROM airsys_flight f RIGHT JOIN airsys_plan p ON f.fnumber=p.fnumber where p.fnumber=? ",
+				new Object[] {fnumber},
+				new BeanPropertyRowMapper<Info>(Info.class));
+	}
 
 }

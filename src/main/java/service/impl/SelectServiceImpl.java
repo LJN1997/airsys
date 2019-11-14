@@ -17,5 +17,9 @@ public class SelectServiceImpl implements ISelectService{
 	public List<Info> findFight() {
 		return selectDao.findFight();
 	}
+	@Override
+	public List<Info> findByNumber(int fnumber) {
+		return selectDao.findforNumber(fnumber);
+	}
 
 }

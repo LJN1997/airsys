@@ -6,4 +6,5 @@ import entity.Info;
 
 public interface ISelectService {
 	List<Info> findFight();
+	List<Info> findByNumber(int fnumber);
 }
