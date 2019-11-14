@@ -24,17 +24,14 @@ public class DateUtil {
 			}
         	  return null;
           }
-          
-	
 	/*
 	 * 根据 某种日期格式把日期转化为字符串
 	 */
           public static String dateToString(String dateForm,Date date){
- 
         	  return new SimpleDateFormat(dateForm).format(date);
         	  
           }
           
-          
+
           
 }

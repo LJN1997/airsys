@@ -39,7 +39,12 @@ pageEncoding="utf-8"%>
       <input type="text" name="sname" lay-verify="sname" autocomplete="off" placeholder="请输入姓名" class="layui-input sname">
     </div>
   </div>
- 
+   <div class="layui-form-item">
+    <label class="layui-form-label sphone">联系方式</label>
+    <div class="layui-input-inline">
+      <input type="text" name="sphone" lay-verify="sphone" placeholder="请输入电话号码" autocomplete="off" class="layui-input sphone">
+    </div>
+  </div>
   <div class="layui-form-item">
     <label class="layui-form-label spwd">密码</label>
     <div class="layui-input-inline">
@@ -84,7 +89,15 @@ layui.use(['form', 'layedit', 'laydate'], function(){
       if(value.length < 2){
           return '不能少于两个字符';
         }
-    }
+    },
+    sphone: function(value){
+        if(value.length == 0){
+          return '电话号码不能为空';
+        }
+        if(value.length != 11){
+            return '请输入11位电话号码';
+          }
+      }
     ,pass: [
       /^[\S]{5,12}$/
       ,'密码必须5到12位，且不能出现空格'

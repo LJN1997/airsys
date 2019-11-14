@@ -30,8 +30,9 @@ public class PlaceAdminDaoTest {
 		Sales s = new Sales(); 
 		
 		s.setSname("李四");
-		s.setSnumber("999");
+		s.setSnumber("131313");
 		s.setSpwd("12345");
+		s.setSphone("11313131331");
 		s.setPid(2);
 	
 		pad.saveOrUpdate(s);
@@ -112,5 +113,32 @@ public class PlaceAdminDaoTest {
 		System.out.println(findTicketPage);
 	}
 	
+	@Test
+	public void likeFind() {
+		List<Sales> likeFind = pad.likeFind("0");
+		for (Sales sales : likeFind) {
+			System.out.println(sales);
+		}
+	}
+	
+	@Test
+	public void likeTicket() {
+		List<SalesTicket> likeTicket = pad.likeTicket("1");
+		for (SalesTicket salesTicket : likeTicket) {
+			System.out.println(salesTicket);
+		}
+	}
+	
+	@Test
+	public void testPlaceAdminLogin() {
+		int placeAdminLogin = pad.placeAdminLogin("2020", "11111");
+		System.out.println(placeAdminLogin);
+	}
 
+	@Test
+	public void testFindPlaceAdmin() {
+		PlaceAdmin findPlaceAdmin = pad.findPlaceAdmin("2020");
+		System.out.println(findPlaceAdmin);
+	}
+		
 }

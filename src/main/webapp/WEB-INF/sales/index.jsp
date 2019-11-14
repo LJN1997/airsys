@@ -34,7 +34,7 @@
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="http://localhost:8080/airsys/sales/login">退出</a></li>
+      <li class="layui-nav-item"><a href="http://localhost:8080/airsys/main/login">退出</a></li>
     </ul>
   </div>
   

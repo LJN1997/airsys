@@ -55,32 +55,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="http://localhost:8080/airsys/air/airinfo" target="main">机场信息</a>
-                    <!--<dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>-->
-                </li>
-                <li class="layui-nav-item">
-                    <a href="http://localhost:8080/airsys/place/placeinfo" target="main">营业点信息</a>
-                 <!--   <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>-->
-                </li>
-                <li class="layui-nav-item"><a href="/airsys/user/userinfo" target="main">用户信息</a></li>
-                <li class="layui-nav-item"><a href="">航班信息</a></li>
-                  <li class="layui-nav-item">
-                    <a href="#" >票务管理</a>
-                  <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">查询</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
+                    
                 <li class="layui-nav-item"><a href="/airsys/placeadmin/sales" target="main">营业员信息</a></li>
                 <li class="layui-nav-item"><a href="/airsys/placeadmin/ticketinfo" target="main">营业员售票记录</a></li>
             </ul>

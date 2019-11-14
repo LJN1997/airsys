@@ -25,12 +25,11 @@ pageEncoding="utf-8"%>
 		<legend>营业员售票记录</legend>
 	</fieldset>
 	
-	<form action="/airsys/placeadmin/searcht" method="post">
+	<form action="/airsys/placeadmin/ret2" method="post">
 		
 	<div class="layui-form">
 	<div>
-		<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input">
-	    <button type="submit" id=""  class="layui-btn layui-btn-primary">搜索</button>	
+			<button type="submit" id="" class="layui-btn layui-btn-warm layui-btn-radius" ><<</button>
 	</div>
 		<table class="layui-table">
 			<colgroup>
@@ -49,7 +48,7 @@ pageEncoding="utf-8"%>
 					<th>操作</th>
 				</tr>
 			</thead>
-			<c:forEach items="${data}" var="sales">
+			<c:forEach items="${likeTicket}" var="sales">
 				<tbody style="border:1px solid red">
 					<tr id="">
 						<td name = "tnumber">${sales.tnumber}</td>
