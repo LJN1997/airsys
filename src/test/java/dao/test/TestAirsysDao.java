@@ -23,7 +23,7 @@ public class TestAirsysDao {
 	
 	@Test
 	public void testFind() {
-		List<UserSelect> fgt = asDao.find("2019-11-06","TY", "BJ");
+		List<UserSelectAll> fgt = asDao.find("2019-11-06","太原", "北京");
 		for (Object o : fgt) {
 			System.out.println(o);
 		}
