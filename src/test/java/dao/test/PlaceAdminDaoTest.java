@@ -115,7 +115,7 @@ public class PlaceAdminDaoTest {
 	
 	@Test
 	public void likeFind() {
-		List<Sales> likeFind = pad.likeFind("0");
+		List<Sales> likeFind = pad.likeFind("1");
 		for (Sales sales : likeFind) {
 			System.out.println(sales);
 		}
@@ -123,12 +123,12 @@ public class PlaceAdminDaoTest {
 	
 	@Test
 	public void likeTicket() {
-		List<SalesTicket> likeTicket = pad.likeTicket("1");
+		List<SalesTicket> likeTicket = pad.likeTicket("333");
 		for (SalesTicket salesTicket : likeTicket) {
 			System.out.println(salesTicket);
 		}
 	}
-	
+	 
 	@Test
 	public void testPlaceAdminLogin() {
 		int placeAdminLogin = pad.placeAdminLogin("2020", "11111");
@@ -140,5 +140,8 @@ public class PlaceAdminDaoTest {
 		PlaceAdmin findPlaceAdmin = pad.findPlaceAdmin("2020");
 		System.out.println(findPlaceAdmin);
 	}
-		
+	@Test
+	public void testupPwd() {
+		pad.updatePwd(2,"123");
+	}
 }

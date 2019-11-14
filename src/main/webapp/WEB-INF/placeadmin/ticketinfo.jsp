@@ -57,13 +57,13 @@ pageEncoding="utf-8"%>
 						<td name = "snumber">${sales.snumber }</td>
 						<td name = "sname">${sales.sname}</td>
 						<td name = "caozuo">
-							<button type="button" id="${sales.tid}" class="layui-btn layui-btn-primary delete" onclick="view(${sales.tid})">查看</button>
+							<button type="button" id="${sales.tid}" class="layui-btn layui-btn-primary delete" onclick="view(${sales.tid},${pid})">查看</button>
 						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
-		
+		<input type="hidden" name="pid" value="${pid}">
 
 	</div>
 	 

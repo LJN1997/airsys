@@ -32,7 +32,7 @@ pageEncoding="utf-8"%>
       <input type="text" name="snumber" lay-verify="snumber" autocomplete="off" placeholder="请输入工号" class="layui-input snumber">
     </div>
   </div>
-
+<input type="hidden" name="pid" value="${pid}">
   <div class="layui-form-item">
     <label class="layui-form-label sname">姓名</label>
     <div class="layui-input-block">

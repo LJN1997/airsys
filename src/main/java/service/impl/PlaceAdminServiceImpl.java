@@ -131,4 +131,10 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 		return pad.placeAdminLogin(panumber, papwd);
 	}
 
+	@Override
+	public void updatepwd(int paid, String papwd) {
+		pad.updatePwd(paid, papwd);
+		
+	}
+
 }

@@ -168,10 +168,7 @@ return jdbcTemplate.query(
 
 	@Override
 	public List<Sales> likeFind(String keys) {
-		/*int number = jdbcTemplate.queryForObject(
-				"SELECT count(*) AS num FROM airsys_sales WHERE CONCAT(snumber, sname, sphone) LIKE '%"+keys+"%'",
-				new Object[]{},Integer.class);
-		if(number>0) {*/
+		
 			return jdbcTemplate.query(
 					"SELECT * FROM airsys_sales WHERE CONCAT(snumber, sname, sphone) LIKE '%"+keys+"%'", 
 					new BeanPropertyRowMapper<>(Sales.class));
@@ -180,13 +177,9 @@ return jdbcTemplate.query(
 	}
 	@Override
 	public List<SalesTicket> likeTicket(String keys) {
-		/*String sql = "SELECT count(*) AS num FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE CONCAT( t.tid, plan.fnumber, s.sid,s.sname) LIKE '%"+keys+"%'";
-		int number = jdbcTemplate.queryForObject(
-				sql,
-				 new Object[]{},Integer.class);
-		if(number>0) {*/
+		
 			return jdbcTemplate.query(
-					"  SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE CONCAT( t.tid, plan.fnumber, s.sid,s.sname) LIKE '%"+keys+"%'" , 
+					"  SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE CONCAT( t.tnumber, plan.fnumber, s.snumber,s.sname) LIKE '%"+keys+"%'" , 
 					new BeanPropertyRowMapper<>(SalesTicket.class));
 			
 		
@@ -209,5 +202,11 @@ return jdbcTemplate.query(
 		return number;
 	}
 
+	@Override
+	public void updatePwd(int paid, String pwd) {
+		jdbcTemplate.update("update airsys_place_admin set papwd=? where paid=?",
+				new Object[] {pwd,paid});
+	}
+ 
 
 }

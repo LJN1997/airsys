@@ -22,6 +22,8 @@ public interface PlaceAdminDao {
 	List<Sales> findAll(int pid);
 	List<Sales> listfind(int pid,int offset,int pageSize);
 	Pager<Sales> findSalesPage(int pid,int offset,int pageSize);
+	//修改密码
+	void updatePwd(int paid, String papwd);
 	//修改营业管理员个人信息
 	void updateSelf(PlaceAdmin padmin) ;
 	//查询营业员售票记录

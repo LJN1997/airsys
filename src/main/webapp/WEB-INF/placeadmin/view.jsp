@@ -28,9 +28,9 @@ pageEncoding="utf-8"%>
 <c:forEach items="${findTicket}" var="tlistPaged">  
   <div class="layui-form-item">
     <div class="layui-input-block">
-      <button type="submit" class="layui-btn layui-btn-warm layui-btn-radius" lay-submit="" lay-filter="demo1" onclick="ret()"> << </button>
+      <button type="button" class="layui-btn layui-btn-warm layui-btn-radius" lay-filter="demo1"onclick="ret(${pid})"> << </button>
   </div>
-    
+    <input type="hidden" name="pid" value="${pid}">
   <div class="layui-form-item">
     <label class="layui-form-label fromCity">出发地</label>
     <div class="layui-input-inline">
