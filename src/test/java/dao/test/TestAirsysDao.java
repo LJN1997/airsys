@@ -42,7 +42,7 @@ public class TestAirsysDao {
 	}
 	@Test
 	public void testSaveOrUpdate() {
-		asDao.saveOrUpdate(new Ticket("50","成人",550,2,1), 2, "economy_class_remain_seats");
+	//	asDao.saveOrUpdate(new Ticket("50","成人",550,2,1), 2, "economy_class_remain_seats");
 	}
 	
 }

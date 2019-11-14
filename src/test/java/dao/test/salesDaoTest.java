@@ -49,8 +49,8 @@ public class salesDaoTest {
 	// 3、增加一张票
 	@Test
 	public void add() {
-		Ticket t = new Ticket("头等舱", "成人", 1250);
-		salesDao.add(t);
+	//	Ticket t = new Ticket("头等舱", "成人", 1250);
+	//	salesDao.add(t);
 	}
 
 	// 4、根据fid更新座位数
@@ -63,14 +63,14 @@ public class salesDaoTest {
 	@Test
 	public void buy() {
 		String s ="商务舱";
-		salesDao.buy(new Ticket(s, "成人", 1000), "747", "business_class_remain_seats");
+	//	salesDao.buy(new Ticket(s, "成人", 1000), "747", "business_class_remain_seats");
 	}
 
 	//买票 二版
 	@Test
 	public void buy2(){
 		
-		salesDao.addAndupdate(new Ticket(1,1,1,"商务舱","成人",1000), "747", "business_class_remain_seats");
+		//salesDao.addAndupdate(new Ticket(1,1,1,"商务舱","成人",1000), "747", "business_class_remain_seats");
 	}
 	
 	// 6、退票 根据用户id，航班号，座位数退票

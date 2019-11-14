@@ -122,7 +122,7 @@ public class SalesController {
 		}else if(grade.equals("economy_class_remain_seats")){
 			 tclass = "经济舱";
 		}
-		salesService.addAndupdate(new Ticket(fid,0,sid,tclass,people,price), fnumber, grade);
+		//salesService.addAndupdate(new Ticket(fid,0,sid,tclass,people,price), fnumber, grade);
 		
 		ModelAndView mv = new ModelAndView("/sales/successbuy");
 		 return mv;
@@ -143,7 +143,7 @@ public class SalesController {
 			}else if(grade.equals("economy_class_remain_seats")){
 				 tclass = "经济舱";
 			}
-			salesService.buy(new Ticket(tclass,people,price), fnumber, grade);
+		//	salesService.buy(new Ticket(tclass,people,price), fnumber, grade);
 			ModelAndView mv = new ModelAndView("/sales/successbuy");
 			 return mv;
 		}

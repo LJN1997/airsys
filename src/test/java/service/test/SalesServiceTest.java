@@ -44,12 +44,12 @@ public class SalesServiceTest {
 		@Test
 		public void buy(){
 			String s = "sdfdsf";
-			ss.buy(new Ticket(s,"aaaaaaadsf",1200),"747", "business_class_remain_seats");
+			//ss.buy(new Ticket(s,"aaaaaaadsf",1200),"747", "business_class_remain_seats");
 		}
 		//买票第二版
 		@Test
 		public void buy2(){
-			ss.addAndupdate(new Ticket(1,1,1,"商务舱","成人",1000), "747", "business_class_remain_seats");
+			//ss.addAndupdate(new Ticket(1,1,1,"商务舱","成人",1000), "747", "business_class_remain_seats");
 		}
 		
 		//4.退票  删除更新
