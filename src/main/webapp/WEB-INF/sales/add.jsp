@@ -13,7 +13,11 @@
 </head>
 
 <body>
-	<form class="layui-form" action="/airsys/sales/buy" >
+	<form class="layui-form" action="http://localhost:8080/airsys/sales/buy" method="post">
+		
+		<input Type="hidden" name="fid" value=${fid }>
+		<input Type="hidden" name="sid" value=<%=session.getAttribute("sid")%>>
+		
 		<div class="buyPage">
 			<div class="one">机票购买</div>
 			<div class="layui-tab-content">

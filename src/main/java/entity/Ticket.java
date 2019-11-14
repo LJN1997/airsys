@@ -9,7 +9,6 @@ public class Ticket {
 		private String tclass;
 		private String passengerType;
 		private double tprice;
-	
 		private String snumber;
 
 		public Ticket() {
@@ -26,7 +25,18 @@ public class Ticket {
 			this.uid = uid;
 		}
 		
-	
+		public Ticket(int fid,int uid,int sid,String tclass, String passengerType, double tprice) {
+			super();
+			this.tclass = tclass;
+			this.passengerType = passengerType;
+			this.tprice = tprice;
+			this.fid = fid;
+			this.sid=sid;
+			this.uid=uid;
+		}
+		
+		
+		
 		public Ticket(String tclass, String passengerType,double tprice) {
 			super();
 			this.tclass = tclass;
@@ -107,12 +117,15 @@ public class Ticket {
 			this.snumber = snumber;
 		}
 
+		
+
 		@Override
 		public String toString() {
 			return "Ticket [tid=" + tid + ", fid=" + fid + ", uid=" + uid + ", sid=" + sid + ", tdate=" + tdate
-
-					+ ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice + "]";
+					+ ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice + ", snumber="
+					+ snumber + "]";
 		}
+
 
 		@Override
 		public int hashCode() {

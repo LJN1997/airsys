@@ -42,6 +42,11 @@ public class SalesServiceImpl implements ISalesService {
 		sd.buy(t, fnumber, seat);
 	}
 
+	@Override
+	public void addAndupdate(Ticket t, String fnumber, String seat) {
+      sd.addAndupdate(t, fnumber, seat);		
+	}
+	
 	// 4.退票 删除更新
 	@Override
 	public void quit(int uid, int fid, String seat) {
@@ -50,14 +55,21 @@ public class SalesServiceImpl implements ISalesService {
 
 	// 5.查看营业员个人信息
 	@Override
-	public List<Sales> saleinfo(int sid) {
-		return sd.saleinfo(sid);
+	public List<Sales> saleinfo(String snumber) {
+		return sd.saleinfo(snumber);
 	}
 
 	// 6.查看历史记录
 	@Override
-	public List<Ticket> history(int sid) {
-		return sd.history(sid);
+	public List<Ticket> history(String num) {
+		return sd.history(num);
 	}
+
+	@Override
+	public int findSid(String num, String pwd) {
+		return sd.findSid(num, pwd);
+	}
+
+
 
 }

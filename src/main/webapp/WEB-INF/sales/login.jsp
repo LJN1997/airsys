@@ -63,7 +63,7 @@
     </style>
 </head>
 <body>
-<form class="layui-form" action="http://localhost:8080/airsys/sales/loginCon" method="post">
+<form class="layui-form" action="loginCon" method="post">
     <div class="container">
     <h2>营业员</h2>
         <div class="layui-form-item">
