@@ -24,7 +24,7 @@ public class Info {
 		private double seasonDiscount;
 		private Date expStartTime;
 		private Date expEndTime;
-		private int fid;
+		private int planId;
 		private int sid;
 		private int uid;
 		
@@ -37,7 +37,7 @@ public class Info {
 		public Info(String fnumber, String fromCity, String toCity, Date startDate, String departureTime,
 				String arrivalTime, int firstClassRemainSeats, int businessClassRemainSeats,
 				int economyClassRemainSeats, double tprice, double seasonDiscount, Date expStartTime, Date expEndTime,
-				int fid, int sid, int uid) {
+				int planId, int sid, int uid) {
 			super();
 			this.fnumber = fnumber;
 			this.fromCity = fromCity;
@@ -52,7 +52,7 @@ public class Info {
 			this.seasonDiscount = seasonDiscount;
 			this.expStartTime = expStartTime;
 			this.expEndTime = expEndTime;
-			this.fid = fid;
+			this.planId = planId;
 			this.sid = sid;
 			this.uid = uid;
 		}
@@ -188,13 +188,13 @@ public class Info {
 		}
 
 
-		public int getFid() {
-			return fid;
+		public int getPlanId() {
+			return planId;
 		}
 
 
-		public void setFid(int fid) {
-			this.fid = fid;
+		public void setPlanId(int planId) {
+			this.planId = planId;
 		}
 
 
@@ -225,7 +225,7 @@ public class Info {
 					+ ", firstClassRemainSeats=" + firstClassRemainSeats + ", businessClassRemainSeats="
 					+ businessClassRemainSeats + ", economyClassRemainSeats=" + economyClassRemainSeats + ", tprice="
 					+ tprice + ", seasonDiscount=" + seasonDiscount + ", expStartTime=" + expStartTime + ", expEndTime="
-					+ expEndTime + ", fid=" + fid + ", sid=" + sid + ", uid=" + uid + "]";
+					+ expEndTime + ", planId=" + planId + ", sid=" + sid + ", uid=" + uid + "]";
 		}
 
 
@@ -239,7 +239,7 @@ public class Info {
 			result = prime * result + economyClassRemainSeats;
 			result = prime * result + ((expEndTime == null) ? 0 : expEndTime.hashCode());
 			result = prime * result + ((expStartTime == null) ? 0 : expStartTime.hashCode());
-			result = prime * result + fid;
+			result = prime * result + planId;
 			result = prime * result + firstClassRemainSeats;
 			result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 			result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
@@ -289,7 +289,7 @@ public class Info {
 					return false;
 			} else if (!expStartTime.equals(other.expStartTime))
 				return false;
-			if (fid != other.fid)
+			if (planId != other.planId)
 				return false;
 			if (firstClassRemainSeats != other.firstClassRemainSeats)
 				return false;

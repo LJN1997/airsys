@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dao.prototy.ISalesDao;
 import entity.Info;
+import entity.Order;
 import entity.Sales;
 import entity.Ticket;
 import service.prototy.ISalesService;
@@ -35,7 +36,35 @@ public class SalesServiceImpl implements ISalesService {
 	public List<Info> select(String startplace, String destination, String startTime) {
 		return sd.find(startplace, destination, startTime);
 	}
+	// 3.查看营业员个人信息
+	@Override
+	public List<Sales> saleinfo(String snumber) {
+		return sd.saleinfo(snumber);
+	}
 
+	// 4.查看历史记录
+	@Override
+	public List<Ticket> history(String num) {
+		return sd.history(num);
+	}
+    //5.买票
+	@Override
+	public void updateFightSeat(String fnumber, String seat) {
+               sd.updateFightSeat(fnumber, seat);		
+	}
+
+	@Override
+	public void addTicket(Ticket t) {
+         sd.addTicket(t);		
+	}
+
+	@Override
+	public void addOrder(Order o) {
+         sd.addOrder(o);		
+	}
+	
+
+	
 	// 3.买票 增加更新
 	@Override
 	public void buy(Ticket t, String fnumber, String seat) {
@@ -53,22 +82,28 @@ public class SalesServiceImpl implements ISalesService {
 		sd.delete(uid, fid, seat);
 	}
 
-	// 5.查看营业员个人信息
-	@Override
-	public List<Sales> saleinfo(String snumber) {
-		return sd.saleinfo(snumber);
-	}
 
-	// 6.查看历史记录
-	@Override
-	public List<Ticket> history(String num) {
-		return sd.history(num);
-	}
 
 	@Override
 	public int findSid(String num, String pwd) {
 		return sd.findSid(num, pwd);
 	}
+	 //6、退票
+    //6.1、通过订单编号和身份证先查出用户这张票
+
+	@Override
+	public List<Ticket> findByOId(int oid, String idcard) {
+		// TODO Auto-generated method stub
+		return sd.findByOId(oid, idcard);
+	}
+
+
+
+
+
+
+
+
 
 
 

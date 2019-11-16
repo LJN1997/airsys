@@ -82,12 +82,10 @@ margin-top:20px;
 </head>
 
 <body>
-	<form class="layui-form"
-		action="http://localhost:8080/airsys/sales/buy" method="post">
+	<form class="layui-form" action="http://localhost:8080/airsys/sales/buy" method="post">
 
-		<input Type="hidden" name="fid" value=${fid }> <input
-			Type="hidden" name="sid" value=<%=session.getAttribute("sid")%>>
-
+		<input Type="hidden" name="sid" value=<%=session.getAttribute("sid")%>>
+		<input Type="hidden" name="planId" value=${planId }>
 		<div class="buyPage">
 			<div class="buyPage-left">
 				<div class="one">机票信息</div>
@@ -182,7 +180,7 @@ margin-top:20px;
 				<div class="info">
 					<label class="layui-form-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
 					<div class="layui-input-block">
-						<input type="text" name="price" placeholder="请输入乘客姓名" required lay-verify="required"
+						<input type="text" name="name" placeholder="请输入乘客姓名" required lay-verify="required"
 							autocomplete="off" class="layui-input">
 					</div>
 				</div>
@@ -190,7 +188,7 @@ margin-top:20px;
 				<div class="info">
 					<label class="layui-form-label">证件号码</label>
 					<div class="layui-input-block">
-						<input type="text" placeholder="请输入乘客证件号码" name="" required
+						<input type="text" placeholder="请输入乘客证件号码" name="idcard" required
 							lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>

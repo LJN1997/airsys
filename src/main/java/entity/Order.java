@@ -2,7 +2,7 @@ package entity;
 
 public class Order {
 	private int oid;
-	private int sia;
+	private int sid;
 	private int uid;
 	private String idcard;
 	private String ophone;
@@ -10,10 +10,21 @@ public class Order {
 	public Order() {
 		super();
 	}
-	public Order(int oid, int sia, int uid, String idcard, String ophone, String oname) {
+	
+	public Order( int sid, int uid, String idcard, String ophone, String oname) {
+		super();
+	
+		this.sid = sid;
+		this.uid = uid;
+		this.idcard = idcard;
+		this.ophone = ophone;
+		this.oname = oname;
+	}
+	
+	public Order(int oid, int sid, int uid, String idcard, String ophone, String oname) {
 		super();
 		this.oid = oid;
-		this.sia = sia;
+		this.sid = sid;
 		this.uid = uid;
 		this.idcard = idcard;
 		this.ophone = ophone;
@@ -25,11 +36,11 @@ public class Order {
 	public void setOid(int oid) {
 		this.oid = oid;
 	}
-	public int getSia() {
-		return sia;
+	public int getSid() {
+		return sid;
 	}
-	public void setSia(int sia) {
-		this.sia = sia;
+	public void setSid(int sid) {
+		this.sid = sid;
 	}
 	public int getUid() {
 		return uid;
@@ -57,7 +68,7 @@ public class Order {
 	}
 	@Override
 	public String toString() {
-		return "Order [oid=" + oid + ", sia=" + sia + ", uid=" + uid + ", idcard=" + idcard + ", ophone=" + ophone
+		return "Order [oid=" + oid + ", sia=" + sid + ", uid=" + uid + ", idcard=" + idcard + ", ophone=" + ophone
 				+ ", oname=" + oname + "]";
 	}
 	@Override
@@ -68,7 +79,7 @@ public class Order {
 		result = prime * result + oid;
 		result = prime * result + ((oname == null) ? 0 : oname.hashCode());
 		result = prime * result + ((ophone == null) ? 0 : ophone.hashCode());
-		result = prime * result + sia;
+		result = prime * result + sid;
 		result = prime * result + uid;
 		return result;
 	}
@@ -98,7 +109,7 @@ public class Order {
 				return false;
 		} else if (!ophone.equals(other.ophone))
 			return false;
-		if (sia != other.sia)
+		if (sid != other.sid)
 			return false;
 		if (uid != other.uid)
 			return false;

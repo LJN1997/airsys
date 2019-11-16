@@ -14,6 +14,7 @@ import config.TestConfig;
 import dao.prototy.ISalesDao;
 import entity.Flight;
 import entity.Info;
+import entity.Order;
 import entity.Plan;
 import entity.Sales;
 import entity.Ticket;
@@ -31,9 +32,20 @@ public class salesDaoTest {
 	@Autowired
 	private ISalesDao salesDao;
 
+	
+	//退票
+	@Test
+	public void findByOid(){
+		List<Ticket> f = salesDao.findByOId(3, "142701199706223627");
+		System.out.println(f);
+	}
+	
+	
+	
+	
 	// 1、判断营业员登录
 	@Test
-	public void login() {
+	public void test01() {
 		salesDao.login("111", "111");
 	}
 
@@ -45,54 +57,40 @@ public class salesDaoTest {
 			System.out.println(o);
 		}
 	}
-
-	// 3、增加一张票
+	// 3、查看营业员个人信息
 	@Test
-	public void add() {
-	//	Ticket t = new Ticket("头等舱", "成人", 1250);
-	//	salesDao.add(t);
-	}
-
-	// 4、根据fid更新座位数
-	@Test
-	public void update1() {
-		salesDao.update1(4, "business_class_remain_seats");
-	}
-
-	// 5、买票 实现飞机票中增加一条信息，航班票中减少相应座位
-	@Test
-	public void buy() {
-		String s ="商务舱";
-	//	salesDao.buy(new Ticket(s, "成人", 1000), "747", "business_class_remain_seats");
-	}
-
-	//买票 二版
-	@Test
-	public void buy2(){
-		
-		//salesDao.addAndupdate(new Ticket(1,1,1,"商务舱","成人",1000), "747", "business_class_remain_seats");
-	}
-	
-	// 6、退票 根据用户id，航班号，座位数退票
-	@Test
-	public void delete() {
-		salesDao.delete(2, 2, "business_class_remain_seats");
-	}
-
-	// 7、查看营业员个人信息
-	@Test
-	public void saleinfo() {
+	public void test03() {
 		List<Sales> sales = salesDao.saleinfo("111");
 		System.out.println(sales);
 	}
 
-	// 8、查看历史记录
+	// 4、查看历史记录
 	@Test
-	public void history() {
+	public void test04() {
 		List<Ticket> history = salesDao.history("111");
 		for (Ticket ticket : history) {
 			System.out.println(ticket);
 		}
 	}
+
+	//5、买票
+			//5.1、先增加一张票进ticket表
+			@Test
+			public void test05() {
+				Ticket t = new Ticket(1,1,1,"jjc","child",1000,1,"152488");
+				salesDao.addTicket(t);
+			}
+			//5.2、增加一条信息进order表
+			@Test
+			public void test06() {
+				Order o = new Order(1,1,"14270119970625","17335081644","huu");
+				salesDao.addOrder(o);
+			}
+			//5.3、更新数据改座位
+			@Test
+			public void test07() {
+				salesDao.updateFightSeat("747", "first_class_remain_seats");
+			}
+
 
 }

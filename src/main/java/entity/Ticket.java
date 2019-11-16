@@ -2,35 +2,47 @@ package entity;
 
 public class Ticket {
 		private int tid;
-		private int fid;
+		private int planId;
 		private int uid;
 		private int sid;
 		private String tdate;
 		private String tclass;
 		private String passengerType;
 		private double tprice;
-		private String snumber;
 		private int status;
 		private String idcard;
-
+       private String snumber;
 		public Ticket() {
 			super();
 		}
+		
+		public Ticket(int planId, int uid, int sid,String tclass, String passengerType,
+				double tprice, int status, String idcard) {
+			super();
+			this.planId = planId;
+			this.uid = uid;
+			this.sid = sid;
+			this.tclass = tclass;
+			this.passengerType = passengerType;
+			this.tprice = tprice;
+			this.status = status;
+			this.idcard = idcard;
+		}
 
-		public Ticket(int tid, int fid, int uid, int sid, String tdate, String tclass, String passengerType,
-				double tprice, String snumber, int status, String idcard) {
+		public Ticket(int tid, int planId, int uid, int sid, String tdate, String tclass, String passengerType,
+				double tprice, int status, String idcard, String snumber) {
 			super();
 			this.tid = tid;
-			this.fid = fid;
+			this.planId = planId;
 			this.uid = uid;
 			this.sid = sid;
 			this.tdate = tdate;
 			this.tclass = tclass;
 			this.passengerType = passengerType;
 			this.tprice = tprice;
-			this.snumber = snumber;
 			this.status = status;
 			this.idcard = idcard;
+			this.snumber = snumber;
 		}
 
 		public int getTid() {
@@ -41,12 +53,12 @@ public class Ticket {
 			this.tid = tid;
 		}
 
-		public int getFid() {
-			return fid;
+		public int getPlanId() {
+			return planId;
 		}
 
-		public void setFid(int fid) {
-			this.fid = fid;
+		public void setPlanId(int planId) {
+			this.planId = planId;
 		}
 
 		public int getUid() {
@@ -97,14 +109,6 @@ public class Ticket {
 			this.tprice = tprice;
 		}
 
-		public String getSnumber() {
-			return snumber;
-		}
-
-		public void setSnumber(String snumber) {
-			this.snumber = snumber;
-		}
-
 		public int getStatus() {
 			return status;
 		}
@@ -121,20 +125,28 @@ public class Ticket {
 			this.idcard = idcard;
 		}
 
+		public String getSnumber() {
+			return snumber;
+		}
+
+		public void setSnumber(String snumber) {
+			this.snumber = snumber;
+		}
+
 		@Override
 		public String toString() {
-			return "Ticket [tid=" + tid + ", fid=" + fid + ", uid=" + uid + ", sid=" + sid + ", tdate=" + tdate
-					+ ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice + ", snumber="
-					+ snumber + ", status=" + status + ", idcard=" + idcard + "]";
+			return "Ticket [tid=" + tid + ", planId=" + planId + ", uid=" + uid + ", sid=" + sid + ", tdate=" + tdate
+					+ ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice + ", status="
+					+ status + ", idcard=" + idcard + ", snumber=" + snumber + "]";
 		}
 
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + fid;
 			result = prime * result + ((idcard == null) ? 0 : idcard.hashCode());
 			result = prime * result + ((passengerType == null) ? 0 : passengerType.hashCode());
+			result = prime * result + planId;
 			result = prime * result + sid;
 			result = prime * result + ((snumber == null) ? 0 : snumber.hashCode());
 			result = prime * result + status;
@@ -157,8 +169,6 @@ public class Ticket {
 			if (getClass() != obj.getClass())
 				return false;
 			Ticket other = (Ticket) obj;
-			if (fid != other.fid)
-				return false;
 			if (idcard == null) {
 				if (other.idcard != null)
 					return false;
@@ -168,6 +178,8 @@ public class Ticket {
 				if (other.passengerType != null)
 					return false;
 			} else if (!passengerType.equals(other.passengerType))
+				return false;
+			if (planId != other.planId)
 				return false;
 			if (sid != other.sid)
 				return false;
@@ -197,5 +209,7 @@ public class Ticket {
 			return true;
 		}
 
+	
+		
 		
 }

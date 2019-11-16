@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import config.TestConfig;
 import entity.Info;
+import entity.Order;
 import entity.Sales;
 import entity.Ticket;
 import service.prototy.ISalesService;
@@ -40,6 +41,37 @@ public class SalesServiceTest {
 			}
 		}
 		
+		//退票
+		//先根据oid和idcard查到有没有这张票
+		@Test
+		public void findByOid(){
+			List<Ticket> f = ss.findByOId(3, "142701199706223627");
+			System.out.println(f);
+		}
+		
+		
+		
+		
+		
+		//5、买票
+		//5.1、先增加一张票进ticket表
+		@Test
+		public void test05() {
+			Ticket t = new Ticket(1,1,1,"swc","child",1000,1,"147852");
+			ss.addTicket(t);
+		}
+		//5.2、增加一条信息进order表
+		@Test
+		public void test06() {
+			Order o = new Order(1,1,"52147852","123458","ddd");
+			ss.addOrder(o);
+		}
+		//5.3、更新数据改座位
+		@Test
+		public void test07() {
+			ss.updateFightSeat("747", "first_class_remain_seats");
+		}
+
 		//3.买票  增加更新
 		@Test
 		public void buy(){
