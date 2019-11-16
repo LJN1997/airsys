@@ -11,7 +11,7 @@
 <body>
 
 	<div class="box">
-		<div class="title">预订航班</div>
+		<div class="title">航班信息</div>
 		<div class="infobox">
 			<c:forEach items="${usts}" var="list">
 
@@ -42,10 +42,10 @@
 													timeStyle="medium" />
 											</p>
 											<p class="toCity">${list.toCity}</p>
-										</div>
+										</div> 
 										<div class="con-three-bot-right" style="margin-left: 30px;">
 											<p>折扣:<b class="season_discount">${list.season_discount}</b>折</p>
-											<p class="tprice">价格:${list.tprice}</p>
+											<p>价格:<b class="tprice">${list.tprice}</b></p>
 										</div>
 										<div class="con-three-bot-right" style="margin-left: 40px;">
 											
@@ -92,8 +92,8 @@
 			var firstClassRemainSeats =$(".firstClassRemainSeats").html()
 			var businessClassRemainSeats =$(".businessClassRemainSeats").html()
 			var economyClassRemainSeats =$(".economyClassRemainSeats").html()
-
- 			location.href="/airsys/user/buy/"+type+"/"+expStartTime+"/"+expEndTime+"/"+temp+"/"+fromCity+"/"+toCity+"/"+season_discount+"/"+firstClassRemainSeats+"/"+businessClassRemainSeats+"/"+economyClassRemainSeats
+			var tprice = $(".tprice").html();
+ 			location.href="/airsys/user/buy/"+type+"/"+expStartTime+"/"+tprice+"/"+expEndTime+"/"+temp+"/"+fromCity+"/"+toCity+"/"+season_discount+"/"+firstClassRemainSeats+"/"+businessClassRemainSeats+"/"+economyClassRemainSeats
  	})
 	</script>
 

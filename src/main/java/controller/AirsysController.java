@@ -45,8 +45,6 @@ public class AirsysController {
 		return mv;
 	}
 
-
-
 	// 用户登陆
 	@RequestMapping("/sigcon")
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
@@ -56,6 +54,7 @@ public class AirsysController {
 		int a = airService.login(uphone, upwd);
 		if (a > 0) {
 			ModelAndView mv = new ModelAndView("/user/airsys");
+			
 			return mv;
 		}
 		ModelAndView mv = new ModelAndView("/user/signIn");
@@ -132,40 +131,31 @@ public class AirsysController {
 		mv.addObject("usts", usts);
 		return mv;
 	}
-	
-	
-	
-	
+
 	// 用户购买
-	@RequestMapping("/buy/{type}/{expStartTime}/{expEndTime}/{temp}/{fromCity}/{toCity}/{season_discount}/{firstClassRemainSeats}/{businessClassRemainSeats}/{economyClassRemainSeats}")
-	public ModelAndView buy(@PathVariable("type")String type,
-							@PathVariable("expStartTime")String expStartTime,
-							@PathVariable("expEndTime")String expEndTime,
-							@PathVariable("temp")String temp,
-							@PathVariable("fromCity")String fromCity,
-							@PathVariable("toCity")String toCity,
-							@PathVariable("season_discount")String season_discount,
-							@PathVariable("firstClassRemainSeats")String firstClassRemainSeats,
-							@PathVariable("businessClassRemainSeats")String businessClassRemainSeats,
-							@PathVariable("economyClassRemainSeats")String economyClassRemainSeats) {
+	@RequestMapping("/buy/{type}/{expStartTime}/{tprice}/{expEndTime}/{temp}/{fromCity}/{toCity}/{season_discount}/{firstClassRemainSeats}/{businessClassRemainSeats}/{economyClassRemainSeats}")
+	public ModelAndView buy(@PathVariable("type") String type, @PathVariable("expStartTime") String expStartTime,
+			@PathVariable("expEndTime") String expEndTime, @PathVariable("temp") String temp,
+			@PathVariable("fromCity") String fromCity, @PathVariable("toCity") String toCity,
+			@PathVariable("season_discount") String season_discount,
+			@PathVariable("firstClassRemainSeats") String firstClassRemainSeats,
+			@PathVariable("businessClassRemainSeats") String businessClassRemainSeats,
+			@PathVariable("economyClassRemainSeats") String economyClassRemainSeats,
+			@PathVariable("tprice") String tprice) {
 		ModelAndView mv = new ModelAndView("/user/userBuy");
-System.out.println(type);
-		mv.addObject("type",type);
-		mv.addObject("expStartTime",expStartTime);
-		mv.addObject("expEndTime",expEndTime);
-		mv.addObject("temp",temp);
-		mv.addObject("fromCity",fromCity);
-		mv.addObject("toCity",toCity);
-		mv.addObject("season_discount",season_discount);
-		mv.addObject("firstClassRemainSeats",firstClassRemainSeats);
-		mv.addObject("businessClassRemainSeats",businessClassRemainSeats);
-		mv.addObject("economyClassRemainSeats",economyClassRemainSeats);
+		System.out.println(type);
+		mv.addObject("type", type);
+		mv.addObject("expStartTime", expStartTime);
+		mv.addObject("expEndTime", expEndTime);
+		mv.addObject("temp", temp);
+		mv.addObject("fromCity", fromCity);
+		mv.addObject("toCity", toCity);
+		mv.addObject("season_discount", season_discount);
+		mv.addObject("firstClassRemainSeats", firstClassRemainSeats);
+		mv.addObject("businessClassRemainSeats", businessClassRemainSeats);
+		mv.addObject("economyClassRemainSeats", economyClassRemainSeats);
+		mv.addObject("tprice", tprice);
 		return mv;
 	}
-	
-	
-	
-	
-	
 
 }
