@@ -16,6 +16,7 @@ public interface PlaceAdminService {
 	void saveOrUpdate(Sales sales);
 	//-- 查询营业员信息
 	Sales querry(int sid);
+	List<Sales> findAll(int pid);
 	List<Sales> SlistPaged(int pid,int pageNo,int pageSize);
 	Pager<Sales> SlistPager(int pid,int pageNo,int pageSize);
 	//-- 删除营业员信息

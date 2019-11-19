@@ -58,10 +58,10 @@ pageEncoding="utf-8"%>
 						<td name = "tnumber">${sales.tnumber}</td>
 						<td name = "fnumber">${sales.fnumber}</td>
 						<c:choose>
-						<c:when test="${sales.status==0}">
+						<c:when test="${sales.status==1}">
 						<td name = "status">出票完成</td>
 						</c:when>
-						<c:when test="${sales.status==1}">
+						<c:when test="${sales.status==0}">
 						<td name = "status">已退票</td>
 						</c:when>
 						<c:when test="${sales.status==2}">

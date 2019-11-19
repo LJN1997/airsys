@@ -46,7 +46,7 @@
                     <dd><a href="http://localhost:8080/airsys/air/userpwd" target="main">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="/airsys/main/login">退了</a></li>
+            <li class="layui-nav-item"><a href="/airsys/main/login" class="exitbtn">退出</a></li>
         </ul>
     </div>
 

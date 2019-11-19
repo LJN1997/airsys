@@ -26,27 +26,23 @@ pageEncoding="utf-8"%>
 	</fieldset>
 <form class="layui-form" action="/airsys/placeadmin/updatepwd2" method="post">
 
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-
+   <div class="layui-form-item">
+    <label class="layui-form-label papwd">新密码</label>
+    <div class="layui-input-inline">
+      <input type="password" name="papwd" lay-verify="papwd" placeholder="请输入密码" autocomplete="off" class="layui-input papwd">
+    </div>
+    <div class="layui-form-mid layui-word-aux">请填写5到12位密码</div>
   </div>
   
-    <input type="hidden" name="paid" value="${paid}">
   <div class="layui-form-item">
-    <label class="layui-form-label ">新密码</label>
+    <label class="layui-form-label papwd1">确认密码</label>
     <div class="layui-input-inline">
-      <input type="password"  name="papwd" lay-verify="papwd" autocomplete="off" placeholder="请输入新密码"  class="layui-input papwd">
+      <input type="password" name="papwd1" lay-verify="papwd1" placeholder="请确认密码" autocomplete="off" class="layui-input papwd1">
     </div>
     <div class="layui-form-mid layui-word-aux">请填写5到12位密码</div>
   </div>
-
-  <div class="layui-form-item">
-    <label class="layui-form-label ">确认密码</label>
-    <div class="layui-input-inline">
-      <input type="password"  name="papwd1" lay-verify="papwd1" autocomplete="off" placeholder="请再次确认密码" class="layui-input papwd1">
-    </div>
-    <div class="layui-form-mid layui-word-aux">请填写5到12位密码</div>
-  </div>
+	<input type="hidden" name="paid" value="${paid}">
+  
   
    <div class="layui-form-item">
     <div class="layui-input-block">
@@ -55,7 +51,7 @@ pageEncoding="utf-8"%>
     </div>
   </div>
 
-  </div>
+
 
 </form>
  
@@ -91,7 +87,6 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 		}
     
   });
-    
 });
 </script>
  

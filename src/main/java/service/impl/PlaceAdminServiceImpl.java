@@ -137,4 +137,10 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 		
 	}
 
+	@Override
+	public List<Sales> findAll(int pid) {
+		
+		return pad.findAll(pid);
+	}
+
 }

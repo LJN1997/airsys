@@ -28,12 +28,12 @@ public class LoginAndResinContorller {
 	@Autowired
 	private PlaceAdminService paService;
 	
-/*	@RequestMapping("log")
+	@RequestMapping("login1")
 	public ModelAndView log() {
 		ModelAndView mv = new ModelAndView("main/login");
 		return mv;
 	}
-	
+/*	
 	@RequestMapping("log1")
 	public String login(String number,String password,HttpServletRequest req) {
 		if(StringUtils.isEmpty(number) ||StringUtils.isEmpty(password)) {
@@ -44,10 +44,7 @@ public class LoginAndResinContorller {
 	}
 */
 	
-	
-	
-	
-	
+
 	
 	@RequestMapping(value = "/log", method = RequestMethod.POST)
 	public ModelAndView login(String name, String password, int role,HttpSession session) {
@@ -55,40 +52,41 @@ public class LoginAndResinContorller {
 		if (role == 1) {
 			int num = adminService.find(name, password);
 			if (num > 0) {
-				ModelAndView mv = new ModelAndView("main/index");
+				session.setAttribute("login","yes");
+				session.setAttribute("name", name);
+				session.setAttribute("password", password);
+				ModelAndView mv = new ModelAndView("/main/index");
 				List<Admin> admin = adminService.find(name);
 				mv.addObject("admin", admin);
 				return mv;
 			} else {
-				ModelAndView mv = new ModelAndView("main/login");
+				ModelAndView mv = new ModelAndView("/main/login");
 				return mv;
 			}
 		} else if (role == 2) {
 			int num = saleService.login(name, password);
 			if (num > 0) {
-				ModelAndView mv = new ModelAndView("sales/index");
+				session.setAttribute("login","yes");
+				session.setAttribute("name", name);
+				session.setAttribute("password", password);
+				ModelAndView mv = new ModelAndView("/sales/index");
 
 				return mv;
 			} else {
-				ModelAndView mv = new ModelAndView("main/login");
+				ModelAndView mv = new ModelAndView("/main/login");
 				return mv;
 			}
 
 		} else {
 			int num = paService.placeAdminLogin(name, password);
 			if(num>0) {
-				ModelAndView mv = new ModelAndView("placeadmin/index");
+				ModelAndView mv = new ModelAndView("/placeadmin/index");
 				PlaceAdmin placeAdmin = paService.findPlaceAdmin(name);
 				String panumber = placeAdmin.getPanumber();
-				int pid = placeAdmin.getPid();
-				int paid = placeAdmin.getPaid();
-				String paname = placeAdmin.getPaname();
-				String papwd = placeAdmin.getPapwd();
-				session.setAttribute("panumber", panumber);
-				session.setAttribute("pid", pid);
-				session.setAttribute("paid", paid);
-				session.setAttribute("paname", paname);
-				session.setAttribute("papwd", papwd);
+				session.setAttribute("login","yes");
+				session.setAttribute("name", name);
+				session.setAttribute("password", password);
+				mv.addObject("placeAdmin",placeAdmin);
 				return mv;
 			}
 			return null;

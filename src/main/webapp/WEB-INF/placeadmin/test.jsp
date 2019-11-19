@@ -17,6 +17,7 @@ pageEncoding="utf-8"%>
 	<script src="/airsys/assets/layui/layui.js" charset="utf-8"></script>
 	<script src="/airsys/assets/js/placeadmin_sales.js" charset="utf-8"></script>
 	<script src="/airsys/assets/js/jquery-1.7.2.js"></script>   
+	<script src="/airsys/assets/js/test.js"></script>   
 	<link rel="stylesheet" href="/airsys/assets/js/main.js">
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
@@ -29,13 +30,7 @@ pageEncoding="utf-8"%>
 	<form action="/airsys/placeadmin/searchs" method="post">
 		
 	<div class="layui-form">
-	<div>
-		<div>
-			<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input">
-		    <button type="submit"  id="${pid}"  class="layui-btn layui-btn-primary">搜索</button>	
-		</div>
-			<button type="button" id="${pid}" class="layui-btn add" onclick="add(${pid})" >添加</button>
-	</div>
+	
 		<table class="layui-table">
 			<colgroup>
 				<col width="150">
@@ -48,25 +43,12 @@ pageEncoding="utf-8"%>
 				<tr>
 					<th>工号</th>
 					<th>名称</th>
-					<th>联系方式</th>
-					<th>操作</th>
+					
 				</tr>
 			</thead>
-			<c:forEach items="${data}" var="sales">
-				<tbody>
-					<tr id="${sales.sid }">
-						<td name = "snumber">${sales.snumber}</td>
-						<td name = "sname">${sales.sname }</td>
-						<td name = "sphone">${sales.sphone }</td>
 
-						<td name = "caozuo">
-							<button type="button" id="${sales.sid }c" class="layui-btn layui-btn-danger delete" onclick="del(${sales.sid},${pid})">删除</button>
-						</td>
-					</tr>
-				</tbody>
-			</c:forEach>
 		</table>
-		<input type="hidden" name="pid" value="${pid}">
+
 	</div>
 	 
 </form>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
@@ -30,10 +31,23 @@ public class PlaceAdminController {
 	@Autowired 
 	private PlaceAdminService pas;
 	
-	//-- 主界面
+/*	//-- 主界面
 	@RequestMapping("/index")
 	public ModelAndView  index() {	
 		ModelAndView mv = new ModelAndView("/placeadmin/index");
+		return mv;
+	}	*/
+	
+	//--检查
+	@RequestMapping("/check")
+	public ModelAndView  check() {	
+		ModelAndView mv = new ModelAndView("/main/check");
+		return mv;
+	}	
+	//--检查
+	@RequestMapping("/exit")
+	public ModelAndView  exit() {	
+		ModelAndView mv = new ModelAndView("/main/exit");
 		return mv;
 	}	
 	//-- 分页查询营业员
@@ -166,13 +180,27 @@ public class PlaceAdminController {
 		if(papwd.equals(papwd1)) {
 			pas.updatepwd(paid, papwd);
 			mv.addObject("paid",paid);
-			mv.setViewName("redirect:/placeadmin/index");
+			mv.setViewName("redirect:/main/index");
 			return mv;
 		}else {
 			mv.addObject("paid",paid);
 			mv.setViewName("/placeadmin/updatepwd");
 			return mv;
 		}
+	}
+	
+	//--查询该营业点所有营业员
+	@RequestMapping(value="/aa",produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public String test() {
+		List<Sales> findAll = pas.findAll(2);
+		String jsonString = JSON.toJSONString(findAll);
+		return jsonString;		
+	}
+	
+	@RequestMapping("/test")
+	public String test1() {
+		return "/placeadmin/test";
 	}
 	
 }

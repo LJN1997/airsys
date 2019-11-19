@@ -12,12 +12,12 @@ pageEncoding="utf-8"%>
     <title>航天航空订票系统</title>
     <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
     <link rel="stylesheet" href="/airsys/assets/layui/css/index.css">
+    <link rel="stylesheet" href="/airsys/assets/js/main.js">
 	<script src="/airsys/assets/layui/layui.js"></script>
 	<script>
 	    //JavaScript代码区域
 	    layui.use('element', function(){
 	        var element = layui.element;
-	
 	    });
 	</script>
 </head>
@@ -52,7 +52,7 @@ pageEncoding="utf-8"%>
                     <dd><a href="/airsys/placeadmin/updatepwd/${placeAdmin.paid}/${placeAdmin.panumber}" target="main">修改密码</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="/airsys/main/login">退出</a></li>
+            <li class="layui-nav-item"><a href="/airsys/main/login" class="exitbtn">退出</a></li>
         </ul>
     </div>
 

@@ -8,7 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import config.TestConfig;
-import controller.SalesController;
 import dao.prototy.PlaceAdminDao;
 import entity.PlaceAdmin;
 import entity.Sales;
