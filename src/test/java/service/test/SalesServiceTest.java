@@ -45,7 +45,7 @@ public class SalesServiceTest {
 		//先根据oid和idcard查到有没有这张票
 		@Test
 		public void findByOid(){
-			List<Ticket> f = ss.findByOId(3, "142701199706223627");
+			List<Ticket> f = ss.findByOId(3, "111");
 			System.out.println(f);
 		}
 		

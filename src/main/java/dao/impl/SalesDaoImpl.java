@@ -48,7 +48,7 @@ public class SalesDaoImpl implements ISalesDao {
 	// 2、查票 根据用户输入的出发地、目的地、时间 查询出符合条件的机票
 	@Override
 	public List<Info> find(String startplace, String destination, String startTime) {
-		String sql = "SELECT f.fid,f.fnumber ,p.plan_id,p.from_city ,p.to_city ,p.start_date ,p.departure_time ,p.arrival_time ,f.first_class_remain_seats ,f.business_class_remain_seats ,f.economy_class_remain_seats ,p.tprice ,f.season_discount,p.exp_start_time, p.exp_end_time  FROM airsys_flight f RIGHT JOIN airsys_plan p ON f.fnumber=p.fnumber WHERE from_city = ? AND to_city= ? AND start_date= ? ";
+		String sql = "SELECT *  FROM airsys_flight f RIGHT JOIN airsys_plan p ON f.fnumber=p.fnumber WHERE from_city = ? AND to_city= ? AND start_date= ? ";
 		return jdbcTemplate.query(sql, new Object[] { startplace, destination, startTime },new BeanPropertyRowMapper<Info>(Info.class));
 	}
 	

@@ -134,22 +134,6 @@ body {
 				},
 				success:function(e){
 					console.log(e)
-					//var table = $("table")
-					/* for(var i=0;i<e.length;i++){
-						console.log(e[i].tid)
-						 var tr=document.createElement("tr");
-						var td="";
-						td+="<td attr='oid'>"+e[i].tid+"</td>"
-						td+="<td attr='sname'>"+e[i].tid+"</td>"
-						td+="<td attr='tdate'>"+e[i].tdate+"</td>"
-						td+="<td attr='tclass'>"+e[i].tclass+"</td>"
-						td+="<td attr='passengerType'>"+e[i].passengerType+"</td>"
-						td+="<td attr='tprice'>"+e[i].tprice+"</td>"
-						td+="<td attr='status'>"+e[i].status+"</td>"
-						td+="<td attr='deleteTicket'>"+e[i].status+"</td>"
-						tr.innerHTML=td;
-						table.appendChild(tr);		 			
-					} */
 				}
 			})
 		})

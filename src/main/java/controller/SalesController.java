@@ -45,7 +45,6 @@ public class SalesController {
 		String idcard = request.getParameter("idcard");
     	List<Ticket> t =salesService.findByOId(oid, idcard);
     	return JSON.toJSONString(t);
-	
     }
 	
 	
@@ -102,8 +101,7 @@ public class SalesController {
 				 tclass = "头等舱";
 			}else if(seat.equals("economy_class_remain_seats")){
 				 tclass = "经济舱";
-			}
-			
+			}	
 			salesService.addTicket(new Ticket(planId,0,sid,tclass,people,price,1,idcard));
 			salesService.addOrder(new Order(sid,0,idcard,phone,name));
 			salesService.updateFightSeat(fnumber, seat);
