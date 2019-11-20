@@ -14,6 +14,7 @@ import service.prototy.IPlanService;
 @Controller
 @RequestMapping("/flight")
 public class FlightController {
+	
 	@Autowired
 	private IPlanService selectService;
 	

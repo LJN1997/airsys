@@ -20,6 +20,15 @@ public class Flight {
 		this.businessClassRemainSeats = businessClassRemainSeats;
 		this.economyClassRemainSeats = economyClassRemainSeats;
 	}
+	public Flight( String fnumber, double discount, int firstClassRemainSeats, int businessClassRemainSeats,
+			int economyClassRemainSeats) {
+		super();
+		this.fnumber = fnumber;
+		this.discount = discount;
+		this.firstClassRemainSeats = firstClassRemainSeats;
+		this.businessClassRemainSeats = businessClassRemainSeats;
+		this.economyClassRemainSeats = economyClassRemainSeats;
+	}
 	public int getFid() {
 		return fid;
 	}

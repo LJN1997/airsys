@@ -51,7 +51,7 @@ pageEncoding="utf-8"%>
 			<c:forEach items="${likeTicket}" var="sales">
 				<tbody style="border:1px solid red">
 					<tr id="">
-						<td name = "tnumber">${sales.tnumber}</td>
+						<td name = "tnumber">${sales.tid}</td>
 						<td name = "fnumber">${sales.fnumber}</td>
 						<td name = "snumber">${sales.snumber }</td>
 						<td name = "sname">${sales.sname}</td>

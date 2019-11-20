@@ -117,7 +117,7 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 	public List<SalesTicket> findTicketList(int pid,int offset, int pageSize) {
 		return jdbcTemplate.query(
 				
-				"SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id LEFT JOIN airsys_order o ON t.oid = o.oid WHERE t.sid IN ( SELECT s.sid FROM airsys_sales s WHERE s.pid = ? ) LIMIT ?,?",
+				"SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id LEFT JOIN airsys_order o ON t.idcard = o.idcard WHERE t.sid IN ( SELECT s.sid FROM airsys_sales s WHERE s.pid = ? ) LIMIT ?,?",
 				new Object[] {pid,offset,pageSize},
 				new BeanPropertyRowMapper<>(SalesTicket.class));
 	}
@@ -159,7 +159,7 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 	public List<SalesTicket> findTicket(int tid) {
 return jdbcTemplate.query(
 				
-				"SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id LEFT JOIN airsys_order o ON t.oid = o.oid WHERE t.tid = ?",
+				"SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id LEFT JOIN airsys_order o ON t.idcard = o.idcard WHERE t.tid = ?",
 				new Object[] {tid},
 				new BeanPropertyRowMapper<>(SalesTicket.class));
 	}
@@ -177,7 +177,7 @@ return jdbcTemplate.query(
 	public List<SalesTicket> likeTicket(String keys) {
 
 			return jdbcTemplate.query(
-					"  SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE CONCAT( t.tnumber, plan.fnumber, s.snumber,s.sname) LIKE '%"+keys+"%'" , 
+					"  SELECT * FROM airsys_place p LEFT JOIN airsys_sales s ON p.pid = s.pid LEFT JOIN airsys_ticket t ON s.sid = t.sid LEFT JOIN airsys_plan plan ON plan.plan_id = t.plan_id WHERE CONCAT(t.tid,plan.fnumber, s.snumber,s.sname) LIKE '%"+keys+"%'" , 
 					new BeanPropertyRowMapper<>(SalesTicket.class));
 	
 	}

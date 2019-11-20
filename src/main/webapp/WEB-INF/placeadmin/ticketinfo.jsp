@@ -55,7 +55,7 @@ pageEncoding="utf-8"%>
 					<tr id="">
 						<td name = "snumber">${sales.snumber}</td>
 						<td name = "sname">${sales.sname}</td>
-						<td name = "tnumber">${sales.tnumber}</td>
+						<td name = "tnumber">${sales.tid}</td>
 						<td name = "fnumber">${sales.fnumber}</td>
 						<c:choose>
 						<c:when test="${sales.status==1}">
