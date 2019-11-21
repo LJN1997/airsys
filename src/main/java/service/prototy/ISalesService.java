@@ -29,7 +29,7 @@ public interface ISalesService {
 
     //6、退票
     //6.1、通过订单编号和身份证先查出用户这张票
-    List<Ticket> findByOId(int oid,String idcard);
+    List<Ticket> findBy(String name,String idcard);
   	
   	
   	

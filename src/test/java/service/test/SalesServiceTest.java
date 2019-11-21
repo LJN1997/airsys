@@ -44,14 +44,10 @@ public class SalesServiceTest {
 		//退票
 		//先根据oid和idcard查到有没有这张票
 		@Test
-		public void findByOid(){
-			List<Ticket> f = ss.findByOId(3, "111");
+		public void findBy(){
+			List<Ticket> f = ss.findBy("aa", "11");
 			System.out.println(f);
 		}
-		
-		
-		
-		
 		
 		//5、买票
 		//5.1、先增加一张票进ticket表

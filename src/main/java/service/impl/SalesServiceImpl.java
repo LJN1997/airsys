@@ -92,9 +92,9 @@ public class SalesServiceImpl implements ISalesService {
     //6.1、通过订单编号和身份证先查出用户这张票
 
 	@Override
-	public List<Ticket> findByOId(int oid, String idcard) {
+	public List<Ticket> findBy(String name, String idcard) {
 		// TODO Auto-generated method stub
-		return sd.findByOId(oid, idcard);
+		return sd.findBy(name, idcard);
 	}
 
 

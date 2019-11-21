@@ -62,8 +62,8 @@ margin-top:20px;
 
 .addMan button {
     width:250px;
-	margin-left:-350px;
-	margin-top:330px;
+	margin-left:10px;
+	margin-top:50px;
 }
 
 .addInfo{

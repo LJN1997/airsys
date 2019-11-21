@@ -27,11 +27,10 @@ public interface ISalesDao {
 	      //5、买票
 			void updateFightSeat(String fnumber,String seat);
 			void addTicket(Ticket t);
-	        void addOrder(Order o);
-	      
+	        void addOrder(Order o);  
 	       //6、退票
-	        //6.1、通过订单编号和身份证先查出用户这张票
-	        List<Ticket> findByOId(int oid,String idcard);
+	        //6.1、通过姓名和身份证先查出用户这张票
+	        List<Ticket> findBy(String name,String idcard);
 	       
 	      //3、增加一张票
 			void add(Ticket t);

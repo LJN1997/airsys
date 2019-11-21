@@ -19,7 +19,7 @@ body {
 
 .del {
 	width: 400px;
-	height: 300px;
+	height: 250px;
 	border: 2px solid rgb(144, 144, 144, 0.8);
 	margin-left: 50px;
 	margin-top: 30px;
@@ -39,6 +39,10 @@ body {
 	margin-left: 50px;
 	margin-top: 10px;
 }
+input{
+width:250px;height:30px;
+
+}
 </style>
 </head>
 
@@ -46,15 +50,6 @@ body {
 	<form class="layui-form" action="">
 		<div class="del">
 			<div class="select">退票信息查询</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">订单编号</label>
-				<div class="layui-input-block">
-					<input type="text" class="oid" name="oid" required
-						lay-verify="required" placeholder="请输入订单编号" autocomplete="off"
-						class="layui-input">
-				</div>
-
-			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">姓名</label>
 				<div class="layui-input-block">
@@ -74,19 +69,19 @@ body {
 
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn selectOid" lay-submit
-						lay-filter="formDemo">查询</button>
+					<button class="layui-btn selectOid" lay-submit lay-filter="formDemo">查询</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
 			</div>
 		</div>
 		<div class="del-con">
-			<h2>查询信息</h2>
-			<center>
+			<h2>查询信息</h2>			
+			
 				<table class="layui-table">
 					<tr>
-						<th>订单号</th>
-						<th>乘客姓名</th>
+						<th>姓名</th>
+						<th>电话</th>
+						<th>身份证</th>
 						<th>出票日期</th>
 						<th>座位等级</th>
 						<th>乘客类型</th>
@@ -97,7 +92,7 @@ body {
             
 				</table>
 
-			</center>
+			
 
 		</div>
 	</form>
@@ -122,13 +117,14 @@ body {
 <script>
 	window.onload=function(){
 		$(".selectOid").click(function(){
-			var oid=$(".oid").val()
 			var oname=$(".oname").val()
 			var idcard=$(".idcard").val()
 			$.ajax({
+				
+				type:"post",
+				dataType:"json",
 				url:"selectOid",
 				data:{
-					oid:oid,
 					oname:oname,
 					idcard:idcard,
 				},

@@ -35,8 +35,8 @@ public class salesDaoTest {
 	
 	//退票
 	@Test
-	public void findByOid(){
-		List<Ticket> f = salesDao.findByOId(3, "142701199706223627");
+	public void findBy(){
+		List<Ticket> f = salesDao.findBy("ss","22");
 		System.out.println(f);
 	}
 	

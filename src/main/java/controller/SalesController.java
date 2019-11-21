@@ -37,13 +37,13 @@ public class SalesController {
 	private ISalesService salesService;
 	
 	//6、退票
-	@RequestMapping(value="/selectOid",produces="application/json;charset=UTF-8")
+	@RequestMapping(value="/selectOid"  ,method = RequestMethod.POST,   produces = "text/json;charset=UTF-8")
 	@ResponseBody
     public String selectOid(HttpServletRequest request,HttpServletResponse response){
-		int oid = Integer.parseInt(request.getParameter("oid"));
 		String oname = request.getParameter("oname");
 		String idcard = request.getParameter("idcard");
-    	List<Ticket> t =salesService.findByOId(oid, idcard);
+    	List<Ticket> t =salesService.findBy(oname, idcard);
+    	//System.out.println(t);
     	return JSON.toJSONString(t);
     }
 	

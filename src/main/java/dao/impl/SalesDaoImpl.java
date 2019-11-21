@@ -101,32 +101,16 @@ public class SalesDaoImpl implements ISalesDao {
 			jdbcTemplate.update(sql, new Object[]{o.getSid(),o.getUid(),o.getIdcard(),o.getOphone(),o.getOname()});
 		}
 
+
+		//退票
+		//通过订单编号和身份证先查出用户要退的这张票
+		@Override
+		public List<Ticket> findBy(String name,String idcard) {
+			String sql="SELECT * FROM airsys_order o JOIN  airsys_ticket t  on o.idcard=t.idcard WHERE  o.oname = ? AND o.idcard=?";
+			return jdbcTemplate.query(sql, new Object[]{name,idcard },new BeanPropertyRowMapper<Ticket>(Ticket.class));
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	// 3、增加一张票
 	@Override
 	public void add(Ticket t) {
@@ -233,13 +217,6 @@ public class SalesDaoImpl implements ISalesDao {
 
 	
 
-	//退票
-	//通过订单编号和身份证先查出用户要退的这张票
-	@Override
-	public List<Ticket> findByOId(int oid, String idcard) {
-		String sql="  SELECT * FROM airsys_ticket WHERE tid=? AND idcard = ?";
-		return jdbcTemplate.query(sql, new Object[]{oid,idcard },new BeanPropertyRowMapper<Ticket>(Ticket.class));
-	}
 
 
 

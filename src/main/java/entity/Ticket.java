@@ -5,17 +5,48 @@ public class Ticket {
 		private int planId;
 		private int uid;
 		private int sid;
+	
+       private String snumber;
+	
+       private int oid;
+		private String oname;
+		private String ophone;
+		private String idcard;
 		private String tdate;
 		private String tclass;
 		private String passengerType;
 		private double tprice;
 		private int status;
-		private String idcard;
-       private String snumber;
-		public Ticket() {
+		
+       public Ticket() {
 			super();
 		}
 		
+       
+       
+		public Ticket(int tid, int planId, int uid, int sid, int status, String snumber, int oid, String oname,
+			String ophone, String idcard, String tdate, String tclass, String passengerType, double tprice) {
+		super();
+		this.tid = tid;
+		this.planId = planId;
+		this.uid = uid;
+		this.sid = sid;
+		this.status = status;
+		this.snumber = snumber;
+		this.oid = oid;
+		this.oname = oname;
+		this.ophone = ophone;
+		this.idcard = idcard;
+		this.tdate = tdate;
+		this.tclass = tclass;
+		this.passengerType = passengerType;
+		this.tprice = tprice;
+	}
+
+
+
+	
+
 		public Ticket(int planId, int uid, int sid,String tclass, String passengerType,
 				double tprice, int status, String idcard) {
 			super();
@@ -133,12 +164,51 @@ public class Ticket {
 			this.snumber = snumber;
 		}
 
+		public int getOid() {
+			return oid;
+		}
+
+
+
+		public void setOid(int oid) {
+			this.oid = oid;
+		}
+
+
+
+		public String getOname() {
+			return oname;
+		}
+
+
+
+		public void setOname(String oname) {
+			this.oname = oname;
+		}
+
+
+
+		public String getOphone() {
+			return ophone;
+		}
+
+
+
+		public void setOphone(String ophone) {
+			this.ophone = ophone;
+		}
+
+
+
 		@Override
 		public String toString() {
-			return "Ticket [tid=" + tid + ", planId=" + planId + ", uid=" + uid + ", sid=" + sid + ", tdate=" + tdate
-					+ ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice + ", status="
-					+ status + ", idcard=" + idcard + ", snumber=" + snumber + "]";
+			return "Ticket [tid=" + tid + ", planId=" + planId + ", uid=" + uid + ", sid=" + sid + ", status=" + status
+					+ ", snumber=" + snumber + ", oid=" + oid + ", oname=" + oname + ", ophone=" + ophone + ", idcard="
+					+ idcard + ", tdate=" + tdate + ", tclass=" + tclass + ", passengerType=" + passengerType
+					+ ", tprice=" + tprice + "]";
 		}
+
+
 
 		@Override
 		public int hashCode() {
