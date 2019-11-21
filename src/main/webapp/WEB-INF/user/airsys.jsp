@@ -101,6 +101,7 @@
 							<div class="date-date">
 								<b>&nbsp;&nbsp;日期</b> <input type="date" name="start">
 							</div>
+							<input type="hidden" name ="uid" value = <%=session.getAttribute("uid") %>>
 						</div>
 
 						<div class="class">

@@ -61,6 +61,32 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 		
 		return asDao.reg(uphone, upwd);
 	}
+
+	@Override
+	public int uid(String uphone, String upwd) {
+		
+		return asDao.uid(uphone, upwd);
+	}
+
+	@Override
+	public int buy(String uid, String idcard, String ophone, String oname) {
+		return asDao.buy(uid, idcard, ophone, oname);
+	}
+
+	@Override
+	public int updateEco(String fid) {
+		return asDao.updateEco(fid);
+	}
+
+	@Override
+	public int updateBus(String fid) {
+		return asDao.updateBus(fid);
+	}
+
+	@Override
+	public int updateFir(String fid) {
+		return asDao.updateFir(fid);
+	}
 	
 
 

@@ -63,7 +63,11 @@
 	background:rgba(255,255,255,.3)
 	color:white;
 }
-
+.cang{
+	width:100px;
+	height:30px;
+	float:left;
+}
 
 
 

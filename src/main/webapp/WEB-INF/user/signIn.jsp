@@ -43,6 +43,7 @@ form {
 						class="form-control" id="exampleInputEmail1" placeholder="账号"
 						name="uphone">
 				</div>
+				<input type="hidden" name ="uid" value = <%=session.getAttribute("uid") %>>
 				<div class="form-group">
 					<label for="exampleInputPassword1">密码</label> <input
 						type="password" class="form-control" id="exampleInputPassword1"

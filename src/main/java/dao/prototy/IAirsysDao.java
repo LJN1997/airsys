@@ -20,4 +20,14 @@ public interface IAirsysDao {
 	int login(String uphone,String upwd);
 	//注册
 	int reg(String uphone,String upwd);
+	//账号密码查uid
+	int uid(String uphone, String upwd);
+	//买票
+	int buy(String uid, String idcard, String ophone,String oname);
+	//买票改座位信息 经济
+	int updateEco(String fid);
+	//买票改座位信息 商务
+	int updateBus(String fid);
+	//买票改座位信息 头等
+	int updateFir(String fid);
 }

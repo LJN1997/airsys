@@ -4,6 +4,8 @@ package dao.impl;
 
 import java.util.List;
 
+import javax.management.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -101,6 +103,37 @@ public class AirsysDaoImpl implements IAirsysDao{
 		return jdbctemplate.update(sql,
 				new Object[] {uphone,upwd}
 				);
+	}
+	
+	//uid
+	@Override
+	public int uid(String uphone, String upwd) {
+		String sql = "select uid from airsys_user where uphone = ? and upwd = ?";
+		return jdbctemplate.queryForObject(sql,new Object[] {uphone,upwd},Integer.class);
+	}
+
+	@Override
+	public int buy(String uid, String idcard, String ophone, String oname) {
+		String sql = "insert into airsys_order (uid,idcard,ophone,oname) value(?,?,?,?)";
+		return jdbctemplate.update(sql,new Object[] {uid,idcard,ophone,oname});
+	}
+
+	@Override
+	public int updateEco(String fid) {
+		String sql = "update airsys_flight set economy_class_remain_seats = economy_class_remain_seats -1 where fid = ?";
+		return jdbctemplate.update(sql,new Object[] {fid});
+	}
+
+	@Override
+	public int updateBus(String fid) {
+		String sql = "update airsys_flight set business_class_remain_seats = business_class_remain_seats -1 where fid = ?";
+		return jdbctemplate.update(sql,new Object[] {fid});
+	}
+
+	@Override
+	public int updateFir(String fid) {
+		String sql = "update airsys_flight set first_class_remain_seats = first_class_remain_seats -1 where fid = ?";
+		return jdbctemplate.update(sql,new Object[] {fid});
 	}
 
 }

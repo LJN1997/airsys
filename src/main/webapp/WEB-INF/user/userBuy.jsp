@@ -26,98 +26,110 @@ body {
 }
 </style>
 <body>
-	<form action="/airsys/user/buy" method="post">
-		<div class="head">填写订单</div>
-		<div class="box">
-			<div class="info">
-				<table>
-					<tr>
-						<td><h5 style="width: 130px; margin: 0 50px 0 200px;"
-								class="type">${type}</h5></td>
-						<td class="t2">
-							<div>
-								<div class="con-three-bot-left">
-									<p class="expStartTime">
-										${expStartTime}
-									</p>
-									<p class="fromCity">${fromCity}</p>
-								</div>
-								<div class="con-three-bot-mid">
-									<span class="p1"><b class="temp">${temp}</b>分</span> <span
-										class="p2">——</span>
+	<%
 
-								</div>
-								<div class="con-three-bot-right" style="margin-left: 30px;">
-									<p class="expEndTime">
-										${expEndTime}
-									</p>
-									<br>
-									<p class="toCity">${toCity}</p>
-								</div>
-								<div class="con-three-bot-right" style="margin: 20px 50px;">
-									<p>
-										折扣:<b class="season_discount">${season_discount}</b>折
-									</p>
-									<p class="tprice">价格:${tprice}</p>
-								</div>
-								<div class="con-three-bot-right" style="margin: 0 30px;">
-									<p>
-										<br>
-									</p>
-									头等舱：
-									<p class="firstClassRemainSeats">${firstClassRemainSeats}</p>
-								</div>
-								<div class="con-three-bot-right" style="margin: 0 30px;">
-									<p>
-										<br>
-									</p>
-									商务舱：
-									<p class="businessClassRemainSeats">${businessClassRemainSeats}</p>
-								</div>
-								<div class="con-three-bot-right" style="margin: 0 30px;">
-									<p>
-										<br>
-									</p>
-									经济舱：
-									<p class="economyClassRemainSeats">${economyClassRemainSeats}</p>
-								</div>
+/*  out.println(session.getAttribute("uid"));   */
+%>
+
+	<div class="head">填写订单</div>
+	<div class="box">
+		<div class="info">
+			<table>
+				<tr>
+					<td><h5 style="width: 130px; margin: 0 50px 0 200px;"
+							class="type">${type}</h5></td>
+					<td class="t2">
+						<div>
+							<div class="con-three-bot-left">
+								<p class="expStartTime">${expStartTime}</p>
+								<p class="fromCity">${fromCity}</p>
 							</div>
-						</td>
+							<div class="con-three-bot-mid">
+								<span class="p1"><b class="temp">${temp}</b>分</span> <span
+									class="p2">——</span>
+
+							</div>
+							<div class="con-three-bot-right" style="margin-left: 30px;">
+								<p class="expEndTime">${expEndTime}</p>
+								<br>
+								<p class="toCity">${toCity}</p>
+							</div>
+							<div class="con-three-bot-right" style="margin: 20px 50px;">
+								<p>
+									折扣:<b class="season_discount">${season_discount}</b>折
+								</p>
+								<p class="tprice">价格:${tprice}</p>
+							</div>
+							<div class="con-three-bot-right" style="margin: 0 30px;">
+								<p>
+									<br>
+								</p>
+								头等舱：
+								<p class="firstClassRemainSeats">${firstClassRemainSeats}</p>
+							</div>
+							<div class="con-three-bot-right" style="margin: 0 30px;">
+								<p>
+									<br>
+								</p>
+								商务舱：
+								<p class="businessClassRemainSeats">${businessClassRemainSeats}</p>
+							</div>
+							<div class="con-three-bot-right" style="margin: 0 30px;">
+								<p>
+									<br>
+								</p>
+								经济舱：
+								<p class="economyClassRemainSeats">${economyClassRemainSeats}</p>
+							</div>
+						</div>
+					</td>
 
 
-					</tr>
-				</table>
-			</div>
+				</tr>
+			</table>
+		</div>
+		<form action="/airsys/user/userbuy" methon="post">
 			<div class="passenger-box">
 				<div class="p-message-left">
-					<b>姓名</b> <input type="email" class="form-control"
-						id="exampleInputEmail1" placeholder="姓名，请与登机证件姓名保持一致">
+					<b>姓名</b> <input type="text" class="form-control"
+						id="exampleInputEmail1" placeholder="姓名，请与登机证件姓名保持一致" name="oname">
 
 					<div class="shen">
 						<b>身份证号</b>
 					</div>
 					<div class="p-num">
 
-						<input type="email" class="form-control" id="exampleInputEmail"
-							placeholder="登机证件号码" sytle="width:80px">
+						<input type="text" class="form-control" id="exampleInputEmail"
+							placeholder="登机证件号码" sytle="width:80px" name="idcard">
 					</div>
-
+						<input type="hidden" value="${fid}" name = "fid">
 					<div class="shen">
 						<b>中国区号86</b>
 					</div>
 					<div class="p-num">
-						<input type="email" class="form-control" id="exampleInputEmai"
-							placeholder="乘机人手机号码" sytle="width:80px">
+						<input type="text" class="form-control" id="exampleInputEmai"
+							placeholder="乘机人手机号码" sytle="width:80px" name="ophone">
 					</div>
+					
+					<div class="cang">
+					头等舱：
+						<input type="radio" name="seats" value="1">
+						商务舱：
+						<input type="radio" name="seats"  value="2">
+						经济舱：
+						<input type="radio" name="seats" checked  value="3">
+					</div>
+					
 				</div>
+
 			</div>
 
 			<button type="button" class="btn btn-primary"
 				style="margin-left: 10%;">+ 添加乘客</button>
-		</div>
-		<button type="submit" class="submit">微信支付</button>
-		<button type="submit" class="submit">支付宝支付</button>
-	</form>
+			<button type="submit" class="submit" style="margin-left:130px;">微信支付</button>
+		</form>
+	</div>
+
 	<script type="text/javascript">
 		$(function() {
 			$('.btn')

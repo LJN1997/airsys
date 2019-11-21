@@ -5,16 +5,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import entity.UserSelect;
+import entity.Order;
 import entity.UserSelectAll;
 import service.prototy.IAirsysService;
 
@@ -52,9 +52,11 @@ public class AirsysController {
 		String upwd = request.getParameter("upwd");
 
 		int a = airService.login(uphone, upwd);
+		int uid = airService.uid(uphone, upwd);
 		if (a > 0) {
 			ModelAndView mv = new ModelAndView("/user/airsys");
-			
+			HttpSession session = request.getSession(true);
+			session.setAttribute("uid", uid);
 			return mv;
 		}
 		ModelAndView mv = new ModelAndView("/user/signIn");
@@ -133,17 +135,17 @@ public class AirsysController {
 	}
 
 	// 用户购买
-	@RequestMapping("/buy/{type}/{expStartTime}/{tprice}/{expEndTime}/{temp}/{fromCity}/{toCity}/{season_discount}/{firstClassRemainSeats}/{businessClassRemainSeats}/{economyClassRemainSeats}")
+	@RequestMapping("/buy/{type}/{expStartTime}/{fid}/{tprice}/{expEndTime}/{temp}/{fromCity}/{toCity}/{season_discount}/{firstClassRemainSeats}/{businessClassRemainSeats}/{economyClassRemainSeats}")
 	public ModelAndView buy(@PathVariable("type") String type, @PathVariable("expStartTime") String expStartTime,
 			@PathVariable("expEndTime") String expEndTime, @PathVariable("temp") String temp,
 			@PathVariable("fromCity") String fromCity, @PathVariable("toCity") String toCity,
 			@PathVariable("season_discount") String season_discount,
 			@PathVariable("firstClassRemainSeats") String firstClassRemainSeats,
 			@PathVariable("businessClassRemainSeats") String businessClassRemainSeats,
+			@PathVariable("fid") String fid,
 			@PathVariable("economyClassRemainSeats") String economyClassRemainSeats,
-			@PathVariable("tprice") String tprice) {
+			@PathVariable("tprice") String tprice){
 		ModelAndView mv = new ModelAndView("/user/userBuy");
-		System.out.println(type);
 		mv.addObject("type", type);
 		mv.addObject("expStartTime", expStartTime);
 		mv.addObject("expEndTime", expEndTime);
@@ -155,7 +157,33 @@ public class AirsysController {
 		mv.addObject("businessClassRemainSeats", businessClassRemainSeats);
 		mv.addObject("economyClassRemainSeats", economyClassRemainSeats);
 		mv.addObject("tprice", tprice);
+		mv.addObject("fid",fid);
 		return mv;
 	}
-
+	//提交订单
+	@RequestMapping("/userbuy")
+	public ModelAndView Userbuy(HttpServletRequest request, HttpServletResponse response,HttpSession ses) {
+		
+		String uid = ses.getAttribute("uid").toString();
+		String idcard = request.getParameter("idcard");
+		String ophone = request.getParameter("ophone");
+		String oname = request.getParameter("oname");
+		String seats = request.getParameter("seats");
+		String fid = request.getParameter("fid");
+		String one = "1";
+		String two = "2";
+		String three = "3";
+		if(seats.equals(three)) {
+			airService.updateEco(fid);
+		}
+		if(seats.equals(two)) {
+			airService.updateBus(fid);
+		}
+		if(seats.equals(one)) {
+			airService.updateFir(fid);
+		}
+		ModelAndView mv = new ModelAndView("/user/userbuy");
+		mv.addObject( airService.buy(uid, idcard, ophone, oname));
+		return mv;
+	}
 }
