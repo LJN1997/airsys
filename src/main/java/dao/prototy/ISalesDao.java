@@ -31,15 +31,12 @@ public interface ISalesDao {
 	       //6、退票
 	        //6.1、通过姓名和身份证先查出用户这张票
 	        List<Ticket> findBy(String name,String idcard);
-	       
-	      //3、增加一张票
-			void add(Ticket t);
-		 //4、根据fid更新座位数
-			void update1(int fid,String seat);
-		 //5、买票         实现飞机票中增加一条信息，航班票中减少相应座位
-			void buy(Ticket t,String fnumber,String seat);
-			void addAndupdate(Ticket t,String fnumber,String seat);
-		 //6、退票        根据用户id，航班号，座位数退票
-			void delete(int uid,int fid,String seat);
+	        //6.2、通过航班号和座位更新座位数（退票 该航班座位数+1）
+	        void addFightSeat(String fnumber,String seat);
+	        //6.3、更改票的状态为0，表示退票
+	        void updateTicketStatus(int tid);
+	        
+	        
+	 
 		
 }

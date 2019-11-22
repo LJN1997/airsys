@@ -1,7 +1,7 @@
 package controller;
 
-import java.net.URLDecoder;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,12 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
-import dao.impl.SalesDaoImpl;
 import entity.Info;
 import entity.Order;
 import entity.Sales;
 import entity.Ticket;
-import service.impl.SalesServiceImpl;
 import service.prototy.ISalesService;
 
 /**
@@ -37,16 +36,49 @@ public class SalesController {
 	private ISalesService salesService;
 	
 	//6、退票
-	@RequestMapping(value="/selectOid"  ,method = RequestMethod.POST,   produces = "text/json;charset=UTF-8")
+	//HttpServletRequest request,HttpServletResponse response
+	/*@RequestMapping(value="/selectOid"  ,method = RequestMethod.POST,   produces = "application/json;charset=UTF-8")
 	@ResponseBody
-    public String selectOid(HttpServletRequest request,HttpServletResponse response){
+    public String  selectOid(@RequestBody Map<String,Object> map){
+		String oname = (String)map.get("oname");
+		String idcard = (String)map.get("idcard");
+		System.out.println(oname);
+		System.out.println(idcard);
+    	List<Ticket> t =salesService.findBy(oname, idcard);
+    	System.out.println(t);
+    	String a =  JSON.toJSONString(t);
+    	return a;
+    }*/
+	@RequestMapping(value="/selectOid"  ,method = RequestMethod.POST,   produces = "application/json;charset=UTF-8")
+	@ResponseBody
+    public String  selectOid(HttpServletRequest request){
 		String oname = request.getParameter("oname");
 		String idcard = request.getParameter("idcard");
     	List<Ticket> t =salesService.findBy(oname, idcard);
-    	//System.out.println(t);
-    	return JSON.toJSONString(t);
+    	String a =  JSON.toJSONString(t);
+    	return a;
     }
 	
+	//退票成功 座位增加一个 票表里面的状态改为0
+	@RequestMapping(value="/delTicket"  ,method = RequestMethod.POST,   produces = "application/json;charset=UTF-8")
+	@ResponseBody
+    public String  delTicket(HttpServletRequest request){
+		int tid = Integer.parseInt(request.getParameter("tid"));
+		System.out.println(tid);
+		String fnumber = request.getParameter("fnumber");
+		String seat = request.getParameter("tclass");
+		String tclass = "";
+		if(seat.equals("商务舱")){
+			 tclass = "business_class_remain_seats";
+		}else if(seat.equals("头等舱")){
+			 tclass = "first_class_remain_seats";
+		}else if(seat.equals("经济舱")){
+			 tclass = "economy_class_remain_seats";
+		}	
+		salesService.addFightSeat(fnumber, tclass);
+		salesService.updateTicketStatus(tid);
+    	return "ok";
+    }
 	
 	
 	

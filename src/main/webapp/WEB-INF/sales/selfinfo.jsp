@@ -85,25 +85,16 @@ h2 {
 					<label class="layui-form-label">姓名</label>
 					<div class="layui-input-block">
 						<input type="text" value="${info.sname}" name="num" required
-							lay-verify="required" placeholder="请输入工号" autocomplete="off"
+							lay-verify="required" placeholder="请输入姓名" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
-
-
-				<div class="layui-form-item">
-					<label class="layui-form-label">头像</label>
-					<div class="layui-input-block">
-						<input type="text" value="${info.shead}" uname="num" required
-							lay-verify="required" placeholder="请输入工号" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
+				
 				<div class="layui-form-item">
 					<label class="layui-form-label">营业点名称</label>
 					<div class="layui-input-block">
 						<input type="text" value="${info.pname}" name="num" required
-							lay-verify="required" placeholder="请输入工号" autocomplete="off"
+							lay-verify="required" placeholder="请输入营业点名称" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
@@ -112,7 +103,7 @@ h2 {
 					<label class="layui-form-label">地址</label>
 					<div class="layui-input-block">
 						<input type="text" value="${info.psite}" name="num" required
-							lay-verify="required" placeholder="请输入工号" autocomplete="off"
+							lay-verify="required" placeholder="请输入地址" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
@@ -121,7 +112,7 @@ h2 {
 					<label class="layui-form-label">联系电话</label>
 					<div class="layui-input-block">
 						<input type="text" value="${info.sphone}" name="num" required
-							lay-verify="required" placeholder="请输入工号" autocomplete="off"
+							lay-verify="required" placeholder="请输入联系电话" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>

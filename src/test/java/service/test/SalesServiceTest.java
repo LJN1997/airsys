@@ -41,12 +41,21 @@ public class SalesServiceTest {
 			}
 		}
 		
-		//退票
-		//先根据oid和idcard查到有没有这张票
+
+		//3.查看营业员个人信息
 		@Test
-		public void findBy(){
-			List<Ticket> f = ss.findBy("aa", "11");
-			System.out.println(f);
+		public void saleinfo(){
+			List<Sales> sale = ss.saleinfo("111");
+			System.out.println(sale);
+		}
+		
+		//4.查看历史记录
+		@Test
+		public void history(){
+			List<Ticket> history = ss.history("222");
+			for (Ticket ticket : history) {
+				System.out.println(ticket);
+			}
 		}
 		
 		//5、买票
@@ -68,38 +77,25 @@ public class SalesServiceTest {
 			ss.updateFightSeat("747", "first_class_remain_seats");
 		}
 
-		//3.买票  增加更新
+		
+		//6.退票
+		//6.1先根据姓名和idcard查到有没有这张票
 		@Test
-		public void buy(){
-			String s = "sdfdsf";
-			//ss.buy(new Ticket(s,"aaaaaaadsf",1200),"747", "business_class_remain_seats");
+		public void findBy(){
+			List<Ticket> f = ss.findBy("aa", "11");
+			System.out.println(f);
 		}
-		//买票第二版
+		  //6.2通过航班号和座位更新座位数（退票 该航班座位数+1）
 		@Test
-		public void buy2(){
-			//ss.addAndupdate(new Ticket(1,1,1,"商务舱","成人",1000), "747", "business_class_remain_seats");
+		public void updateSeat(){
+			  ss.addFightSeat("747", "first_class_remain_seats");
+		}
+		//6.3、更改票的状态为0，表示退票
+		@Test
+		public void updateStatus(){
+			ss.updateTicketStatus(5);
 		}
 		
-		//4.退票  删除更新
-		@Test
-		public void quit(){
-			ss.quit(1, 1, "business_class_remain_seats");
-		}
-		
-		//5.查看营业员个人信息
-		@Test
-		public void saleinfo(){
-			List<Sales> sale = ss.saleinfo("111");
-			System.out.println(sale);
-		}
-		
-		//6.查看历史记录
-		@Test
-		public void history(){
-			List<Ticket> history = ss.history("222");
-			for (Ticket ticket : history) {
-				System.out.println(ticket);
-			}
-		}
+	
 
 }

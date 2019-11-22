@@ -28,18 +28,16 @@ public interface ISalesService {
     void addOrder(Order o);
 
     //6、退票
-    //6.1、通过订单编号和身份证先查出用户这张票
+    //6.1、通过姓名和身份证先查出用户这张票
     List<Ticket> findBy(String name,String idcard);
+    //6.2、通过航班号和座位更新座位数（退票 该航班座位数+1）
+    void addFightSeat(String fnumber,String seat);
+    //6.3、更改票的状态为0，表示退票
+    void updateTicketStatus(int tid);
   	
   	
   	
   	
-  	
-  	//3.买票  增加更新
-	void buy(Ticket t,String fnumber,String seat);
-	//买票自动增加fid sid uid
-	void addAndupdate(Ticket t,String fnumber,String seat);
-	//4.退票  删除更新
-	void quit(int uid,int fid,String seat);
+  
 	
 }

@@ -63,27 +63,7 @@ public class SalesServiceImpl implements ISalesService {
          sd.addOrder(o);		
 	}
 	
-
-	
-	// 3.买票 增加更新
-	@Override
-	public void buy(Ticket t, String fnumber, String seat) {
-		sd.buy(t, fnumber, seat);
-	}
-
-	@Override
-	public void addAndupdate(Ticket t, String fnumber, String seat) {
-      sd.addAndupdate(t, fnumber, seat);		
-	}
-	
-	// 4.退票 删除更新
-	@Override
-	public void quit(int uid, int fid, String seat) {
-		sd.delete(uid, fid, seat);
-	}
-
-
-
+   
 	@Override
 	public int findSid(String num, String pwd) {
 		return sd.findSid(num, pwd);
@@ -93,8 +73,17 @@ public class SalesServiceImpl implements ISalesService {
 
 	@Override
 	public List<Ticket> findBy(String name, String idcard) {
-		// TODO Auto-generated method stub
 		return sd.findBy(name, idcard);
+	}
+
+	@Override
+	public void addFightSeat(String fnumber, String seat) {
+		sd.addFightSeat(fnumber, seat);
+	}
+
+	@Override
+	public void updateTicketStatus(int tid) {
+         sd.updateTicketStatus(tid);		
 	}
 
 

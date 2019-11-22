@@ -8,6 +8,7 @@ public class Ticket {
 	
        private String snumber;
 	
+       private String fnumber;
        private int oid;
 		private String oname;
 		private String ophone;
@@ -46,6 +47,18 @@ public class Ticket {
 
 
 	
+
+		public String getFnumber() {
+			return fnumber;
+		}
+
+
+
+		public void setFnumber(String fnumber) {
+			this.fnumber = fnumber;
+		}
+
+
 
 		public Ticket(int planId, int uid, int sid,String tclass, String passengerType,
 				double tprice, int status, String idcard) {
@@ -200,12 +213,16 @@ public class Ticket {
 
 
 
+	
+
+
+
 		@Override
 		public String toString() {
-			return "Ticket [tid=" + tid + ", planId=" + planId + ", uid=" + uid + ", sid=" + sid + ", status=" + status
-					+ ", snumber=" + snumber + ", oid=" + oid + ", oname=" + oname + ", ophone=" + ophone + ", idcard="
-					+ idcard + ", tdate=" + tdate + ", tclass=" + tclass + ", passengerType=" + passengerType
-					+ ", tprice=" + tprice + "]";
+			return "Ticket [tid=" + tid + ", planId=" + planId + ", uid=" + uid + ", sid=" + sid + ", snumber="
+					+ snumber + ", fnumber=" + fnumber + ", oid=" + oid + ", oname=" + oname + ", ophone=" + ophone
+					+ ", idcard=" + idcard + ", tdate=" + tdate + ", tclass=" + tclass + ", passengerType="
+					+ passengerType + ", tprice=" + tprice + ", status=" + status + "]";
 		}
 
 

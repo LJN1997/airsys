@@ -31,17 +31,6 @@ public class salesDaoTest {
 
 	@Autowired
 	private ISalesDao salesDao;
-
-	
-	//退票
-	@Test
-	public void findBy(){
-		List<Ticket> f = salesDao.findBy("ss","22");
-		System.out.println(f);
-	}
-	
-	
-	
 	
 	// 1、判断营业员登录
 	@Test
@@ -92,5 +81,22 @@ public class salesDaoTest {
 				salesDao.updateFightSeat("747", "first_class_remain_seats");
 			}
 
+			//6.退票
+			//6.1先查找这张票
+			@Test
+			public void findBy(){
+				List<Ticket> f = salesDao.findBy("ss","22");
+				System.out.println(f);
+			}
+			//6.2座位增加一个
+			@Test
+			public void addSeat(){
+				salesDao.addFightSeat("747", "first_class_remain_seats");
+			}
+			//6.3更新票表的状态为0
+			@Test
+			public void updateStatus(){
+				salesDao.updateTicketStatus(2);
+			}
 
 }
