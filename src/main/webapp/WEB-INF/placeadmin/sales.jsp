@@ -18,7 +18,28 @@ pageEncoding="utf-8"%>
 	<script src="/airsys/assets/js/placeadmin_sales.js" charset="utf-8"></script>
 	<script src="/airsys/assets/js/jquery-1.7.2.js"></script>   
 	<link rel="stylesheet" href="/airsys/assets/js/main.js">
+	
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+	<style>
+        .but{
+            width: 300px;
+            float: right;
+        }
+        .inp{
+            width: 240px;
+            float: left;
+        }
+        .ser{
+            width: 60px;
+            float: right;
+        }
+        .add{
+            width: 60px;
+            float: left;
+        }
+    </style>
+
+
 </head>
 <body>
 	<fieldset class="layui-elem-field layui-field-title"
@@ -27,15 +48,15 @@ pageEncoding="utf-8"%>
 	</fieldset>
 	
 	<form action="/airsys/placeadmin/searchs" method="post">
-		
-	<div class="layui-form">
-	<div>
-		<div>
-			<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input">
-		    <button type="submit"  id="${pid}"  class="layui-btn layui-btn-primary">搜索</button>	
-		</div>
-			<button type="button" id="${pid}" class="layui-btn add" onclick="add(${pid})" >添加</button>
-	</div>
+
+    <div class="layui-form ">
+        <div class="but">
+            <div>
+                <input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input inp">
+                <button type="submit"  id="${pid}"  class="layui-btn layui-btn-primary ser">搜索</button>
+            </div>
+        </div>
+        <button type="button" id="${pid}" class="layui-btn add" onclick="add(${pid})" >添加</button>
 		<table class="layui-table">
 			<colgroup>
 				<col width="150">

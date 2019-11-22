@@ -18,6 +18,23 @@ pageEncoding="utf-8"%>
 	<script src="/airsys/assets/js/placeadmin_sales.js" charset="utf-8"></script>
 	<script src="/airsys/assets/js/jquery-1.7.2.js"></script>   
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+<style type="text/css">
+	.for{
+		width: 500px;
+		height: 400px;
+		margin: auto;
+		margin-top: 80px;
+		border: 1px solid gray;
+	}
+	.bb{
+		width: 450px;
+		height: 400px;
+		margin-top: 80px;
+	}
+	.c{
+		float: right;
+	}
+</style>
 </head>
 <body>
 	<fieldset class="layui-elem-field layui-field-title"
@@ -25,27 +42,31 @@ pageEncoding="utf-8"%>
 		<legend>添加营业员信息</legend>
 	</fieldset>
  
-<form class="layui-form" action="/airsys/placeadmin/add2" method="post">
-  <div class="layui-form-item">
+<form class="layui-form for" action="/airsys/placeadmin/add2" method="post">
+ 	<div>
+			<button type="submit" id="" class="layui-btn layui-btn-danger layui-btn-sm c" >X</button>
+	</div>
+ <div class="bb">
+ 	 <div class="layui-form-item aa">
     <label class="layui-form-label snumber">工号</label>
     <div class="layui-input-block">
       <input type="text" name="snumber" lay-verify="snumber" autocomplete="off" placeholder="请输入工号" class="layui-input snumber">
     </div>
   </div>
 <input type="hidden" name="pid" value="${pid}">
-  <div class="layui-form-item">
+  <div class="layui-form-item aa">
     <label class="layui-form-label sname">姓名</label>
     <div class="layui-input-block">
       <input type="text" name="sname" lay-verify="sname" autocomplete="off" placeholder="请输入姓名" class="layui-input sname">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item aa">
     <label class="layui-form-label sphone">联系方式</label>
     <div class="layui-input-inline">
       <input type="text" name="sphone" lay-verify="sphone" placeholder="请输入电话号码" autocomplete="off" class="layui-input sphone">
     </div>
   </div>
-  <div class="layui-form-item">
+  <div class="layui-form-item aa">
     <label class="layui-form-label spwd">密码</label>
     <div class="layui-input-inline">
       <input type="password" name="spwd" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input spwd">
@@ -55,12 +76,13 @@ pageEncoding="utf-8"%>
   
 
 
-  <div class="layui-form-item">
+  <div class="layui-form-item aa">
     <div class="layui-input-block">
       <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
+ </div>
 </form>
  
 <script>

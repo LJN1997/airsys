@@ -54,7 +54,7 @@ public class PlaceAdminController {
 	@RequestMapping("/sales/{pid}")
 	public ModelAndView  getSales(@PathVariable("pid")int pid,HttpServletRequest req,HttpServletResponse resp) {
 		ModelAndView mv = new ModelAndView("/placeadmin/sales");
-		Pager<Sales> slistPager = pas.SlistPager(pid, 1, 5);
+		Pager<Sales> slistPager = pas.SlistPager(pid, 1, 100);
 		int pageNum = slistPager.getPageNum();
 		List<Sales> data = slistPager.getData();
 		mv.addObject("data", data);
@@ -98,7 +98,7 @@ public class PlaceAdminController {
 	@RequestMapping("/ticketinfo/{pid}")
 	public ModelAndView ticket(@PathVariable("pid") int pid) {	
 		ModelAndView mv = new ModelAndView("/placeadmin/ticketinfo");
-		Pager<SalesTicket> tlistPager = pas.TlistPager(pid, 1, 5);
+		Pager<SalesTicket> tlistPager = pas.TlistPager(pid, 1, 100);
 		List<SalesTicket> data = tlistPager.getData();
 		int pageNum = tlistPager.getPageNum();
 		mv.addObject("data", data);

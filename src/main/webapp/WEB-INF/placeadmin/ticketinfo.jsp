@@ -17,7 +17,21 @@ pageEncoding="utf-8"%>
 	<script src="/airsys/assets/layui/layui.js" charset="utf-8"></script>
 	<script src="/airsys/assets/js/placeadmin_sales.js" charset="utf-8"></script>
 	<script src="/airsys/assets/js/jquery-1.7.2.js"></script>   
-
+	<style>
+        .but{
+            width: 300px;
+            float: right;
+        }
+        .inp{
+            width: 240px;
+            float: left;
+        }
+        .ser{
+            width: 60px;
+            float: right;
+        }
+  
+    </style>
 </head>
 <body>
 	<fieldset class="layui-elem-field layui-field-title"
@@ -28,9 +42,9 @@ pageEncoding="utf-8"%>
 	<form action="/airsys/placeadmin/searcht" method="post">
 		
 	<div class="layui-form">
-	<div>
-		<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input">
-	    <button type="submit" id=""  class="layui-btn layui-btn-primary">搜索</button>	
+	<div class="but">
+		<input type="text" name="keys"  placeholder="请输入关键字 " class="layui-input inp">
+	    <button type="submit" id=""  class="layui-btn layui-btn-primary ser">搜索</button>	
 	</div>
 		<table class="layui-table">
 			<colgroup>
