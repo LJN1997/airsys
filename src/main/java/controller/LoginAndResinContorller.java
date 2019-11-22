@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import entity.Admin;
 import entity.PlaceAdmin;
+import entity.Sales;
 import service.prototy.IAdminService;
 import service.prototy.ISalesService;
 import service.prototy.PlaceAdminService;
@@ -69,8 +70,9 @@ public class LoginAndResinContorller {
 				session.setAttribute("login","yes");
 				session.setAttribute("name", name);
 				session.setAttribute("password", password);
+				Sales login1 = saleService.login1(name, password);
 				ModelAndView mv = new ModelAndView("/sales/index");
-
+                mv.addObject("saleInfo",login1);
 				return mv;
 			} else {
 				ModelAndView mv = new ModelAndView("/main/login");

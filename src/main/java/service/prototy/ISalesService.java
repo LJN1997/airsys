@@ -13,6 +13,9 @@ import entity.Ticket;
 * @author DanyangLi
 */
 public interface ISalesService {
+	
+	 Sales login1(String num,String pwd);
+	
 	//1、判断营业员登录
     int login(String num,String pwd);
     int findSid(String num,String pwd);

@@ -124,26 +124,19 @@ width:250px;height:30px;
 		$(".selectOid").click(function(){
 			var oname=$(".oname").val();
 			var idcard=$(".idcard").val();
-			//var data = {"oname":oname,"idcard":idcard};
 			
 			$.ajax({
 				url:"selectOid",
-				//contentType:"application/json",
 				type:"post",
 				dataType:"json",
-				//data:JSON.stringify(data),
 				data:{
 					oname:oname,
 					idcard:idcard
 				},
 				success:function(e){
 			 		 for(var i=0;i<e.length;i++){
-			 			 //console.log(e.length)			
-			 			//var table = $("table");
-			 			//console.log(table.html());
 			 			tid=e[i].tid;
 			 			var tr="<tr>";
-						//var tr = document.createElement("tr");
 						var td = "";
 						td+="<td class='fnumber'>"+e[i].fnumber+"</td>"
 						td+="<td class='oname'>"+e[i].oname+"</td>"
@@ -177,7 +170,7 @@ width:250px;height:30px;
 				},
 				success:function(e){
 					if("ok" == e)
-						alert("退票成功")
+						alert("改签成功")
 				}  
 				
 			})  

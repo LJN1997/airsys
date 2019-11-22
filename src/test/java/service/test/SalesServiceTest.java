@@ -28,6 +28,12 @@ public class SalesServiceTest {
 	
 		//1.判断营业员登录
 		@Test
+		public void login1(){
+			System.out.println(ss.login1("111", "111"));
+		}
+		
+		//1.判断营业员登录
+		@Test
 		public void login(){
 			System.out.println(ss.login("111", "111"));
 		}

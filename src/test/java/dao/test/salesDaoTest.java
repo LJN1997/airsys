@@ -32,6 +32,13 @@ public class salesDaoTest {
 	@Autowired
 	private ISalesDao salesDao;
 	
+	// 1、判断营业员登录2
+		@Test
+		public void login1() {
+		Sales s =salesDao.login1("111", "111");
+			System.out.println(s);
+		}
+	
 	// 1、判断营业员登录
 	@Test
 	public void test01() {
@@ -93,10 +100,17 @@ public class salesDaoTest {
 			public void addSeat(){
 				salesDao.addFightSeat("747", "first_class_remain_seats");
 			}
-			//6.3更新票表的状态为0
+			//6.3更新票表的状态为0 表示退票
 			@Test
 			public void updateStatus(){
 				salesDao.updateTicketStatus(2);
 			}
+			
+			//7.1更新票表的状态为2 表示改签
+			@Test
+			public void changeStatus(){
+				salesDao.changeTicketStatus(2);
+			}
+			
 
 }

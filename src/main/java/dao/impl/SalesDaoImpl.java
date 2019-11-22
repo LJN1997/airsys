@@ -28,6 +28,12 @@ public class SalesDaoImpl implements ISalesDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
+	@Override
+	public Sales login1(String num, String pwd) {
+		String sql = "SELECT  *  from airsys_sales WHERE snumber=? and spwd=?";
+		return jdbcTemplate.queryForObject(sql, new Object[] { num, pwd },new BeanPropertyRowMapper<>(Sales.class));
+	}
+	
 	// 1、判断营业员登录
 	@Override
 	public int login(String num, String pwd) {
@@ -134,6 +140,14 @@ public class SalesDaoImpl implements ISalesDao {
 		
 			
 		}
+
+		@Override
+		public void changeTicketStatus(int tid) {
+			 String sql = "UPDATE airsys_ticket SET `status` = 2 WHERE tid=?";
+			  jdbcTemplate.update(sql, new Object[] { tid });
+		}
+
+
 		
 		
 

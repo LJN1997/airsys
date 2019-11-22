@@ -22,7 +22,7 @@
   <div class="layui-header">
     <div class="layui-logo">营业员</div>
     
- <c:forEach items="${saleInfo }" var="saleInfo">
+ <%-- <c:forEach items="${saleInfo }" var="saleInfo"> --%>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
@@ -64,7 +64,7 @@
       
     </div>
   </div>
-  </c:forEach>
+ <%--  </c:forEach> --%>
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <iframe src="" frameborder="0" name="aa"></iframe>

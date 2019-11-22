@@ -86,6 +86,12 @@ public class SalesServiceImpl implements ISalesService {
          sd.updateTicketStatus(tid);		
 	}
 
+	@Override
+	public Sales login1(String num, String pwd) {
+		// TODO Auto-generated method stub
+		return sd.login1(num, pwd);
+	}
+
 
 
 

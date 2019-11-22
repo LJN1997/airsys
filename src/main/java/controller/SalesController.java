@@ -148,18 +148,17 @@ public class SalesController {
 		    	ModelAndView mv = new ModelAndView("/sales/delete");
 		    	return mv;
 		    }
-	
-	
-	
-	
-	
-	
+
 	//营业员登录
 		@RequestMapping("/loginCon")
 	    public ModelAndView loginCon(HttpServletRequest request,HttpServletResponse response){
 			String num = request.getParameter("num");
 			String pwd = request.getParameter("pwd");
 	     
+		/*	List<Sales> login1 = salesService.login1(num, pwd);
+			ModelAndView mv = new ModelAndView("/sales/index");
+			  return mv;*/
+			  
 			int sale= salesService.login(num, pwd);
 			int sid= salesService.findSid(num, pwd);
 			if(sale>0){
@@ -207,38 +206,10 @@ public class SalesController {
     @RequestMapping("/index")
     public ModelAndView getUsers(){
     	
-    	ModelAndView mv = new ModelAndView("/sales/login");
+    	ModelAndView mv = new ModelAndView("/sales/index");
     	return mv;
     }
     
-    
-	
-	
-
-	
-
-	//机票购买第二版
-		@RequestMapping("/buy2")
-		public ModelAndView buy2(HttpServletRequest request){
-			String  fnumber =request.getParameter("fnumber");
-			String  grade =request.getParameter("grade");
-			String  people =request.getParameter("people");
-			double  price =Double.parseDouble(request.getParameter("price"));
-			String tclass = "";
-			if(grade.equals("business_class_remain_seats")){
-				 tclass = "商务舱";
-			}else if(grade.equals("first_class_remain_seats")){
-				 tclass = "头等舱";
-			}else if(grade.equals("economy_class_remain_seats")){
-				 tclass = "经济舱";
-			}
-		//	salesService.buy(new Ticket(tclass,people,price), fnumber, grade);
-			ModelAndView mv = new ModelAndView("/sales/successbuy");
-			 return mv;
-		}
-	
-	
-	
 	
     @RequestMapping("/user1")
     public ModelAndView getUsers1(){

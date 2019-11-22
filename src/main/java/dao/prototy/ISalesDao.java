@@ -14,7 +14,8 @@ import entity.Ticket;
 * @author DanyangLi
 */
 public interface ISalesDao {
-	      //1、判断营业员登录
+	    Sales login1(String num,String pwd);
+	     //1、判断营业员登录
 	      int login(String num,String pwd);
 	      //根据营业员的工号和密码查找营业员的sid，将其写入session中
 	      int findSid(String num,String pwd);
@@ -36,7 +37,9 @@ public interface ISalesDao {
 	        //6.3、更改票的状态为0，表示退票
 	        void updateTicketStatus(int tid);
 	        
-	        
+	        //7、改签
+	        //7.1、更改票的状态为2，表示改签
+	        void changeTicketStatus(int tid);
 	 
 		
 }
