@@ -1,5 +1,8 @@
 package dao.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +11,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import dao.prototy.IPlanDao;
+import entity.Fplan;
 import entity.Info;
 import entity.Plan;
 import service.prototy.ISalesService;
-@Repository("selectDaoImpl")
+@Repository("planDaoImpl")
 public class PlanDaoImpl implements IPlanDao{
 
 	@Autowired
@@ -31,23 +35,23 @@ public class PlanDaoImpl implements IPlanDao{
 	}
 
 	@Override
-	public void delete(int planId) {
-		jt.update("delete from airsys_plan where plan_id=?",
-					new Object[] {planId});
+	public void delete(String fnumber) {
+		jt.update("delete from airsys_plan where fnumber=?",
+					new Object[] {fnumber});
 	}
 
 	@Override
 	public void UpdateOrSave(Plan plan) {
-		int a  =jt.queryForObject("select count(*) as num from airsys_plan where fnumber=?",
+		int a  =jt.queryForObject("select count(*)  from airsys_plan where fnumber=?",
 				new Object[] {plan.getFnumber()},Integer.class);
-		if(a==0) {
+		if(a<=0) {
 			jt.update("insert into airsys_plan (fnumber,from_city,to_city,start_date,end_date,type,tprice) values(?,?,?,?,?)",
 					new Object[] {plan.getFnumber(),plan.getFromCity(),plan.getToCity(),plan.getStartDate(),plan.getEndDate(),plan.getType(),plan.getTprice()});
 		}else {
-			jt.update("update airsys_plan set fnumber=?,from_city=?,to_city=?,start_date=?,end_date=?,type=?,tprive=? where plan_id=?",
-					new Object[] {plan.getFnumber(),plan.getFromCity(),plan.getToCity(),plan.getStartDate(),plan.getEndDate(),plan.getPlanId(),plan.getType(),plan.getTprice()});
+			jt.update("update airsys_plan set fnumber=?,from_city=?,to_city=?,start_date=?,end_date=?,type=?,tprice=? where plan_id=?",
+					new Object[] {plan.getPlanId(),plan.getFnumber(),plan.getFromCity(),plan.getToCity(),plan.getStartDate(),plan.getEndDate(),plan.getType(),plan.getTprice()});
 		}
-	}
+	}    
 
-
+ 
 }

@@ -11,5 +11,5 @@ function back(){
 	window.location.href="/airsys/place/back";
 }
 function add(){
-		window.location.href="/airsys/place/add/";
+		window.location.href="/airsys/place/add";
 }

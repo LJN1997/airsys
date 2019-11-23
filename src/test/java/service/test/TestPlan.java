@@ -7,7 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import config.TestConfig;
-import entity.Plan;
 import service.prototy.IPlanService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,10 +25,10 @@ public class TestPlan {
 	}
 	@Test
 	public void testdelete() {
-		planService.delete(3);
+		planService.delete("747");
 	}
 	@Test
 	public void testUpdateSave() {
-		planService.UpdateOrSave(new Plan());
+		//planService.UpdateOrSave(new fplan());
 	}
 }

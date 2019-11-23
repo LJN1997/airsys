@@ -24,10 +24,10 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	@Override
-	public List<Admin> find(String anumber) {
-		return jt.query("select * from airsys_admin where anumber=?", 
+	public Admin find(String anumber) {
+		return jt.queryForObject("select * from airsys_admin where anumber=?", 
 				new Object[] {anumber},
-				new BeanPropertyRowMapper<Admin>(Admin.class));
+				new BeanPropertyRowMapper<>(Admin.class));
 	}
 
 	@Override
@@ -36,6 +36,5 @@ public class AdminDaoImpl implements IAdminDao {
 				new Object[] {admin.getApwd(),admin.getAnumber()});
 	}
 
-	
 
 }

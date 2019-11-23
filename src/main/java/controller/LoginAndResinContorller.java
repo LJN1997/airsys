@@ -57,7 +57,7 @@ public class LoginAndResinContorller {
 				session.setAttribute("name", name);
 				session.setAttribute("password", password);
 				ModelAndView mv = new ModelAndView("/main/index");
-				List<Admin> admin = adminService.find(name);
+				Admin admin = adminService.find(name);
 				mv.addObject("admin", admin);
 				return mv;
 			} else {

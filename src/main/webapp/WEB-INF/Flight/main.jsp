@@ -45,14 +45,12 @@
 				<tbody>
 					<tr>
 						<td>${flight.fnumber}</td>
-						<td>${flight.departureTime }</td>
-						<td>${flight.fromCity }</td>
-						<td>${flight.toCity}</td>
-						<td>${flight.tprice }</td>
+						<td>${flight.discount}</td>
+						<td>${flight.firstClassRemainSeats}</td>
+						<td>${flight.businessClassRemainSeats}</td>
+						<td>${flight.economyClassRemainSeats }</td>
 						<td>
-						<button type="button" id="${flight.fnumber }view"
-								class="layui-btn layui-btn-primary "
-								onclick="shows(${flight.fnumber})">查看</button>
+							<button type="button" id="${flight.fnumber}delete" class="layui-btn layui-btn-danger" onclick="ondelete('${flight.fnumber}')">删除</button>
 						</td>
 					</tr>
 				</tbody>

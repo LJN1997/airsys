@@ -6,5 +6,5 @@ import entity.Admin;
 
 public interface IAdminService {
 	int find(String anumber,String pwd);
-	List<Admin> find(String anumber);
+	Admin find(String anumber);
 }

@@ -21,7 +21,7 @@ public class AdminServiceImpl implements IAdminService{
 	}
 
 	@Override
-	public List<Admin> find(String anumber) {
+	public Admin find(String anumber) {
 		return adminDao.find(anumber);
 	}
 

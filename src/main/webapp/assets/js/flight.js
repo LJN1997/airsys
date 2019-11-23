@@ -1,7 +1,6 @@
-
-function back() {
-	window.location.href = "/airsys/flight/back";
-}
-function shows(id) {
-	window.location.href = "/airsys/flight/view/"+id;
+function ondelete(id) {
+	var isdelete = confirm("确定要删除这条数据？");
+	if (isdelete) {
+		window.location.href = "/airsys/flight/delete/" + id;
+	}
 }

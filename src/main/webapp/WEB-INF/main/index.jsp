@@ -39,7 +39,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="" class="layui-nav-img">
-                    贤心
+                   ${admin.aname }
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="http://localhost:8080/airsys/air/userinfo" target="main">基本资料</a></dd>
@@ -82,8 +82,8 @@
                         <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="/airsys/placeadmin/sales" target="main">营业员信息</a></li>
-                <li class="layui-nav-item"><a href="/airsys/placeadmin/ticketinfo" target="main">营业员售票记录</a></li>
+                 <li class="layui-nav-item"><a href="/airsys/placeadmin/sales/${placeAdmin.pid}" target="main">营业员信息</a></li>
+                <li class="layui-nav-item"><a href="/airsys/placeadmin/ticketinfo/${placeAdmin.pid}" target="main">营业员售票记录</a></li> 
             </ul>
         </div>
     </div>

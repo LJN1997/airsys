@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.prototy.IPlanDao;
+import entity.Fplan;
 import entity.Info;
 import entity.Plan;
 import service.prototy.IPlanService;
 @Service
-public class SelectServiceImpl implements IPlanService{
+public class PlanServiceImpl implements IPlanService{
 	
 	@Autowired
 	private IPlanDao planDao;
@@ -26,8 +27,8 @@ public class SelectServiceImpl implements IPlanService{
 	}
 
 	@Override
-	public void delete(int planId) {
-		planDao.delete(planId);
+	public void delete(String fnumber) {
+		planDao.delete(fnumber);
 	}
 
 	@Override

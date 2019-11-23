@@ -30,16 +30,16 @@ public class FlightDaoImpl implements IFlightDao {
 	public void SaveOrUpdate(Flight flight) {
 		int num = jt.queryForObject("select count(*) from airsys_flight where fnumber=?",
 				new Object[] { flight.getFnumber() }, Integer.class);
-		if (num == 0) {
+		if (num <= 0) {
 			jt.update(
-					"insert into airsys_flight(fnumber,season_discount,first_class_remain_seats,business_class_remain_seats,economy_class_remain_seats) values(?,?,?,?,?)",
+					"insert into airsys_flight(fnumber,discount,first_class_remain_seats,business_class_remain_seats,economy_class_remain_seats) values(?,?,?,?,?)",
 					new Object[] { flight.getFnumber(), flight.getDiscount(), flight.getFirstClassRemainSeats(),
 							flight.getBusinessClassRemainSeats(), flight.getEconomyClassRemainSeats() });
 		} else {
 			jt.update(
-					"update airsys_flight set season_discount=?,first_class_remain_seats=?,business_class_remain_seats=?,economy_class_remain_seats=? where fnumber=?",
-					new Object[] { flight.getDiscount(), flight.getFirstClassRemainSeats(),
-							flight.getBusinessClassRemainSeats(), flight.getEconomyClassRemainSeats() },flight.getFnumber());
+					"update airsys_flight set discount=?,first_class_remain_seats=?,business_class_remain_seats=?,economy_class_remain_seats=? where fnumber=?",
+					new Object[] {flight.getDiscount(),flight.getFirstClassRemainSeats(),flight.getBusinessClassRemainSeats(),flight.getEconomyClassRemainSeats(),flight.getFnumber()});
+					
 		}
 	}
 

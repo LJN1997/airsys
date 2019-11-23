@@ -4,11 +4,11 @@ import java.util.Date;
 
 import util.DateUtil;
 
-public class Plan {
+public class Fplan {
 	private int planId;
 	private String fnumber;
-	private Date startDate;
-	private Date endDate;
+	private String startDate;
+	private String endDate;
 	private String fromCity;
 	private String toCity;
 	private Date departureTime;
@@ -18,17 +18,17 @@ public class Plan {
 	private int sailLength;
 	private String type;
 	private double tprice;
-	public Plan() {
+	public Fplan() {
 		super();
 	}
-	public Plan(int planId, String fnumber, String startDate, String endDate, String fromCity, String toCity,
+	public Fplan(int planId, String fnumber, String startDate, String endDate, String fromCity, String toCity,
 			Date departureTime, Date arrivalTime, Date expStartTime, Date expEndTime, int sailLength, String type,
 			double tprice) {
 		super();
 		this.planId = planId;
 		this.fnumber = fnumber;
-		this.startDate = DateUtil.toDate("yyyy-MM-dd", startDate);
-		this.endDate = DateUtil.toDate("yyyy-MM-dd", endDate);
+		this.startDate = startDate;
+		this.endDate = endDate;
 		this.fromCity = fromCity;
 		this.toCity = toCity;
 		this.departureTime = departureTime;
@@ -40,24 +40,12 @@ public class Plan {
 		this.tprice = tprice;   
 	}
 	
-	public Plan(int planId,String fnumber, String startDate, String endDate, String fromCity, String toCity, String type,
-			double tprice) {
-		super();
-		this.planId=planId;
-		this.fnumber = fnumber;
-		this.startDate = DateUtil.toDate("yyyy-MM-dd", startDate);
-		this.endDate = DateUtil.toDate("yyyy-MM-dd", endDate);
-		this.fromCity = fromCity;
-		this.toCity = toCity;
-		this.type = type;
-		this.tprice = tprice;
-	}
-	public Plan(String fnumber, String startDate, String endDate, String fromCity, String toCity, String type,
+	public Fplan(String fnumber, String startDate, String endDate, String fromCity, String toCity, String type,
 			double tprice) {
 		super();
 		this.fnumber = fnumber;
-		this.startDate = DateUtil.toDate("yyyy-MM-dd", startDate);
-		this.endDate = DateUtil.toDate("yyyy-MM-dd", endDate);
+		this.startDate = startDate;
+		this.endDate = endDate;
 		this.fromCity = fromCity;
 		this.toCity = toCity;
 		this.type = type;
@@ -75,17 +63,18 @@ public class Plan {
 	public void setFnumber(String fnumber) {
 		this.fnumber = fnumber;
 	}
-	public Date getStartDate() {
+	
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = DateUtil.toDate("yyyy-MM-dd", startDate);
+	public void setStartDate(Date startDate) {
+		this.startDate =DateUtil.dateToString("yyyy-MM-dd", startDate);
 	}
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = DateUtil.toDate("yyyy-MM-dd", endDate);
+	public void setEndDate(Date endDate) {
+		this.endDate = DateUtil.dateToString("yyyy-MM-dd", endDate);
 	}
 	public String getFromCity() {
 		return fromCity;
@@ -177,7 +166,7 @@ public class Plan {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Plan other = (Plan) obj;
+		Fplan other = (Fplan) obj;
 		if (ExpEndTime == null) {
 			if (other.ExpEndTime != null)
 				return false;

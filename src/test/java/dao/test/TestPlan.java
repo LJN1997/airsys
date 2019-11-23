@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import config.TestConfig;
 import dao.prototy.IPlanDao;
+import entity.Fplan;
 import entity.Plan;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,10 +26,20 @@ public class TestPlan {
 	}
 	@Test
 	public void testUpdate() {
-		//planDao.UpdateOrSave(new Plan("747","2019-07-10","2019-08-10","南京","上海","MH",3000));
+/*		Plan p = new Plan();
+		p.setFnumber("747");
+		p.setStartDate("2019-11-06");
+		p.setEndDate("2019-11-06");
+		p.setFromCity("南京");
+		p.setToCity("上海");
+		p.setTprice(5000);
+		p.setType("MH");
+		p.setPlanId(2);
+		planDao.UpdateOrSave(p);*/
+		planDao.UpdateOrSave(new Plan(2,"746","北京","上海","2019-10-12","20119-11-12","MH",3000));
 	}
 	@Test
 	public void testdelete() {
-		planDao.delete(2);
+		planDao.delete("745");
 	}
 }

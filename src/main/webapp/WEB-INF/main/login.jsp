@@ -9,10 +9,9 @@
 
 </head>
 <body>
-	<form class="layui-form"
-		action="/airsys/login/log" method="post">
+	<form class="layui-form" action="/airsys/login/log" method="post">
 		<div class="container">
-			<button class="close" title="关闭">X</button>
+			<h2>登录</h2>
 			<!--<div class="layui-form-mid layui-word-aux">
             <img id="logoid" src="06.png" height="35">
         </div>-->
@@ -46,11 +45,11 @@
                             </div>
                       </div> -->
 			<div class="layui-form-item">
-			 <label class="layui-form-label">用户选择</label>
+				<label class="layui-form-label">用户选择</label>
 				<div class="layui-input-block">
 					<input type="radio" name="role" value="1" title="管理员" checked="">
-					<input type="radio" name="role" value="2" title="营业员"> 
-					<input type="radio" name="role" value="3" title="营业员管理员"> 
+					<input type="radio" name="role" value="2" title="营业员"> <input
+						type="radio" name="role" value="3" title="营业员管理员">
 				</div>
 			</div>
 			<div class="layui-form-item">

@@ -37,6 +37,6 @@ public class TestFlight {
 	
 	@Test
 	public void saveOrUpdate() {
-		flightDao.SaveOrUpdate(new Flight("747",5,10,30,40));
+		flightDao.SaveOrUpdate(new Flight("747",10,10,30,40));
 	}
 }
