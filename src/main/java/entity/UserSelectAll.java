@@ -1,10 +1,11 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import util.DateUtil;
 
-public class UserSelectAll {
+public class UserSelectAll implements Serializable  {
 	private int fid;
 	private double season_discount;
 	private int firstClassRemainSeats;

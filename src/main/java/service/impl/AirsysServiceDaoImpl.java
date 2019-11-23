@@ -87,6 +87,12 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 	public int updateFir(String fid) {
 		return asDao.updateFir(fid);
 	}
+
+	@Override
+	public int insertBuy(String seats, String man, String tprice, String fid, String uid, String idcard,
+			String status) {
+		return asDao.insertBuy(seats, man, tprice, fid, uid, idcard, status);
+	}
 	
 
 

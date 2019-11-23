@@ -1,6 +1,8 @@
 package entity;
 
-public class Sales {
+import java.io.Serializable;
+
+public class Sales implements Serializable  {
 	private int sid;
 	private String snumber;
 	private String sname;

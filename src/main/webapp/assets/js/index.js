@@ -42,6 +42,19 @@ window.onload=function () {
         buff1.style.background="rgba(0,0,0,.4)";
         buff2.style.background="#E81932";
         box2.style.display="block";
-    }
+        
 
+        var uid = $(".uid").val();
+		var info = document.querySelector(".top");
+		var login = document.querySelector(".loginbox");
+		console.log(uid);
+		if(uid>0){
+			info.style.display="block";
+		}else{
+			login.style.display="block";
+		}
+    }
+    
+   
+    
 }

@@ -1,6 +1,8 @@
 package entity;
 
-public class Admin {
+import java.io.Serializable;
+
+public class Admin implements Serializable  {
 	private int aid;
 	private String anumber;
 	private String aname;

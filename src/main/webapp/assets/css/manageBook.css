@@ -7,3 +7,24 @@
     display: none;
     overflow-y:auto;
 }
+.loginbox{
+	width: 100%;
+    height: 90px;
+    margin: auto;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    display:none;
+}
+.loginbox b{
+	width:300px;
+	heihgt:50px;
+	font-size:25px;
+	display:block;
+	margin:auto;
+}
+.loginbox a{
+	color:white;
+}
+.loginbox a:hover{
+	color:#2073e3;
+}

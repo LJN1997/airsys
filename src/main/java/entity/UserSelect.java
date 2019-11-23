@@ -1,8 +1,9 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserSelect {
+public class UserSelect implements Serializable  {
 	private String fnumber;
 	private String tprice;
 	private Date departureTime;

@@ -136,4 +136,12 @@ public class AirsysDaoImpl implements IAirsysDao{
 		return jdbctemplate.update(sql,new Object[] {fid});
 	}
 
+	@Override
+	public int insertBuy(String seats, String man, String tprice, String fid, String uid, String idcard,
+			String status) {
+		
+		String sql = "insert into airsys_ticket (tclass,passenger_type,tprice,fid,uid,idcard,status) values(?,?,?,?,?,?,?)";
+		return jdbctemplate.update(sql, new Object[] {seats,man,tprice,fid,uid,idcard,status});
+	}
+
 }

@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import util.DateUtil;
@@ -9,7 +10,7 @@ import util.DateUtil;
 *  查到的航班信息
 * @author DanyangLi
 */
-public class Info {
+public class Info implements Serializable  {
 	
 		private String fnumber;
 		private String fromCity;

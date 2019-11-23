@@ -1,6 +1,8 @@
 package entity;
 
-public class PlaceAdmin {
+import java.io.Serializable;
+
+public class PlaceAdmin  implements Serializable  {
 	private int paid;
 	private String panumber;
 	private String paname;

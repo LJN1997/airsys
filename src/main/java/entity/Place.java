@@ -1,6 +1,8 @@
 package entity;
 
-public class Place {
+import java.io.Serializable;
+
+public class Place implements Serializable  {
 	private int pid;
 	private String pname;
 	private String pphone;

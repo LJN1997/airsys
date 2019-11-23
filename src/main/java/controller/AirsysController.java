@@ -170,19 +170,43 @@ public class AirsysController {
 		String oname = request.getParameter("oname");
 		String seats = request.getParameter("seats");
 		String fid = request.getParameter("fid");
+		String man = request.getParameter("man");
+		String tprice = request.getParameter("tprice");
 		String one = "1";
 		String two = "2";
 		String three = "3";
+		String status = "1";
+		System.out.println(request.getParameter("man"));
+		System.out.println(request.getParameter("tprice"));
+		//舱位比较
 		if(seats.equals(three)) {
+			seats = "经济舱";
 			airService.updateEco(fid);
 		}
 		if(seats.equals(two)) {
+			seats = "商务舱";
 			airService.updateBus(fid);
 		}
 		if(seats.equals(one)) {
+			seats = "头等舱";
 			airService.updateFir(fid);
 		}
-		ModelAndView mv = new ModelAndView("/user/userbuy");
+		
+		//乘客类型比较
+		if(man.equals(three)) {
+			man = "婴儿";
+			airService.insertBuy(seats, man, tprice, fid, uid, idcard, status);
+		}
+		if(man.equals(two)) {
+			man = "儿童";
+			airService.insertBuy(seats, man, tprice, fid, uid, idcard, status);
+		}
+		if(man.equals(one)) {
+			man = "成人";
+			airService.insertBuy(seats, man, tprice, fid, uid, idcard, status);
+		}
+
+		ModelAndView mv = new ModelAndView("/user/buySuccess");
 		mv.addObject( airService.buy(uid, idcard, ophone, oname));
 		return mv;
 	}

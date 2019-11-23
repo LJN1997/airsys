@@ -1,6 +1,8 @@
 package entity;
 
-public class PlaneType {
+import java.io.Serializable;
+
+public class PlaneType implements Serializable  {
 	private String type;
 	private int maxSailLength;
 	private int firstClassSeats;

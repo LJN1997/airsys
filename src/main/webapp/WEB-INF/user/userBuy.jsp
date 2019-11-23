@@ -103,6 +103,7 @@ body {
 							placeholder="登机证件号码" sytle="width:80px" name="idcard">
 					</div>
 						<input type="hidden" value="${fid}" name = "fid">
+						<input type="hidden" value="${tprice}" name = "tprice">
 					<div class="shen">
 						<b>中国区号86</b>
 					</div>
@@ -111,13 +112,21 @@ body {
 							placeholder="乘机人手机号码" sytle="width:80px" name="ophone">
 					</div>
 					
-					<div class="cang">
+					<div class="cang" style="width:300px;">
 					头等舱：
 						<input type="radio" name="seats" value="1">
 						商务舱：
 						<input type="radio" name="seats"  value="2">
 						经济舱：
 						<input type="radio" name="seats" checked  value="3">
+					</div>
+					<div class="cang" style="width:200px;">
+					成人：
+						<input type="radio" name="man" value="1"checked>
+						儿童：
+						<input type="radio" name="man"  value="2">
+						婴儿：
+						<input type="radio" name="man" value="3">
 					</div>
 					
 				</div>

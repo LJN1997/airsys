@@ -1,8 +1,9 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SalesTicket {
+public class SalesTicket implements Serializable  {
 
 	private int tid;
 	private String snumber;

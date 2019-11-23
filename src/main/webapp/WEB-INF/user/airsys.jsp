@@ -15,8 +15,12 @@
 <link rel="stylesheet" href="/airsys/assets/css/flightBuff.css">
 <link rel="stylesheet" href="/airsys/assets/css/manageBook.css">
 <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
+<script src="http://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="/airsys/assets/js/index.js"></script>
+<script src="/airsys/assets/js/manageBook.js"></script>
+
 <body>
+
 	<div class="head">
 		<div class="head-top"></div>
 		<div class="head-bottom">
@@ -32,10 +36,15 @@
 				<div class="head-right-3">
 					<a href="/airsys/user/reg">注册</a>
 				</div>
-				<div class="head-right-2">
-					<a href="">发现</a>
+				<div class="head-right-2"><!-- /airsys/user/airsys -->
+					<a href="/airsys/user/airsys" class="exit" onclick="exit()">退出</a>
 				</div>
-
+				<input type="hidden" class="uid" value="<%= session.getAttribute("uid")%>">
+				<script>
+					function exit(){
+						<%session.removeAttribute("uid"); %>
+					}
+				</script>
 				<div class="head-right-1">
 					<a href="">与众不同的飞行体验</a>
 				</div>
@@ -80,6 +89,7 @@
 					<form action="airsys/users" method="get">
 						<div class="start">
 							<div class="start-lcon-box">
+							
 								<div class="start-lcon">
 									<img src="/airsys/assets/img/start.png" alt="">
 								</div>
@@ -101,7 +111,6 @@
 							<div class="date-date">
 								<b>&nbsp;&nbsp;日期</b> <input type="date" name="start">
 							</div>
-							<input type="hidden" name ="uid" value = <%=session.getAttribute("uid") %>>
 						</div>
 
 						<div class="class">
@@ -129,6 +138,7 @@
 			</div>
 			<!--管理预订-->
 			<div class="back-test-box2 buff2-box">
+				<!-- 航班 -->
 				<div class="top">
 					<table>
 						<tr>
@@ -153,6 +163,11 @@
 						</tr>
 					</table>
 				</div>
+				<!-- 登陆 -->
+				<div class="loginbox">
+					<b>您还没有登陆，请<a href="/airsys/user/login">登陆！</a></b>
+				</div>
+
 			</div>
 			<!--航班状态-->
 			<div class="back-test-box3 buff3-box">

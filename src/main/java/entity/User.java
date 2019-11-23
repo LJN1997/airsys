@@ -1,9 +1,12 @@
 package entity;
+
+import java.io.Serializable;
+
 /**
  * 用户
  * @author Administrator
  */
-public class User {
+public class User implements Serializable  {
 	private int uid;
 	private String uname;
 	private String upwd;

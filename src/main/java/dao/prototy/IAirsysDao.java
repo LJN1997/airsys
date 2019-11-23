@@ -22,7 +22,7 @@ public interface IAirsysDao {
 	int reg(String uphone,String upwd);
 	//账号密码查uid
 	int uid(String uphone, String upwd);
-	//买票
+	//买票 插订单
 	int buy(String uid, String idcard, String ophone,String oname);
 	//买票改座位信息 经济
 	int updateEco(String fid);
@@ -30,4 +30,6 @@ public interface IAirsysDao {
 	int updateBus(String fid);
 	//买票改座位信息 头等
 	int updateFir(String fid);
+	//买票插票
+	int insertBuy(String seats,String man,String tprice, String fid, String uid,String idcard,String status);
 }
