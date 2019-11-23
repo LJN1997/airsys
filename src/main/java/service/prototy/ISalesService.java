@@ -38,7 +38,9 @@ public interface ISalesService {
     //6.3、更改票的状态为0，表示退票
     void updateTicketStatus(int tid);
   	
-  	
+    //7、改签
+    //7.1、更改票的状态为2，表示改签
+    void changeTicketStatus(int tid);
   	
   	
   

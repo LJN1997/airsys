@@ -92,6 +92,13 @@ public class SalesServiceImpl implements ISalesService {
 		return sd.login1(num, pwd);
 	}
 
+	 //7、改签
+    //7.1、更改票的状态为2，表示改签
+	@Override
+	public void changeTicketStatus(int tid) {
+          sd.changeTicketStatus(tid);		
+	}
+
 
 
 

@@ -81,6 +81,25 @@ public class SalesController {
     }
 	
 	
+	@RequestMapping(value="/changeTicket"  ,method = RequestMethod.POST,   produces = "application/json;charset=UTF-8")
+	@ResponseBody
+    public String  changeTicket(HttpServletRequest request){
+		int tid = Integer.parseInt(request.getParameter("tid"));
+		System.out.println(tid);
+		String fnumber = request.getParameter("fnumber");
+		String seat = request.getParameter("tclass");
+		String tclass = "";
+		if(seat.equals("商务舱")){
+			 tclass = "business_class_remain_seats";
+		}else if(seat.equals("头等舱")){
+			 tclass = "first_class_remain_seats";
+		}else if(seat.equals("经济舱")){
+			 tclass = "economy_class_remain_seats";
+		}	
+		salesService.changeTicketStatus(tid);
+		salesService.addFightSeat(fnumber, tclass);
+    	return "ok";
+    }
 	
 	
 	
@@ -125,6 +144,7 @@ public class SalesController {
 			String  idcard =request.getParameter("idcard");
 			String expStartTime = request.getParameter("starttime");
 			int sid = Integer.parseInt(request.getParameter("sid"));
+			
 			double  price =Double.parseDouble(request.getParameter("price"));	
 			String tclass = "";
 			if(seat.equals("business_class_remain_seats")){
@@ -154,11 +174,6 @@ public class SalesController {
 	    public ModelAndView loginCon(HttpServletRequest request,HttpServletResponse response){
 			String num = request.getParameter("num");
 			String pwd = request.getParameter("pwd");
-	     
-		/*	List<Sales> login1 = salesService.login1(num, pwd);
-			ModelAndView mv = new ModelAndView("/sales/index");
-			  return mv;*/
-			  
 			int sale= salesService.login(num, pwd);
 			int sid= salesService.findSid(num, pwd);
 			if(sale>0){
@@ -194,24 +209,8 @@ public class SalesController {
 	    	return mv;
 	    }
 
-	
-	//营业员登录
-	@RequestMapping("/login")
-    public ModelAndView login(){
-    	
-    	ModelAndView mv = new ModelAndView("/sales/login");
-    	return mv;
-    }
-	
-    @RequestMapping("/index")
-    public ModelAndView getUsers(){
-    	
-    	ModelAndView mv = new ModelAndView("/sales/index");
-    	return mv;
-    }
-    
-	
-    @RequestMapping("/user1")
+
+    @RequestMapping("/queryTicket")
     public ModelAndView getUsers1(){
     	
     	ModelAndView mv = new ModelAndView("/sales/query");

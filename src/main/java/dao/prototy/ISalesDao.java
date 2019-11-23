@@ -40,6 +40,6 @@ public interface ISalesDao {
 	        //7、改签
 	        //7.1、更改票的状态为2，表示改签
 	        void changeTicketStatus(int tid);
-	 
+	        
 		
 }

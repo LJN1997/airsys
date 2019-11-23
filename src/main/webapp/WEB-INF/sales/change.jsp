@@ -155,7 +155,7 @@ width:250px;height:30px;
 			})
 		})
 		
-       //退票业务
+       //改签业务
 		$("table").on("click",".changebtn",function(){	
 			var fnumber = $(".fnumber").text();
 			var tclass = $(".tclass").text();
@@ -169,8 +169,10 @@ width:250px;height:30px;
 					tclass:tclass
 				},
 				success:function(e){
-					if("ok" == e)
-						alert("改签成功")
+					if("ok" == e){
+						alert("是否确定改签")
+					}
+						window.location.replace("http://localhost:8080/airsys/sales/queryTicket");
 				}  
 				
 			})  

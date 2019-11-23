@@ -66,10 +66,12 @@ public class LoginAndResinContorller {
 			}
 		} else if (role == 2) {
 			int num = saleService.login(name, password);
+			int sid = saleService.findSid(name, password);
 			if (num > 0) {
 				session.setAttribute("login","yes");
 				session.setAttribute("name", name);
 				session.setAttribute("password", password);
+				session.setAttribute("sid", sid);
 				Sales login1 = saleService.login1(name, password);
 				ModelAndView mv = new ModelAndView("/sales/index");
                 mv.addObject("saleInfo",login1);

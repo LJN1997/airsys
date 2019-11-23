@@ -17,7 +17,7 @@ h2 {
 .container {
 	width: 350px;
 	min-height: 420px;
-	max-height: 460px;
+	max-height: 560px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -55,7 +55,7 @@ h2 {
 	width: 300px;
 	height: 40px;
 	font-size: 15px;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .font-set {
@@ -69,7 +69,7 @@ h2 {
 <body>
 
 	<form class="layui-form"
-		action="http://localhost:8080/airsys/sales/saleinfo/1" method="post">
+		action="" method="post">
 		<c:forEach items="${sale}" var="info">
 			<div class="container">
 				<h2>个人信息</h2>
@@ -91,7 +91,32 @@ h2 {
 				</div>
 				
 				<div class="layui-form-item">
-					<label class="layui-form-label">营业点名称</label>
+					<label class="layui-form-label">联系电话</label>
+					<div class="layui-input-block">
+						<input type="text" value="${info.sphone}" name="num" required
+							lay-verify="required" placeholder="请输入联系电话" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">所在省市</label>
+					<div class="layui-input-block">
+						<input type="text" value="${info.province}" name="num" required
+							lay-verify="required" placeholder="请输入营业点名称" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">营业点地址</label>
+					<div class="layui-input-block">
+						<input type="text" value="${info.psite}" name="num" required
+							lay-verify="required" placeholder="请输入营业点名称" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">营业点名字</label>
 					<div class="layui-input-block">
 						<input type="text" value="${info.pname}" name="num" required
 							lay-verify="required" placeholder="请输入营业点名称" autocomplete="off"
@@ -108,14 +133,7 @@ h2 {
 					</div>
 				</div>
 
-				<div class="layui-form-item">
-					<label class="layui-form-label">联系电话</label>
-					<div class="layui-input-block">
-						<input type="text" value="${info.sphone}" name="num" required
-							lay-verify="required" placeholder="请输入联系电话" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
+				
 
 				<div class="layui-form-item">
 					<div class="layui-input-block">
