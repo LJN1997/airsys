@@ -9,6 +9,7 @@ import dao.prototy.IPlanDao;
 import entity.Fplan;
 import entity.Info;
 import entity.Plan;
+import entity.PlanNew;
 import service.prototy.IPlanService;
 @Service
 public class PlanServiceImpl implements IPlanService{
@@ -17,12 +18,12 @@ public class PlanServiceImpl implements IPlanService{
 	private IPlanDao planDao;
 
 	@Override
-	public List<Plan> findFplan() {
+	public List<PlanNew> findFplan() {
 		return planDao.findFight();
 	}
 
 	@Override
-	public List<Plan> findByNumber(String fnumber) {
+	public List<PlanNew> findByNumber(String fnumber) {
 		return planDao.findforNumber(fnumber);
 	}
 
@@ -32,7 +33,7 @@ public class PlanServiceImpl implements IPlanService{
 	}
 
 	@Override
-	public void UpdateOrSave(Plan plan) {
+	public void UpdateOrSave(PlanNew plan) {
 		planDao.UpdateOrSave(plan);
 	}
 	

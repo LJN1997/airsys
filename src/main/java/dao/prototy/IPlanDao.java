@@ -3,11 +3,12 @@ package dao.prototy;
 import java.util.List;
 
 import entity.Plan;
+import entity.PlanNew;
 
 public interface IPlanDao {
 
-	List<Plan> findFight();
-	List<Plan> findforNumber(String fnumber);
+	List<PlanNew> findFight();
+	List<PlanNew> findforNumber(String fnumber);
 	void delete(String fnumber);
-	void UpdateOrSave(Plan plan);
+	void UpdateOrSave(PlanNew plan);
 }

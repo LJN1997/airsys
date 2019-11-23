@@ -14,44 +14,46 @@ import dao.prototy.IPlanDao;
 import entity.Fplan;
 import entity.Info;
 import entity.Plan;
+import entity.PlanNew;
 import service.prototy.ISalesService;
+
 @Repository("planDaoImpl")
-public class PlanDaoImpl implements IPlanDao{
+public class PlanDaoImpl implements IPlanDao {
 
 	@Autowired
 	private JdbcTemplate jt;
 
 	@Override
-	public List<Plan> findFight() {
-		return jt.query("select * from airsys_plan",
-					new BeanPropertyRowMapper<Plan>(Plan.class));
+	public List<PlanNew> findFight() {
+		return jt.query("select * from airsys_plan", new BeanPropertyRowMapper<PlanNew>(PlanNew.class));
 	}
 
 	@Override
-	public List<Plan> findforNumber(String fnumber) {
-		return jt.query("select * from airsys_plan where fnumber=?", 
-					new Object[] {fnumber},
-					new BeanPropertyRowMapper<Plan>(Plan.class));
+	public List<PlanNew> findforNumber(String fnumber) {
+		return jt.query("select * from airsys_plan where fnumber=?", new Object[] { fnumber },
+				new BeanPropertyRowMapper<PlanNew>(PlanNew.class));
 	}
 
 	@Override
 	public void delete(String fnumber) {
-		jt.update("delete from airsys_plan where fnumber=?",
-					new Object[] {fnumber});
+		jt.update("delete from airsys_plan where fnumber=?", new Object[] { fnumber });
 	}
 
 	@Override
-	public void UpdateOrSave(Plan plan) {
-		int a  =jt.queryForObject("select count(*)  from airsys_plan where fnumber=?",
-				new Object[] {plan.getFnumber()},Integer.class);
-		if(a<=0) {
-			jt.update("insert into airsys_plan (fnumber,from_city,to_city,start_date,end_date,type,tprice) values(?,?,?,?,?)",
-					new Object[] {plan.getFnumber(),plan.getFromCity(),plan.getToCity(),plan.getStartDate(),plan.getEndDate(),plan.getType(),plan.getTprice()});
-		}else {
-			jt.update("update airsys_plan set fnumber=?,from_city=?,to_city=?,start_date=?,end_date=?,type=?,tprice=? where plan_id=?",
-					new Object[] {plan.getPlanId(),plan.getFnumber(),plan.getFromCity(),plan.getToCity(),plan.getStartDate(),plan.getEndDate(),plan.getType(),plan.getTprice()});
+	public void UpdateOrSave(PlanNew plan) {
+		int a = jt.queryForObject("select count(*)  from airsys_plan where fnumber=?",
+				new Object[] { plan.getFnumber() }, Integer.class);
+		if (a <= 0) {
+			jt.update(
+					"insert into airsys_plan (fnumber,from_city,to_city,start_date,end_date,type,tprice) values(?,?,?,?,?)",
+					new Object[] { plan.getFnumber(), plan.getFromCity(), plan.getToCity(), plan.getStartDate(),
+							plan.getEndDate(), plan.getType(), plan.getTprice() });
+		} else {
+			jt.update(
+					"update airsys_plan set fnumber=?,from_city=?,to_city=?,start_date=?,end_date=?,type=?,tprice=? where plan_id=?",
+					new Object[] {  plan.getFnumber(), plan.getFromCity(), plan.getToCity(),
+							plan.getStartDate(), plan.getEndDate(), plan.getType(), plan.getTprice(),plan.getPlanId() });
 		}
-	}    
+	}
 
- 
 }

@@ -5,11 +5,12 @@ import java.util.List;
 import entity.Fplan;
 import entity.Info;
 import entity.Plan;
+import entity.PlanNew;
 
 public interface IPlanService {
-	List<Plan> findFplan();
-	List<Plan> findByNumber(String fnumber);
+	List<PlanNew> findFplan();
+	List<PlanNew> findByNumber(String fnumber);
 	void delete(String fnumber);
-	void UpdateOrSave(Plan plan);
+	void UpdateOrSave(PlanNew plan);
 	
 }

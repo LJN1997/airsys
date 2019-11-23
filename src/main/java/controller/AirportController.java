@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.prototy.IAdminDao;
+import entity.Admin;
 import entity.Airport;
 import entity.Place;
+import service.prototy.IAdminService;
 import service.prototy.IAirportService;
 
 @Controller
@@ -21,6 +24,8 @@ import service.prototy.IAirportService;
 public class AirportController {
 	@Autowired
 	private IAirportService airService;
+	@Autowired
+	private IAdminService adminService;
 
 	@RequestMapping("/airinfo")
 	public ModelAndView getAirport() {
@@ -30,14 +35,14 @@ public class AirportController {
 		return mv;
 	}
 
-	@RequestMapping("/userinfo")
-	public ModelAndView getAirinfo() {
+/*	@RequestMapping("/userinfo/{name}")
+	public ModelAndView getAirinfo(@PathVariable("name")String name) {
 		ModelAndView mv = new ModelAndView("main/information");
-		List<Airport> airport = airService.listAirport(1, 5);
-		mv.addObject("air", airport);
+		Admin find = adminService.find(name);
+		mv.addObject("admin", find);
 		return mv;
 	}
-
+*/
 	@RequestMapping("/userpwd")
 	public ModelAndView Password() {
 		ModelAndView mv = new ModelAndView("main/updatePassword");
