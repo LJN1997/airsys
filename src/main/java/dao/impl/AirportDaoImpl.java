@@ -63,7 +63,12 @@ public class AirportDaoImpl implements IAirportDao {
 	public List<Airport> findall() {
 		return jt.query("select * from airsys_airport", 
 				new BeanPropertyRowMapper<Airport>(Airport.class));
-		
+	}
+
+	@Override
+	public List<Airport> findsth(String key) {
+		return jt.query("SELECT * from airsys_airport WHERE CONCAT(airport_number,airport_name,airport_city) LIKE '%"+key+"%'", 
+				new BeanPropertyRowMapper<>(Airport.class));
 	}
 
 

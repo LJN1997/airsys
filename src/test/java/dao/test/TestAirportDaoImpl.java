@@ -1,5 +1,7 @@
 package dao.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +43,13 @@ public class TestAirportDaoImpl {
 	@Test
 	public void testFindAll() {
 		System.out.println(air.findall());
+	}
+	@Test
+	public void testFindKey() {
+	
+		List<Airport> findsth = air.findsth("s");
+		for (Airport airport : findsth) {
+			System.out.println(airport);
+		}
 	}
 }

@@ -11,4 +11,5 @@ public interface IAirportDao {
 	int totalItems();
 	List<Airport> find(String airNumber);
 	List<Airport> findall();
+	List<Airport> findsth(String key);
 }

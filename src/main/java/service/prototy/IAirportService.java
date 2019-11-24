@@ -13,4 +13,5 @@ public interface IAirportService {
 	int totalItems();
 	List<Airport> find(String airNumber);
 	List<Airport> findAll();
+	List<Airport> likefind(String key);
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>机场信息</title>
+<title>航班计划</title>
 <meta name="renderer" content="webkit">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,7 +17,7 @@
 <body>
 	<fieldset class="layui-elem-field layui-field-title"
 		style="margin-top: 20px;">
-		<legend>机场信息</legend>
+		<legend>航班计划信息</legend>
 	</fieldset>
 
 	<div class="layui-form">
@@ -31,25 +31,32 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<th>机场编号</th>
-					<th>机场名称</th>
-					<th>机场位置</th>
+					<th>航班编号</th>
+					<th>出发城市</th>
+					<th>目的城市</th>
+					<th>起飞时间</th>
+					<th>飞机类型</th>
 					<th>操作</th>
 				</tr>
 			</thead>
-			<c:forEach items="${air}" var="act">
+			<c:forEach items="${flightplan}" var="plan">
 				<tbody>
 					<tr>
-						<td>${act.airportNumber}</td>
-						<td>${act.airportName }</td>
-						<td>${act.airportCity }</td>
+						<td>${plan.fnumber}</td>
+						<td>${plan.fromCity }</td>
+						<td>${plan.toCity }</td>
+						<td>${plan.startDate }</td>
+						<td>${plan.type }</td>
 						<td>
-							<button type="button" id="${act.airportNumber }update"
+						<%-- 	<button type="button" id="${plan.fnumber }show"
+								class="layui-btn layui-btn-primary"
+								onclick="onshow('${plan.fnumber}')">查看</button> --%>
+							<button type="button" id="${plan.fnumber }update"
 								class="layui-btn layui-btn-warm "
-								onclick="onupdate('${act.airportNumber}')">修改</button>
-							<button type="button" id="${act.airportNumber }delete"
+								onclick="onupdate('${plan.fnumber}')">修改</button>
+							<button type="button" id="${plan.fnumber }delete"
 								class="layui-btn layui-btn-danger"
-								onclick="ondelete('${act.airportNumber}')">删除</button>
+								onclick="ondelete('${plan.fnumber}')">删除</button>
 						</td>
 					</tr>
 				</tbody>
@@ -60,7 +67,7 @@
 
 	</div>
 
-	<script src="/airsys/assets/js/airport.js" charset="utf-8"></script>
+	<script src="/airsys/assets/js/plan.js" charset="utf-8"></script>
 
 	<!-- <script src="/airsys/assets/layui/layui.js" charset="utf-8"></script> -->
 

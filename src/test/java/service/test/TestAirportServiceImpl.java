@@ -46,4 +46,8 @@ public class TestAirportServiceImpl {
 	public void testFindAll() {
 		System.out.println(airService.findAll());
 	}
+	@Test
+	public void testlikefind() {
+		System.out.println(airService.likefind("s"));
+	}
 }

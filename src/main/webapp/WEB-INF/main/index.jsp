@@ -28,10 +28,10 @@
                     <img src="/airsys/assets/layui/images/face/60.gif" class="layui-nav-img">
                    ${admin.aname }
                 </a>
-                <dl class="layui-nav-child">
+               <!--  <dl class="layui-nav-child">
                     <dd><a href="http://localhost:8080/airsys/air/userinfo" target="main">基本资料</a></dd>
                     <dd><a href="http://localhost:8080/airsys/air/userpwd" target="main">安全设置</a></dd>
-                </dl>
+                </dl> -->
             </li>
             <li class="layui-nav-item"><a href="/airsys/main/login" class="exitbtn">退出</a></li>
         </ul>
@@ -59,7 +59,7 @@
                     </dl>-->
                 </li>
                 <li class="layui-nav-item"><a href="/airsys/user/userinfo" target="main">用户信息</a></li>
-                <li class="layui-nav-item"><a href="/airsys/flightplan/fplaninfo" target="main">航班计划</a></li>
+                <li class="layui-nav-item"><a href="/airsys/plan/planinfo" target="main">航班计划</a></li>
                 <li class="layui-nav-item"><a href="/airsys/flight/flightinfo" target="main">航班信息</a></li>
                 <li class="layui-nav-item"><a href="/airsys/placeNote/placeNotesinfo" target="main">订单信息</a></li>
                  
