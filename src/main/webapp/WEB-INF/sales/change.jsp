@@ -91,6 +91,7 @@ width:250px;height:30px;
 						<th>座位等级</th>
 						<th>机票价格</th>
 						<th>出票日期</th>
+						<th>机票状态</th>
 						<th>操作</th>   
 					</tr>
 				
@@ -146,9 +147,9 @@ width:250px;height:30px;
 						td+="<td class='tclass'>"+e[i].tclass+"</td>"
 						td+="<td class='tprice'>"+e[i].tprice+"</td>"
 						td+="<td class='tdate'>"+e[i].tdate+"</td>"
+						td+="<td class='status'>"+e[i].status+"</td>"
 						td+=`<td><button class="changebtn" >改签</button></td>`;
 						tr+=td+"</tr>"
-				      
 				        $(".table").append(tr)
 					}  
 				}

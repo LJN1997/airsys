@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<% response.setContentType("text/html;charset=utf-8"); %>
+<%request.setCharacterEncoding("utf-8"); %>
 
 <!DOCTYPE html>
 <html>
@@ -7,9 +9,8 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>机票购买</title>
+<title>机票预定</title>
 <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
-<!-- <link rel="stylesheet" href="/airsys/assets/css/sales.css"> -->
 <style type="text/css">
 body, h2 {
 	margin: 0;
@@ -21,7 +22,9 @@ body, h2 {
 	width: 100%;
 	height: 100%;
 }
-
+.layui-input{
+  width:200px;
+}
 .one {
 	font-size: 25px;
 	margin-left: 20px;
@@ -42,6 +45,7 @@ body, h2 {
 	border: 4px solid grey;
 	margin-left: 550px;
 	margin-top: 10px;
+	position: relative;
 }
 
 .manInfo {
@@ -60,20 +64,16 @@ margin-top:20px;
 	float: left;
 }
 
-.addMan button {
+.goPay button {
     width:250px;
-	margin-left:10px;
+	margin-left:100px;
 	margin-top:50px;
 }
 
-.addInfo{
-   width:22px;
-   height:22px;
-   border:1px solid grey;
-   float:left;
-   margin-left:-250px;
-   margin-top:65px;
-   cursor:pointer;
+.addBtn{
+ position: absolute;
+ left:40px;
+ top:345px;
 }
 .addInfo a:hover{
    color: red;
@@ -82,7 +82,8 @@ margin-top:20px;
 </head>
 
 <body>
-	<form class="layui-form" action="http://localhost:8080/airsys/sales/buy" method="post">
+  
+	<form class="layui-form" action="/airsys/sales/buy" method="post">
 
 		<input Type="hidden" name="sid" value=<%=session.getAttribute("sid")%>>
 		<input Type="hidden" name="planId" value=${planId }>
@@ -199,19 +200,19 @@ margin-top:20px;
 							lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
-				<div class="addInfo">
-				<a href="#"><i class="layui-icon layui-icon-add-1" style="font-size: 20px; color: #1E9FFF;"></i>  </a>
-				</div>
+				
+				<button class="addBtn">添加乘客</button>
+				
                 
 
-				<div class="addMan">
+				<div class="goPay">
 					<button class="layui-btn" lay-submit lay-filter="formDemo">下一步</button>
 				</div>
 
 			</div>
 		</div>
 	</form>
-
+	<script type="text/javascript" src="/airsys/assets/js/jquery-1.11.1.js"></script>
 	<script src="/airsys/assets/layui/layui.js"></script>
 	<script>
 		//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
@@ -226,6 +227,12 @@ margin-top:20px;
 			var form = layui.form;
 
 		});
+		
+		$(".addBtn").click(function(){
+			alert("是否添加乘客？")
+			$("div").show();
+		})
+		
 	</script>
 </body>
 </html>

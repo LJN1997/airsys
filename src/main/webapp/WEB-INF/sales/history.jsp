@@ -12,25 +12,31 @@
 <script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
 <style type="text/css">
 .layui-table{
-	width:550px;
+	width:850px;
 }
-
+.history{
+  width:200px;
+  height:50px;
+  font-size: 20px;
+  margin-top:50px;
+  margin-left:100px;
+}
 
 </style>
 
 </head>
 <body>
 	<form action="listacts" method="get">
-      <h3 align="center">已售机票信息</h3>
-     <center>
-    
+      <div class = "history">已售机票信息</div>
+   
+    <center>
      <table class="layui-table">
          <tr>
              <th>工号</th>
              <th>出票日期</th>
              <th>乘客类型</th>
+             <th>舱位等级</th>
              <th>价格</th>
-             <th>操作</th>
          </tr>
  
          <c:forEach items="${history}" var="his">
@@ -39,13 +45,13 @@
              <th>${his.snumber}</th>
              <th>${his.tdate}</th>
              <th>${his.passengerType}</th>
+             <th>${his.tclass}</th>
              <th>${his.tprice}</th>
-             <th><a href="#" class="layui-btn layui-btn-radius layui-btn-warm">查看详情</a></th>
          </tr>
          </c:forEach>
      </table> 
-
-     </center> 
+	</center>
+   
      </form>        
 </body>
 </html>

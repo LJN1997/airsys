@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<form class="layui-form" action="http://localhost:8080/airsys/sales/query">
+	<form class="layui-form" action="/airsys/sales/queryCon">
 		<div class="contain">
 			<div class="one">机票查询</div>
 
@@ -42,20 +42,23 @@
 								<input type="text" value="北京" name="from" required lay-verify="required"
 									placeholder="请输入出发城市" autocomplete="off" class="layui-input">
 							</div>
-
+                        </div>
+                        <div class="layui-form-item">
 							<label class="layui-form-label">到达城市</label>
 							<div class="layui-input-block">
 								<input type="text" value="上海" name="to" required lay-verify="required"
 									placeholder="请输入到达城市" autocomplete="off" class="layui-input">
 							</div>
-
+ 						</div>
+                        <div class="layui-form-item">
 							<label class="layui-form-label">出发时间</label>
 							<div class="layui-input-block">
 								<input type="date" name="starttime" required
 									lay-verify="required" placeholder="请输入出发时间" autocomplete="off"
 									class="layui-input">
 							</div>
-
+ 						</div>
+                        <div class="layui-form-item">
 							<label class="layui-form-label">结束时间</label>
 							<div class="layui-input-block">
 								<input type="date" disabled="true" id="textbox" name="endtime" required placeholder="请输入结束时间" autocomplete="off" class="layui-input"> 

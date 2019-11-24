@@ -41,7 +41,7 @@
              <td>${query.businessClassRemainSeats}</td>
              <td>${query.economyClassRemainSeats}</td>
              <td>${query.tprice}</td>
-             <td ><button type="button" name="planId" class="layui-btn layui-btn-radius layui-btn-warm buy">预定</button></td>
+             <td ><button type="button" name="planId" class="layui-btn layui-btn-radius layui-btn-warm reserve">预定</button></td>
          </c:forEach>
      </table> 
 
@@ -51,7 +51,7 @@
 <script type="text/javascript" src="/airsys/assets/js/jquery-1.11.1.js"></script>
 <script>
 
-$(".buy").click(function(){
+$(".reserve").click(function(){
 	var planId = $(this).parent().parent().attr('id');
 	var fnumber=$(this).parent().parent().children()[0].innerText;
 	var from=$(this).parent().parent().children()[1].innerText;

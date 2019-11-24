@@ -15,9 +15,8 @@ h2 {
 }
 
 .container {
-	width: 350px;
-	min-height: 420px;
-	max-height: 560px;
+	width: 380px;
+	height:470px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -50,7 +49,7 @@ h2 {
 }
 
 .layui-btn {
-	margin-left: -80px;
+	margin-left: -50px;
 	border-radius: 5px;
 	width: 300px;
 	height: 40px;
@@ -67,16 +66,13 @@ h2 {
 </head>
 
 <body>
-
-	<form class="layui-form"
-		action="" method="post">
 		<c:forEach items="${sale}" var="info">
 			<div class="container">
 				<h2>个人信息</h2>
 				<div class="layui-form-item">
 					<label class="layui-form-label">工号</label>
 					<div class="layui-input-block">
-						<input type="text" value="${info.snumber}" name="num" required
+						<input type="text" id="snumber" value="${info.snumber}" name="num" required
 							lay-verify="required" placeholder="请输入工号" autocomplete="off"
 							class="layui-input">
 					</div>
@@ -84,7 +80,7 @@ h2 {
 				<div class="layui-form-item">
 					<label class="layui-form-label">姓名</label>
 					<div class="layui-input-block">
-						<input type="text" value="${info.sname}" name="num" required
+						<input type="text" id="name" value="${info.sname}" name="num" required
 							lay-verify="required" placeholder="请输入姓名" autocomplete="off"
 							class="layui-input">
 					</div>
@@ -93,7 +89,7 @@ h2 {
 				<div class="layui-form-item">
 					<label class="layui-form-label">联系电话</label>
 					<div class="layui-input-block">
-						<input type="text" value="${info.sphone}" name="num" required
+						<input type="text" id="phone" value="${info.sphone}" name="num" required
 							lay-verify="required" placeholder="请输入联系电话" autocomplete="off"
 							class="layui-input">
 					</div>
@@ -101,16 +97,16 @@ h2 {
 				<div class="layui-form-item">
 					<label class="layui-form-label">所在省市</label>
 					<div class="layui-input-block">
-						<input type="text" value="${info.province}" name="num" required
-							lay-verify="required" placeholder="请输入营业点名称" autocomplete="off"
+						<input type="text" id="province" value="${info.province}" name="num" required
+							lay-verify="required" placeholder="请输入营业点所在省份" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">营业点地址</label>
 					<div class="layui-input-block">
-						<input type="text" value="${info.psite}" name="num" required
-							lay-verify="required" placeholder="请输入营业点名称" autocomplete="off"
+						<input type="text" id="psite" value="${info.psite}" name="num" required
+							lay-verify="required" placeholder="请输入营业点地址" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
@@ -118,49 +114,54 @@ h2 {
 				<div class="layui-form-item">
 					<label class="layui-form-label">营业点名字</label>
 					<div class="layui-input-block">
-						<input type="text" value="${info.pname}" name="num" required
+						<input type="text" id="pname" value="${info.pname}" name="num" required
 							lay-verify="required" placeholder="请输入营业点名称" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
 
 				<div class="layui-form-item">
-					<label class="layui-form-label">地址</label>
 					<div class="layui-input-block">
-						<input type="text" value="${info.psite}" name="num" required
-							lay-verify="required" placeholder="请输入地址" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-
-				
-
-				<div class="layui-form-item">
-					<div class="layui-input-block">
-						<button class="layui-btn" lay-submit lay-filter="formDemo">编辑资料</button>
+						<button class="layui-btn edit" lay-submit lay-filter="formDemo">确定编辑</button>
 					</div>
 				</div>
 
 			</div>
 		</c:forEach>
-	</form>
+	
 
 	<script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
+	<script type="text/javascript" src="/airsys/assets/js/jquery-1.11.1.js"></script>
 	<script>
-		layui
-				.use(
-						[ 'form', 'layedit', 'laydate' ],
-						function() {
-							var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
-
-							form.on('submit(demo1)', function(data) {
-								layer.alert(JSON.stringify(data.field), {
-									title : '最终的提交信息'
-								})
-								return false;
-							});
-
-						});
+	window.onload=function(){
+		$(".edit").click(function(){
+			var snumber = $("#snumber").val();
+			var name = $("#name").val();
+			var phone = $("#phone").val();
+			var province = $("#province").val();
+			var psite = $("#psite").val();
+			var pname = $("#pname").val();
+			alert(snumber+name+phone+province+psite+pname)
+			$.ajax({
+				url:"editCon",
+				type:"post",
+				dataType:"json",
+				data:{
+					snumber:snumber,
+					name:name,
+					phone:phone,
+					province:province,
+					psite:psite,
+					pname:pname
+				},
+				success:function(e){
+			 		 console(e)
+				}
+			})
+		})
+	}
+		
+	
 	</script>
 </body>
 </html>

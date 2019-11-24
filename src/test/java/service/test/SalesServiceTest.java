@@ -24,84 +24,110 @@ import service.prototy.ISalesService;
 @ContextConfiguration(classes={TestConfig.class})
 public class SalesServiceTest {
 		@Autowired
-		private ISalesService ss;
+		private ISalesService salesService;
 	
-		//1.判断营业员登录
+		// 1、营业员登录，以对象的方式存储，在airsys/main/index那判断营业员登录时会用到
 		@Test
-		public void login1(){
-			System.out.println(ss.login1("111", "111"));
+		public void login1() {
+			Sales s = salesService.login1("111", "111");
+			System.out.println(s);
 		}
-		
-		//1.判断营业员登录
-		@Test
-		public void login(){
-			System.out.println(ss.login("111", "111"));
-		}
-		
-		//2.查票
-		@Test
-		public void select(){
-			List<Info> info = ss.select("北京", "上海", "2019-11-05");
-			for (Info i : info) {
-				System.out.println(i);
-			}
-		}
-		
 
-		//3.查看营业员个人信息
+		/*
+		 * 2、根据营业员的工号和密码查找营业员的sid，在airsys/main/index中判断营业员登录时将其写入session中
+		 * 这样可以在买票那在ticket表中插入sid时用到 然后可以根据这个营业员的工号，sid连表查询查到这个营业员卖的所有票务记录
+		 */
 		@Test
-		public void saleinfo(){
-			List<Sales> sale = ss.saleinfo("111");
-			System.out.println(sale);
+		public void findSid() {
+			int findSid = salesService.findSid("111", "111");
+			System.out.println(findSid);
 		}
-		
-		//4.查看历史记录
+
+		// 3、根据营业员的工号，可以查看到这个营业员卖过得票务信息
 		@Test
-		public void history(){
-			List<Ticket> history = ss.history("222");
+		public void history() {
+			List<Ticket> history = salesService.history("111");
 			for (Ticket ticket : history) {
 				System.out.println(ticket);
 			}
 		}
-		
-		//5、买票
-		//5.1、先增加一张票进ticket表
+
+		// 4、查票 根据用户输入的出发地、目的地、时间 查询出符合条件的机票
 		@Test
-		public void test05() {
-			Ticket t = new Ticket(1,1,1,"swc","child",1000,1,"147852");
-			ss.addTicket(t);
-		}
-		//5.2、增加一条信息进order表
-		@Test
-		public void test06() {
-			Order o = new Order(1,1,"52147852","123458","ddd");
-			ss.addOrder(o);
-		}
-		//5.3、更新数据改座位
-		@Test
-		public void test07() {
-			ss.updateFightSeat("747", "first_class_remain_seats");
+		public void find() {
+			List<Info> plan = salesService.find("北京", "上海", "2019-11-05");
+			for (Info o : plan) {
+				System.out.println(o);
+			}
 		}
 
-		
-		//6.退票
-		//6.1先根据姓名和idcard查到有没有这张票
+		// 5、买票 需要三个方法
+		// 5.1、根据航班号和座位更新相应的座位-1
 		@Test
-		public void findBy(){
-			List<Ticket> f = ss.findBy("aa", "11");
+		public void updateFightSeat() {
+			salesService.updateFightSeat("747", "first_class_remain_seats");
+		}
+
+		// 5.2、票表里多一条机票记录
+		@Test
+		public void addTicket() {
+			Ticket t = new Ticket(1, 1, 1, "jjc", "child", 1000, 1, "152488");
+			salesService.addTicket(t);
+		}
+
+		// 5.3、订单表里多一条用户记录
+		@Test
+		public void addOrder() {
+			Order o = new Order(1, 1, "14270119970625", "17335081644", "huu");
+			salesService.addOrder(o);
+		}
+
+		//5.4、先根据用户的身份证判断下order表里有没有这个用户，如果有的话，就不用再往order表里增加一条信息了
+		@Test
+		public void findIdcard() {
+			int f = salesService.findIdcard("111");
 			System.out.println(f);
 		}
-		  //6.2通过航班号和座位更新座位数（退票 该航班座位数+1）
-		@Test
-		public void updateSeat(){
-			  ss.addFightSeat("747", "first_class_remain_seats");
-		}
-		//6.3、更改票的状态为0，表示退票
-		@Test
-		public void updateStatus(){
-			ss.updateTicketStatus(5);
-		}
 		
-	
+		// 6、退票
+		// 6.1、通过姓名和身份证先查出用户这张票
+		@Test
+		public void findBy() {
+			List<Ticket> f = salesService.findBy("ss", "22");
+			System.out.println(f);
+		}
+
+		// 6.2、通过航班号和座位更新座位数（退票 该航班座位数+1）
+		@Test
+		public void addFightSeat() {
+			salesService.addFightSeat("747", "first_class_remain_seats");
+		}
+
+		// 6.3更新票表的状态为0 表示退票
+		@Test
+		public void updateTicketStatus() {
+			salesService.updateTicketStatus(2);
+		}
+
+		// 7、改签
+		// 7.1、更新票的状态为2，表示改签
+		@Test
+		public void changeStatus() {
+			salesService.changeTicketStatus(2);
+		}
+		// 7.2、相应的座位+1，直接用上面退票addFightSeat方法即可
+
+		// 8、根据工号查看营业员个人信息
+		@Test
+		public void saleinfo() {
+			List<Sales> sales = salesService.saleinfo("111");
+			System.out.println(sales);
+		}
+
+		// 这个是我自己写的营业员登录，判断营业员登录，本项目没用到这个接口方法
+		@Test
+		public void login() {
+			salesService.login("111", "111");
+		}
 
 }
