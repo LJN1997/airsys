@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import dao.prototy.PlaceAdminDao;
 import entity.PlaceAdmin;
+import entity.PlaceAdminCountClass;
+import entity.PlaceAdminCountPassenger;
+import entity.PlaceAdminCountSales;
 import entity.Sales;
 import entity.SalesTicket;
 import entity.Ticket;
@@ -141,6 +144,30 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 	public List<Sales> findAll(int pid) {
 		
 		return pad.findAll(pid);
+	}
+
+	@Override
+	public double countTotalSales(String panumber) {
+		
+		return pad.countTotalSales(panumber);
+	}
+
+	@Override
+	public List<PlaceAdminCountPassenger> countTotalPerformanceOfPassengerType(String panumber) {
+		// TODO Auto-generated method stub
+		return pad.countTotalPerformanceOfPassengerType(panumber);
+	}
+
+	@Override
+	public List<PlaceAdminCountClass> countTotalPerformanceOfClassType(String panumber) {
+		// TODO Auto-generated method stub
+		return pad.countTotalPerformanceOfClassType(panumber);
+	}
+
+	@Override
+	public List<PlaceAdminCountSales> countTotalPerformanceOfSalesType(String panumber) {
+		// TODO Auto-generated method stub
+		return pad.countTotalPerformanceOfSalesType(panumber);
 	}
 
 }

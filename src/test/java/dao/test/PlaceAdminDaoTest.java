@@ -10,6 +10,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import config.TestConfig;
 import dao.prototy.PlaceAdminDao;
 import entity.PlaceAdmin;
+import entity.PlaceAdminCount;
+import entity.PlaceAdminCountClass;
+import entity.PlaceAdminCountPassenger;
+import entity.PlaceAdminCountSales;
 import entity.Sales;
 import entity.SalesTicket;
 import entity.Ticket;
@@ -143,4 +147,37 @@ public class PlaceAdminDaoTest {
 	public void testupPwd() {
 		pad.updatePwd(2,"123");
 	}
+	
+	@Test
+	public void testcountsum() {
+		double countTotalSales = pad.countTotalSales("2020");
+		System.out.println(countTotalSales);
+	}
+	
+	@Test
+	public void testcountpsum() {
+		List<PlaceAdminCountPassenger> countTotalPerformanceOfPassengerType = pad.countTotalPerformanceOfPassengerType("2020");
+		for (PlaceAdminCountPassenger placeAdminCount : countTotalPerformanceOfPassengerType) {
+			System.out.println(placeAdminCount);
+		}
+	}
+	
+	@Test
+	public void testcountcsum() {
+		List<PlaceAdminCountClass> countTotalPerformanceOfClassType = pad.countTotalPerformanceOfClassType("2020");
+		for (PlaceAdminCountClass placeAdminCount : countTotalPerformanceOfClassType) {
+			System.out.println(placeAdminCount);
+		}
+	}
+	
+	@Test
+	public void testcountssum() {
+		List<PlaceAdminCountSales> countTotalPerformanceOfSalesType = pad.countTotalPerformanceOfSalesType("2020");
+		for (PlaceAdminCountSales placeAdminCount : countTotalPerformanceOfSalesType) {
+			System.out.println(placeAdminCount);
+		}
+	}
+	
+	
+	
 }

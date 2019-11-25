@@ -92,9 +92,9 @@ pageEncoding="utf-8"%>
 		<input type="hidden" name="pid" value="${pid}">
 
 	</div>
-	 
-	
-</form>
+
+
+	</form>
 
 <!-- <script>
 layui.use(['laypage', 'layer'], function(){

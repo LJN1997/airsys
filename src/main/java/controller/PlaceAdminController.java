@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,14 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 
 import entity.PlaceAdmin;
+import entity.PlaceAdminCountClass;
+import entity.PlaceAdminCountPassenger;
+import entity.PlaceAdminCountSales;
 import entity.Sales;
 import entity.SalesTicket;
 import service.prototy.PlaceAdminService;
@@ -106,6 +114,7 @@ public class PlaceAdminController {
 		mv.addObject("pid",pid);
 		return mv;
 	}
+	
 	
 	//-- 查看营业员售票记录详细信息界面
 	@RequestMapping("/view/{tid}/{pid}")
@@ -201,6 +210,64 @@ public class PlaceAdminController {
 	@RequestMapping("/test")
 	public String test1() {
 		return "/placeadmin/test";
+	}
+	
+	
+	//--统计xinxi
+	@RequestMapping("/count/{panumber}")
+	public ModelAndView  count(@PathVariable("panumber") String panumber) {	
+		
+		ModelAndView mv = new ModelAndView("/placeadmin/count");
+		mv.addObject("panumber",panumber);
+		return mv;
+	}  
+	
+	
+	
+	@PostMapping(value="/csums/{panumber}",produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public String csums(@PathVariable("panumber") String panumber) {
+		List<PlaceAdminCountSales> OfSalesType = pas.countTotalPerformanceOfSalesType(panumber);
+		double countTotalSales = pas.countTotalSales(panumber);
+		List<PlaceAdminCountPassenger> passengerType = pas.countTotalPerformanceOfPassengerType(panumber);
+		List<PlaceAdminCountClass> ofClassType = pas.countTotalPerformanceOfClassType(panumber);
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("sum",countTotalSales);
+
+		String charts="{";
+
+		for(int i=0;i<OfSalesType.size();i++) {
+			charts+='"'+OfSalesType.get(i).getSname()+'"'+":";
+			charts+=OfSalesType.get(i).getTprice()+",";
+		}
+		charts = charts.substring(0,charts.lastIndexOf(","));
+		charts+="}";
+		
+		String downloadJson="{";
+		for(int i=0;i<passengerType.size();i++) {
+			downloadJson+='"'+passengerType.get(i).getPassengerType()+'"'+":";
+			downloadJson+=passengerType.get(i).getTprice()+",";
+		}
+		downloadJson = downloadJson.substring(0,downloadJson.lastIndexOf(","));
+		downloadJson+="}";
+		
+		String themeJson="{";
+		for(int i=0;i<ofClassType.size();i++) {
+			themeJson+='"'+ofClassType.get(i).getTclass()+'"'+":";
+			themeJson+=ofClassType.get(i).getTprice()+",";
+		}
+		themeJson = themeJson.substring(0,themeJson.lastIndexOf(","));
+		themeJson+="}";
+	
+	/*	System.out.println(charts);
+		System.out.println(downloadJson);
+		System.out.println(themeJson);
+*/
+		map.put("charts",charts);
+		map.put("downloadJson",downloadJson);
+		map.put("themeJson",themeJson);
+		
+		return JSON.toJSONString(map);
 	}
 	
 }

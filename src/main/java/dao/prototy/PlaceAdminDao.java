@@ -3,6 +3,10 @@ package dao.prototy;
 import java.util.List;
 
 import entity.PlaceAdmin;
+import entity.PlaceAdminCount;
+import entity.PlaceAdminCountClass;
+import entity.PlaceAdminCountPassenger;
+import entity.PlaceAdminCountSales;
 import entity.Sales;
 import entity.SalesTicket;
 import util.Pager;
@@ -41,4 +45,18 @@ public interface PlaceAdminDao {
 	//管理员登录
 	PlaceAdmin findPlaceAdmin(String panumber);
 	int placeAdminLogin(String panumber,String papwd);
+	
+	// 统计信息
+	// 营业点总销售额
+	double countTotalSales(String panumber);
+
+	// 营业点营业员出售的乘客类型总业绩
+	List<PlaceAdminCountPassenger> countTotalPerformanceOfPassengerType(String panumber);
+
+	// 营业点营业员出售的舱位等级总业绩
+	List<PlaceAdminCountClass> countTotalPerformanceOfClassType(String panumber);
+
+	// 营业点营业员的总业绩
+	List<PlaceAdminCountSales> countTotalPerformanceOfSalesType(String panumber);
+	
 }

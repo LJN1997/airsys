@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import dao.prototy.PlaceAdminDao;
 import entity.PlaceAdmin;
+import entity.PlaceAdminCount;
+import entity.PlaceAdminCountClass;
+import entity.PlaceAdminCountPassenger;
+import entity.PlaceAdminCountSales;
 import entity.Sales;
 import entity.SalesTicket;
 import entity.Ticket;
@@ -202,6 +206,39 @@ return jdbcTemplate.query(
 	public void updatePwd(int paid, String pwd) {
 		jdbcTemplate.update("update airsys_place_admin set papwd=? where paid=?",
 				new Object[] {pwd,paid});
+	}
+
+	@Override
+	public double countTotalSales(String panumber) {
+		return jdbcTemplate.queryForObject(
+				"SELECT SUM(t.tprice) as tprice FROM airsys_ticket t LEFT JOIN airsys_sales s ON t.sid = s.sid WHERE s.pid = ( SELECT a.pid FROM airsys_place_admin a WHERE a.panumber = ? )", 
+				new Object[] {panumber},Double.class);
+	}
+
+	@Override
+	public List<PlaceAdminCountPassenger> countTotalPerformanceOfPassengerType(String panumber) {
+		return jdbcTemplate.query(
+				"SELECT t.passenger_type, SUM(t.tprice) as tprice FROM airsys_ticket t LEFT JOIN airsys_sales s ON t.sid = s.sid WHERE s.pid = ( SELECT a.pid FROM airsys_place_admin a WHERE a.panumber = ? ) GROUP BY t.passenger_type", 
+				new Object[] {panumber},
+				new BeanPropertyRowMapper<PlaceAdminCountPassenger>(PlaceAdminCountPassenger.class));
+	}
+
+	@Override
+	public List<PlaceAdminCountClass> countTotalPerformanceOfClassType(String panumber) {
+
+		return jdbcTemplate.query(
+				"SELECT t.tclass, SUM(t.tprice) as tprice FROM airsys_ticket t LEFT JOIN airsys_sales s ON t.sid = s.sid WHERE s.pid = ( SELECT a.pid FROM airsys_place_admin a WHERE a.panumber =? ) GROUP BY t.tclass", 
+				new Object[] {panumber},
+				new BeanPropertyRowMapper<PlaceAdminCountClass>(PlaceAdminCountClass.class));
+	
+	}
+
+	@Override
+	public List<PlaceAdminCountSales> countTotalPerformanceOfSalesType(String panumber) {
+		return jdbcTemplate.query(
+				"SELECT s.sname, SUM(t.tprice) as tprice  FROM airsys_ticket t LEFT JOIN airsys_sales s ON t.sid = s.sid WHERE s.pid = ( SELECT a.pid FROM airsys_place_admin a WHERE a.panumber = ? ) GROUP BY s.sid", 
+				new Object[] {panumber},
+				new BeanPropertyRowMapper<PlaceAdminCountSales>(PlaceAdminCountSales.class));
 	}
  
 

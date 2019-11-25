@@ -65,6 +65,7 @@ pageEncoding="utf-8"%>
                     
                 <li class="layui-nav-item"><a href="/airsys/placeadmin/sales/${placeAdmin.pid}" target="main">营业员信息</a></li>
                 <li class="layui-nav-item"><a href="/airsys/placeadmin/ticketinfo/${placeAdmin.pid}" target="main">营业员售票记录</a></li>
+                <li class="layui-nav-item"><a href="/airsys/placeadmin/count/${placeAdmin.panumber}" target="main">统计信息</a></li>
             </ul>
         </div>
     </div>

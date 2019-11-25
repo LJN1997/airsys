@@ -1,14 +1,12 @@
 package entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class SalesTicket implements Serializable  {
+public class SalesTicket {
 
 	private int tid;
 	private String snumber;
 	private String sname;
-	private String tnumber;
 	private String fnumber;
 	private String fromCity;
 	private String toCity;
@@ -28,15 +26,14 @@ public class SalesTicket implements Serializable  {
 	public SalesTicket() {
 		super();
 	}
-	public SalesTicket(int tid, String snumber, String sname, String tnumber, String fnumber, String fromCity,
-			String toCity, Date startDate, Date endDate, Date expStartTime, Date expEndTime, String type, String tclass,
+	public SalesTicket(int tid, String snumber, String sname, String fnumber, String fromCity, String toCity,
+			Date startDate, Date endDate, Date expStartTime, Date expEndTime, String type, String tclass,
 			String passengerType, double tprice, int sailLength, int status, String idcard, String oname,
 			String ophone) {
 		super();
 		this.tid = tid;
 		this.snumber = snumber;
 		this.sname = sname;
-		this.tnumber = tnumber;
 		this.fnumber = fnumber;
 		this.fromCity = fromCity;
 		this.toCity = toCity;
@@ -71,12 +68,6 @@ public class SalesTicket implements Serializable  {
 	}
 	public void setSname(String sname) {
 		this.sname = sname;
-	}
-	public String getTnumber() {
-		return tnumber;
-	}
-	public void setTnumber(String tnumber) {
-		this.tnumber = tnumber;
 	}
 	public String getFnumber() {
 		return fnumber;
@@ -176,12 +167,11 @@ public class SalesTicket implements Serializable  {
 	}
 	@Override
 	public String toString() {
-		return "SalesTicket [tid=" + tid + ", snumber=" + snumber + ", sname=" + sname + ", tnumber=" + tnumber
-				+ ", fnumber=" + fnumber + ", fromCity=" + fromCity + ", toCity=" + toCity + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", expStartTime=" + expStartTime + ", expEndTime=" + expEndTime + ", type="
-				+ type + ", tclass=" + tclass + ", passengerType=" + passengerType + ", tprice=" + tprice
-				+ ", sailLength=" + sailLength + ", status=" + status + ", idcard=" + idcard + ", oname=" + oname
-				+ ", ophone=" + ophone + "]";
+		return "SalesTicket [tid=" + tid + ", snumber=" + snumber + ", sname=" + sname + ", fnumber=" + fnumber
+				+ ", fromCity=" + fromCity + ", toCity=" + toCity + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", expStartTime=" + expStartTime + ", expEndTime=" + expEndTime + ", type=" + type + ", tclass="
+				+ tclass + ", passengerType=" + passengerType + ", tprice=" + tprice + ", sailLength=" + sailLength
+				+ ", status=" + status + ", idcard=" + idcard + ", oname=" + oname + ", ophone=" + ophone + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -203,7 +193,6 @@ public class SalesTicket implements Serializable  {
 		result = prime * result + status;
 		result = prime * result + ((tclass == null) ? 0 : tclass.hashCode());
 		result = prime * result + tid;
-		result = prime * result + ((tnumber == null) ? 0 : tnumber.hashCode());
 		result = prime * result + ((toCity == null) ? 0 : toCity.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(tprice);
@@ -291,11 +280,6 @@ public class SalesTicket implements Serializable  {
 			return false;
 		if (tid != other.tid)
 			return false;
-		if (tnumber == null) {
-			if (other.tnumber != null)
-				return false;
-		} else if (!tnumber.equals(other.tnumber))
-			return false;
 		if (toCity == null) {
 			if (other.toCity != null)
 				return false;
@@ -310,9 +294,6 @@ public class SalesTicket implements Serializable  {
 			return false;
 		return true;
 	}
-	
-	
-	
 	
 
 }
