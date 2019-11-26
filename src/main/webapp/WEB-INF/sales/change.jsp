@@ -173,7 +173,7 @@ width:250px;height:30px;
 					if("ok" == e){
 						alert("是否确定改签")
 					}
-						window.location.replace("http://localhost:8080/airsys/sales/queryTicket");
+						window.location.replace("http://localhost:8080/airsys/sales/query");
 				}  
 				
 			})  

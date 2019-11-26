@@ -277,6 +277,15 @@ public class SalesController {
 		return null;
 	}
 	
+	//11、修改营业员密码
+	// 9、查询营业员个人信息
+	@RequestMapping("/reset/{num}")
+	@ResponseBody
+	public ModelAndView reset(@PathVariable("num") String num) {
+		ModelAndView mv = new ModelAndView("/sales/reset");
+		// String sale = JSON.toJSONString(salesService.saleinfo(1));
+		return mv;
+	}
 	
 	
 	// 自己写的营业员登录，这个不用，我营业员再主界面登录

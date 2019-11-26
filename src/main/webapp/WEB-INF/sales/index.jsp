@@ -36,7 +36,7 @@ iframe {
 								target="aa">基本资料</a>
 						</dd>
 						<dd>
-							<a href="">安全设置</a>
+							<a target="aa" href="http://localhost:8080/airsys/sales/reset/${saleInfo.snumber}">安全设置</a>
 						</dd>
 					</dl></li>
 				<li class="layui-nav-item"><a
