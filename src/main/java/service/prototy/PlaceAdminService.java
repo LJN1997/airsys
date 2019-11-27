@@ -66,5 +66,9 @@ public interface PlaceAdminService {
 
 		// 营业点营业员的总业绩
 		List<PlaceAdminCountSales> countTotalPerformanceOfSalesType(String panumber);
-
+		
+		//获取营业员总条目数
+		int saleTotalItems(int pid);
+		//获取票总条目数
+		int ticketTotalItems(int sid);
 }

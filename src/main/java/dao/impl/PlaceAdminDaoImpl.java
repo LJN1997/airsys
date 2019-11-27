@@ -135,9 +135,9 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 	} 
 
 	@Override
-	public int ticketTotalItems(int sid) {	
+	public int ticketTotalItems(int pid) {	
 		return jdbcTemplate.queryForObject(
-				"select count(*) from airsys_ticket where sid = "+sid+"", 
+				"SELECT count(*) FROM airsys_ticket t WHERE t.sid IN ( SELECT s.sid FROM airsys_sales s WHERE s.pid = "+pid+" )", 
 				new Object[] {},Integer.class
 				);
 	}
@@ -155,7 +155,7 @@ public class PlaceAdminDaoImpl implements PlaceAdminDao{
 	public Pager<SalesTicket> findTicketPage(int pid, int offset, int pageSize) {
 		Pager<SalesTicket> ticketPager = new Pager<SalesTicket>();
 		ticketPager.setData(findTicketList(pid, offset, pageSize));
-		ticketPager.setPageNum((saleTotalItems(pid)+pageSize-1)/pageSize);
+		ticketPager.setPageNum((ticketTotalItems(pid)+pageSize-1)/pageSize);
 		return ticketPager;
 	}
 

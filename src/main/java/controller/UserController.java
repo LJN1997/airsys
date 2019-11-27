@@ -31,4 +31,12 @@ public class UserController {
 		mv.setViewName("redirect:/user/userinfo");
 		return mv;
 	}
+	
+	@RequestMapping("/aa")
+	public ModelAndView findA() {
+		ModelAndView mv = new ModelAndView("user/airsys");
+
+		return mv;
+	}
+	
 }

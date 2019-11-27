@@ -30,7 +30,7 @@
 		$.ajax({
 			url : "http://localhost:8080/airsys/placeadmin/csums/"+pnumber,
 			dataType : "json",
-			type:"POST",
+			type:"GET",
 			success : function(e) {
 				
 				// 基于准备好的dom，初始化echarts实例

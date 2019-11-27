@@ -170,4 +170,16 @@ public class PlaceAdminServiceImpl implements PlaceAdminService{
 		return pad.countTotalPerformanceOfSalesType(panumber);
 	}
 
+	@Override
+	public int saleTotalItems(int pid) {
+		// TODO Auto-generated method stub
+		return pad.saleTotalItems(pid);
+	}
+
+	@Override
+	public int ticketTotalItems(int sid) {
+		// TODO Auto-generated method stub
+		return pad.ticketTotalItems(sid);
+	}
+
 }

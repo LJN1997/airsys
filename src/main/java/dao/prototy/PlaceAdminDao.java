@@ -37,7 +37,7 @@ public interface PlaceAdminDao {
 	//获取营业员总条目数
 	int saleTotalItems(int pid);
 	//获取票总条目数
-	int ticketTotalItems(int sid);
+	int ticketTotalItems(int pid);
 	//模糊查询营业员信息
 	List<Sales> likeFind(String keys) ;
 	//模糊查询售票记录信息

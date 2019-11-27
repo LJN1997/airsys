@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 
+import aj.org.objectweb.asm.Type;
 import entity.PlaceAdmin;
 import entity.PlaceAdminCountClass;
 import entity.PlaceAdminCountPassenger;
@@ -59,16 +60,51 @@ public class PlaceAdminController {
 		return mv;
 	}	
 	//-- 分页查询营业员
-	@RequestMapping("/sales/{pid}")
+	@RequestMapping(value="/sales/{pid}",method=RequestMethod.POST)
 	public ModelAndView  getSales(@PathVariable("pid")int pid,HttpServletRequest req,HttpServletResponse resp) {
 		ModelAndView mv = new ModelAndView("/placeadmin/sales");
-		Pager<Sales> slistPager = pas.SlistPager(pid, 1, 100);
+		int pageNo = Integer.parseInt(req.getParameter("pageNo"));
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+pageNo);
+		Pager<Sales> slistPager = pas.SlistPager(pid, 2, 5);
 		int pageNum = slistPager.getPageNum();
 		List<Sales> data = slistPager.getData();
+		int saleTotalItems = pas.saleTotalItems(pid);
 		mv.addObject("data", data);
 		mv.addObject("pageNum", pageNum);	
+		mv.addObject("saleTotalItems", saleTotalItems);	
 		mv.addObject("pid",pid);
 		return mv;
+	}
+
+	@RequestMapping("/saless/{pid}/{pageNo}")
+	public ModelAndView  getSaless(@PathVariable("pid")int pid,@PathVariable("pageNo")int pageNo) {
+		ModelAndView mv = new ModelAndView("/placeadmin/sales");
+		Pager<Sales> slistPager = pas.SlistPager(pid, pageNo, 5);
+		int pageNum = slistPager.getPageNum();
+		List<Sales> data = slistPager.getData();
+		int saleTotalItems = pas.saleTotalItems(pid);
+		mv.addObject("data", data);
+		mv.addObject("pageNo", pageNo);	
+		mv.addObject("pageNum", pageNum);	
+		mv.addObject("saleTotalItems", saleTotalItems);	
+		mv.addObject("pid",pid);
+		return mv;
+	}
+	
+	@RequestMapping(value="/salesss/{pid}/{pageNo}",produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public String  getSalesss(@PathVariable("pid")int pid,@PathVariable("pageNo")int pageNo) {
+		//ModelAndView mv = new ModelAndView("/placeadmin/sales");
+		Pager<Sales> slistPager = pas.SlistPager(pid, pageNo, 5);
+		int pageNum = slistPager.getPageNum();
+		List<Sales> data = slistPager.getData();
+		int saleTotalItems = pas.saleTotalItems(pid);
+		//mv.addObject("data", data);
+		//mv.addObject("pageNo", pageNo);	
+		//mv.addObject("pageNum", pageNum);	
+		//mv.addObject("saleTotalItems", saleTotalItems);	
+		//mv.addObject("pid",pid);
+		return JSON.toJSONString(data);
 	}
 	
 	//-- 添加营业员
@@ -104,13 +140,26 @@ public class PlaceAdminController {
 	
 	//-- 营业员售票记录界面
 	@RequestMapping("/ticketinfo/{pid}")
-	public ModelAndView ticket(@PathVariable("pid") int pid) {	
+	public ModelAndView ticket(@PathVariable("pid") int pid,int pageNo) {	
 		ModelAndView mv = new ModelAndView("/placeadmin/ticketinfo");
-		Pager<SalesTicket> tlistPager = pas.TlistPager(pid, 1, 100);
+		Pager<SalesTicket> tlistPager = pas.TlistPager(pid, pageNo, 5);
 		List<SalesTicket> data = tlistPager.getData();
 		int pageNum = tlistPager.getPageNum();
 		mv.addObject("data", data);
 		mv.addObject("pageNum", pageNum);
+		mv.addObject("pid",pid);
+		return mv;
+	}
+	
+	@RequestMapping("/ticketinfo1/{pid}/{pageNo}")
+	public ModelAndView ticket1(@PathVariable("pid") int pid,@PathVariable("pageNo") int pageNo) {	
+		ModelAndView mv = new ModelAndView("/placeadmin/ticketinfo");
+		Pager<SalesTicket> tlistPager = pas.TlistPager(pid, pageNo, 5);
+		List<SalesTicket> data = tlistPager.getData();
+		int pageNum = tlistPager.getPageNum();
+		mv.addObject("data", data);
+		mv.addObject("pageNum1", pageNum);
+		mv.addObject("pageNo", pageNo);
 		mv.addObject("pid",pid);
 		return mv;
 	}
@@ -224,7 +273,7 @@ public class PlaceAdminController {
 	
 	
 	
-	@PostMapping(value="/csums/{panumber}",produces="application/json;charset=UTF-8")
+	@RequestMapping(value="/csums/{panumber}",produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public String csums(@PathVariable("panumber") String panumber) {
 		List<PlaceAdminCountSales> OfSalesType = pas.countTotalPerformanceOfSalesType(panumber);

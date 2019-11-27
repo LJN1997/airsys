@@ -44,7 +44,7 @@ pageEncoding="utf-8"%>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="" class="layui-nav-img">
+                    <img src="/airsys/assets/img/pp.jpg" class="layui-nav-img">
                  ${placeAdmin.paname}
                 </a>
                 <dl class="layui-nav-child">
@@ -63,8 +63,8 @@ pageEncoding="utf-8"%>
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
                     
-                <li class="layui-nav-item"><a href="/airsys/placeadmin/sales/${placeAdmin.pid}" target="main">营业员信息</a></li>
-                <li class="layui-nav-item"><a href="/airsys/placeadmin/ticketinfo/${placeAdmin.pid}" target="main">营业员售票记录</a></li>
+                <li class="layui-nav-item"><a href="/airsys/placeadmin/saless/${placeAdmin.pid}/1" target="main">营业员信息</a></li>
+                <li class="layui-nav-item"><a href="/airsys/placeadmin/ticketinfo1/${placeAdmin.pid}/1" target="main">营业员售票记录</a></li>
                 <li class="layui-nav-item"><a href="/airsys/placeadmin/count/${placeAdmin.panumber}" target="main">统计信息</a></li>
             </ul>
         </div>

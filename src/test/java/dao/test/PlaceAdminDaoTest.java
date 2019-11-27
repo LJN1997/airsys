@@ -91,7 +91,7 @@ public class PlaceAdminDaoTest {
 	
 	@Test
 	public void testTicketTotalItems() {
-		int saleTotalItems = pad.ticketTotalItems(5);
+		int saleTotalItems = pad.ticketTotalItems(6);
 		System.out.println(saleTotalItems);
 	}
 	
