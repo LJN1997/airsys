@@ -158,6 +158,7 @@ margin-top:20px;
 
 			<div class="buyPage-right">
 				<div class="one">乘客信息</div>
+				<div class ="pessenger">
 				<div class="ratio">
 					<label class="layui-form-label">乘客类型</label>
 					<div class="layui-input-block">
@@ -200,7 +201,7 @@ margin-top:20px;
 							lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
-				
+				</div>
 				<button class="addBtn">添加乘客</button>
 				
                 

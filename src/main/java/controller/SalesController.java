@@ -201,6 +201,8 @@ public class SalesController {
 	public String delTicket(HttpServletRequest request) {
 		int tid = Integer.parseInt(request.getParameter("tid"));
 		String fnumber = request.getParameter("fnumber");
+		String status = request.getParameter("status");
+		System.out.println(status);
 		String seat = request.getParameter("tclass");
 		String tclass = "";
 		if (seat.equals("商务舱")) {

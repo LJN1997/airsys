@@ -139,26 +139,44 @@ width:250px;height:30px;
 				},
 				success:function(e){
 			 		 for(var i=0;i<e.length;i++){
-			 			 //console.log(e.length)			
-			 			//var table = $("table");
-			 			//console.log(table.html());
 			 			tid=e[i].tid;
-			 			var tr="<tr>";
-						//var tr = document.createElement("tr");
-						var td = "";
-						td+="<td class='fnumber'>"+e[i].fnumber+"</td>"
-						td+="<td class='oname'>"+e[i].oname+"</td>"
-						td+="<td class='ophone'>"+e[i].ophone+"</td>"
-						td+="<td class='idcard'>"+e[i].idcard+"</td>"
-						td+="<td class='passengerType'>"+e[i].passengerType+"</td>"
-						td+="<td class='tclass'>"+e[i].tclass+"</td>"
-						td+="<td class='tprice'>"+e[i].tprice+"</td>"
-						td+="<td class='tdate'>"+e[i].tdate+"</td>"
-						td+="<td class='status'>"+e[i].status+"</td>"
-						td+=`<td><button class="delbtn" >退票</button></td>`;
-						tr+=td+"</tr>"
+			 			
+			 			if(e[i].status==0){
+			 				var tr="<tr>";
+							//var tr = document.createElement("tr");
+							var td = "";
+							td+="<td class='fnumber'>"+e[i].fnumber+"</td>"
+							td+="<td class='oname'>"+e[i].oname+"</td>"
+							td+="<td class='ophone'>"+e[i].ophone+"</td>"
+							td+="<td class='idcard'>"+e[i].idcard+"</td>"
+							td+="<td class='passengerType'>"+e[i].passengerType+"</td>"
+							td+="<td class='tclass'>"+e[i].tclass+"</td>"
+							td+="<td class='tprice'>"+e[i].tprice+"</td>"
+							td+="<td class='tdate'>"+e[i].tdate+"</td>"
+							td+="<td class='status'>"+e[i].status+"</td>"
+							td+=`<td><button class="deled" >已退</button></td>`;
+							tr+=td+"</tr>"
+					      
+					        $(".table").append(tr)
+			 			}else{
+				 			
+				 			var tr="<tr>";
+							//var tr = document.createElement("tr");
+							var td = "";
+							td+="<td class='fnumber'>"+e[i].fnumber+"</td>"
+							td+="<td class='oname'>"+e[i].oname+"</td>"
+							td+="<td class='ophone'>"+e[i].ophone+"</td>"
+							td+="<td class='idcard'>"+e[i].idcard+"</td>"
+							td+="<td class='passengerType'>"+e[i].passengerType+"</td>"
+							td+="<td class='tclass'>"+e[i].tclass+"</td>"
+							td+="<td class='tprice'>"+e[i].tprice+"</td>"
+							td+="<td class='tdate'>"+e[i].tdate+"</td>"
+							td+="<td class='status'>"+e[i].status+"</td>"
+							td+=`<td><button  class="delbtn"+e[i].tid >退票</button></td>`;
+							tr+=td+"</tr>"
 				      
-				        $(".table").append(tr)
+				            $(".table").append(tr)
+			 			}
 					}  
 				}
 			})
@@ -168,6 +186,8 @@ width:250px;height:30px;
 		$("table").on("click",".delbtn",function(){	
 			var fnumber = $(".fnumber").text();
 			var tclass = $(".tclass").text();
+			var status = $(".status").text();
+			alert(status)
 	        $.ajax({
 				url:"delTicket",
 				type:"post",
@@ -175,11 +195,12 @@ width:250px;height:30px;
 				data:{
 					tid:tid,
 					fnumber:fnumber,
-					tclass:tclass
+					tclass:tclass,
+					status:status
 				},
 				success:function(e){
 					if("ok" == e)
-						alert("退票成功")
+					alert("退票成功")
 				}  
 				
 			})  
