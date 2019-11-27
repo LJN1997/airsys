@@ -9,9 +9,7 @@
 <style type="text/css">
 .container {
 	width: 420px;
-	height: 500px;
-	min-height: 320px;
-	max-height: 320px;
+	height: 450px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -146,7 +144,7 @@ a:hover {
 
 
 	<script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
-	<script type="text/javascript" src="/airsys/assets/js/airport.js"></script>
+	<script type="text/javascript" src="/airsys/assets/js/plan.js"></script>
 
 </body>
 </html>

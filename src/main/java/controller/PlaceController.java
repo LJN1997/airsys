@@ -37,7 +37,7 @@ public class PlaceController {
 	@RequestMapping("/back")
 	public ModelAndView back() {
 		ModelAndView mv = new ModelAndView("place/main");
-		// airService.AirSaveorUpdate(new Airport(id,name,city));
+		mv.setViewName("redirect:/place/placeinfo");
 		return mv;
 	}
 	@RequestMapping("/update/{pid}")

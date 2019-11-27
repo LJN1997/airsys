@@ -24,7 +24,7 @@ public class DataServiceTest {
 		for (CountData countData : findData) {
 			String count = countData.getCount();
 			String allPrice = countData.getAllPrice();
-			String pname = countData.getPname();
+			String pname = countData.getProvince();
 			System.out.println(count);
 			System.out.println(allPrice);
 			System.out.println(pname);

@@ -6,6 +6,9 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
+</head>
+
+
     <style type="text/css">
         .container{
             width: 420px;
@@ -66,8 +69,7 @@
             text-decoration: underline;
         }
 
-    </style>
-</head>
+</style>
 <body>
 
 <form class="layui-form" action="/airsys/air/data" method="post">

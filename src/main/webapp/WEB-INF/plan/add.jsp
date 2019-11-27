@@ -15,6 +15,68 @@
 	media="all">
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
+<style type="text/css">
+.container {
+	width: 420px;
+	height: 530px;
+	position: absolute;
+	top: 10;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	padding: 20px;
+	z-index: 130;
+	border: 2px solid #009688;
+	border-radius: 8px;
+	background-color: #fff;
+	font-size: 16px;
+}
+
+.close {
+	background-color: white;
+	border: none;
+	font-size: 18px;
+	margin-left: 410px;
+	margin-top: -10px;
+}
+
+.layui-input {
+	border-radius: 5px;
+	width: 300px;
+	height: 40px;
+	font-size: 15px;
+}
+
+
+#logoid {
+	margin-top: -16px;
+	padding-left: 150px;
+	padding-bottom: 15px;
+}
+
+.layui-btn {
+	margin-left: -50px;
+	border-radius: 5px;
+	width: 350px;
+	height: 40px;
+	font-size: 15px;
+}
+
+.verity {
+	width: 120px;
+}
+
+.font-set {
+	font-size: 13px;
+	text-decoration: none;
+	margin-left: 120px;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+</style>
 <body>
 
 
@@ -22,85 +84,86 @@
 		style="margin-top: 20px;">
 		<legend>添加航班计划</legend>
 	</fieldset>
+<form class="layui-form" action="/airsys/plan/adds" method="post">
 
-	<form class="layui-form" action="/airsys/plan/adds" method="post">
-		<div class="layui-form-item">
-			<label class="layui-form-label">飞机编号</label>
-			<div class="layui-input-block">
-				<input type="text" name="fnumber" lay-verify="title"
-					autocomplete="off" placeholder="请输入机场编号" class="layui-input">
+		<div class="container">
+			<button class="close" title="关闭" onclick=back()>X</button>
+			<!--<div class="layui-form-mid layui-word-aux">
+            <img id="logoid" src="06.png" height="35">
+        </div>-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">航班编号</label>
+					<div class="layui-input-block">
+						<input type="text" name="fnumber" required lay-verify="required"
+							value="${plan.fnumber}" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				</p>
+				<div class="layui-form-item">
+					<label class="layui-form-label">出发地</label>
+					<div class="layui-input-inline">
+						<input type="text" name="fromCity" required lay-verify="required"
+							 autocomplete="off" class="layui-input">
+					</div>
+					<!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">目的地</label>
+					<div class="layui-input-inline">
+						<input type="text" name="tocity" required lay-verify="required"
+							 autocomplete="off" class="layui-input">
+					</div>
+					<!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
+
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">出发时间</label>
+					<div class="layui-input-inline">
+						<input type="Date" name="startdate" required lay-verify="required"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">到达时间</label>
+					<div class="layui-input-inline">
+						<input type="Date" name="enddate" required lay-verify="required"
+							 autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">航班类型</label>
+					<div class="layui-input-inline">
+						<input type="text" name="type" required lay-verify="required"
+							 autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">价格</label>
+					<div class="layui-input-inline">
+						<input type="text" name="tprice" required lay-verify="required"
+							 autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">里程/km</label>
+					<div class="layui-input-inline">
+						<input type="text" name="length" required lay-verify="required"
+							 autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+				</div>
 			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">出发地</label>
-			<div class="layui-input-block">
-				<input type="text" name="fromCity" lay-verify="title"
-					autocomplete="off" placeholder="请输入出发地" class="layui-input">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">目的地</label>
-			<div class="layui-input-block">
-				<input type="text" name="tocity" lay-verify="title"
-					autocomplete="off" placeholder="请输入目的地" class="layui-input">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">出发日期</label>
-			<div class="layui-input-block">
-				<input type="date" name="startdate" lay-verify="title"
-					autocomplete="off" placeholder="请输入出发时间" class="layui-input">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">到达日期</label>
-			<div class="layui-input-block">
-				<input type="date" name="enddate" lay-verify="title"
-					autocomplete="off" placeholder="请输入到达时间" class="layui-input">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">飞机类型</label>
-			<div class="layui-input-block">
-				<input type="text" name="type" lay-verify="title"
-					autocomplete="off" placeholder="请输入飞机类型" class="layui-input">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">价格</label>
-			<div class="layui-input-block">
-				<input type="text" name="tprice" lay-verify="title"
-					autocomplete="off" placeholder="请输入价格" class="layui-input">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">里程/km</label>
-			<div class="layui-input-block">
-				<input type="text" name="length" lay-verify="title"
-					autocomplete="off" placeholder="请输入里程" class="layui-input">
-			</div>
-		</div>
-	<!-- 	<div class="layui-form-item">
-			<label class="layui-form-label">预计起飞时间</label>
-			<div class="layui-input-block">
-				<input type="date" name="expstarttime" lay-verify="title"
-					autocomplete="off"  class="layui-input">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">预计达到时间</label>
-			<div class="layui-input-block">
-				<input type="date" name="expendtime" lay-verify="title"
-					autocomplete="off" class="layui-input">
-			</div>
-		</div> -->
-		<div class="layui-form-item">
-			<div class="layui-input-block">
-				<button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
-				<button type="reset" class="layui-btn layui-btn-primary" lay-submit
-					lay-filter="formDemo">重置</button>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button type="reset" class="layui-btn layui-btn-primary" lay-submit
+						lay-filter="formDemo">重置</button>
+				</div>
 			</div>
 		</div>
 	</form>
+	<script type="text/javascript" src="/airsys/assets/js/plan.js"></script>
 </body>
 </html>

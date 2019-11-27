@@ -3,15 +3,15 @@ package entity;
 public class CountData {
 	private String allPrice;
 	private String count;
-	private String pname;
-	public CountData(String allPrice, String count, String pname) {
+	private String province;
+	public CountData() {
+		super();
+	}
+	public CountData(String allPrice, String count, String province) {
 		super();
 		this.allPrice = allPrice;
 		this.count = count;
-		this.pname = pname;
-	}
-	public CountData() {
-		super();
+		this.province = province;
 	}
 	public String getAllPrice() {
 		return allPrice;
@@ -25,16 +25,16 @@ public class CountData {
 	public void setCount(String count) {
 		this.count = count;
 	}
-	public String getPname() {
-		return pname;
+	public String getProvince() {
+		return province;
 	}
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setProvince(String province) {
+		this.province = province;
 	}
 	@Override
 	public String toString() {
-		return "CountData [allPrice=" + allPrice + ", count=" + count + ", pname=" + pname + "]";
+		return "CountData [allPrice=" + allPrice + ", count=" + count + ", province=" + province + "]";
 	}
-	
+
 	
 }

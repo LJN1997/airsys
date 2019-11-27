@@ -11,7 +11,7 @@ function onshow(id) {
 	window.location.href = "/airsys/plan/show/" + id;
 }
 function back() {
-	window.location.href = "/airsys/plan/planinfo";
+	window.location.href = "/airsys/plan/back";
 }
 function adds() {
 	window.location.href = "/airsys/plan/add";

@@ -39,14 +39,14 @@ public class DataController {
 		for (CountData countData : findData) {
 			list1.add(countData.getAllPrice());
 			list2.add(countData.getCount());
-			list3.add(countData.getPname());
+			list3.add(countData.getProvince());
 		}
 		
 		Map<String,Object> map = new HashMap<String, Object>();
 		
 		map.put("allPrice",list1);
 		map.put("count",list2);
-		map.put("pname",list3);
+		map.put("province",list3);
 		
 		return JSON.toJSONString(map);
 	}

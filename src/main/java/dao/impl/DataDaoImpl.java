@@ -16,7 +16,7 @@ public class DataDaoImpl implements IDataDao{
 
 	@Override
 	public List<CountData> find() {
-		return jt.query("SELECT p.pname,SUM(t.tprice) as allprice,COUNT(*) as count FROM	airsys_place p JOIN airsys_sales s ON p.pid=s.sid JOIN airsys_ticket t ON   s.sid=t.sid GROUP BY pname", 
+		return jt.query("SELECT p.province,SUM(t.tprice) as allprice,COUNT(*) as count FROM	airsys_place p JOIN airsys_sales s ON p.pid=s.sid JOIN airsys_ticket t ON   s.sid=t.sid GROUP BY province", 
 				new BeanPropertyRowMapper<CountData>(CountData.class));
 	}
 

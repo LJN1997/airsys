@@ -24,7 +24,7 @@ public class TestData {
 			for (CountData countData : find) {
 				String allPrice = countData.getAllPrice();
 				String count = countData.getCount();
-				String pname = countData.getPname();
+				String pname = countData.getProvince();
 				System.out.println(allPrice);
 				System.out.println(count);
 				System.out.println(pname);

@@ -79,7 +79,7 @@ public class AirportController {
 	@RequestMapping("/back")
 	public ModelAndView back() {
 		ModelAndView mv = new ModelAndView("main/main");
-		// airService.AirSaveorUpdate(new Airport(id,name,city));
+		mv.setViewName("redirect:/air/airinfo");
 		return mv;
 	}
 	@RequestMapping("/add")

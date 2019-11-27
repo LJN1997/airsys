@@ -20,7 +20,7 @@
 		type : "post",
 		dataType : "json",
 		success : function(e) {
-			var pname = e.pname;
+			var province = e.province;
 			var count = e.count;
 			var allPrice = e.allPrice;
 			option = {
@@ -48,7 +48,7 @@
 				},
 				yAxis : {
 					type : 'category',
-					data : pname
+					data : province
 				},
 				series : [ {
 					name : '售票数量',

@@ -85,5 +85,11 @@ public class PlanController {
 		planService.UpdateOrSave(p);
 		return mv;
 	}
+	@RequestMapping("/back")
+	public ModelAndView back() {
+		ModelAndView mv = new ModelAndView("plan/main");
+		mv.setViewName("redirect:/plan/planinfo");
+		return mv;
+	}
 
 }
