@@ -62,6 +62,7 @@
                 <li class="layui-nav-item"><a href="/airsys/plan/planinfo" target="main">航班计划</a></li>
                 <li class="layui-nav-item"><a href="/airsys/flight/flightinfo" target="main">航班信息</a></li>
                 <li class="layui-nav-item"><a href="/airsys/placeNote/placeNotesinfo" target="main">订单信息</a></li>
+                <li class="layui-nav-item"><a href="/airsys/data/main" target="main">营业点业绩</a></li>
                  
             </ul>
         </div>
