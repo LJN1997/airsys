@@ -25,7 +25,7 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="/airsys/assets/layui/images/face/60.gif" class="layui-nav-img">
+                    <img src="/airsys/assets/layui/images/face/62.gif" class="layui-nav-img">
                    ${admin.aname }
                 </a>
                <!--  <dl class="layui-nav-child">

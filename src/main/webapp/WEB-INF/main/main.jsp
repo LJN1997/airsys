@@ -19,6 +19,11 @@
 		style="margin-top: 20px;">
 		<legend>机场信息</legend>
 	</fieldset>
+	 
+	<input type="text" name="key">
+	<button type="button" id="${plan.fnumber }show"
+		class="layui-btn layui-btn-primary"
+		onclick="onshow('${plan.fnumber}')">搜索</button>
 
 	<div class="layui-form">
 		<table class="layui-table">

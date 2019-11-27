@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/airsys/assets/css/main.css">
 
 </head>
-<body>
+<body >
 	<form class="layui-form" action="/airsys/login/log" method="post">
 		<div class="container">
 			<h2>登录</h2>
@@ -68,10 +68,6 @@
 	<script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
 	  <script type="text/javascript" charset="utf-8" src="//g.alicdn.com/sd/ncpc/nc.js?t=2015052012"></script>
 	<script>
-	function changeCode(that){
-		that.src=that.src+"?"+Math.random();
-		
-	}
 		layui
 				.use(
 						[ 'form', 'layedit', 'laydate' ],
