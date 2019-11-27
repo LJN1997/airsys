@@ -16,7 +16,7 @@
 </style>
 <body>
 <div class="buy">
-预订成功！
+退票成功！
 </div>
 <div class="return">
 <form action="/airsys/user/sigcon" method="get">

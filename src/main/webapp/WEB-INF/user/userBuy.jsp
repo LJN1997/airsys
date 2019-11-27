@@ -88,7 +88,8 @@ body {
 				</tr>
 			</table>
 		</div>
-		<form action="/airsys/user/userbuy" methon="post">
+		<form action="/airsys/user/userbuy" method="post">
+		<input type="hidden" value="${buff}">
 			<div class="passenger-box">
 				<div class="p-message-left">
 					<b>姓名</b> <input type="text" class="form-control"
@@ -104,6 +105,8 @@ body {
 					</div>
 						<input type="hidden" value="${fid}" name = "fid">
 						<input type="hidden" value="${tprice}" name = "tprice">
+						<input type="hidden" value="${buff}" name = "buff">
+						<input type="hidden" value="${tclass}" name = "tclass">
 					<div class="shen">
 						<b>中国区号86</b>
 					</div>

@@ -2,6 +2,7 @@ package dao.prototy;
 
 import java.util.List;
 
+
 import entity.User;
 
 public interface IUserDao {
@@ -9,4 +10,5 @@ public interface IUserDao {
 	List<User> find( int uid);
 	List<User> findAll();
 	void delete(int uid);
+
 }

@@ -8,7 +8,16 @@ body{
     margin: auto;
     background: rgba(255,255,255,0.1);
     color: white;
-    display:none;
+
+
+}
+.top1{
+    width: 100%;
+    height: 90px;
+    margin: auto;
+    background: rgba(255,255,255,0.1);
+    color: white;
+
 }
 .t2{
     width: 820px;
@@ -52,4 +61,7 @@ td a{
 }
 .top h5{
     margin-right: 20px;
+}
+.tdd a:hover{
+	color:white;
 }

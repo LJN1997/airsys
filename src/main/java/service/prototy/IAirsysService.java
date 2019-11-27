@@ -3,6 +3,7 @@ package service.prototy;
 import java.util.List;
 
 import entity.Ticket;
+import entity.UserInfo;
 import entity.UserSelect;
 import entity.UserSelectAll;
 import util.MiniPager;
@@ -40,4 +41,13 @@ public interface IAirsysService {
 	int updateFir(String fid);
 	//买票插票
 	int insertBuy(String seats,String man,String tprice, String fid, String uid,String idcard,String status);
+	//查询用户订单信息
+	List<UserInfo> userTicket(int uid);
+	//退票
+	int outTicket(String uid,String tid);
+	
+	//退票改座位
+	int outTicketClassEco(String fid);
+	int outTicketClassBus(String fid);
+	int outTicketClassFir(String fid);
 }

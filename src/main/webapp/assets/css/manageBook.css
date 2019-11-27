@@ -7,24 +7,51 @@
     display: none;
     overflow-y:auto;
 }
-.loginbox{
+.loginbox1{
 	width: 100%;
     height: 90px;
     margin: auto;
     background: rgba(255,255,255,0.1);
     color: white;
-    display:none;
+    display: none;
 }
-.loginbox b{
+.loginbox1 b{
 	width:300px;
 	heihgt:50px;
 	font-size:25px;
 	display:block;
 	margin:auto;
+	text-align:center;
+	
 }
-.loginbox a{
-	color:white;
+.loginbox1 a{
+	color:#cccccc;
 }
-.loginbox a:hover{
+.loginbox1 a:hover{
+	color:#2073e3;
+}
+
+
+
+.loginbox2{
+	width: 100%;
+    height: 90px;
+    margin: auto;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    display: none;
+}
+.loginbox2 b{
+	width:300px;
+	heihgt:50px;
+	font-size:25px;
+	display:block;
+	margin:auto;
+	text-align:center;
+}
+.loginbox2 a{
+	color:#cccccc;
+}
+.loginbox2 a:hover{
 	color:#2073e3;
 }

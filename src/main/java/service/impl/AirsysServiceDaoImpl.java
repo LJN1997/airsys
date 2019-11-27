@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import dao.prototy.IAirsysDao;
 import entity.Ticket;
+import entity.UserInfo;
 import entity.UserSelect;
 import entity.UserSelectAll;
 import service.prototy.IAirsysService;
@@ -92,6 +93,31 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 	public int insertBuy(String seats, String man, String tprice, String fid, String uid, String idcard,
 			String status) {
 		return asDao.insertBuy(seats, man, tprice, fid, uid, idcard, status);
+	}
+
+	@Override
+	public List<UserInfo> userTicket(int uid) {
+		return asDao.userTicket(uid);
+	}
+
+	@Override
+	public int outTicket(String uid, String tid) {
+		return asDao.outTicket(uid, tid);
+	}
+
+	@Override
+	public int outTicketClassEco(String fid) {
+		return asDao.outTicketClassEco(fid);
+	}
+
+	@Override
+	public int outTicketClassBus(String fid) {
+		return asDao.outTicketClassBus(fid);
+	}
+
+	@Override
+	public int outTicketClassFir(String fid) {
+		return asDao.outTicketClassFir(fid);
 	}
 	
 

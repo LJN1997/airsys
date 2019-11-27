@@ -1,60 +1,78 @@
-window.onload=function () {
-    var abcd = document.querySelector(".ii");
-    var abc = document.querySelector(".ij");
-    abcd.onclick=function () {
-        abcd.style.border="1px solid red";
-        abc.style.border="none";
-    }
-    abc.onclick=function () {
-        abc.style.border="1px solid red";
-        abcd.style.border="none";
-    }
+window.onload = function() {
+	var abcd = document.querySelector(".ii");
+	var abc = document.querySelector(".ij");
+	
+	var uid = $(".uid").val();
+	var list = $(".usts").val();
+	var info = document.querySelector(".top");
+	var info1 = document.querySelector(".topp");
+	var order = document.querySelector(".loginbox1");
+	var login = document.querySelector(".loginbox2");
+	var go = document.querySelector(".go");
+	var Catch = $(".Catch").val();
+	if(Catch==1||Catch=="1"){
+		alert("抱歉，没有找到您要查询的航班，请重新输入！");
+	}
+	
+	
+	abcd.onclick = function() {
+		abcd.style.border = "1px solid red";
+		abc.style.border = "none";
+	}
+	abc.onclick = function() {
+		abc.style.border = "1px solid red";
+		abcd.style.border = "none";
+	}
 
-    /*按钮*/
-    var buff3 = document.querySelector(".buff3");
-    var buff1 = document.querySelector(".buff1");
-    var buff2 = document.querySelector(".buff2");
-    /*内容*/
-    var box1 = document.querySelector(".buff1-box");
-    var box3 = document.querySelector(".buff3-box");
-    var box2 = document.querySelector(".buff2-box");
-    buff3.onclick=function () {
-        box1.style.display="none";
-        box2.style.display="none";
-        buff3.style.background="#E81932";
-        buff1.style.background="rgba(0,0,0,.4)";
-        buff2.style.background="rgba(0,0,0,.4)";
-        box3.style.display="block";
-    }
-    buff1.onclick=function () {
-        box1.style.display="block";
-        buff1.style.background="#E81932";
-        buff3.style.background="rgba(0,0,0,.4)";
-        buff2.style.background="rgba(0,0,0,.4)";
-        box3.style.display="none";
-        box2.style.display="none";
+	/*按钮*/
+	var buff3 = document.querySelector(".buff3");
+	var buff1 = document.querySelector(".buff1");
+	var buff2 = document.querySelector(".buff2");
+	/*内容*/
+	var box1 = document.querySelector(".buff1-box");
+	var box3 = document.querySelector(".buff3-box");
+	var box2 = document.querySelector(".buff2-box");
+	buff3.onclick = function() {
+		box1.style.display = "none";
+		box2.style.display = "none";
+		buff3.style.background = "#E81932";
+		buff1.style.background = "rgba(0,0,0,.4)";
+		buff2.style.background = "rgba(0,0,0,.4)";
+		box3.style.display = "block";
+	}
+	buff1.onclick = function() {
+		box1.style.display = "block";
+		buff1.style.background = "#E81932";
+		buff3.style.background = "rgba(0,0,0,.4)";
+		buff2.style.background = "rgba(0,0,0,.4)";
+		box3.style.display = "none";
+		box2.style.display = "none";
 
-    }
-    buff2.onclick=function () {
-        box1.style.display="none";
-        box3.style.display="none";
-        buff3.style.background="rgba(0,0,0,.4)";
-        buff1.style.background="rgba(0,0,0,.4)";
-        buff2.style.background="#E81932";
-        box2.style.display="block";
-        
+	}
+	buff2.onclick = function() {
+		box1.style.display = "none";
+		box3.style.display = "none";
+		buff3.style.background = "rgba(0,0,0,.4)";
+		buff1.style.background = "rgba(0,0,0,.4)";
+		buff2.style.background = "#E81932";
+		box2.style.display = "block";
 
-        var uid = $(".uid").val();
-		var info = document.querySelector(".top");
-		var login = document.querySelector(".loginbox");
-		console.log(uid);
-		if(uid>0){
-			info.style.display="block";
-		}else{
+		
+		
+		if(uid==""||uid==null){
+			info1.style.display="none";
 			login.style.display="block";
+		}else {
+			info.style.display="block";
 		}
-    }
-    
-   
-    
+
+	}
+	var exit = document.querySelector(".exit");
+	if(uid==""||uid==null){
+		exit.style.display="none";
+	}else{
+		exit.style.display="block";
+		go.innerHTML="您好,"+uid+"!";
+	}
+
 }

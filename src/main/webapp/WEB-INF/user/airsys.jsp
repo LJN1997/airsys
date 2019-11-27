@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page import="entity.UserInfo"%>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -21,6 +25,9 @@
 
 <body>
 
+	<%-- ${sessionScope.uid}
+${usts} --%>
+
 	<div class="head">
 		<div class="head-top"></div>
 		<div class="head-bottom">
@@ -31,20 +38,16 @@
 			</div>
 			<div class="head-right-box">
 				<div class="head-right-4">
-					<a href="/airsys/user/login">登陆</a>
+					<a href="/airsys/user/login" class="go">登陆</a>
 				</div>
 				<div class="head-right-3">
 					<a href="/airsys/user/reg">注册</a>
 				</div>
-				<div class="head-right-2"><!-- /airsys/user/airsys -->
-					<a href="/airsys/user/airsys" class="exit" onclick="exit()">退出</a>
+				<div class="head-right-2">
+					<!-- /airsys/user/airsys -->
+					<a href="/airsys/user/session" class="exit">退出</a>
 				</div>
-				<input type="hidden" class="uid" value="<%= session.getAttribute("uid")%>">
-				<script>
-					function exit(){
-						<%session.removeAttribute("uid"); %>
-					}
-				</script>
+
 				<div class="head-right-1">
 					<a href="">与众不同的飞行体验</a>
 				</div>
@@ -57,7 +60,8 @@
 	<div class="background">
 		<div class="background-center-box">
 			<br> <br>
-			<div class="back-text-box-1">您好</div>
+			<div class="back-text-box-1">您好${sessionScope.uid}</div>
+			<input type = "hidden" class="Catch" value="${Catch }">
 			<div class="back-text-box-1">您想要探索哪里?</div>
 			<br>
 			<div class="back-input-box">
@@ -89,7 +93,7 @@
 					<form action="airsys/users" method="get">
 						<div class="start">
 							<div class="start-lcon-box">
-							
+
 								<div class="start-lcon">
 									<img src="/airsys/assets/img/start.png" alt="">
 								</div>
@@ -104,7 +108,9 @@
 									<img src="/airsys/assets/img/end.png" alt="">
 								</div>
 							</div>
-							<input type="text" name="toCity" placeholder="终点">
+							<input type="text" name="toCity" placeholder="终点"> <input
+								type="hidden" value="${sessionScope.uid}" class="uid"> <input
+								type="hidden" value="${usts}" class="usts">
 						</div>
 
 						<div class="date">
@@ -113,20 +119,7 @@
 							</div>
 						</div>
 
-						<div class="class">
-							<div class="class-text">
-								<label><input type="radio" checked value="1" name="aa"
-									class="abcd">经济舱</label> <label><input type="radio"
-									value="1" name="aa" class="abcd">商务舱</label> <label><input
-									type="radio" value="1" name="aa" class="abcd">头等舱</label>
-							</div>
-							<div class="count">
-								<label><input type="radio" checked value="1" name="aa"
-									class="abcd">成人</label> <label><input type="radio"
-									value="1" name="aa" class="abcd">儿童</label> <label><input
-									type="radio" value="1" name="aa" class="abcd">婴儿</label>
-							</div>
-						</div>
+
 						<!-- <a href="aaa.jsp"> -->
 						<button type="submit" class="enter">
 							<div class="jiantou"></div>
@@ -138,35 +131,60 @@
 			</div>
 			<!--管理预订-->
 			<div class="back-test-box2 buff2-box">
-				<!-- 航班 -->
-				<div class="top">
-					<table>
-						<tr>
-							<td><h5>TK1890</h5></td>
-							<td class="t2">
-								<div>
-									<div class="con-three-bot-left">
-										<p>09：06</p>
-										<p>杜布罗夫尼克（DBV）</p>
-									</div>
-									<div class="con-three-bot-mid">
-										<span class="p1">1时44分</span> <span class="p2">——</span>
 
-									</div>
-									<div class="con-three-bot-right">
-										<p>12：50</p>
-										<p>伊斯坦布尔（IST）</p>
-									</div>
-								</div>
-							</td>
-							<td style="width: 70px;"><a href="">航班状态</a></td>
-						</tr>
-					</table>
+				<%-- <c:if test=""> --%>
+				<div class="topp">
+					<c:forEach items="${usts}" var="list">
+						<!-- 航班 -->
+						<div class="top">
+							<form action="/airsys/user/outticket" method="get">
+								<table style="color: white;">
+									<tr>
+										<td><h5>${list.fnumber}</h5></td>
+										<td class="t2">
+											<div>
+												<div class="con-three-bot-left">
+													<p>${list.departureTime}</p>
+													<p>${list.fromCity}</p>
+												</div>
+												<div class="con-three-bot-mid">
+													<span class="p1">${list.temp }</span> <span class="p2">——</span>
+
+												</div>
+												<div class="con-three-bot-right">
+													<p>${list.arrivalTime}</p>
+													<p>${list.toCity}</p>
+												</div>
+												<div class="con-three-bot-right"style="margin-left:50px;">
+													<p>${list.tclass}</p>
+												</div>
+												<input type="hidden" value="${list.tid}" name="tid">
+												<input type="hidden" value="${list.fid}" name="fid">
+												<input type="hidden" value="${list.tclass}" name="tclass">
+											</div>
+										</td>
+										<td style="width: 70px;"><button type="submit">退票</button></td>
+										<td style="width: 70px;"><button type="button" onclick="window.location.href = '/airsys/user/update/user?fnumber=${list.fnumber}&&startDate=${list.startDate }&&tid=${list.tid}&&tclass=${list.tclass}'">改签</button></td>
+
+									</tr>
+								</table>
+							</form>
+						</div>
+					</c:forEach>
 				</div>
+				<%-- </c:if> --%>
+
+				<%-- <c:if test="${empty list} "> --%>
+				<div class="loginbox1">
+					<b>暂无订单！</b>
+				</div>
+				<%-- </c:if> --%>
 				<!-- 登陆 -->
-				<div class="loginbox">
+				<%-- <c:if test="1==1"> --%>
+				<div class="loginbox2">
 					<b>您还没有登陆，请<a href="/airsys/user/login">登陆！</a></b>
 				</div>
+				<%-- </c:if> --%>
 
 			</div>
 			<!--航班状态-->
@@ -208,5 +226,6 @@
 
 
 	</div>
+
 </body>
 </html>

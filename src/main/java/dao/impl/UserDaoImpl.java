@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import dao.prototy.IUserDao;
+import entity.Order;
 import entity.User;
 
 @Repository("userDaoImpl")
@@ -41,5 +42,6 @@ public class UserDaoImpl implements IUserDao{
 					new Object[] {uid});
 				
 	}
+
 
 }

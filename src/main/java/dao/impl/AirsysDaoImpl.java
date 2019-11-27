@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import dao.prototy.IAirsysDao;
 import entity.Ticket;
+import entity.UserInfo;
 import entity.UserSelect;
 import entity.UserSelectAll;
 @Repository("accountDaoSpringImpl")
@@ -25,7 +26,7 @@ public class AirsysDaoImpl implements IAirsysDao{
 	
 		return  jdbctemplate.query("select * from airsys_plan p left join airsys_flight f on p.fnumber=f.fnumber where p.start_date = ? and p.from_city = ? and p.to_city=?",
 				new Object[] {start,from_city,to_city},
-			
+			 
 				new BeanPropertyRowMapper<UserSelectAll>(UserSelectAll.class));
 	}
 	
@@ -143,5 +144,39 @@ public class AirsysDaoImpl implements IAirsysDao{
 		String sql = "insert into airsys_ticket (tclass,passenger_type,tprice,fid,uid,idcard,status) values(?,?,?,?,?,?,?)";
 		return jdbctemplate.update(sql, new Object[] {seats,man,tprice,fid,uid,idcard,status});
 	}
+
+	@Override
+	public List<UserInfo> userTicket(int uid) {
+		return jdbctemplate.query("select * from airsys_ticket t INNER JOIN airsys_flight f on t.fid=f.fid INNER JOIN airsys_plan p on f.fnumber=p.fnumber  where t.uid = ? and t.status != 0",
+				new Object[] {uid},
+				new BeanPropertyRowMapper<UserInfo>(UserInfo.class));
+	}
+
+	@Override
+	public int outTicket(String uid, String tid) {
+		String sql = "update airsys_ticket set status= 0 where uid = ? and tid = ?";
+		return jdbctemplate.update(sql, new Object[] {uid,tid});
+	}
+
+	@Override
+	public int outTicketClassEco(String fid) {
+		String sql ="update airsys_flight set economy_class_remain_seats = economy_class_remain_seats +1 where fid = ?";
+		return jdbctemplate.update(sql, new Object[] {fid});
+	}
+
+	@Override
+	public int outTicketClassBus(String fid) {
+		String sql ="update airsys_flight set business_class_remain_seats = business_class_remain_seats +1 where fid = ?";
+		return jdbctemplate.update(sql, new Object[] {fid});
+	}
+
+	@Override
+	public int outTicketClassFir(String fid) {
+		String sql ="update airsys_flight set first_class_remain_seats = first_class_remain_seats +1 where fid = ?";
+		return jdbctemplate.update(sql, new Object[] {fid});
+	}
+
+	
+
 
 }
