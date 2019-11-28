@@ -2,238 +2,243 @@
 	pageEncoding="utf-8"%>
 <% response.setContentType("text/html;charset=utf-8"); %>
 <%request.setCharacterEncoding("utf-8"); %>
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>机票预定</title>
-<link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
-<style type="text/css">
-body, h2 {
-	margin: 0;
-	padding: 0;
-	position: relative;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>机票预订</title>
+    <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
+    <style>
+        body{
+            margin: 0;padding: 0;
+        }
+        .showTicket{
+            width: 800px;height: 230px;
+            background: gainsboro;
+            margin-left: 60px; 
+            margin-top: 40px;
+            border-radius: 40px;
+            position: relative;
+        }
+        .passenger{
+            border-radius: 40px;
+            width: 800px;height: 350px;
+            background: gainsboro;
+             margin-left: 60px; 
+            margin-top: 20px;
+            position: absolute;
+        }
+        h2{
+           margin-left: 50px;
+           padding-top: 20px;
+            font-size:25px;
+        }
+        .info-top{
+           margin-left: 50px;
+           padding-top: 20px;
+           margin-bottom: 25px;
+           font-size:25px;
+        }
+        .showFnumber{
+            width: 300px;height: 30px;
+            margin-left: 60px;
+             margin-top: 20px;
+            float: left;
+        }
+        .showStart{
+            width: 300px;height: 30px;
+            margin-left: 60px;
+            margin-top: 20px;
+            float: left;
+        }
+        .showEnd{
+            width: 300px;height: 30px;
+            margin-left: 400px;
+            margin-top: 20px;
+        }
+        .showStartTime{
+            width: 300px;height: 30px;
+            margin-left: 60px;
+            float: left;
+            margin-top: 20px;
+        }
+        .showPrice{
+        width: 300px;height: 30px;
+            margin-left: 400px;
+            margin-top: 20px;
+        }
+        .showEndTime{
+            width: 300px;height: 30px;
+            margin-left: 400px;
+             margin-top: 20px;
+        }
+        .fanhui{
+            position: relative;
+            left: 700px;
+            top: -180px;
+        }
+        .addPassenger{
+            width: 200px;height: 35px;
+            position: absolute;
+            left: 100px;
+            font-size: 20px;
+            letter-spacing: 10px;
+            margin-top: 20px;
+        }
+        .passengerType {
+            margin-top: 20px;
+			margin-left: 60px;
+        }
+        label {
+           padding-top: 50px;
+            margin-right: 50px;
+        }
+        .seatGrade{
+            margin-top: 15px;
+            margin-left: 60px;
+        }
+        .passengerType input{
+            margin-right: 20px;
+        }
+        .name{
+            margin-left: 60px;
+            margin-top: 20px;
+        }
+        .idcard{
+            margin-left: 60px;
+            margin-top: 20px;
+        }
+        .phone{
+            margin-left: 60px;
+            margin-top: 20px;
+        }
 
-.buyPage {
-	width: 100%;
-	height: 100%;
-}
-.layui-input{
-  width:200px;
-}
-.one {
-	font-size: 25px;
-	margin-left: 20px;
-	margin-top: 10px;
-}
+        .buyTicket{
+            width: 200px;height: 35px;
+            position: absolute;
+            left: 400px;
+            font-size: 20px;
+            letter-spacing: 10px;
+            margin-top: 20px;
+        }
+        .close{
 
-.buyPage-left {
-	width: 400px;
-	height: 480px;
-	border: 4px solid blue;
-	margin-left: 50px;
-	float: left;
-}
-
-.buyPage-right {
-	width: 500px;
-	height: 480px;
-	border: 4px solid grey;
-	margin-left: 550px;
-	margin-top: 10px;
-	position: relative;
-}
-
-.manInfo {
-	width: 400px;
-	height: 300px;
-	border: 1px solid red;
-}
-
-.ratio {
-margin-top:20px;
-	float: left;
-}
-
-.info {
-margin-top:20px;
-	float: left;
-}
-
-.goPay button {
-    width:250px;
-	margin-left:100px;
-	margin-top:50px;
-}
-
-.addBtn{
- position: absolute;
- left:40px;
- top:345px;
-}
-.addInfo a:hover{
-   color: red;
-}
-</style>
+            position: absolute;
+            left: 700px;
+            top: 20px;
+        }
+               
+        .chengren{
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            left: 155px;
+            top: 75px;
+        }
+        .ertong{
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            left: 242px;
+            top: 75px;
+        }
+        .seatGrade label{
+            margin-right: 67px;
+        }
+        .jj{
+            width: 50px;
+            height: 30px;
+            position: absolute;
+           left:155px;
+            top: 108px;
+            margin-right: 10px;
+        }
+        .sw{
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            left:240px;
+            top: 108px;
+            margin-right: 10px;
+        }
+        .td{
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            left:325px;
+            top: 108px;
+            margin-right: 10px;
+        }
+        .seat{
+          width:170px;
+        }
+    </style>
 </head>
-
 <body>
-  
-	<form class="layui-form" action="/airsys/sales/buy" method="post">
-
+<form action="/airsys/sales/buy">
 		<input Type="hidden" name="sid" value=<%=session.getAttribute("sid")%>>
 		<input Type="hidden" name="planId" value=${planId }>
-		<div class="buyPage">
-			<div class="buyPage-left">
-				<div class="one">机票信息</div>
+    <div class="showTicket">
+        <h2>机票信息</h2>
+        <div class="showFnumber">
+            航&nbsp;&nbsp;班&nbsp;&nbsp;号：<input name="fnumber" type="text" value=${fnumber }>
+        </div>
+          <div class="showPrice">
+            价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：<input name="price" type="text" value=${price }>
+        </div>
+        <div class="showStart">
+            出发城市：<input type="text" name="from" value=${from }>
+        </div>
+        <div class="showEnd">
+            到达城市：<input type="text" name="to" value=${to }>
+        </div>
+        <div class="showStartTime">
+            起飞时间：<input type="text" name="starttime" value="2019-11-05 19:20:02">
+        </div>
+        <div class="showEndTime">
+            到达时间：<input type="text" name="endtime" value="2019-11-05 00:12:18">
+        </div>
+        <a><button class="fanhui">返回</button></a>
+    </div>
 
+    <div class="passenger">
+          <div class="info-top">乘客信息</div>
+        <div class="passengerType">
+            乘客类型：
+            <label><input name="people" class="one" type="radio" value="one" checked/><div class="chengren">成人</div></label>
+            <label><input name="people" class="two" type="radio" value="two" /><div class="ertong">儿童</div></label>
+        </div>
+        <div class="seatGrade">
+            座位等级：
+            <!-- <label> <input type="radio"  name="grade" value="first_class_remain_seats" checked><div class="jj">经济舱</div></label>
+            <label> <input type="radio"  name="grade" value="business_class_remain_seats" ><div class="sw">商务舱</div></label>
+            <label>  <input type="radio"  name="grade" value="economy_class_remain_seats" ><div class="td">头等舱</div></label> -->
+       <select name="grade" class="seat">
+		  <option  value ="first_class_remain_seats">经济舱</option>
+		  <option  value ="business_class_remain_seats">商务舱</option>
+		  <option  value="economy_class_remain_seats">头等舱</option>
+		</select>
+       
+       
+        </div> 
+        <div class="name">
+            姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" name="name" required placeholder="请输入姓名">
+        </div>
+        <div class="idcard">
+            证件号码：<input type="text" required name="idcard" placeholder="请输入身份证号">
+        </div>
+        <div class="phone">
+            联系方式：<input type="text" required name="phone"  placeholder="请输入联系方式">
+        </div>
+        <button class="addPassenger">添加乘客</button>
+      <button class="layui-btn buyTicket" lay-submit lay-filter="formDemo">立即购票</button>
+        <a><button class="close">关闭</button></a>
 
-				<div class="layui-tab-content">
-					<div class="layui-tab-item layui-show">
-						<div class="layui-form-item">
-
-							<label class="layui-form-label">航班号</label>
-							<div class="layui-input-block">
-								<input type="text" name="fnumber" required lay-verify="required"
-									readonly unselectable="on" value=${fnumber } autocomplete="off"
-									class="layui-input">
-							</div>
-						</div>
-
-						<div class="layui-form-item">
-							<label class="layui-form-label">出发城市</label>
-							<div class="layui-input-block">
-								<input type="text" name="from" required lay-verify="required"
-									readonly unselectable="on" value=${from } autocomplete="off"
-									class="layui-input">
-							</div>
-						</div>
-
-						<div class="layui-form-item">
-							<label class="layui-form-label">到达城市</label>
-							<div class="layui-input-block">
-								<input type="text" name="to" required lay-verify="required"
-									readonly unselectable="on" value=${to } autocomplete="off"
-									class="layui-input">
-							</div>
-						</div>
-
-						<div class="layui-form-item">
-							<label class="layui-form-label">起飞时间</label>
-							<div class="layui-input-block">
-								<input value=${time } readonly unselectable="on" type="text"
-									name="starttime" required lay-verify="required"
-									value="2019-11-05 19:20:02" autocomplete="off"
-									class="layui-input">
-							</div>
-						</div>
-
-						<div class="layui-form-item">
-							<label class="layui-form-label">到达时间</label>
-							<div class="layui-input-block">
-								<input value=${time2 } readonly unselectable="on" type="text"
-									name="endtime" required lay-verify="required"
-									value="2019-11-05 00:12:18" autocomplete="off"
-									class="layui-input">
-							</div>
-						</div>
-
-						<div class="layui-form-item">
-							<label class="layui-form-label">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
-							<div class="layui-input-block">
-								<input type="text" readonly unselectable="on" name="price"
-									required lay-verify="required" value=${price }
-									autocomplete="off" class="layui-input">
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-			<div class="buyPage-right">
-				<div class="one">乘客信息</div>
-				<div class ="pessenger">
-				<div class="ratio">
-					<label class="layui-form-label">乘客类型</label>
-					<div class="layui-input-block">
-						<input type="radio" id="man" name="people" value="成人" title="成人"
-							checked> <input type="radio" id="child" name="people"
-							value="儿童" title="儿童">
-					</div>
-				</div>
-				<div class="ratio">
-					<label class="layui-form-label">座位等级</label>
-					<div class="layui-input-block">
-						<input type="radio" id="grade1" name="grade"
-							value="first_class_remain_seats" title="头等舱"> <input
-							type="radio" id="grade2" name="grade"
-							value="business_class_remain_seats" title="商务舱"> <input
-							type="radio" id="grade3" name="grade"
-							value="economy_class_remain_seats" title="经济舱" checked>
-					</div>
-				</div>
-
-				<div class="info">
-					<label class="layui-form-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
-					<div class="layui-input-block">
-						<input type="text" name="name" placeholder="请输入乘客姓名" required lay-verify="required"
-							autocomplete="off" class="layui-input">
-					</div>
-				</div>
-
-				<div class="info">
-					<label class="layui-form-label">证件号码</label>
-					<div class="layui-input-block">
-						<input type="text" placeholder="请输入乘客证件号码" name="idcard" required
-							lay-verify="required" autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				<div class="info">
-					<label class="layui-form-label">联系方式</label>
-					<div class="layui-input-block">
-						<input type="text" placeholder="请输入乘客联系方式" name="phone" required
-							lay-verify="required" autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				</div>
-				<button class="addBtn">添加乘客</button>
-				
-                
-
-				<div class="goPay">
-					<button class="layui-btn" lay-submit lay-filter="formDemo">下一步</button>
-				</div>
-
-			</div>
-		</div>
-	</form>
-	<script type="text/javascript" src="/airsys/assets/js/jquery-1.11.1.js"></script>
-	<script src="/airsys/assets/layui/layui.js"></script>
-	<script>
-		//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-		layui.use('element', function() {
-			var element = layui.element;
-
-			//…
-		});
-
-		//Demo
-		layui.use('form', function() {
-			var form = layui.form;
-
-		});
-		
-		$(".addBtn").click(function(){
-			alert("是否添加乘客？")
-			$("div").show();
-		})
-		
-	</script>
+    </div>
+    
+    </form>
 </body>
 </html>

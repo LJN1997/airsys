@@ -33,7 +33,7 @@ body {
 }
 
 .del-con {
-	width: 850px;
+	width: 1000px;
 	height: 180px;
 	margin-top: 10px;
 	margin-left: 50px;
@@ -83,6 +83,7 @@ width:250px;height:30px;
 			
 				<table class="layui-table table" id="mytable">
 					<tr>
+					    <th>机票ID</th>
 						<th>航班号</th>
 						<th>姓名</th>
 						<th>电话</th>
@@ -94,7 +95,8 @@ width:250px;height:30px;
 						<th>机票状态</th>
 						<th>操作</th>   
 					</tr>
-				
+					<tbody class="tbody">
+					</tbody>
 				</table>
 
 
@@ -121,11 +123,13 @@ width:250px;height:30px;
 <script type="text/javascript" src="/airsys/assets/js/jquery-1.11.1.js"></script>
 <script>
 	window.onload=function(){
-		var tid;
+		/* var tid; */
 		$(".selectOid").click(function(){
+		
 			var oname=$(".oname").val();
 			var idcard=$(".idcard").val();
 			//var data = {"oname":oname,"idcard":idcard};
+			$(".tbody").empty();
 			
 			$.ajax({
 				url:"selectOid",
@@ -138,31 +142,18 @@ width:250px;height:30px;
 					idcard:idcard
 				},
 				success:function(e){
+					
 			 		 for(var i=0;i<e.length;i++){
-			 			tid=e[i].tid;
-			 			
+			 			var a="";
 			 			if(e[i].status==0){
-			 				var tr="<tr>";
-							//var tr = document.createElement("tr");
-							var td = "";
-							td+="<td class='fnumber'>"+e[i].fnumber+"</td>"
-							td+="<td class='oname'>"+e[i].oname+"</td>"
-							td+="<td class='ophone'>"+e[i].ophone+"</td>"
-							td+="<td class='idcard'>"+e[i].idcard+"</td>"
-							td+="<td class='passengerType'>"+e[i].passengerType+"</td>"
-							td+="<td class='tclass'>"+e[i].tclass+"</td>"
-							td+="<td class='tprice'>"+e[i].tprice+"</td>"
-							td+="<td class='tdate'>"+e[i].tdate+"</td>"
-							td+="<td class='status'>"+e[i].status+"</td>"
-							td+=`<td><button class="deled" >已退</button></td>`;
-							tr+=td+"</tr>"
-					      
-					        $(".table").append(tr)
+							a="<td><button  >已退</button></td>";
 			 			}else{
-				 			
+			 				a="<td><button class='delbtn' >退票</button></td>";
+			 			}
+			 				
 				 			var tr="<tr>";
-							//var tr = document.createElement("tr");
 							var td = "";
+							td+="<td class='tid'>"+e[i].tid+"</td>"
 							td+="<td class='fnumber'>"+e[i].fnumber+"</td>"
 							td+="<td class='oname'>"+e[i].oname+"</td>"
 							td+="<td class='ophone'>"+e[i].ophone+"</td>"
@@ -172,13 +163,15 @@ width:250px;height:30px;
 							td+="<td class='tprice'>"+e[i].tprice+"</td>"
 							td+="<td class='tdate'>"+e[i].tdate+"</td>"
 							td+="<td class='status'>"+e[i].status+"</td>"
-							td+=`<td><button  class="delbtn"+e[i].tid >退票</button></td>`;
+							td+=a;
 							tr+=td+"</tr>"
-				      
-				            $(".table").append(tr)
+				            $(".tbody").append(tr)
+				             
 			 			}
+			 		 
+			 		
 					}  
-				}
+				
 			})
 		})
 		
@@ -187,7 +180,7 @@ width:250px;height:30px;
 			var fnumber = $(".fnumber").text();
 			var tclass = $(".tclass").text();
 			var status = $(".status").text();
-			alert(status)
+			var tid=$(this).parent().parent().children()[0].innerText;
 	        $.ajax({
 				url:"delTicket",
 				type:"post",
@@ -200,7 +193,8 @@ width:250px;height:30px;
 				},
 				success:function(e){
 					if("ok" == e)
-					alert("退票成功")
+					 alert("退票成功")
+					 
 				}  
 				
 			})  

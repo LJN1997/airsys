@@ -10,6 +10,20 @@
 <title>列出账号</title>
 <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
 <script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
+<style type="text/css">
+
+  h3{
+    font-size:30px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+	.layui-table{
+	width:1120px;
+	}
+	
+</style>
 </head>
 <body>
 	<form action="" method="get">
@@ -22,9 +36,9 @@
              <th>目的地</th>
              <th>起飞时间</th>
              <th>到达时间</th>
-             <th>头等舱剩余座位</th>
-             <th>公务员剩余座位</th>
-             <th>经济舱剩余座位</th>
+             <th>头等舱剩余</th>
+             <th>商务舱剩余</th>
+             <th>经济舱剩余</th>
              <th>票价</th>
              <th>操作</th>
          </tr>
@@ -42,6 +56,7 @@
              <td>${query.economyClassRemainSeats}</td>
              <td>${query.tprice}</td>
              <td ><button type="button" name="planId" class="layui-btn layui-btn-radius layui-btn-warm reserve">预定</button></td>
+         </tr>
          </c:forEach>
      </table> 
 
@@ -56,10 +71,10 @@ $(".reserve").click(function(){
 	var fnumber=$(this).parent().parent().children()[0].innerText;
 	var from=$(this).parent().parent().children()[1].innerText;
 	var to=$(this).parent().parent().children()[2].innerText;
-	var time=$(this).parent().parent().children()[3].innerText;
-	var time2=$(this).parent().parent().children()[4].innerText;
+	var expStartTime=$(this).parent().parent().children()[3].innerText;
+	var expEndTime=$(this).parent().parent().children()[4].innerText;
 	var price=$(this).parent().parent().children()[8].innerText;
-	location.href="reserve/"+from+"/"+to+"/"+time+"/"+time2+"/"+price+"/"+fnumber+"/"+planId;
+	location.href="reserve/"+from+"/"+to+"/"+expStartTime+"/"+expEndTime+"/"+price+"/"+fnumber+"/"+planId;
 })
 </script>
 </html>

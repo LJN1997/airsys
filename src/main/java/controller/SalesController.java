@@ -60,18 +60,18 @@ public class SalesController {
 
 	// 3、预定票，从queryCon.jsp页面跳转到reserve.jsp，预定票的界面
 	// 然后将参数信息存起来，使reserve.jsp能获取到这些参数
-	@RequestMapping("/reserve/{from}/{to}/{time}/{time2}/{price}/{fnumber}/{planId}")
+	@RequestMapping("/reserve/{from}/{to}/{expStartTime}/{expEndTime}/{price}/{fnumber}/{planId}")
 	public ModelAndView reserve(@PathVariable("from") String from, @PathVariable("to") String to,
-			@PathVariable("time") String time, @PathVariable("time2") String time2, @PathVariable("price") double price,
+			@PathVariable("expStartTime") String expStartTime, @PathVariable("expEndTime") String expEndTime, @PathVariable("price") double price,
 			@PathVariable("fnumber") String fnumber, @PathVariable("planId") int planId) {
-		String starttime = time.replaceAll("\\s*|\t|\r|\n", "");
-		String endtime = time2.replaceAll("\\s*|\t|\r|\n", "");
+		String starttime = expStartTime.replaceAll("\\s*|\t|\r|\n", "");
+		String endtime = expEndTime.replaceAll("\\s*|\t|\r|\n", "");
 		ModelAndView mv = new ModelAndView("/sales/reserve");
 		mv.addObject("fnumber", fnumber);
 		mv.addObject("from", from);
 		mv.addObject("to", to);
-		mv.addObject("time", starttime);
-		mv.addObject("time2", endtime);
+		mv.addObject("expStartTime", starttime);
+		mv.addObject("expEndTime", endtime);
 		mv.addObject("price", price);
 		mv.addObject("planId", planId);
 		return mv;
@@ -98,6 +98,7 @@ public class SalesController {
 			tclass = "经济舱";
 		}
 		String idcard = request.getParameter("idcard");
+		System.out.println(seat+people);
 		// 先根据用户的身份证判断下order表里有没有这个用户，如果有的话，就不用再往order表里增加一条信息了
 		int findIdcard = salesService.findIdcard(idcard);
 		if (findIdcard > 0) {
