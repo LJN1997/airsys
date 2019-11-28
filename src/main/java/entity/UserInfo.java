@@ -14,12 +14,14 @@ public class UserInfo {
 	private String fid;
 	private String tclass;
 	private String startDate;
+	private String idcard;
+	private String oname;
 	public UserInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public UserInfo(String fnumber, Date departureTime, Date arrivalTime, String fromCity, String toCity, String tprice,
-			long temp, String tid, String fid, String tclass, String startDate) {
+			long temp, String tid, String fid, String tclass, String startDate, String idcard, String oname) {
 		super();
 		this.fnumber = fnumber;
 		this.departureTime = departureTime;
@@ -32,6 +34,8 @@ public class UserInfo {
 		this.fid = fid;
 		this.tclass = tclass;
 		this.startDate = startDate;
+		this.idcard = idcard;
+		this.oname = oname;
 	}
 	public String getFnumber() {
 		return fnumber;
@@ -99,6 +103,18 @@ public class UserInfo {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+	public String getIdcard() {
+		return idcard;
+	}
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
+	public String getOname() {
+		return oname;
+	}
+	public void setOname(String oname) {
+		this.oname = oname;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -108,6 +124,8 @@ public class UserInfo {
 		result = prime * result + ((fid == null) ? 0 : fid.hashCode());
 		result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 		result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
+		result = prime * result + ((idcard == null) ? 0 : idcard.hashCode());
+		result = prime * result + ((oname == null) ? 0 : oname.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((tclass == null) ? 0 : tclass.hashCode());
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -150,6 +168,16 @@ public class UserInfo {
 				return false;
 		} else if (!fromCity.equals(other.fromCity))
 			return false;
+		if (idcard == null) {
+			if (other.idcard != null)
+				return false;
+		} else if (!idcard.equals(other.idcard))
+			return false;
+		if (oname == null) {
+			if (other.oname != null)
+				return false;
+		} else if (!oname.equals(other.oname))
+			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
 				return false;
@@ -183,9 +211,9 @@ public class UserInfo {
 	public String toString() {
 		return "UserInfo [fnumber=" + fnumber + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime
 				+ ", fromCity=" + fromCity + ", toCity=" + toCity + ", tprice=" + tprice + ", temp=" + temp + ", tid="
-				+ tid + ", fid=" + fid + ", tclass=" + tclass + ", startDate=" + startDate + "]";
+				+ tid + ", fid=" + fid + ", tclass=" + tclass + ", startDate=" + startDate + ", idcard=" + idcard
+				+ ", oname=" + oname + "]";
 	}
-	
 	
 	
 }

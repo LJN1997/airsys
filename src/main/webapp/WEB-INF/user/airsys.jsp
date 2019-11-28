@@ -60,7 +60,7 @@ ${usts} --%>
 	<div class="background">
 		<div class="background-center-box">
 			<br> <br>
-			<div class="back-text-box-1">您好${sessionScope.uid}</div>
+			<div class="back-text-box-1">您好</div>
 			<input type = "hidden" class="Catch" value="${Catch }">
 			<div class="back-text-box-1">您想要探索哪里?</div>
 			<br>
@@ -136,7 +136,7 @@ ${usts} --%>
 				<div class="topp">
 					<c:forEach items="${usts}" var="list">
 						<!-- 航班 -->
-						<div class="top">
+						<div class="top tr-bottom">
 							<form action="/airsys/user/outticket" method="get">
 								<table style="color: white;">
 									<tr>
@@ -144,27 +144,33 @@ ${usts} --%>
 										<td class="t2">
 											<div>
 												<div class="con-three-bot-left">
-													<p>${list.departureTime}</p>
+													<p><fmt:formatDate value="${list.departureTime}" type="both"/></p>
 													<p>${list.fromCity}</p>
 												</div>
 												<div class="con-three-bot-mid">
-													<span class="p1">${list.temp }</span> <span class="p2">——</span>
+													<span class="p1">${list.temp }</span>分 <span class="p2">——</span>
 
 												</div>
 												<div class="con-three-bot-right">
-													<p>${list.arrivalTime}</p>
+													<p><fmt:formatDate value="${list.arrivalTime}" type="both"/></p>
 													<p>${list.toCity}</p>
 												</div>
 												<div class="con-three-bot-right"style="margin-left:50px;">
 													<p>${list.tclass}</p>
 												</div>
+												<div class="con-three-bot-right"style="margin-left:50px;">
+													姓名:<p>${list.oname}</p>
+												</div>
+			
 												<input type="hidden" value="${list.tid}" name="tid">
 												<input type="hidden" value="${list.fid}" name="fid">
 												<input type="hidden" value="${list.tclass}" name="tclass">
+												<input type="hidden" value="${list.oname}" name="oname">
+												<input type="hidden" value="${list.idcard}" name="idcard">
 											</div>
 										</td>
 										<td style="width: 70px;"><button type="submit">退票</button></td>
-										<td style="width: 70px;"><button type="button" onclick="window.location.href = '/airsys/user/update/user?fnumber=${list.fnumber}&&startDate=${list.startDate }&&tid=${list.tid}&&tclass=${list.tclass}'">改签</button></td>
+										<td style="width: 70px;"><button type="button" onclick="window.location.href = '/airsys/user/update/user?fnumber=${list.fnumber}&&startDate=${list.startDate }&&tid=${list.tid}&&tclass=${list.tclass}&&oname=${list.oname}&&idcard=${list.idcard}'">改签</button></td>
 
 									</tr>
 								</table>

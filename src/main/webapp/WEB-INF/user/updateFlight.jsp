@@ -207,6 +207,8 @@
 						<input type="hidden" value="1" name="buff">
 						<input type="hidden" value="${tid}" name ="tid">
 						<input type="hidden" value="${tclass}" name ="tclass">
+						<input type="hidden" value="${oname}" name ="oname">
+						<input type="hidden" value="${idcard}" name ="idcard">
 						
 					</div>
 				</div>

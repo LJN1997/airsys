@@ -79,7 +79,6 @@ public class AirsysController {
 				// 拿订单信息
 				usts = airService.userTicket(uid);
 				if (null == usts || usts.size() == 0) {
-					System.out.println("走到判断条件里");
 					System.out.println(session.getAttribute("uid"));
 					mv.setViewName("forward:/user/airsys");
 					mv.addObject("usts", usts);
@@ -108,6 +107,9 @@ public class AirsysController {
 		// 有没有这个账号
 		if (a > 0) {
 			ModelAndView mv = new ModelAndView();
+			String ljn = request.getParameter("ljn");
+			String code = request.getParameter("code");
+			if(ljn.equals(code)) {
 			int uid = 0;
 			// 查uid
 			uid = airService.uid(uphone, upwd);
@@ -138,7 +140,7 @@ public class AirsysController {
 			session.setAttribute("uid", uid);
 			mv.addObject("usts", usts);
 			return mv;
-
+			}
 		}
 			
 		ModelAndView mv = new ModelAndView("/user/signIn");
@@ -225,46 +227,8 @@ public class AirsysController {
 	}
 	
 	
-	
-	/*//用户查询自己订单
-	@RequestMapping("/airsys/users")
-	@ResponseBody
-	public ModelAndView queryOrderInfo() {
-	
-	ModelAndView mv = new ModelAndView();
-	List<UserInfo> usts;
-	// 拿订单信息
-	usts = airService.userTicket(uid);
-	if (null == usts || usts.size() == 0) {
-		System.out.println("走到判断条件里");
-		System.out.println(session.getAttribute("uid"));
-		// session.setAttribute("uid", uid);
-		mv.setViewName("forward:/user/airsys");
-		mv.addObject("usts", usts);
-		return mv;
-	}
-	// 总时长
-	Date DepartureTime = usts.get(0).getDepartureTime();
-	Date ArrivalTime = usts.get(0).getArrivalTime();
-	long tem = ArrivalTime.getTime() - DepartureTime.getTime();
-	long temp = tem / 1000 / 60;
-
-	int count = 0;
-	for (UserInfo userInfo : usts) {
-		System.out.println(userInfo);
-		usts.get(count).setTemp(temp);
-		count++;
-	}
-	mv.setViewName("forward:/user/airsys");
-	mv.addObject("usts", usts);
-	return mv;
-	}*/
-	
-
-	
-	
 	// 用户购买
-	@RequestMapping("/buy/{type}/{expStartTime}/{fid}/{tprice}/{expEndTime}/{temp}/{fromCity}/{toCity}/{season_discount}/{firstClassRemainSeats}/{businessClassRemainSeats}/{economyClassRemainSeats}/{buff}/{tid}/{tclass}")
+	@RequestMapping("/buy/{type}/{expStartTime}/{fid}/{tprice}/{expEndTime}/{temp}/{fromCity}/{toCity}/{season_discount}/{firstClassRemainSeats}/{businessClassRemainSeats}/{economyClassRemainSeats}/{buff}/{tid}/{tclass}/{oname}/{idcard}")
 	public ModelAndView buy(@PathVariable("type") String type, @PathVariable("expStartTime") String expStartTime,
 			@PathVariable("expEndTime") String expEndTime, @PathVariable("temp") String temp,
 			@PathVariable("fromCity") String fromCity, @PathVariable("toCity") String toCity,
@@ -275,7 +239,9 @@ public class AirsysController {
 			@PathVariable("tprice") String tprice,
 			@PathVariable("buff") String buff,
 			@PathVariable("tid") String tid,
-			@PathVariable("tclass") String tclass){
+			@PathVariable("tclass") String tclass,
+			@PathVariable("oname") String oname,
+			@PathVariable("idcard") String idcard){
 		ModelAndView mv = new ModelAndView("/user/userBuy");
 		mv.addObject("type", type);
 		mv.addObject("expStartTime", expStartTime);
@@ -292,11 +258,14 @@ public class AirsysController {
 		mv.addObject("buff1",buff);
 		mv.addObject("tid",tid);
 		mv.addObject("tclass",tclass);
+		mv.addObject("oname", oname);
+		mv.addObject("idcard", idcard);
 		return mv;
 	}
 	
 	@RequestMapping("/buy1/{type}/{expStartTime}/{fid}/{tprice}/{expEndTime}/{temp}/{fromCity}/{toCity}/{season_discount}/{firstClassRemainSeats}/{businessClassRemainSeats}/{economyClassRemainSeats}")
-	public ModelAndView buy1(@PathVariable("type") String type, @PathVariable("expStartTime") String expStartTime,
+	public ModelAndView buy1(@PathVariable("type") String type,
+			@PathVariable("expStartTime") String expStartTime,
 			@PathVariable("expEndTime") String expEndTime, @PathVariable("temp") String temp,
 			@PathVariable("fromCity") String fromCity, @PathVariable("toCity") String toCity,
 			@PathVariable("season_discount") String season_discount,
@@ -317,8 +286,6 @@ public class AirsysController {
 		mv.addObject("economyClassRemainSeats", economyClassRemainSeats);
 		mv.addObject("tprice", tprice);
 		mv.addObject("fid", fid);
-
-
 		return mv;
 	}
 
@@ -415,6 +382,8 @@ public class AirsysController {
 		String fnumber = request.getParameter("fnumber");
 		String tid = request.getParameter("tid");
 		String tclass = request.getParameter("tclass");
+		String oname = request.getParameter("oname");
+		String idcard = request.getParameter("idcard");
 		System.out.println(tid);
 		System.out.println(fnumber);
 		
@@ -442,6 +411,8 @@ public class AirsysController {
 		mv.addObject("tid",tid);
 		mv.addObject("tclass",tclass);
 		mv.addObject("usts", usts);
+		mv.addObject("oname", oname);
+		mv.addObject("idcard", idcard);
 		return mv;
 	}
 	//改签查询
@@ -453,6 +424,8 @@ public class AirsysController {
 		String buff = request.getParameter("buff");
 		String tid = request.getParameter("tid");
 		String tclass = request.getParameter("tclass");
+		String oname = request.getParameter("oname");
+		String idcard = request.getParameter("idcard");
 		System.out.println(buff);
 		System.out.println(fromCity);
 		System.out.println(toCity);
@@ -469,6 +442,8 @@ public class AirsysController {
 		mv.addObject("buff",buff);
 		mv.addObject("tid",tid);
 		mv.addObject("tclass",tclass);
+		mv.addObject("oname", oname);
+		mv.addObject("idcard", idcard);
 		return mv;
 	}
 	

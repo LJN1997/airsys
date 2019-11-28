@@ -92,7 +92,7 @@ body {
 		<input type="hidden" value="${buff}">
 			<div class="passenger-box">
 				<div class="p-message-left">
-					<b>姓名</b> <input type="text" class="form-control"
+					<b>姓名</b> <input type="text" class="form-control" value="${oname }"
 						id="exampleInputEmail1" placeholder="姓名，请与登机证件姓名保持一致" name="oname">
 
 					<div class="shen">
@@ -100,7 +100,7 @@ body {
 					</div>
 					<div class="p-num">
 
-						<input type="text" class="form-control" id="exampleInputEmail"
+						<input type="text" class="form-control" id="exampleInputEmail" value="${idcard }"
 							placeholder="登机证件号码" sytle="width:80px" name="idcard">
 					</div>
 						<input type="hidden" value="${fid}" name = "fid">

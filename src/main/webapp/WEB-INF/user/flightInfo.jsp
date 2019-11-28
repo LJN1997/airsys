@@ -12,20 +12,19 @@
 	<%
 		/*  out.println(session.getAttribute("uid"));  */
 	%>
-	
+
 	<input type="hidden" value="${buff}" name="buff" class="buff">
 	<input type="hidden" value="${tid}" name="tid" class="tid">
 	<input type="hidden" value="${tclass}" name="tclass" class="tclass">
+	<input type="hidden" value="${oname}" name="oname" class="oname">
+	<input type="hidden" value="${idcard}" name="idcard" class="idcard">
 	<div class="box">
 		<div class="title">航班信息</div>
 		<div class="infobox">
 			<c:forEach items="${usts}" var="list">
-
-				<div class="info"
+				<div class="info" id="${list.planId}"
 					style="height: 100px; background: rgba(0, 0, 0, 0.2)">
-
 					<div class="top1">
-
 						<table>
 							<tr>
 								<td><h5 style="width: 90px;" class="type">${list.type}</h5></td>
@@ -75,72 +74,63 @@
 											<p></p>
 											<p>经济舱：
 											<p class="economyClassRemainSeats">${list.economyClassRemainSeats}</p>
-											
 											</p>
-											
 										</div>
 									</div>
-									
-
 								</td>
-								<td style="width: 80px;"><button type="submit"
+								<td style="width: 80px;"><button type="submit" id="${list.planId }"
 										style="background: rgba(0, 0, 0, 0)" class="buy">预订航班</button></td>
-
 							</tr>
 						</table>
-
 					</div>
 				</div>
-				
-				</c:forEach>
+			</c:forEach>
 		</div>
-		
 	</div>
 	<script>
-		$(".buy").click(
-				function() {
-					var type = $(".type").html();
-					var expStartTime = $(".expStartTime").html()
-					expStartTime = $.trim(expStartTime);
-					var expEndTime = $(".expEndTime").html()
-					expEndTime = $.trim(expEndTime);
-					var temp = $(".temp").html()
-					var fromCity = $(".fromCity").html()
-					var toCity = $(".toCity").html()
-					var season_discount = $(".season_discount").html()
-					var firstClassRemainSeats = $(".firstClassRemainSeats")
-							.html()
-					var businessClassRemainSeats = $(
-							".businessClassRemainSeats").html()
-					var economyClassRemainSeats = $(".economyClassRemainSeats")
-							.html()
-					var tprice = $(".tprice").html();
-					var fid = $(".fid").html();
+		//$(".buy").click(
+				$("table").on("click",".buy",function(){
+					var type = $(this).parent().parent().children("td:eq(0)").text();
+					var fid = $.trim($(this).parent().parent().children("td:eq(1)").children().text());
+					var expStartTime = $.trim($(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(1)").children("p:nth-child(1)").text());
+					var fromCity = $.trim($(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(1)").children("p:nth-child(2)").text());
+					var temp = $.trim($(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(2)").children().children().text());
+					var expEndTime = $.trim($(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(3)").children("p:nth-child(1)").text());
+					var toCity = $.trim($(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(3)").children("p:nth-child(2)").text());
+					var season_discount = $(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(4)").children("p:nth-child(1)").children().text();
+					var tprice = $(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(4)").children("p:nth-child(2)").children().text();
+					var firstClassRemainSeats = $(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(5)").children("p:nth-child(2)").text();
+					var businessClassRemainSeats = $(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(6)").children("p:nth-child(2)").text();
+					var economyClassRemainSeats = $(this).parent().parent().children("td:eq(2)").children().children("div:nth-child(7)").children("p:nth-child(3)").text();
+					
+					/* var planId = $("#planId").val; */
+					
 					var buff = $(".buff").val();
 					var tid = $(".tid").val();
 					var tclass = $(".tclass").val();
-					
-					if(buff==1){
-					location.href = "/airsys/user/buy/" + type + "/"
-							+ expStartTime + "/" + fid + "/" + tprice + "/"
-							+ expEndTime + "/" + temp + "/" + fromCity + "/"
-							+ toCity + "/" + season_discount + "/"
-							+ firstClassRemainSeats + "/"
-							+ businessClassRemainSeats + "/"
-							+ economyClassRemainSeats + "/"
-							+buff +"/"
-							+tid+"/"
-							+tclass
-					}else{
+					var oname = $(".oname").val();
+					var idcard = $(".idcard").val();
+					if (buff == 1) {
+						location.href = "/airsys/user/buy/" + type + "/"
+								+ expStartTime + "/" + fid + "/" + tprice + "/"
+								+ expEndTime + "/" + temp + "/" + fromCity
+								+ "/" + toCity + "/" + season_discount + "/"
+								+ firstClassRemainSeats + "/"
+								+ businessClassRemainSeats + "/"
+								+ economyClassRemainSeats + "/" + buff + "/"
+								+ tid + "/" + tclass + "/" + oname + "/"
+								+ idcard
+					} else {
 						location.href = "/airsys/user/buy1/" + type + "/"
-						+ expStartTime + "/" + fid + "/" + tprice + "/"
-						+ expEndTime + "/" + temp + "/" + fromCity + "/"
-						+ toCity + "/" + season_discount + "/"
-						+ firstClassRemainSeats + "/"
-						+ businessClassRemainSeats + "/"
-						+ economyClassRemainSeats
+								+ expStartTime + "/" + fid + "/" + tprice + "/"
+								+ expEndTime + "/" + temp + "/" + fromCity
+								+ "/" + toCity + "/" + season_discount + "/"
+								+ firstClassRemainSeats + "/"
+								+ businessClassRemainSeats + "/"
+								+ economyClassRemainSeats
 					}
 				})
+				
 	</script>
 
 

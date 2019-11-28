@@ -25,6 +25,7 @@ public class UserSelectAll implements Serializable  {
 	private Date expEndTime;
 	private String str;
 	private long temp;
+	private int planId;
 	public UserSelectAll() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -32,7 +33,7 @@ public class UserSelectAll implements Serializable  {
 	public UserSelectAll(int fid, double season_discount, int firstClassRemainSeats, int businessClassRemainSeats,
 			int economyClassRemainSeats, String fnumber, Date startDate, Date endDate, String fromCity, String toCity,
 			Date departureTime, Date arrivalTime, int sailLength, String tprice, String type, Date expStartTime,
-			Date expEndTime, String str, long temp) {
+			Date expEndTime, String str, long temp, int planId) {
 		super();
 		this.fid = fid;
 		this.season_discount = season_discount;
@@ -53,6 +54,7 @@ public class UserSelectAll implements Serializable  {
 		this.expEndTime = expEndTime;
 		this.str = str;
 		this.temp = temp;
+		this.planId = planId;
 	}
 	public int getFid() {
 		return fid;
@@ -168,6 +170,12 @@ public class UserSelectAll implements Serializable  {
 	public void setTemp(long temp) {
 		this.temp = temp;
 	}
+	public int getPlanId() {
+		return planId;
+	}
+	public void setPlanId(int planId) {
+		this.planId = planId;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -183,6 +191,7 @@ public class UserSelectAll implements Serializable  {
 		result = prime * result + firstClassRemainSeats;
 		result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 		result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
+		result = prime * result + planId;
 		result = prime * result + sailLength;
 		long temp;
 		temp = Double.doubleToLongBits(season_discount);
@@ -247,6 +256,8 @@ public class UserSelectAll implements Serializable  {
 				return false;
 		} else if (!fromCity.equals(other.fromCity))
 			return false;
+		if (planId != other.planId)
+			return false;
 		if (sailLength != other.sailLength)
 			return false;
 		if (Double.doubleToLongBits(season_discount) != Double.doubleToLongBits(other.season_discount))
@@ -288,9 +299,8 @@ public class UserSelectAll implements Serializable  {
 				+ startDate + ", endDate=" + endDate + ", fromCity=" + fromCity + ", toCity=" + toCity
 				+ ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", sailLength=" + sailLength
 				+ ", tprice=" + tprice + ", type=" + type + ", expStartTime=" + expStartTime + ", expEndTime="
-				+ expEndTime + ", str=" + str + ", temp=" + temp + "]";
+				+ expEndTime + ", str=" + str + ", temp=" + temp + ", planId=" + planId + "]";
 	}
-	
 	
 	
 	
