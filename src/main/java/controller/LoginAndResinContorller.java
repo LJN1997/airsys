@@ -30,7 +30,6 @@ import service.prototy.PlaceAdminService;
 @Controller
 @RequestMapping("/login")
 public class LoginAndResinContorller {
-
 	@Autowired
 	private IAdminService adminService;
 	@Autowired
@@ -43,24 +42,19 @@ public class LoginAndResinContorller {
 		ModelAndView mv = new ModelAndView("main/login");
 		return mv;
 	}
-/*	
-	@RequestMapping("log1")
-	public String login(String number,String password,HttpServletRequest req) {
-		if(StringUtils.isEmpty(number) ||StringUtils.isEmpty(password)) {
-			req.setAttribute("error", "用户名或密码为空");
-			return "redirect:/login/log";
-		}
-		
+	@RequestMapping("/index")
+	public ModelAndView getindex() {
+		ModelAndView mv = new ModelAndView("main/show");
+		return mv;
 	}
-*/
-	
+
+
 	@RequestMapping(value = "/log", method = RequestMethod.POST)
 	public ModelAndView login(String name, String password, int role,HttpSession session) {
 
 		if (role == 1) {
 			int num = adminService.find(name, password);
 			if (num > 0) {
-				session.setAttribute("login","yes");
 				session.setAttribute("name", name);
 				session.setAttribute("password", password);
 				ModelAndView mv = new ModelAndView("/main/index");
@@ -75,7 +69,6 @@ public class LoginAndResinContorller {
 			int num = saleService.login(name, password);
 			int sid = saleService.findSid(name, password);
 			if (num > 0) {
-				session.setAttribute("login","yes");
 				session.setAttribute("name", name);
 				session.setAttribute("password", password);
 				session.setAttribute("sid", sid);
@@ -94,7 +87,6 @@ public class LoginAndResinContorller {
 				ModelAndView mv = new ModelAndView("/placeadmin/index");
 				PlaceAdmin placeAdmin = paService.findPlaceAdmin(name);
 				String panumber = placeAdmin.getPanumber();
-				session.setAttribute("login","yes");
 				session.setAttribute("name", name);
 				session.setAttribute("password", password);
 				mv.addObject("placeAdmin",placeAdmin);
@@ -102,14 +94,8 @@ public class LoginAndResinContorller {
 			}
 			return null;
 		}
-
 	}
-	
-
 }
 	
 	
 	
-	
-	
-

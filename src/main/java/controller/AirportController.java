@@ -43,11 +43,12 @@ public class AirportController {
 		return mv;
 	}
 */
-	@RequestMapping("/userpwd")
-	public ModelAndView Password() {
+	@RequestMapping("/userpwd/{aid}")
+	public ModelAndView Password(@PathVariable("aid") int aid) {
 		ModelAndView mv = new ModelAndView("main/updatePassword");
-		List<Airport> airport = airService.listAirport(1, 5);
-		mv.addObject(airport);
+		Admin admin = adminService.findByAid(aid);
+		mv.addObject("admin",admin);
+		
 		return mv;
 	}
 
@@ -59,14 +60,14 @@ public class AirportController {
 		return mv;
 	}
 
-	@RequestMapping("/update/{airportNumber}")
+/*	@RequestMapping("/update/{airportNumber}")
 	public ModelAndView update(@PathVariable("airportNumber") String id) {
 		ModelAndView mv = new ModelAndView("main/airupdate");
 		List<Airport> find = airService.find(id);
 		// mv.setViewName("redirect:/air/airinfo");
 		mv.addObject("info", find);
 		return mv;
-	}
+	}*/
 
 	@RequestMapping(value = "/data", method = RequestMethod.POST)
 	public ModelAndView data(String number, String name, String city) {

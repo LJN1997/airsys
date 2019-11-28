@@ -28,10 +28,9 @@
                     <img src="/airsys/assets/layui/images/face/62.gif" class="layui-nav-img">
                    ${admin.aname }
                 </a>
-               <!--  <dl class="layui-nav-child">
-                    <dd><a href="http://localhost:8080/airsys/air/userinfo" target="main">基本资料</a></dd>
-                    <dd><a href="http://localhost:8080/airsys/air/userpwd" target="main">安全设置</a></dd>
-                </dl> -->
+               <%--  <dl class="layui-nav-child">
+                    <dd><a href="http://localhost:8080/airsys/air/userpwd/${admin.aid}" target="main">安全设置</a></dd>
+                </dl>  --%>
             </li>
             <li class="layui-nav-item"><a href="/airsys/main/login" class="exitbtn">退出</a></li>
         </ul>
@@ -70,7 +69,7 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <iframe name="main" frameborder="0" ></iframe>
+        <iframe name="main" frameborder="0" src="/airsys/login/index" ></iframe>
     </div>
 
     <div class="layui-footer">

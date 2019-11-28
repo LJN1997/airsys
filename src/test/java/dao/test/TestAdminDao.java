@@ -24,4 +24,12 @@ public class TestAdminDao {
 	public void testUpdate() {
 		adminDao.update(new Admin(1,"001","ss","111","2"));
 	}
+	@Test
+	public void testupdatePwd() {
+		adminDao.updatePwd("123", 1);
+	}
+	@Test
+	public void testFindByAid() {
+		System.out.println(adminDao.findByAid(1));
+	}
 }
