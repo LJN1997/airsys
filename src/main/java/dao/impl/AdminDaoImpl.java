@@ -32,8 +32,21 @@ public class AdminDaoImpl implements IAdminDao {
 
 	@Override
 	public void update(Admin admin) {
-		jt.update("update airsys_admin set apwd=? where anumber=?",
+		jt.update("update airsys_admin set apwd=? where aid=?",
 				new Object[] {admin.getApwd(),admin.getAnumber()});
+	}
+
+	@Override
+	public void updatePwd(String pwd, int aid) {
+		jt.update("update airsys_admin set apwd=? where aid=?",
+				new Object[] {pwd,aid});
+	}
+
+	@Override
+	public Admin findByAid(int aid) {
+		return jt.queryForObject("select * from airsys_admin where aid=?", 
+				new Object[] {aid},
+				new BeanPropertyRowMapper<>(Admin.class));
 	}
 
 

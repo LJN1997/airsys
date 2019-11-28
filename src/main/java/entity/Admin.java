@@ -19,6 +19,7 @@ public class Admin implements Serializable  {
 		this.apwd = apwd;
 		this.ahead = ahead;
 	}
+
 	public int getAid() {
 		return aid;
 	}

@@ -25,4 +25,14 @@ public class AdminServiceImpl implements IAdminService{
 		return adminDao.find(anumber);
 	}
 
+	@Override
+	public void updatePwd(String pwd, int aid) {
+		adminDao.updatePwd(pwd, aid);
+	}
+
+	@Override
+	public Admin findByAid(int aid) {
+		return adminDao.findByAid(aid);
+	}
+
 }

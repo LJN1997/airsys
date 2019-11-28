@@ -23,4 +23,12 @@ public class TestAdmin {
 	public void testlistFind() {
 		System.out.println(adminService.find("001"));
 	}
+	@Test
+	public void testupdatePwd() {
+		adminService.updatePwd("111", 1);
+	}
+	@Test
+	public void test() {
+		System.out.println(adminService.findByAid(1));
+	}
 }

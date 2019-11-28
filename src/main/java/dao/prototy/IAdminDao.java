@@ -8,4 +8,6 @@ public interface IAdminDao {
 	int find(String anumber,String pwd);
 	Admin find(String anumber);
 	void update(Admin admin);
+	void updatePwd(String pwd,int aid);
+	Admin findByAid(int aid);
 }
