@@ -349,8 +349,16 @@ public class AirsysController {
 			airService.insertBuy(seats, man, tprice, fid, uid, idcard, status);
 		}
 		
-		ModelAndView mv = new ModelAndView("/user/buySuccess");
+		ModelAndView mv = new ModelAndView("/user/payIndex");
+		mv.addObject("tprice",tprice);
 		mv.addObject(airService.buy(uid, idcard, ophone, oname));
+		return mv;
+	}
+	
+	
+	@RequestMapping("/buyinterface")
+	public ModelAndView buyinterface() {
+		ModelAndView mv = new ModelAndView("/user/alipay.trade.page.pay");
 		return mv;
 	}
 

@@ -79,15 +79,7 @@ ${usts} --%>
 			<!--预订航班-->
 			<div class="back-test-box buff1-box">
 				<div class="back-text-top">
-					<div class="back-text-top-input ii">
-
-						<label><input type="radio" value="1" name="aa"
-							class="abcd">往返</label>
-					</div>
-					<div class="back-text-top-input ij" style="border: 1px solid red;">
-						<label><input type="radio" value="1" name="aa"
-							class="abcd" checked>单程</label>
-					</div>
+					
 				</div>
 				<div class="back-text-center">
 					<form action="airsys/users" method="get">
