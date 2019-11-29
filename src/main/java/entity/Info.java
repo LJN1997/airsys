@@ -28,17 +28,16 @@ public class Info implements Serializable  {
 		private int planId;
 		private int sid;
 		private int uid;
-		
+		private int status;
 		
 		public Info() {
 			super();
 		}
 
-
 		public Info(String fnumber, String fromCity, String toCity, Date startDate, String departureTime,
 				String arrivalTime, int firstClassRemainSeats, int businessClassRemainSeats,
 				int economyClassRemainSeats, double tprice, double seasonDiscount, Date expStartTime, Date expEndTime,
-				int planId, int sid, int uid) {
+				int planId, int sid, int uid, int status) {
 			super();
 			this.fnumber = fnumber;
 			this.fromCity = fromCity;
@@ -56,168 +55,144 @@ public class Info implements Serializable  {
 			this.planId = planId;
 			this.sid = sid;
 			this.uid = uid;
+			this.status = status;
 		}
-
 
 		public String getFnumber() {
 			return fnumber;
 		}
 
-
 		public void setFnumber(String fnumber) {
 			this.fnumber = fnumber;
 		}
-
 
 		public String getFromCity() {
 			return fromCity;
 		}
 
-
 		public void setFromCity(String fromCity) {
 			this.fromCity = fromCity;
 		}
-
 
 		public String getToCity() {
 			return toCity;
 		}
 
-
 		public void setToCity(String toCity) {
 			this.toCity = toCity;
 		}
-
 
 		public Date getStartDate() {
 			return startDate;
 		}
 
-
 		public void setStartDate(Date startDate) {
 			this.startDate = startDate;
 		}
-
 
 		public String getDepartureTime() {
 			return departureTime;
 		}
 
-
 		public void setDepartureTime(String departureTime) {
 			this.departureTime = departureTime;
 		}
-
 
 		public String getArrivalTime() {
 			return arrivalTime;
 		}
 
-
 		public void setArrivalTime(String arrivalTime) {
 			this.arrivalTime = arrivalTime;
 		}
-
 
 		public int getFirstClassRemainSeats() {
 			return firstClassRemainSeats;
 		}
 
-
 		public void setFirstClassRemainSeats(int firstClassRemainSeats) {
 			this.firstClassRemainSeats = firstClassRemainSeats;
 		}
-
 
 		public int getBusinessClassRemainSeats() {
 			return businessClassRemainSeats;
 		}
 
-
 		public void setBusinessClassRemainSeats(int businessClassRemainSeats) {
 			this.businessClassRemainSeats = businessClassRemainSeats;
 		}
-
 
 		public int getEconomyClassRemainSeats() {
 			return economyClassRemainSeats;
 		}
 
-
 		public void setEconomyClassRemainSeats(int economyClassRemainSeats) {
 			this.economyClassRemainSeats = economyClassRemainSeats;
 		}
-
 
 		public double getTprice() {
 			return tprice;
 		}
 
-
 		public void setTprice(double tprice) {
 			this.tprice = tprice;
 		}
-
 
 		public double getSeasonDiscount() {
 			return seasonDiscount;
 		}
 
-
 		public void setSeasonDiscount(double seasonDiscount) {
 			this.seasonDiscount = seasonDiscount;
 		}
-
 
 		public Date getExpStartTime() {
 			return expStartTime;
 		}
 
-
 		public void setExpStartTime(Date expStartTime) {
 			this.expStartTime = expStartTime;
 		}
-
 
 		public Date getExpEndTime() {
 			return expEndTime;
 		}
 
-
 		public void setExpEndTime(Date expEndTime) {
 			this.expEndTime = expEndTime;
 		}
-
 
 		public int getPlanId() {
 			return planId;
 		}
 
-
 		public void setPlanId(int planId) {
 			this.planId = planId;
 		}
-
 
 		public int getSid() {
 			return sid;
 		}
 
-
 		public void setSid(int sid) {
 			this.sid = sid;
 		}
-
 
 		public int getUid() {
 			return uid;
 		}
 
-
 		public void setUid(int uid) {
 			this.uid = uid;
 		}
 
+		public int getStatus() {
+			return status;
+		}
+
+		public void setStatus(int status) {
+			this.status = status;
+		}
 
 		@Override
 		public String toString() {
@@ -226,9 +201,8 @@ public class Info implements Serializable  {
 					+ ", firstClassRemainSeats=" + firstClassRemainSeats + ", businessClassRemainSeats="
 					+ businessClassRemainSeats + ", economyClassRemainSeats=" + economyClassRemainSeats + ", tprice="
 					+ tprice + ", seasonDiscount=" + seasonDiscount + ", expStartTime=" + expStartTime + ", expEndTime="
-					+ expEndTime + ", planId=" + planId + ", sid=" + sid + ", uid=" + uid + "]";
+					+ expEndTime + ", planId=" + planId + ", sid=" + sid + ", uid=" + uid + ", status=" + status + "]";
 		}
-
 
 		@Override
 		public int hashCode() {
@@ -240,22 +214,22 @@ public class Info implements Serializable  {
 			result = prime * result + economyClassRemainSeats;
 			result = prime * result + ((expEndTime == null) ? 0 : expEndTime.hashCode());
 			result = prime * result + ((expStartTime == null) ? 0 : expStartTime.hashCode());
-			result = prime * result + planId;
 			result = prime * result + firstClassRemainSeats;
 			result = prime * result + ((fnumber == null) ? 0 : fnumber.hashCode());
 			result = prime * result + ((fromCity == null) ? 0 : fromCity.hashCode());
+			result = prime * result + planId;
 			long temp;
 			temp = Double.doubleToLongBits(seasonDiscount);
 			result = prime * result + (int) (temp ^ (temp >>> 32));
 			result = prime * result + sid;
 			result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+			result = prime * result + status;
 			result = prime * result + ((toCity == null) ? 0 : toCity.hashCode());
 			temp = Double.doubleToLongBits(tprice);
 			result = prime * result + (int) (temp ^ (temp >>> 32));
 			result = prime * result + uid;
 			return result;
 		}
-
 
 		@Override
 		public boolean equals(Object obj) {
@@ -290,8 +264,6 @@ public class Info implements Serializable  {
 					return false;
 			} else if (!expStartTime.equals(other.expStartTime))
 				return false;
-			if (planId != other.planId)
-				return false;
 			if (firstClassRemainSeats != other.firstClassRemainSeats)
 				return false;
 			if (fnumber == null) {
@@ -304,6 +276,8 @@ public class Info implements Serializable  {
 					return false;
 			} else if (!fromCity.equals(other.fromCity))
 				return false;
+			if (planId != other.planId)
+				return false;
 			if (Double.doubleToLongBits(seasonDiscount) != Double.doubleToLongBits(other.seasonDiscount))
 				return false;
 			if (sid != other.sid)
@@ -312,6 +286,8 @@ public class Info implements Serializable  {
 				if (other.startDate != null)
 					return false;
 			} else if (!startDate.equals(other.startDate))
+				return false;
+			if (status != other.status)
 				return false;
 			if (toCity == null) {
 				if (other.toCity != null)
@@ -325,7 +301,7 @@ public class Info implements Serializable  {
 			return true;
 		}
 
-		
+
 		
 		
 }

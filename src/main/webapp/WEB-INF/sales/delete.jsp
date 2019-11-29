@@ -62,7 +62,7 @@ width:250px;height:30px;
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label class="layui-form-label">身份证号</label>
+				<label class="layui-form-label">身份证</label>
 				<div class="layui-input-block">
 					<input type="text" class="idcard" name="idcard" required
 						lay-verify="required" placeholder="请输入用户身份证号" autocomplete="off"
@@ -85,6 +85,8 @@ width:250px;height:30px;
 					<tr>
 					    <th>机票ID</th>
 						<th>航班号</th>
+						<th>出发地</th>
+						<th>目的地</th>
 						<th>姓名</th>
 						<th>电话</th>
 						<th>身份证</th>
@@ -92,7 +94,7 @@ width:250px;height:30px;
 						<th>座位等级</th>
 						<th>机票价格</th>
 						<th>出票日期</th>
-						<th>机票状态</th>
+						
 						<th>操作</th>   
 					</tr>
 					<tbody class="tbody">
@@ -142,7 +144,9 @@ width:250px;height:30px;
 					idcard:idcard
 				},
 				success:function(e){
-					
+					if(e.length==0){
+						alert("对不起，没查到您的机票信息，请核对相关信息填写是否正确。")
+					}
 			 		 for(var i=0;i<e.length;i++){
 			 			var a="";
 			 			if(e[i].status==0){
@@ -155,6 +159,8 @@ width:250px;height:30px;
 							var td = "";
 							td+="<td class='tid'>"+e[i].tid+"</td>"
 							td+="<td class='fnumber'>"+e[i].fnumber+"</td>"
+							td+="<td class='fromCity'>"+e[i].fromCity + "</td>"
+						    td+="<td class='toCity'>"+e[i].toCity + "</td>"
 							td+="<td class='oname'>"+e[i].oname+"</td>"
 							td+="<td class='ophone'>"+e[i].ophone+"</td>"
 							td+="<td class='idcard'>"+e[i].idcard+"</td>"
@@ -162,7 +168,7 @@ width:250px;height:30px;
 							td+="<td class='tclass'>"+e[i].tclass+"</td>"
 							td+="<td class='tprice'>"+e[i].tprice+"</td>"
 							td+="<td class='tdate'>"+e[i].tdate+"</td>"
-							td+="<td class='status'>"+e[i].status+"</td>"
+					
 							td+=a;
 							tr+=td+"</tr>"
 				            $(".tbody").append(tr)
@@ -179,7 +185,7 @@ width:250px;height:30px;
 		$("table").on("click",".delbtn",function(){	
 			var fnumber = $(".fnumber").text();
 			var tclass = $(".tclass").text();
-			var status = $(".status").text();
+			
 			var tid=$(this).parent().parent().children()[0].innerText;
 	        $.ajax({
 				url:"delTicket",
@@ -189,11 +195,11 @@ width:250px;height:30px;
 					tid:tid,
 					fnumber:fnumber,
 					tclass:tclass,
-					status:status
+					
 				},
 				success:function(e){
 					if("ok" == e)
-					 alert("退票成功")
+					 alert("您是否确定退票？")
 					 
 				}  
 				

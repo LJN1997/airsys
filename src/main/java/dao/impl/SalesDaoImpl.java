@@ -112,7 +112,7 @@ public class SalesDaoImpl implements ISalesDao {
 	// 6.1、通过姓名和身份证先查出用户这张票
 	@Override
 	public List<Ticket> findBy(String name, String idcard) {
-		String sql = "SELECT * FROM airsys_ticket t JOIN airsys_order o ON t.idcard=o.idcard JOIN airsys_plan p ON p.plan_id = t.plan_id WHERE o.oname = ?  AND o.idcard=? ";
+		String sql = "SELECT * FROM airsys_ticket t JOIN airsys_order o ON t.idcard=o.idcard JOIN airsys_plan p ON p.plan_id = t.plan_id WHERE o.oname = ?  AND o.idcard=? AND	t.`status` = 1 or t.`status` = 2";
 		return jdbcTemplate.query(sql, new Object[] { name, idcard }, new BeanPropertyRowMapper<Ticket>(Ticket.class));
 	}
 
@@ -143,10 +143,18 @@ public class SalesDaoImpl implements ISalesDao {
 	}
 
 	// 7、改签
+	
+	//改签查询
+	@Override
+	public List<Ticket> findByUser(String name, String idcard) {
+		String sql = "SELECT * FROM airsys_ticket t JOIN airsys_order o ON t.idcard=o.idcard JOIN airsys_plan p ON p.plan_id = t.plan_id WHERE o.oname = ?  AND o.idcard=? AND	t.`status` = 1 ";
+		return jdbcTemplate.query(sql, new Object[] { name, idcard }, new BeanPropertyRowMapper<Ticket>(Ticket.class));
+	}
+	
 	// 7.1、更新票的状态为2，表示改签
 	@Override
 	public void changeTicketStatus(int tid) {
-		String sql = "UPDATE airsys_ticket SET `status` = 2 WHERE tid=?";
+		String sql = "UPDATE airsys_ticket SET `status` = 2 WHERE tid=? ";
 		jdbcTemplate.update(sql, new Object[] { tid });
 	}
 	// 7.2、相应的座位+1，直接用上面退票addFightSeat方法即可
@@ -166,5 +174,14 @@ public class SalesDaoImpl implements ISalesDao {
 		int number = jdbcTemplate.queryForObject(sql, new Object[] { num, pwd }, Integer.class);
 		return number;
 	}
+
+	@Override
+	public List<Info> findStatus(String name) {
+		String sql = "select status FROM airsys_ticket WHERE idcard in (SELECT idcard FROM airsys_order WHERE oname=?)";
+		
+	return jdbcTemplate.query(sql, new Object[] { name }, new BeanPropertyRowMapper<Info>(Info.class));
+	}
+
+
 
 }

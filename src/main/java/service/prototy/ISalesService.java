@@ -47,7 +47,7 @@ public interface ISalesService {
 	// 6、退票
 	// 6.1、通过姓名和身份证先查出用户这张票
 	List<Ticket> findBy(String name, String idcard);
-
+	List<Info> findStatus(String name);
 	// 6.2、通过航班号和座位更新座位数（退票 该航班座位数+1）
 	void addFightSeat(String fnumber, String seat);
 
@@ -55,6 +55,8 @@ public interface ISalesService {
 	void updateTicketStatus(int tid);
 
 	// 7、改签
+	//改签查询
+	List<Ticket> findByUser(String name, String idcard);
 	// 7.1、更新票的状态为2，表示改签
 	void changeTicketStatus(int tid);
 	// 7.2、相应的座位+1，直接用上面退票addFightSeat方法即可

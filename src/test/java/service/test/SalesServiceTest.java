@@ -93,7 +93,7 @@ public class SalesServiceTest {
 		// 6.1、通过姓名和身份证先查出用户这张票
 		@Test
 		public void findBy() {
-			List<Ticket> f = salesService.findBy("ss", "22");
+			List<Ticket> f = salesService.findBy("aa", "11");
 			System.out.println(f);
 		}
 
@@ -128,6 +128,14 @@ public class SalesServiceTest {
 		@Test
 		public void login() {
 			salesService.login("111", "111");
+		}
+		
+		@Test
+		public void findStatus(){
+			List<Info> f = salesService.findStatus("aa");
+			for (Info ff : f) {
+				System.out.println(ff);
+			}
 		}
 
 }

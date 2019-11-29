@@ -138,4 +138,11 @@ public class salesDaoTest {
 		salesDao.login("111", "111");
 	}
 
+	@Test
+	public void findStatus(){
+		List<Info> f = salesDao.findStatus("aa");
+		for (Info ff : f) {
+			System.out.println(ff);
+		}
+	}
 }

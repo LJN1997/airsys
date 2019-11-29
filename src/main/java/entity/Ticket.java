@@ -18,7 +18,8 @@ public class Ticket {
 		private String passengerType;
 		private double tprice;
 		private int status;
-		
+		private String fromCity;
+		private String toCity;
        public Ticket() {
 			super();
 		}
@@ -47,6 +48,31 @@ public class Ticket {
 
 
 	
+
+		public Ticket(int tid, int planId, int uid, int sid, String snumber, String fnumber, int oid, String oname,
+				String ophone, String idcard, String tdate, String tclass, String passengerType, double tprice,
+				int status, String fromCity, String toCity) {
+			super();
+			this.tid = tid;
+			this.planId = planId;
+			this.uid = uid;
+			this.sid = sid;
+			this.snumber = snumber;
+			this.fnumber = fnumber;
+			this.oid = oid;
+			this.oname = oname;
+			this.ophone = ophone;
+			this.idcard = idcard;
+			this.tdate = tdate;
+			this.tclass = tclass;
+			this.passengerType = passengerType;
+			this.tprice = tprice;
+			this.status = status;
+			this.fromCity = fromCity;
+			this.toCity = toCity;
+		}
+
+
 
 		public String getFnumber() {
 			return fnumber;
@@ -173,6 +199,30 @@ public class Ticket {
 			return snumber;
 		}
 
+		public String getFromCity() {
+			return fromCity;
+		}
+
+
+
+		public void setFromCity(String fromCity) {
+			this.fromCity = fromCity;
+		}
+
+
+
+		public String getToCity() {
+			return toCity;
+		}
+
+
+
+		public void setToCity(String toCity) {
+			this.toCity = toCity;
+		}
+
+
+
 		public void setSnumber(String snumber) {
 			this.snumber = snumber;
 		}
@@ -217,12 +267,15 @@ public class Ticket {
 
 
 
+		
+
 		@Override
 		public String toString() {
 			return "Ticket [tid=" + tid + ", planId=" + planId + ", uid=" + uid + ", sid=" + sid + ", snumber="
 					+ snumber + ", fnumber=" + fnumber + ", oid=" + oid + ", oname=" + oname + ", ophone=" + ophone
 					+ ", idcard=" + idcard + ", tdate=" + tdate + ", tclass=" + tclass + ", passengerType="
-					+ passengerType + ", tprice=" + tprice + ", status=" + status + "]";
+					+ passengerType + ", tprice=" + tprice + ", status=" + status + ", fromCity=" + fromCity
+					+ ", toCity=" + toCity + "]";
 		}
 
 

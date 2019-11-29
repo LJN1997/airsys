@@ -97,6 +97,12 @@ public class SalesServiceImpl implements ISalesService {
 	}
 
 	// 7、改签
+	//改签查询
+	@Override
+	public List<Ticket> findByUser(String name, String idcard) {
+		return sd.findByUser(name, idcard);
+	}
+	
 	// 7.1、更改票的状态为2，表示改签
 	@Override
 	public void changeTicketStatus(int tid) {
@@ -116,6 +122,13 @@ public class SalesServiceImpl implements ISalesService {
 		int number = sd.login(num, pwd);
 		return number;
 	}
+
+	@Override
+	public List<Info> findStatus(String name) {
+		return sd.findStatus(name);
+	}
+
+
 
 
 }

@@ -98,7 +98,6 @@ public class SalesController {
 			tclass = "经济舱";
 		}
 		String idcard = request.getParameter("idcard");
-		System.out.println(seat+people);
 		// 先根据用户的身份证判断下order表里有没有这个用户，如果有的话，就不用再往order表里增加一条信息了
 		int findIdcard = salesService.findIdcard(idcard);
 		if (findIdcard > 0) {
@@ -191,9 +190,9 @@ public class SalesController {
 	public String selectOid(HttpServletRequest request) {
 		String oname = request.getParameter("oname");
 		String idcard = request.getParameter("idcard");
-		List<Ticket> t = salesService.findBy(oname, idcard);
-		String a = JSON.toJSONString(t);
-		return a;
+			List<Ticket> t = salesService.findBy(oname, idcard);
+			String a = JSON.toJSONString(t);
+			return a;
 	}
 
 	// 6.2、点击查到的数据后面的退票按钮，ajax传数据到controller层，执行两个方法更新状态为0，座位+1
@@ -202,8 +201,7 @@ public class SalesController {
 	public String delTicket(HttpServletRequest request) {
 		int tid = Integer.parseInt(request.getParameter("tid"));
 		String fnumber = request.getParameter("fnumber");
-		String status = request.getParameter("status");
-		System.out.println(status);
+		
 		String seat = request.getParameter("tclass");
 		String tclass = "";
 		if (seat.equals("商务舱")) {
@@ -224,13 +222,27 @@ public class SalesController {
 		ModelAndView mv = new ModelAndView("/sales/change");
 		return mv;
 	}
+	
+	// 7.1、ajax传数据，先接收界面 的姓名和身份证号，查到这个票，返回json再到该界面
+	@RequestMapping(value = "/findByUser", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String findByUser(HttpServletRequest request) {
+		String oname = request.getParameter("oname");
+		String idcard = request.getParameter("idcard");
+	
+			List<Ticket> t = salesService.findByUser(oname, idcard);
+			String a = JSON.toJSONString(t);
+			return a;
+	}
+
+	
+	
 
 	// 7.1、先根据姓名和身份证查到票，和退票查询一样，这个是接收查到票的信息，进行改签，更新状态为2，座位+1
 	@RequestMapping(value = "/changeTicket", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String changeTicket(HttpServletRequest request) {
 		int tid = Integer.parseInt(request.getParameter("tid"));
-		System.out.println(tid);
 		String fnumber = request.getParameter("fnumber");
 		String seat = request.getParameter("tclass");
 		String tclass = "";
