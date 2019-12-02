@@ -1,0 +1,17 @@
+  $.ajax({ 
+			  url:"http://api.feige.ee/SmsService/Template",
+			  type:"post",
+			  contentType:'application/x-www-form-urlencoded;charset=utf-8',
+			  data:{
+				  Account:17335081644,
+				  Pwd:'ec02efa704c211b70809aaec4',
+				  Content:code,
+				  Mobile:uphone,
+				  TemplateId:116876,
+				  SignId:203342,
+			  },
+			  dataType:"json",
+			  success:function(data){
+				  console.log()
+			}
+		 });
