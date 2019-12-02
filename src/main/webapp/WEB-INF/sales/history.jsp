@@ -37,6 +37,7 @@
              <th>乘客类型</th>
              <th>舱位等级</th>
              <th>价格</th>
+             <th>状态</th>
          </tr>
  
          <c:forEach items="${history}" var="his">
@@ -47,6 +48,10 @@
              <th>${his.passengerType}</th>
              <th>${his.tclass}</th>
              <th>${his.tprice}</th>
+             
+             <c:if test="${his.status==0}"> <th>此票已退</th></c:if>
+             <c:if test="${his.status==1}"> <th>正在进行</th></c:if>
+             <c:if test="${his.status==2}"> <th>此票改签</th></c:if>
          </tr>
          </c:forEach>
      </table> 

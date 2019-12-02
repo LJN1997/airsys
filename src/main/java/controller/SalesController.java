@@ -49,9 +49,11 @@ public class SalesController {
 	// 2、接收查票界面的值,表单提交到queryCon.jsp,以表格的形式展示出来查询结果
 	@RequestMapping("/queryCon")
 	public ModelAndView querycon(HttpServletRequest request, HttpServletResponse response) {
+		
 		String from = request.getParameter("from");
 		String to = request.getParameter("to");
 		String startTime = request.getParameter("starttime");
+		
 		ModelAndView mv = new ModelAndView("/sales/queryCon");
 		List<Info> info = salesService.find(from, to, startTime);
 		mv.addObject("info", info);
@@ -74,6 +76,13 @@ public class SalesController {
 		mv.addObject("expEndTime", endtime);
 		mv.addObject("price", price);
 		mv.addObject("planId", planId);
+		return mv;
+	}
+	@RequestMapping("/toQuery/{from1}/{to1}/{startTime}")
+	public ModelAndView toQuery(@PathVariable("from1")String from,@PathVariable("to1") String to,@PathVariable("startTime") String startTime){
+		ModelAndView mv = new ModelAndView("/sales/toQuery");
+		List<Info> info = salesService.find(from, to, startTime);
+		mv.addObject("info", info);
 		return mv;
 	}
 

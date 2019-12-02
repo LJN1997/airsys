@@ -1,90 +1,80 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<% response.setContentType("text/html;charset=utf-8"); %>
-<%request.setCharacterEncoding("utf-8"); %>
-<!doctype html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="entity.*,util.*,controller.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>改签信息</title>
-    <style>
-        body{
-            margin: 0;padding: 0;
-        }
-        .box{
-            width: 380px;
-            height: 460px;
-            background: darkgray;
-            border-radius: 50px;
-            margin-left: 200px;
-            margin-top: 50px;
-        }
-        h2{
-            margin-left: 30px;
-           padding-top: 20px;
-            color: white;
-            font-size: 30px;
-            margin-bottom: 40px;
-        }
-        .con{
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>列出账号</title>
+<link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
+<script type="text/javascript" src="/airsys/assets/layui/layui.js"></script>
+<style type="text/css">
 
-            margin-left: 50px;
-            margin-bottom: 25px;
-            color: white;
-
-        }
-        .con input{
-            width: 173px;height: 22px;
-        }
-        .tofind{
-            width: 250px;height: 35px;
-            margin-left: 50px;
-            margin-top: 20px;
-            font-size: 20px;
-
-        }
-         .date{
-             width: 173px;height: 21px;
-        }
-        .typeMan{
-            width: 173px;height: 24px;
-        }
-    </style>
+  h3{
+    font-size:30px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+	.layui-table{
+	width:1120px;
+	}
+	
+</style>
 </head>
 <body>
-<div class="box">
-<h2>改签机票信息</h2>
+	<form action="" method="get">
+     <h3 align="center">机票查询信息</h3>
+     <center>
+     <table class="layui-table">
+         <tr>
+             <th>航班号</th>
+             <th>出发地</th>
+             <th>目的地</th>
+             <th>起飞时间</th>
+             <th>到达时间</th>
+             <th>头等舱剩余</th>
+             <th>商务舱剩余</th>
+             <th>经济舱剩余</th>
+             <th>票价</th>
+             <th>操作</th>
+         </tr>
+ 
+         <c:forEach items="${info}" var="query">
+         
+         <tr class="tr" id="${query.planId}">
+             <td>${query.fnumber}</td>
+             <td>${query.fromCity}</td>
+             <td>${query.toCity}</td>
+             <td>${query.expStartTime}</td>
+             <td>${query.expEndTime}</td>
+             <td>${query.firstClassRemainSeats}</td>
+             <td>${query.businessClassRemainSeats}</td>
+             <td>${query.economyClassRemainSeats}</td>
+             <td>${query.tprice}</td>
+             <td ><button type="button" name="planId" class="layui-btn layui-btn-radius layui-btn-warm reserve">预定</button></td>
+         </tr>
+         </c:forEach>
+     </table> 
 
-
-    <div class="con">
-        出&nbsp;&nbsp;发&nbsp;&nbsp;地：<input type="text" name="fnumber">
-    </div>
-    <div class="con">
-        目&nbsp;&nbsp;的&nbsp;&nbsp;地：<input type="text" name="fnumber">
-    </div>
-    <div class="con">
-        起飞时间：<input class="date" type="date" name="fnumber">
-    </div>
-    <div class="con">
-        乘客类型：
-        <select class="typeMan">
-            <option>成人</option>
-            <option>儿童</option>
-        </select>
-    </div>
-    <div class="con">
-        座位等级：
-        <select class="typeMan">
-            <option>经济舱</option>
-            <option>商务舱</option>
-            <option>头等舱</option>
-        </select>
-    </div>
-    <input type="submit" class="tofind" value="确定修改，立即查询"></button>
-
-</div>
+     </center> 
+     </form>        
 </body>
+<script type="text/javascript" src="/airsys/assets/js/jquery-1.11.1.js"></script>
+<script>
+
+$(".reserve").click(function(){
+	var planId = $(this).parent().parent().attr('id');
+	var fnumber=$(this).parent().parent().children()[0].innerText;
+	var from=$(this).parent().parent().children()[1].innerText;
+	var to=$(this).parent().parent().children()[2].innerText;
+	var expStartTime=$(this).parent().parent().children()[3].innerText;
+	var expEndTime=$(this).parent().parent().children()[4].innerText;
+	var price=$(this).parent().parent().children()[8].innerText;
+	window.location.href="/airsys/sales/reserve/"+from+"/"+to+"/"+expStartTime+"/"+expEndTime+"/"+price+"/"+fnumber+"/"+planId; 
+})
+</script>
 </html>

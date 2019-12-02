@@ -238,10 +238,10 @@ label {
 				到达城市：<input type="text" name="to" value=${to }>
 			</div>
 			<div class="showStartTime">
-				起飞时间：<input type="text" name="starttime" value="2019-11-05 19:20:02">
+				起飞时间：<input type="text" name="starttime" value=${expStartTime }>
 			</div>
 			<div class="showEndTime">
-				到达时间：<input type="text" name="endtime" value="2019-11-05 00:12:18">
+				到达时间：<input type="text" name="endtime" value=${expEndTime }>
 			</div>
 			<div class="fanhui">退出</div>
 		</div>
@@ -293,7 +293,17 @@ label {
 			   alert("确定删除该乘客？")
 			   $(".passenger").remove();
 		   })
-		 
+	     $(".addPassenger").click(function(){
+		      $(".addPassengerBox").append(
+		    		 "<div class='aa' style='background:red;padding-top:400px;width:800px;height:350px;margin-left:50px;margin-bottom:50px;'>"
+		    		 +"乘客类型：<input type='radio' value='成人'>成人 <input type='radio' value='儿童'>儿童<br>"
+		    		 +"座位等级:<select><option value='t'>头等舱</option><option value='s'>商务舱</option><option value='j'>经济舱</option></select><br>"
+		    		 +"姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type='text' name='name1' required placeholder='请输入姓名'><br>"
+		    		 +"证件号码：<input type='text' name='idcard1' required placeholder='请输入证件号码'><br>"
+		    		 +"联系方式：<input type='text' name='phone1' required placeholder='请输入联系方式'>"
+		    		 +"</div>")
+		       
+		 })
 	})
 	  
 	

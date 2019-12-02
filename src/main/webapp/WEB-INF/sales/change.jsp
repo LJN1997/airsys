@@ -12,7 +12,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>退票</title>
+<title>改签</title>
 <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
 <link rel="stylesheet" href="/airsys/assets/css/sales.css">
 <link rel="stylesheet" href="/airsys/assets/css/cityselect.css">
@@ -63,7 +63,7 @@ body {
 }
 
 .box {
-	width: 600px;
+	width: 380px;
 	height: 330px;
 	border: 2px solid darkgray;
 	border-radius: 50px;
@@ -81,12 +81,9 @@ h2 {
 }
 
 .con {
-	margin-top: -50px;
-	margin-left: 30px;
-	margin-bottom: 80px;
-	display: flex;
-	justify-content: flex-start;
-	float: left;
+	margin-top:20px;
+	margin-left: 40px;
+	margin-bottom: 30px;
 }
 
 .con input {
@@ -98,8 +95,8 @@ h2 {
 	width: 250px;
 	height: 35px;
 	position: absolute;
-	left: 160px;
-	top: 260px;
+	left: 50px;
+	top: 240px;
 	font-size: 20px;
 }
 
@@ -179,40 +176,28 @@ h2 {
 
 
 	</div>
-	<form action="/airsys/sales/queryCon">
+	
 		<div class="box">
 			<h2>改签机票信息</h2>
 
 
 			<div class="con">
 				出&nbsp;&nbsp;发&nbsp;&nbsp;地：<input type="text" disabled="true"
-					name="from" class="from">
+					name="from1" class="from">
 			</div>
 			<div class="con">
 				目&nbsp;&nbsp;的&nbsp;&nbsp;地：<input type="text" disabled="true"
-					name="to" class="to">
+					name="to1" class="to">
 			</div>
 			<div class="con">
 				起飞时间：<input class="date" type="date" name="starttime">
 			</div>
-			<div class="con">
-				乘客类型： <select class="typeMan">
-					<option>成人</option>
-					<option>儿童</option>
-				</select>
-			</div>
-			<div class="con1">
-				座位等级： <select class="typeMan">
-					<option>经济舱</option>
-					<option>商务舱</option>
-					<option>头等舱</option>
-				</select>
-			</div>
+			
 			<input type="submit" class="tofind" value="确定修改，立即查询">
-			</button>
+			
 
 		</div>
-	</form>
+	
 	<script src="/airsys/assets/layui/layui.js"></script>
 	<script>
 		//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
@@ -256,7 +241,7 @@ h2 {
 												if (e[i].status == 2) {
 													a = "<td><button  >已改</button></td>";
 												} else {
-													a = "<td><button class='changebtn' >改签</button></td>";
+													a = "<td><button class='changebtn' >去改签</button></td>";
 												}
 
 												var tr = "<tr>";
@@ -313,12 +298,18 @@ h2 {
 					tclass : tclass
 				},
 				success : function(e) {
-
 					if ("ok" == e) 
-					alert("您是否确定改签?")
+					
 					$(".box").css("display", "block");
-					$(".from").attr("value", from)
-					$(".to").attr("value", to)
+					var from1 = $(".from").attr("value", from).val();
+					var to1 = $(".to").attr("value", to).val();
+					$(".tofind").click(function(){
+						var startTime = $(".date").val();
+						 window.location.href="/airsys/sales/toQuery/"+from1+"/"+to1+"/"+startTime; 
+					})
+						
+					
+					
 				}
 
 			})
