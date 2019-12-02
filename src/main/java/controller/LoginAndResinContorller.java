@@ -67,8 +67,8 @@ public class LoginAndResinContorller {
 			}
 		} else if (role == 2) {
 			int num = saleService.login(name, password);
-			int sid = saleService.findSid(name, password);
-			if (num > 0) {
+			if (num > 0 ) {
+				int sid = saleService.findSid(name, password);
 				session.setAttribute("name", name);
 				session.setAttribute("password", password);
 				session.setAttribute("sid", sid);
