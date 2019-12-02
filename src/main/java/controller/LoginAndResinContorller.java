@@ -91,8 +91,10 @@ public class LoginAndResinContorller {
 				session.setAttribute("password", password);
 				mv.addObject("placeAdmin",placeAdmin);
 				return mv;
+			}else {
+				ModelAndView mv = new ModelAndView("/main/login");
+				return mv;
 			}
-			return null;
 		}
 	}
 }
