@@ -69,7 +69,7 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <iframe name="main" frameborder="0" src="/airsys/login/index" ></iframe>
+        <iframe name="main" frameborder="0"></iframe>
     </div>
 
     <div class="layui-footer">
