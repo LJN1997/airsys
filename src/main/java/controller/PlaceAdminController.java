@@ -125,7 +125,7 @@ public class PlaceAdminController {
 		sales.setSpwd(spwd);
 		sales.setSphone(sphone);;
 		pas.saveOrUpdate(sales);	 
-		mv.setViewName("redirect:/placeadmin/sales/"+pid+"");	
+		mv.setViewName("redirect:/placeadmin/saless/"+pid+"/1");	
 		return mv;
 	}
 	
@@ -134,7 +134,7 @@ public class PlaceAdminController {
 	public ModelAndView  delete(@PathVariable("sid") int sid ,@PathVariable("pid")int pid) {
 		ModelAndView mv = new ModelAndView();
 		pas.delete(sid);
-		mv.setViewName("redirect:/placeadmin/sales/"+pid+"");	
+		mv.setViewName("redirect:/placeadmin/saless/"+pid+"/1");	
 		return mv;
 	}
 	
@@ -176,7 +176,7 @@ public class PlaceAdminController {
 	}	
 	@RequestMapping("/saleticket/{pid}")
 	public ModelAndView  saleticket(@PathVariable("pid")int pid) {	
-		ModelAndView mv = new ModelAndView("redirect:/placeadmin/ticketinfo/"+pid+"");
+		ModelAndView mv = new ModelAndView("redirect:/placeadmin/ticketinfo1/"+pid+"/1");
 		return mv;
 	}
 
@@ -192,13 +192,13 @@ public class PlaceAdminController {
 	@RequestMapping("/ret")
 	public ModelAndView  ret(int pid) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/placeadmin/sales/"+pid+"");	
+		mv.setViewName("redirect:/placeadmin/saless/"+pid+"/1");	
 		return mv;
 	}
 	
 	//-- 模糊查询售票记录
 
-		@RequestMapping(value="/searcht" ,method=RequestMethod.POST)
+	@RequestMapping(value="/searcht" ,method=RequestMethod.POST)
 	public ModelAndView  likeTicket(String keys,int pid) {	
 		ModelAndView mv = new ModelAndView("/placeadmin/liketicketinfo");
 		 List<SalesTicket> likeTicket = pas.likeTicket(keys);
@@ -209,7 +209,7 @@ public class PlaceAdminController {
 	@RequestMapping("/ret2")
 	public ModelAndView  ret2(int pid) {
 			ModelAndView mv = new ModelAndView();
-			mv.setViewName("redirect:/placeadmin/ticketinfo/"+pid+"");	
+			mv.setViewName("redirect:/placeadmin/ticketinfo1/"+pid+"/1");	
 			return mv;
 		}
  
@@ -270,8 +270,6 @@ public class PlaceAdminController {
 		mv.addObject("panumber",panumber);
 		return mv;
 	}  
-	
-	
 	
 	@RequestMapping(value="/csums/{panumber}",produces="application/json;charset=UTF-8")
 	@ResponseBody

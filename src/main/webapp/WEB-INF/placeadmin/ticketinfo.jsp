@@ -48,12 +48,12 @@ ul {
 		<legend>营业员售票记录</legend>
 	</fieldset>
 
-	<form action="/airsys/placeadmin/searcht" method="post">
+	<form class="layui-form for" action="/airsys/placeadmin/searcht" method="post">
 
 		<div class="layui-form">
 			<div class="but">
-				<input type="text" name="keys" placeholder="请输入关键字 "
-					class="layui-input inp">
+				<input lay-verify="snumber" autocomplete="off" type="text" name="keys" placeholder="请输入关键字 "
+					class="layui-form-label layui-input inp">
 				<button type="submit" id="" class="layui-btn layui-btn-primary ser">搜索</button>
 			</div>
 			<table class="layui-table">
@@ -161,6 +161,33 @@ layui.use(['laypage', 'layer'], function(){
   
 });
 </script> -->
+ 
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+ 
+  
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+ 
+  //自定义验证规则
+  form.verify({
+	  keys: function(value){
+	      if(value.length ==0){
+	        return '不能为空';
+	      }
+	    }
+	    
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+    
+});
+</script>
 
 </body>
 </html>

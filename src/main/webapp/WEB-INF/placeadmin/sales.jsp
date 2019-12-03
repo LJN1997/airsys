@@ -62,13 +62,15 @@ ul {
 		<legend>营业员信息</legend>
 	</fieldset>
 
-	<form action="/airsys/placeadmin/searchs" method="post">
+	<form class="layui-form for" action="/airsys/placeadmin/searchs"
+		method="post">
 
 		<div class="layui-form ">
 			<div class="but">
 				<div>
-					<input type="text" name="keys" placeholder="请输入关键字 "
-						class="layui-input inp">
+					<input lay-verify="keys" autocomplete="off" type="text"
+						name="keys" placeholder="请输入关键字 "
+						class="layui-form-label layui-input inp">
 
 					<button type="submit" id="${pid}"
 						class="layui-btn layui-btn-primary ser">搜索</button>
@@ -92,7 +94,7 @@ ul {
 						<th>操作</th>
 					</tr>
 				</thead>
- 				<c:forEach items="${data}" var="sales">
+				<c:forEach items="${data}" var="sales">
 					<tbody>
 						<tr id="${sales.sid }">
 							<td name="snumber">${sales.snumber}</td>
@@ -106,7 +108,7 @@ ul {
 							</td>
 						</tr>
 					</tbody>
-				</c:forEach> 
+				</c:forEach>
 			</table>
 
 			<ul class="numm">
@@ -124,9 +126,8 @@ ul {
 
 
 				<c:forEach var="pager" begin="1" end="${pageNum}">
-				
-					<li >
-						<a class="pageNo"
+
+					<li><a class="pageNo"
 						href="http://localhost:8080/airsys/placeadmin/saless/${pid}/${pager}">${pager}</a>
 
 						<%-- <input class="bu" name="bu" type="button" value="${pager}"> --%>
@@ -198,6 +199,32 @@ ul {
 	}
 </script> -->
 
+	<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+ 
+  
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+ 
+  //自定义验证规则
+  form.verify({
+	  keys: function(value){
+	      if(value.length ==0){
+	        return '不能为空';
+	      }
+	    }
+	    
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+    
+});
+</script>
 
 </body>
 </html>
