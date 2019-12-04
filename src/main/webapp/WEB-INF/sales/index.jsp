@@ -77,7 +77,7 @@ iframe {
 		</div>
 		<div class="layui-body">
 			<!-- 内容主体区域 -->
-			<iframe src="" frameborder="0" name="aa"></iframe>
+			<iframe src="/airsys/sales/tu" frameborder="0" name="aa"></iframe>
 		</div>
 
 		<div class="layui-footer">

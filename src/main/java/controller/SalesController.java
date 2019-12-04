@@ -39,6 +39,13 @@ public class SalesController {
 	@Autowired
 	private ISalesService salesService;
 
+	@RequestMapping("/tu")
+	public ModelAndView tu() {
+		ModelAndView mv = new ModelAndView("/sales/tu");
+		return mv;
+	}
+	
+	
 	// 1、查票 在主界面index左边查票加链接，跳转到查票界面query.jsp
 	@RequestMapping("/query")
 	public ModelAndView query() {
