@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/airsys/assets/css/flight-status.css">
 </head>
 <script src="/airsys/assets/js/flightbuff.js"></script>
+
 <body>
 	<c:forEach items="${usts}" var="list">
 
@@ -43,13 +44,16 @@ ${list.departureTime}
 ${list.arrivalTime}
 ${list.sailLength}
 ${list.tprice} --%>
-
+<link rel="stylesheet" href="/airsys/assets/css/updateFlight.css">
 
 
 		<div class="con">
 			<div class="con-one">
 				<div class="con-one-left">
-					<a href="/airsys/user/airsys">返回航班列表</a>
+					<form action="/airsys/user/sigcon" method="get">
+				<input type="hidden" value="1" name="status">
+				<button type="submit" class="button-return">返回主页</button>
+			</form>
 				</div>
 
 			</div>

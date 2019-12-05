@@ -147,7 +147,7 @@ public class AirsysDaoImpl implements IAirsysDao{
 
 	@Override
 	public List<UserInfo> userTicket(int uid) {
-		return jdbctemplate.query("select * from airsys_ticket t INNER JOIN airsys_flight f on t.fid=f.fid INNER JOIN airsys_plan p on f.fnumber=p.fnumber INNER JOIN airsys_order o on t.idcard = o.idcard where t.uid = ? and t.status != 0",
+		return jdbctemplate.query("select * from airsys_ticket t INNER JOIN airsys_flight f on t.fid=f.fid INNER JOIN airsys_plan p on f.fnumber=p.fnumber INNER JOIN airsys_order o on t.idcard = o.idcard where t.uid = ? and t.status = 1",
 				new Object[] {uid},
 				new BeanPropertyRowMapper<UserInfo>(UserInfo.class));
 	}
@@ -155,6 +155,11 @@ public class AirsysDaoImpl implements IAirsysDao{
 	@Override
 	public int outTicket(String uid, String tid) {
 		String sql = "update airsys_ticket set status= 0 where uid = ? and tid = ?";
+		return jdbctemplate.update(sql, new Object[] {uid,tid});
+	}
+	@Override
+	public int outTicket2(String uid, String tid) {
+		String sql = "update airsys_ticket set status= 2 where uid = ? and tid = ?";
 		return jdbctemplate.update(sql, new Object[] {uid,tid});
 	}
 

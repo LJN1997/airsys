@@ -19,7 +19,7 @@ form {
 
 .box {
 	width: 500px;
-	height: 380px;
+	height: 450px;
 	margin: auto;
 	margin-top: 200px;
 	background: rgba(0, 0, 0, .5);
@@ -27,6 +27,9 @@ form {
 	position: relative;
 }
 </style>
+<link rel="stylesheet" href="/airsys/assets/css/bootstrap.css" />
+<script type="text/javascript" src="/airsys/assets/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="/airsys/assets/js/jquery.validate.js"></script>
 <html>
 <meta charset="utf-8">
 <html>
@@ -36,7 +39,7 @@ form {
 <body>
 	<div class="container">
 		<div class="box">
-			<form action="/airsys/user/regcon" mothed="post" id="formcon">
+			<form action="/airsys/user/regcon" mothed="post" id="formcon" name="form">
 				<h3>注册</h3>
 				<div class="form-group">
 					<label for="uname">账号：</label> <input type="text"
@@ -59,7 +62,35 @@ form {
 			</form>
 		</div>
 	</div>
-
-
 </body>
+<script>
+	window.onload = function() {
+		$("form").validate({
+			rules : {
+				uphone : {
+					required : true,
+					rangelength : [ 11, 11 ]
+				},
+				upwd : {
+					required : true
+				},
+				upwd2 : {
+					required : true
+				}
+			},
+			messages : {
+				uphone : {
+					required : "请输入手机号",
+					rangelength : "长度为11"
+				},
+				upwd : {
+					required : "请输入密码"
+				},
+				upwd2 : {
+					required : "请再次输入密码"
+				}
+			}
+		});
+	}
+</script>
 </html>

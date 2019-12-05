@@ -65,6 +65,6 @@ td a{
 	color:white;
 }
 .tr-bottom{
-	border-bottom:3px solid rgba(255,0,0,.5);
+	border-bottom:3px solid rgb(232, 25, 50);
 	box-sizing:border-box;
 }

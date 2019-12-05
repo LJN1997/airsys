@@ -9,10 +9,7 @@ window.onload = function() {
 	var order = document.querySelector(".loginbox1");
 	var login = document.querySelector(".loginbox2");
 	var go = document.querySelector(".go");
-	var Catch = $(".Catch").val();
-	if (Catch == 1 || Catch == "1") {
-		alert("抱歉，没有找到您要查询的航班，请重新输入！");
-	}
+
 
 	/* 按钮 */
 	var buff3 = document.querySelector(".buff3");

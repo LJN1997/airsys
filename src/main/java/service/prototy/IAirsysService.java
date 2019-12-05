@@ -45,7 +45,8 @@ public interface IAirsysService {
 	List<UserInfo> userTicket(int uid);
 	//退票
 	int outTicket(String uid,String tid);
-	
+	//改票改票状态
+	int outTicket2(String uid,String tid);
 	//退票改座位
 	int outTicketClassEco(String fid);
 	int outTicketClassBus(String fid);

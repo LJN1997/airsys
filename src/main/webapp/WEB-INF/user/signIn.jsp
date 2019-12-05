@@ -7,6 +7,7 @@
 </head>
 <link rel="stylesheet" href="/airsys/assets/css/bootstrap.css" />
 <script type="text/javascript" src="/airsys/assets/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="/airsys/assets/js/jquery.validate.js"></script>
 <style>
 body {
 	background: url("/airsys/assets/img/timg.jpg") no-repeat center;
@@ -26,18 +27,26 @@ form {
 
 .box {
 	width: 500px;
-	height: 350px;
+	height: 400px;
 	margin: auto;
 	margin-top: 200px;
 	background: rgba(0, 0, 0, .5);
 	border-radius: 20px;
 	position: relative;
 }
+.error{
+color:red;
+}
+#ljn-error{
+height:15px;
+
+	
+}
 </style>
 <body>
 	<div class="container">
 		<div class="box">
-			<form action="/airsys/user/sigcon" method="post">
+			<form action="/airsys/user/sigcon" method="post" name = "form">
 				<h3>登录</h3>
 				<div class="form-group">
 					<label for="exampleInputEmail1">账号</label> <input type="text"
@@ -69,30 +78,38 @@ form {
 	</div>
 
 	<script type="text/javascript">
-		/* window.onload=function(){
-		$(".but").on("click",function(){
-			var uphone = $(".uphone").val()
-			var code = $(".code").val()
-			  $.ajax({ 
-				  url:"http://api.feige.ee/SmsService/Template",
-				  type:"post",
-				  contentType:'application/x-www-form-urlencoded;charset=utf-8',
-				  data:{
-					  Account:17335081644,
-					  Pwd:'ec02efa704c211b70809aaec4',
-					  Content:code,
-					  Mobile:uphone,
-					  TemplateId:116876,
-					  SignId:203342,
-				  },
-				  dataType:"json",
-				  success:function(data){
-					  console.log()
+		window.onload = function() {
+			 
+			$("form").validate({
+				rules : {
+					uphone : {
+						required : true,
+						rangelength : [ 11, 11 ]
+					},
+					ljn : {
+						required : true
+					},
+					upwd : {
+						required : true
+					}
+
+				},
+				messages : {
+					uphone : {
+						required : "必须输入手机号",
+						rangelength : "长度为11"
+					},
+					ljn : {
+						required : "请输入验证码"
+					},
+					upwd : {
+						required : "请输入密码"
+					}
+
 				}
-			 });
-		})
-		
-		} */
+			});
+
+		}
 	</script>
 
 </body>

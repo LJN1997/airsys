@@ -138,7 +138,7 @@ body {
 
 			<button type="button" class="btn btn-primary"
 				style="margin-left: 10%;">+ 添加乘客</button>
-			<button type="submit" class="submit" style="margin-left:130px;">微信支付</button>
+			<button type="submit" class="submit" style="margin-left:130px;">支付宝支付</button>
 		</form>
 	</div>
 

@@ -18,6 +18,26 @@
 	<input type="hidden" value="${tclass}" name="tclass" class="tclass">
 	<input type="hidden" value="${oname}" name="oname" class="oname">
 	<input type="hidden" value="${idcard}" name="idcard" class="idcard">
+	<input type="hidden" value="${Catch}" name="Catch" class="Catch">
+	
+	<style>
+		body{
+			background: url("https://turkishairlines.ssl.cdn.sdlmedia.com/636866809060120078CY.jpg") no-repeat ;
+			background-size: 100%;
+		}
+	</style>
+	
+	<form action="/airsys/user/sigcon" method="get" class="form">
+	<input type="hidden" value="1" name="status">
+	<script type="text/javascript">
+	var Catch = $(".Catch").val();
+	var form = document.querySelector(".form");
+	if (Catch == 1 || Catch == "1") {
+		alert("抱歉，没有找到您要查询的航班，请重新输入！");
+		form.submit();
+	}
+	</script>
+	</form>
 	<div class="box">
 		<div class="title">航班信息</div>
 		<div class="infobox">
@@ -78,7 +98,7 @@
 										</div>
 									</div>
 								</td>
-								<td style="width: 80px;"><button type="submit" id="${list.planId }"
+								<td style="width: 90px;"><button type="submit" id="${list.planId }"
 										style="background: rgba(0, 0, 0, 0)" class="buy">预订航班</button></td>
 							</tr>
 						</table>

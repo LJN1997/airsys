@@ -64,8 +64,7 @@ public class AirsysController {
 		
 		HttpSession session = request.getSession(true);
 		String status = request.getParameter("status");
-		System.out.println("sdafasgasgasgdsgdsgshsdhsdhsdh"+status);
-
+		System.out.println("safasfasffsafsa"+status);
 			if(status==null) {
 				status ="10";
 			}
@@ -171,7 +170,7 @@ public class AirsysController {
 	public ModelAndView queryUsers(String fromCity, String toCity, String start) {
 		List<UserSelectAll> usts = airService.searchFlight(start, fromCity, toCity);
 		if(usts.isEmpty()) {
-			ModelAndView mv = new ModelAndView("/user/airsys");
+			ModelAndView mv = new ModelAndView("/user/flightInfo");
 			String Catch = "1";
 			mv.addObject("Catch", Catch);
 			return mv;
@@ -312,7 +311,7 @@ public class AirsysController {
 		System.out.println(request.getParameter("tprice"));
 		String buff = request.getParameter("buff");
 		if(buff.equals("1")) {
-			airService.outTicket(uid, tid);
+			airService.outTicket2(uid, tid);
 			if(tclass.equals("经济舱")) {
 				airService.outTicketClassEco(fid);
 			}else if(tclass.equals("商务舱")) {

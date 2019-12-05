@@ -104,6 +104,10 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 	public int outTicket(String uid, String tid) {
 		return asDao.outTicket(uid, tid);
 	}
+	@Override
+	public int outTicket2(String uid, String tid) {
+		return asDao.outTicket(uid, tid);
+	}
 
 	@Override
 	public int outTicketClassEco(String fid) {
@@ -119,6 +123,7 @@ public class AirsysServiceDaoImpl implements IAirsysService{
 	public int outTicketClassFir(String fid) {
 		return asDao.outTicketClassFir(fid);
 	}
+
 	
 
 

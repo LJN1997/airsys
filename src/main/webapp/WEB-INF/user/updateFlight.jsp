@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="/airsys/assets/css/updateFlight.css">
 </head>
 <script src="/airsys/assets/js/flightbuff.js"></script>
+<link rel="stylesheet" href="/airsys/assets/css/WdatePicker.css">
+<script src="/airsys/assets/js/WdatePicker.js"></script>
 <body>
 
 	<%-- 	<c:forEach items="${usts}" var="list"> --%>
@@ -201,7 +203,7 @@
 				<div class="con-five-3">
 					<div class="con-five-one">2、选择改签日期</div>
 					<div class="con-five-3-con">
-						日&nbsp;&nbsp;&nbsp;期：<input type="date" placeholder="请输入出发日期" name="startDate">
+						日&nbsp;&nbsp;&nbsp;期：<input style="width:150px;" type="text" id="date" placeholder="请输入出发日期" name="startDate" class="Wdate" onFocus="WdatePicker({skin:'whyGreen',minDate:'%y-%M-%d'})">
 						<input type="hidden" value="${list.fromCity}" name="fromCity">
 						<input type="hidden" value="${list.toCity}" name="toCity">
 						<input type="hidden" value="1" name="buff">
@@ -209,7 +211,6 @@
 						<input type="hidden" value="${tclass}" name ="tclass">
 						<input type="hidden" value="${oname}" name ="oname">
 						<input type="hidden" value="${idcard}" name ="idcard">
-						
 					</div>
 				</div>
 				<div class="con-five-4">

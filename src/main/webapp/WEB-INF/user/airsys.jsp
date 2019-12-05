@@ -19,8 +19,12 @@
 <link rel="stylesheet" href="/airsys/assets/css/flightBuff.css">
 <link rel="stylesheet" href="/airsys/assets/css/manageBook.css">
 <link rel="stylesheet" href="/airsys/assets/layui/css/layui.css">
+<link rel="stylesheet" href="/airsys/assets/css/WdatePicker.css">
+<script src="/airsys/assets/js/WdatePicker.js"></script>
+
 <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="/airsys/assets/js/index.js"></script>
+<script src="/airsys/assets/js/jquery-1.7.2.js"></script>
 <script src="/airsys/assets/js/manageBook.js"></script>
 
 <body>
@@ -107,10 +111,9 @@ ${usts} --%>
 
 						<div class="date">
 							<div class="date-date">
-								<b>&nbsp;&nbsp;日期</b> <input type="date" name="start">
+								<b>&nbsp;&nbsp;日期</b><input placeholder="请选择出发日期" style="width:150px;" type="text" id="date" name="start" class="Wdate" onFocus="WdatePicker({skin:'whyGreen',minDate:'%y-%M-%d'})">
 							</div>
 						</div>
-
 
 						<!-- <a href="aaa.jsp"> -->
 						<button type="submit" class="enter">
@@ -203,8 +206,9 @@ ${usts} --%>
 					</div>
 					<div class="class-id">
 						<e style="color: #99a5b4; font-size: 20px;margin-top:10px;">日期：</e>
-						<br> <br> <input type="date" name="startDate"
-							style="background: rgba(0, 0, 0, 0); color: #99a5b4;">
+						<br> <br> <!-- <input type="date" name="startDate"
+							style="background: rgba(0, 0, 0, 0); color: #99a5b4;"> -->
+							<input placeholder="请选择日期" style="width:150px;background:rgba(0,0,0,0)" type="text" id="date" name="startDate" class="Wdate" onFocus="WdatePicker({skin:'whyGreen',minDate:'%y-%M-%d'})">
 					</div>
 					<button type="submit" class="enter">
 						<div class="jiantou"></div>
